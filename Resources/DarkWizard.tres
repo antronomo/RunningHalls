@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/DefaultStats.gd" type="Script" id=1]
+[ext_resource path="res://Assets/img/DarkWizard.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "DarkWizard"
+hp = 100.0
+atk = 10
+deff = 10
+crit_chance = 15
+crit_dmg = 50
+sprite_texture = ExtResource( 2 )
