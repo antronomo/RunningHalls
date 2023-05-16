@@ -1,20 +1,16 @@
 extends RigidBody2D
 class_name Enemy
 
-export var stats : Resource
-
 onready var sprit : Sprite = $Sprite
 
-#Cargando estats
-onready var my_name : String = stats.name
-onready var heal_points : float = stats.hp setget set_hp, get_hp
-onready var attack : int = stats.atk
-onready var deffense : int = stats.deff
-onready var critical_cahnce : int = stats.crit_chance
-onready var critical_damage : int = stats.crit_dmg
+export var my_name : String 
+export var heal_points : int = 0 setget set_hp, get_hp
+export var attack : int 
+export var deffense : int 
+export var critical_cahnce : int 
+export var critical_damage : int 
 
 func _ready() -> void :
-	sprit.texture = stats.sprite_texture
 	set_mode(2)
 
 func _on_HitBox_area_entered(area:Area2D) -> void:
@@ -39,7 +35,7 @@ func hit() -> float:
 	# return (diff * dmg) / 100
 	return dmg
 
-func set_hp(changer : float) -> void: #Recuerda, valores negativos para 'dañar' y positivos para 'curar'
+func set_hp(changer : int) -> void: #Recuerda, valores negativos para 'dañar' y positivos para 'curar'
 	heal_points += changer
 
 	if heal_points <= 0:
@@ -47,7 +43,7 @@ func set_hp(changer : float) -> void: #Recuerda, valores negativos para 'dañar'
 	else:
 		print(my_name + ' current hp: ' + str(heal_points))
 
-func get_hp() -> float:
+func get_hp() -> int:
 	return heal_points
 
 func die() -> void :

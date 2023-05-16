@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Resources/DarkWizard.tres" type="Resource" id=1]
+[ext_resource path="res://Assets/img/DarkWizard.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/DarkWizard.gd" type="Script" id=2]
+[ext_resource path="res://Components/HealthComponent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/HitBoxComponent.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/HurtBoxComponent.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 8.0
-height = 0.0
+[sub_resource type="CircleShape2D" id=4]
+radius = 6.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -39,20 +41,46 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[node name="DarkWithard" type="RigidBody2D" groups=["enemy"]]
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 8 )
+
+[node name="Darkwizard" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 3
 script = ExtResource( 2 )
-stats = ExtResource( 1 )
+my_name = "Darkwizard"
+heal_points = 100
+attack = 10
+deffense = 1
+critical_cahnce = 15
+critical_damage = 10
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
 hframes = 2
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+position = Vector2( 0, -6 )
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Idle = SubResource( 2 )
 anims/RESET = SubResource( 3 )
+
+[node name="HealthComponentComponent" parent="." instance=ExtResource( 3 )]
+
+[node name="HurtBoxComponent" parent="." instance=ExtResource( 5 )]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2( -4, -8 )
+shape = SubResource( 5 )
+
+[node name="HitBoxComponent" parent="." instance=ExtResource( 4 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2( -4, -8 )
+shape = SubResource( 5 )

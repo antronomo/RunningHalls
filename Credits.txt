@@ -1,0 +1,24 @@
+Juego creado por: 
+    ·antronomo
+
+Inspirado por: 
+    ·"Buff Knight" de BuffStudios -> https://play.google.com/store/apps/details?id=com.buffstudio.onthehero&hl=es_419&gl=US
+
+Gráficos (o arte): 
+    ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
+        editados por: antronomo
+
+Motor de videojuego:
+    ·GodotEngine 3.5.2 -> https://godotengine.org/
+
+Otro software utilizado:
+    ·Pixelorama, como editor de imagenes en pixelart -> https://orama-interactive.itch.io/pixelorama
+    ·Visual Studio Code (con plugins), como editor de texto 
+    ·Git y GitHub, como control de versiones y almacenamiento en la nube
+
+Videos relevantes que he visto a lo largo del desarrollo:
+    ·How You Can Easily Make Your Code Simpler in Godot 4 -> https://www.youtube.com/watch?v=74y6zWZfQKk&t
+
+
+
+----------FALTAN MAS COSAS Y HAY QUE ORGANIZARLO----------

@@ -21,7 +21,7 @@ position = Vector2( 160, 120 )
 texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 16, 107 )
+position = Vector2( 17, 115 )
 
 [node name="DownGround" type="Sprite" parent="."]
 position = Vector2( 160, 136 )
