@@ -12,9 +12,8 @@ func _ready() -> void:
 	life = max_life
 
 func set_hp(new_hp : int) -> void:
-
 	life += new_hp
-
+	
 	life = clamp(life, 0, max_life)
 
 	if life <= 0:

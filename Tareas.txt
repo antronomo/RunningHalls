@@ -44,6 +44,8 @@ DONE: --------------------------------------------------------------------------
     -Editar barriles y jarrones de colores
 
 ·Editar Sprites:
-    -Editar los npc, un chavalin, una princesa (con colores vivos)
+    -Editar los npc, un chavalin, una princesa
 
 FIXING: ------------------------------------------------------------------------------------------------------
+
+¿¿Debería pasar el proyecto a GE4?? -> no

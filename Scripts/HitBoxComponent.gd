@@ -1,17 +1,15 @@
 extends Area2D
 class_name HitBoxComponent
-#Tiene la estadísitca de ataque
+#Tiene la estadísitca de defensa
 
-export var attack : int
-export var critical_cahnce : int 
-export var critical_damage : int 
+export var deffense : int 
 
-func hit() -> float:
-	var dmg : float = (attack * (randi() % 50 + 75)) / 100
+onready var health_component : HealthComponent = get_node("../HealthComponent")
 
-	if randi()%101 <= critical_cahnce:
-		dmg += (dmg * critical_damage) / 100
-		print('Critical')
-	# var diff : float = (dmg * 100) / objective
-	# return (diff * dmg) / 100
-	return dmg
+func _ready() -> void: pass
+
+
+func get_hurt(entring_dmg : float) -> float: 
+	var diff : float =  (entring_dmg * 100) / deffense
+
+	return (((diff * entring_dmg) / 100) * -1)

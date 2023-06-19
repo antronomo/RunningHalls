@@ -17,14 +17,14 @@ script = ExtResource( 1 )
 motion_mirroring = Vector2( 320, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Ground"]
-position = Vector2( 160, 120 )
+position = Vector2( 159, 116 )
 texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 17, 115 )
+position = Vector2( 12, 112 )
 
 [node name="DownGround" type="Sprite" parent="."]
-position = Vector2( 160, 136 )
+position = Vector2( 159, 132 )
 scale = Vector2( 20, 1 )
 texture = ExtResource( 3 )
 
@@ -32,12 +32,12 @@ texture = ExtResource( 3 )
 position = Vector2( 288, 88 )
 
 [node name="PhysicGround" type="StaticBody2D" parent="."]
-position = Vector2( 160, 128 )
+position = Vector2( 160, 133 )
 collision_mask = 12
 constant_linear_velocity = Vector2( -32, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicGround"]
-position = Vector2( 0, -5 )
+position = Vector2( -1, -14 )
 shape = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
