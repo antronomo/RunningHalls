@@ -33,11 +33,13 @@ WIP: ---------------------------------------------------------------------------
     -Un lugar donde tendrá el gameplay, jugador, suelo, generador de enemigos, enemigos...
 
 ·Crear Jugador:
-    -Hacer que sea capaz de interactuar con enemigos:
-        dañar, empujar y eliminar enemigos, perder vida por cada golpe
+    -personaje que se ocupará de dañar jarrones y empujar enemigos
 
 ·Crear Enemigo Base:
     -progrmar funcionamineto para que pueda recibir daño, morir si pierda toda la vida y dañar al jugador con cada golpe
+
+·Crear componente 'core':
+    -Estoy haciendo un componente o objeto que debería ser usado tanto para 'player' como para los enemigos creados a futuro
 
 DONE: ------------------------------------------------------------------------------------------------------
 ·Editar Sprites:

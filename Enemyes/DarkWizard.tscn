@@ -1,13 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/img/DarkWizard.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/DarkWizard.gd" type="Script" id=2]
-[ext_resource path="res://Components/HealthComponent.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Components/HitBoxComponent.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Components/HurtBoxComponent.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/CoreComponent.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 6.0
+radius = 8.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -42,17 +40,12 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 4, 8 )
+extents = Vector2( 8, 8 )
 
 [node name="Darkwizard" type="RigidBody2D"]
-collision_layer = 0
+collision_layer = 4
 script = ExtResource( 2 )
-my_name = "Darkwizard"
-heal_points = 100
-attack = 10
-deffense = 1
-critical_cahnce = 15
-critical_damage = 10
+my_name = "DarkWizard"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
@@ -61,7 +54,7 @@ hframes = 2
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -8 )
 shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -69,18 +62,15 @@ autoplay = "Idle"
 anims/Idle = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
-[node name="HealthComponent" parent="." instance=ExtResource( 3 )]
-
-[node name="HitBoxComponent" parent="." instance=ExtResource( 4 )]
+[node name="CoreComponent" parent="." instance=ExtResource( 3 )]
 collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-position = Vector2( -4, -8 )
-shape = SubResource( 5 )
-
-[node name="HurtBoxComponent" parent="." instance=ExtResource( 5 )]
 collision_mask = 2
+max_life = 100
+attack = 10
+deffense = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2( -4, -8 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
+position = Vector2( 0, -8 )
 shape = SubResource( 5 )
+
+[connection signal="NoHP" from="CoreComponent" to="." method="_on_CoreComponent_NoHP"]

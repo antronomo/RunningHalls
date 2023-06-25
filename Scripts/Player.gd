@@ -1,19 +1,22 @@
 extends Node2D
 
-"""
-IDEAS:
-	·Por ahora, las colisiones parece no tener sentido, es porque la 'HitBox' actual es una prueba, a futuro será el arma que porte el jugador.
-	·El knockback que da el jugador hacia los enemigos, será por la 'HurtBox' de esta manera, si el enemigo muere, podemos
-	desactivar sus colisiones para que haga la animacion de morir mientras lo dejamos atrás
+
+export var my_name : String = 'player'
 
 
-Intento de Fibonacci por si a futuro debo aplicarlo en algo, es la manera más corta de escribir-lo que se me ocurre
-X=0, y=1
-while true:
-	print(x)
-	x += y
-	print(y)
-	y +=x
+func _on_CoreComponent_NoHP() -> void:
+	print(my_name + ' se ha curado')
+	going_to_heal()
 
-0,1,1,2,3,5,8,13...
-"""
+
+func going_to_heal() -> void:
+	$CoreComponent.set_hp(999999999)
+
+func going_to_die() -> void:
+	queue_free()
+
+
+func _on_CoreComponent_body_entered(body : Enemy) -> void:
+	#Esto es cuando el jugador colisiona con el cuerpo de un enemigo, para empujar-lo
+	# print('empujacion')
+	body.apply_central_impulse(Vector2(100,-100))

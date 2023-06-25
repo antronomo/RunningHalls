@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "CoreComponent",
+"language": "GDScript",
+"path": "res://Scripts/CoreComponent.gd"
+}, {
 "base": "Resource",
 "class": "DefaultStats",
 "language": "GDScript",
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Level_0.gd"
 } ]
 _global_script_class_icons={
+"CoreComponent": "",
 "DefaultStats": "",
 "Enemy": "",
 "HealthComponent": "",

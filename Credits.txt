@@ -12,7 +12,7 @@ Gráficos (o arte):
 
 
 Motor de videojuego:
-    ·GodotEngine 3.5.2 -> https://godotengine.org/
+    ·GodotEngine 3.5.2
 
 
 Otro software utilizado:

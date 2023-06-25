@@ -4,7 +4,7 @@ class_name HitBoxComponent
 
 export var deffense : int 
 
-onready var health_component : HealthComponent = get_node("../HealthComponent")
+# onready var health_component : HealthComponent = get_node("../HealthComponent")
 
 func _ready() -> void: pass
 

@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Components/HealthComponent.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Components/HitBoxComponent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/CoreComponent.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/img/Player.png" type="Texture" id=4]
-[ext_resource path="res://Components/HurtBoxComponent.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -40,9 +38,6 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 16 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4, 16 )
-
 [node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource( 1 )
 
@@ -56,18 +51,17 @@ autoplay = "Walking"
 anims/RESET = SubResource( 1 )
 anims/Walking = SubResource( 2 )
 
-[node name="HealthComponent" parent="." instance=ExtResource( 2 )]
-
-[node name="HitBoxComponent" parent="." instance=ExtResource( 3 )]
+[node name="CoreComponent" parent="." instance=ExtResource( 2 )]
 collision_layer = 2
+collision_mask = 12
+max_life = 1000
+attack = 20
+deffense = 10
+critical_cahnce = 15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-position = Vector2( 12, -16 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
+position = Vector2( 12, -8 )
 shape = SubResource( 3 )
 
-[node name="HurtBoxComponent" parent="." instance=ExtResource( 5 )]
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2( 12, -16 )
-shape = SubResource( 4 )
+[connection signal="NoHP" from="CoreComponent" to="." method="_on_CoreComponent_NoHP"]
+[connection signal="body_entered" from="CoreComponent" to="." method="_on_CoreComponent_body_entered"]
