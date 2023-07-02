@@ -1,0 +1,2 @@
+extends TextureProgress
+class_name LifeBar

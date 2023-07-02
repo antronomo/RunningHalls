@@ -1,0 +1,31 @@
+el archivo contiene errores ortograficos y gramaticales
+IDEAS:
+
+¿Debería pasar el proyecto a GE4? -> no
+
+
+se ven variables comentadas, es porque si se usan una sola vez,
+creo que no vale la pena tenerlo ahí.
+
+
+Intento de Fibonacci por si a futuro debo aplicarlo en algo, es la manera más corta de escribir-lo que se me ocurre:
+X=0, y=1
+while true:
+	print(x)
+	x += y
+	print(y)
+	y +=x
+0,1,1,2,3,5,8,13...
+
+
+copypaste de LifeBar para los enemigos(.tscn): 
+donde "id=x" y "script = ExtResource( x )", donde x hay que poner EL MISMO valor numerico
+[ext_resource path="res://Scripts/LifeBar.gd" type="Script" id=x]
+[node name="LifeBar" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -8.0
+margin_top = 2.0
+margin_right = 8.0
+margin_bottom = 5.0
+script = ExtResource( x )

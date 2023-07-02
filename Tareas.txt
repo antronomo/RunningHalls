@@ -1,36 +1,48 @@
-TODO: ------------------------------------------------------------------------------------------------------
-·Editar Sprites:
-    -Crear animacion para el cangrejo con cabeza de humano (2 para idle, 2 mientras camina)
+la lista de las cosas NO estan organizadas, el archivo contiene errores ortograficos y gramaticales
+TODO (o ideas): -------------------------------------------------------------------------------------------
 
 ·Editar Sprites:
     -Crear armas para la clase del guerrero (armas a dos manos) y para el mago (varitas y bastones)
 
 ·Crear Enemigo, RATA:
-    -crear un enemigo, la rata(s) a partir del enemigo base
+    -crear un enemigo, la rata a partir del enemigo base
 
 ·Crear Icono del Juego:
-
-·Crear UIs:
-    -interfaz donde muestre información durante la partida.
 
 ·Crear UIs:
     -Crear menú donde el jugador pueda navegar entre, configuración, creditos, personalización, empezar o seguir partida.
 
 ·Modo de juegos:
     -Aventura: 
-        debe llegar asta derrotar al jefe final.
-        solo puede mejorar el equipamiento al perder todos los puntos de salud y contará +1 a los intentos
-        el objetivo es derrotar al jefe en el menor número de intentos posibles
+        Debe llegar asta derrotar al jefe final.
+        Solo puede mejorar el equipamiento al perder todos los puntos de salud y contará +1 a los intentos.
+        El objetivo es derrotar al jefe en el menor número de intentos posibles.
 
 ·Modo de juegos:
     -Infinito:
-        tiene 'checkpoints' cada x distancia recorrida o al derrotar x número de enemigos
-        al llegar al 'checkpoint' podrá tomar un descanso para mejorar el equipamineto y/o comprar
-        el objetivo es llegar lo más lejos posible, donde llegará al punto en que simplemente es imposible
+        Tiene 'checkpoints' cada x distancia recorrida o al derrotar x número de enemigos.
+        Al llegar al 'checkpoint' podrá tomar un descanso para mejorar el equipamineto y/o comprar.
+        El objetivo es llegar lo más lejos posible, donde llegará al punto en que simplemente es imposible.
 
 WIP: ------------------------------------------------------------------------------------------------------
-·Crear escena:
-    -Un lugar donde tendrá el gameplay, jugador, suelo, generador de enemigos, enemigos...
+
+·Crear UIs:
+    -interfaz de partida:
+        La idea es ver cosas como el oro obtenido, la barra de salud, la distancia recorrida...
+
+·Game Feel:
+    -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite
+
+DONE: ------------------------------------------------------------------------------------------------------
+
+·Editar Sprites:
+    -Crear animacion para el cangrejo con cabeza de humano (2 para idle, 2 mientras camina)
+
+·Editar Sprites:
+    -Editar barriles y jarrones de colores
+
+·Editar Sprites:
+    -Editar los npc, un chavalin, una princesa
 
 ·Crear Jugador:
     -personaje que se ocupará de dañar jarrones y empujar enemigos
@@ -41,13 +53,8 @@ WIP: ---------------------------------------------------------------------------
 ·Crear componente 'core':
     -Estoy haciendo un componente o objeto que debería ser usado tanto para 'player' como para los enemigos creados a futuro
 
-DONE: ------------------------------------------------------------------------------------------------------
-·Editar Sprites:
-    -Editar barriles y jarrones de colores
-
-·Editar Sprites:
-    -Editar los npc, un chavalin, una princesa
+·Crear escena:
+    -Un lugar donde tendrá el gameplay, jugador, suelo, generador de enemigos, enemigos...
 
 FIXING: ------------------------------------------------------------------------------------------------------
 
-¿¿Debería pasar el proyecto a GE4?? -> no

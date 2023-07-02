@@ -3,10 +3,11 @@ Juego creado por:
 
 
 Inspirado por: 
-    ·"Buff Knight" de BuffStudios -> https://play.google.com/store/apps/details?id=com.buffstudio.onthehero&hl=es_419&gl=US
+    ·"Buff Knight" de BuffStudios -> 
+        https://play.google.com/store/apps/details?id=com.buffstudio.onthehero&hl=es_419&gl=US
 
 
-Gráficos (o arte): 
+Sprites (o arte): 
     ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
         editado por: antronomo
 
@@ -26,7 +27,8 @@ Otro software utilizado:
 Videos y canales relevantes que he visto a lo largo del desarrollo:
     ·RafaLagoon -> https://www.twitch.tv/rafalagoon
 
-    ·How You Can Easily Make Your Code Simpler in Godot 4. por Bitlytic -> https://www.youtube.com/watch?v=74y6zWZfQKk&t
+    ·How You Can Easily Make Your Code Simpler in Godot 4. por Bitlytic -> 
+        https://www.youtube.com/watch?v=74y6zWZfQKk&t
 
 
-----------FALTAN MAS COSAS Y HAY QUE ORGANIZARLO----------
+----------FALTAN COSAS Y HAY QUE ORGANIZARLO----------

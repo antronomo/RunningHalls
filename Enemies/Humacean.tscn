@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/CoreComponent.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Humacean.gd" type="Script" id=2]
+[ext_resource path="res://Assets/img/Crab.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/LifeBar.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Dancing"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[node name="Humacean" type="RigidBody2D"]
+collision_layer = 4
+script = ExtResource( 2 )
+my_name = "Humacean"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="CoreComponent" type="Area2D" parent="."]
+position = Vector2( 0, -8 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+max_life = 100
+attack = 10
+defense = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Dancing"
+anims/Dancing = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="LifeBar" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -8.0
+margin_top = 2.0
+margin_right = 8.0
+margin_bottom = 5.0
+script = ExtResource( 4 )
+
+[connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

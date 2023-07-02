@@ -14,44 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/CoreComponent.gd"
 }, {
-"base": "Resource",
-"class": "DefaultStats",
-"language": "GDScript",
-"path": "res://Scripts/DefaultStats.gd"
-}, {
 "base": "RigidBody2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Scripts/Enemy.gd"
 }, {
 "base": "Node2D",
-"class": "HealthComponent",
-"language": "GDScript",
-"path": "res://Scripts/HealthComponent.gd"
-}, {
-"base": "Area2D",
-"class": "HitBoxComponent",
-"language": "GDScript",
-"path": "res://Scripts/HitBoxComponent.gd"
-}, {
-"base": "Area2D",
-"class": "HurtBoxComponent",
-"language": "GDScript",
-"path": "res://Scripts/HurtBoxComponent.gd"
-}, {
-"base": "Node2D",
 "class": "Level",
 "language": "GDScript",
 "path": "res://Scripts/Level_0.gd"
+}, {
+"base": "TextureProgress",
+"class": "LifeBar",
+"language": "GDScript",
+"path": "res://Scripts/LifeBar.gd"
 } ]
 _global_script_class_icons={
 "CoreComponent": "",
-"DefaultStats": "",
 "Enemy": "",
-"HealthComponent": "",
-"HitBoxComponent": "",
-"HurtBoxComponent": "",
-"Level": ""
+"Level": "",
+"LifeBar": ""
 }
 
 [application]
