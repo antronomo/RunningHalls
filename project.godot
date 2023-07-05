@@ -19,21 +19,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enemy.gd"
 }, {
+"base": "TextureProgress",
+"class": "HealthBar",
+"language": "GDScript",
+"path": "res://Scripts/HealthBar.gd"
+}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://Scripts/Level_0.gd"
-}, {
-"base": "TextureProgress",
-"class": "LifeBar",
-"language": "GDScript",
-"path": "res://Scripts/LifeBar.gd"
+"path": "res://Scripts/Level0.gd"
 } ]
 _global_script_class_icons={
 "CoreComponent": "",
 "Enemy": "",
-"Level": "",
-"LifeBar": ""
+"HealthBar": "",
+"Level": ""
 }
 
 [application]

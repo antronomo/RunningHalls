@@ -1,2 +1,2 @@
 extends TextureProgress
-class_name LifeBar
+class_name HealthBar

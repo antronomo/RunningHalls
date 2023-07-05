@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/CoreComponent.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Humacean.gd" type="Script" id=2]
 [ext_resource path="res://Assets/img/Crab.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/LifeBar.gd" type="Script" id=4]
+[ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -77,13 +77,6 @@ autoplay = "Dancing"
 anims/Dancing = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
-[node name="LifeBar" type="TextureProgress" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -8.0
-margin_top = 2.0
-margin_right = 8.0
-margin_bottom = 5.0
-script = ExtResource( 4 )
+[node name="HealthBar" parent="." instance=ExtResource( 4 )]
 
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

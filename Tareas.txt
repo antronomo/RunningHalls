@@ -30,9 +30,6 @@ WIP: ---------------------------------------------------------------------------
     -interfaz de partida:
         La idea es ver cosas como el oro obtenido, la barra de salud, la distancia recorrida...
 
-·Game Feel:
-    -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite
-
 DONE: ------------------------------------------------------------------------------------------------------
 
 ·Editar Sprites:
@@ -55,6 +52,9 @@ DONE: --------------------------------------------------------------------------
 
 ·Crear escena:
     -Un lugar donde tendrá el gameplay, jugador, suelo, generador de enemigos, enemigos...
+
+·Game Feel:
+    -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite
 
 FIXING: ------------------------------------------------------------------------------------------------------
 
