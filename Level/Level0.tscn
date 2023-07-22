@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Level0.gd" type="Script" id=1]
 [ext_resource path="res://Assets/img/Ground.png" type="Texture" id=2]
 [ext_resource path="res://Assets/img/DownGround.png" type="Texture" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/EnemySpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/inSewerParallaxBackground.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 160, 8 )
@@ -12,37 +13,85 @@ extents = Vector2( 160, 8 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 38.5, 68.5 )
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 35, 119 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Starting"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -20, 119 ), Vector2( 35, 119 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_game"
+} ]
+}
+
 [node name="Level0" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="SewerParallaxBackground" parent="." instance=ExtResource( 6 )]
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="Ground" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 320, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Ground"]
-position = Vector2( 159, 116 )
+position = Vector2( 160, 120 )
 texture = ExtResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 12, 112 )
-
-[node name="DownGround" type="Sprite" parent="."]
-position = Vector2( 159, 132 )
+[node name="DownGround" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 160, 136 )
 scale = Vector2( 20, 1 )
 texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 35, 119 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
 position = Vector2( 268, 92 )
 
 [node name="PhysicGround" type="StaticBody2D" parent="."]
-position = Vector2( 160, 133 )
+position = Vector2( 160, 126 )
 collision_mask = 0
-constant_linear_velocity = Vector2( -32, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicGround"]
-position = Vector2( -1, -14 )
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MataSobras5000" type="Area2D" parent="."]
 position = Vector2( -42, 72 )
@@ -55,7 +104,11 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Starting"
+anims/RESET = SubResource( 4 )
+anims/Starting = SubResource( 5 )
 
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

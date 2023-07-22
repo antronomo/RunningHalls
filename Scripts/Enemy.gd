@@ -6,7 +6,7 @@ export var my_name : String
 
 
 # onready var core_comp : Area2D = $CoreComponent
-onready var healthBar : HealthBar = get_node("HealthBar")
+onready var healthBar : HealthBar = get_node('HealthBar')
 
 
 var stats : Dictionary
@@ -22,7 +22,7 @@ func _ready() -> void:
 		healthBar.max_value = stats.life
 		healthBar.value = stats.life
 	else:
-		print(my_name + ' dont have a healthbar')
+		print(my_name + ' does not have a healthbar')
 
 
 func seeHP(hp : int) -> void:

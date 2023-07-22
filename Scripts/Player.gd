@@ -25,5 +25,5 @@ func going_to_die() -> void:
 func _on_CoreComponent_body_entered(body : Enemy) -> void:
 	#Esto es cuando el jugador colisiona con el cuerpo de un enemigo, para empujar-lo
 	# print('empujacion')
-	body.apply_central_impulse(Vector2(randi() % 25 + 50,-50))
+	body.apply_central_impulse(Vector2(randi() % 50 + 51, (randi() % 75 + 26) * -1))
 

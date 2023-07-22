@@ -24,13 +24,32 @@ TODO (o ideas): ----------------------------------------------------------------
         Al llegar al 'checkpoint' podrá tomar un descanso para mejorar el equipamineto y/o comprar.
         El objetivo es llegar lo más lejos posible, donde llegará al punto en que simplemente es imposible.
 
+·Crear el objeto  parallaxBackground:
+    -Crear un objeto donde todos los fondos ereden de el y así poder instanciarlos más fácilmente
+
+·Crear backgrounds:
+    -Interior de castillo
+
+·Crear Evento:
+    -grupo de animales para indicar que viene un jefe o enemigo grande
+
 WIP: ------------------------------------------------------------------------------------------------------
 
 ·Crear UIs:
     -interfaz de partida:
         La idea es ver cosas como el oro obtenido, la barra de salud, la distancia recorrida...
 
+·Crear animacion de GameOver:
+    -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion
+
+·ParallaxBackground:
+    -Crear un objeto donde todos los parallax puedan eredar de el, con el fin de poder usar funciones o detenerlo de manera más sencilla, si un parallax necesita mas o menos preparativo para realizar las acciones, ya se modificará en sus propios scrips.
+
 DONE: ------------------------------------------------------------------------------------------------------
+
+·Crear animacion de entrada:
+    -Cuando empiezas la partida, un animacion donde el jugador aparece por la izquierda y una vez llegue,
+    empieza a moverse el parallax y a generar enemigos.
 
 ·Editar Sprites:
     -Crear animacion para el cangrejo con cabeza de humano (2 para idle, 2 mientras camina)

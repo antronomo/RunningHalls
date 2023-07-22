@@ -2,19 +2,17 @@ extends Node2D
 class_name Level
 
 
-var groundSpeed : int = -32
+var groundSpeed : int = -30
 
 
-onready var parallaxGround : ParallaxLayer = $ParallaxBackground/Ground
+onready var parallaxGround : ParallaxBackground = $SewerParallaxBackground
 onready var enemySpawner : Position2D = $EnemySpawner
+onready var timer : Timer = $Timer
 
 
 func _ready() -> void:
 	randomize()
-
-
-func _process(delta) -> void:
-	parallaxGround.motion_offset.x += groundSpeed * delta
+	$PhysicGround.constant_linear_velocity.x = groundSpeed
 
 
 func _on_MataSobras5000_body_exited(body : Node) -> void:
@@ -22,5 +20,14 @@ func _on_MataSobras5000_body_exited(body : Node) -> void:
 	body.queue_free()
 
 
+func start_timer() -> void:
+	timer.start()
+
+
 func _on_Timer_timeout() -> void:
 	enemySpawner.spawn_new_enemy()
+
+
+func start_game() -> void:
+	start_timer()
+	parallaxGround.set_paraspeed(groundSpeed)

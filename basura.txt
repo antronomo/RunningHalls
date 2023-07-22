@@ -18,8 +18,10 @@ while true:
 0,1,1,2,3,5,8,13...
 
 
+vvv ---ya no es necesario--- vvv
+
 copypaste de LifeBar para los enemigos(.tscn): 
-donde "id=x" y "script = ExtResource( x )", donde x hay que poner EL MISMO valor numerico
+donde "id=x" y "script = ExtResource( x )", x hay que poner EL MISMO valor numerico
 [ext_resource path="res://Scripts/LifeBar.gd" type="Script" id=x]
 [node name="LifeBar" type="TextureProgress" parent="."]
 anchor_left = 0.5

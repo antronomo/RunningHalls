@@ -18,8 +18,9 @@ signal HPStatus
 func _ready() -> void:
 	life = max_life
 
-	if get_parent():
+	if get_parent().has_method('seeHP'):
 		connect('HPStatus', get_parent(), 'seeHP')
+	# else: print('we got problems')
 
 
 func get_stats() -> Dictionary:
@@ -67,17 +68,12 @@ func get_hp() -> int:
 
 
 func _on_CoreComponent_area_entered(area : CoreComponent) -> void:
-	# print('i am ' + get_parent().my_name)
-
 	var le_dmg = area.hit()
 	# print('paso 1 ' + str(le_dmg))
 
 	var le_hurt = get_hurt(le_dmg)
 	# print('paso 2 ' + str(le_hurt))
+	
 	set_hp(le_hurt)
 
-	var le_hp = get_hp()
-	# print(get_parent().my_name + 'hp ' + str(le_hp))
-
-	# print('finished')
 

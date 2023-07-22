@@ -1,3 +1,5 @@
+----------FALTAN COSAS Y HAY QUE ORGANIZARLO----------
+
 Juego creado por: 
     ·antronomo
 
@@ -10,6 +12,8 @@ Inspirado por:
 Sprites (o arte): 
     ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
         editado por: antronomo
+
+    ·el resto por antronomo
 
 
 Motor de videojuego:
@@ -30,5 +34,5 @@ Videos y canales relevantes que he visto a lo largo del desarrollo:
     ·How You Can Easily Make Your Code Simpler in Godot 4. por Bitlytic -> 
         https://www.youtube.com/watch?v=74y6zWZfQKk&t
 
-
-----------FALTAN COSAS Y HAY QUE ORGANIZARLO----------
+    ·Easy Health Bar with Stretching and Recoloring in Godot. por Chris' Tutorials ->
+        https://www.youtube.com/watch?v=aP8Cv_RvBlI
