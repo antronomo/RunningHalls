@@ -78,5 +78,9 @@ anims/Dancing = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
+margin_left = -8.0
+margin_top = -24.0
+margin_right = 8.0
+margin_bottom = -20.0
 
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

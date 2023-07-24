@@ -20,19 +20,16 @@ func _ready() -> void:
 
 	if get_parent().has_method('seeHP'):
 		connect('HPStatus', get_parent(), 'seeHP')
-	# else: print('we got problems')
 
 
 func get_stats() -> Dictionary:
-	var stats : Dictionary = {
+	return {
 		'life' : max_life,
 		'attack': attack,
 		'defense' : defense,
 		'crit_chance' : critical_cahnce,
 		'crit_dmg' : critical_damage
 	}
-
-	return stats
 
 
 func hit() -> float:
@@ -41,14 +38,15 @@ func hit() -> float:
 	if dmg <= 1:
 		dmg = 1
 
-	if randi() % 101 <= critical_cahnce:
+	if randi() % 100 + 1 <= critical_cahnce:
 		dmg += (dmg * critical_damage) / 100.00
 		print('Critical')
 
 	return dmg
 
 
-func get_hurt(entring_dmg : float) -> float: 
+func get_hurt(entring_dmg : float) -> float:
+	#Se que puedo quitar variables del código y retornaría lo mismo, aún no estoy listo para ello
 	var diff : float =  (entring_dmg * 100) / defense
 	var hurt : float = (((diff * entring_dmg) / 100) * -1)
 
@@ -57,9 +55,7 @@ func get_hurt(entring_dmg : float) -> float:
 
 func set_hp(new_hp : int) -> void:
 	life += new_hp
-	
 	life = clamp(life, 0, max_life)
-
 	emit_signal('HPStatus', life)
 
 
@@ -68,12 +64,5 @@ func get_hp() -> int:
 
 
 func _on_CoreComponent_area_entered(area : CoreComponent) -> void:
-	var le_dmg = area.hit()
-	# print('paso 1 ' + str(le_dmg))
-
-	var le_hurt = get_hurt(le_dmg)
-	# print('paso 2 ' + str(le_hurt))
-	
-	set_hp(le_hurt)
-
+	set_hp(get_hurt(area.hit()))
 

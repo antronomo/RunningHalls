@@ -4,11 +4,16 @@ extends Node2D
 export var my_name : String = 'player'
 
 
-# onready var core_comp : Area2D = $CoreComponent
+signal updateHP
+
+
+func _ready() -> void:
+	if get_node('../GUI'):
+		connect('updateHP', get_node('../GUI'), 'update_helath_bar')
 
 
 func seeHP(hp : int) -> void:
-	print(my_name + ' life is: ' + str(hp))
+	emit_signal('updateHP', hp)
 
 	if hp <= 0:
 		going_to_heal()
@@ -23,7 +28,7 @@ func going_to_die() -> void:
 
 
 func _on_CoreComponent_body_entered(body : Enemy) -> void:
-	#Esto es cuando el jugador colisiona con el cuerpo de un enemigo, para empujar-lo
+	#Esto es cuando el jugador colisiona con un enemigo, para empujar-lo
 	# print('empujacion')
 	body.apply_central_impulse(Vector2(randi() % 50 + 51, (randi() % 75 + 26) * -1))
 

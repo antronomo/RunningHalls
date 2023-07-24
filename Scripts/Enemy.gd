@@ -6,7 +6,7 @@ export var my_name : String
 
 
 # onready var core_comp : Area2D = $CoreComponent
-onready var healthBar : HealthBar = get_node('HealthBar')
+onready var health_bar : HealthBar = get_node('HealthBar')
 
 
 var stats : Dictionary
@@ -18,9 +18,9 @@ func _ready() -> void:
 	# 	print('a '+ my_name +' is the chosen one')
 
 	stats = $CoreComponent.get_stats()
-	if healthBar:
-		healthBar.max_value = stats.life
-		healthBar.value = stats.life
+	if health_bar:
+		health_bar.max_value = stats.life
+		health_bar.value = stats.life
 	else:
 		print(my_name + ' does not have a healthbar')
 
@@ -28,7 +28,7 @@ func _ready() -> void:
 func seeHP(hp : int) -> void:
 	print(my_name + ' life is: ' + str(hp))
 
-	healthBar.value = hp
+	health_bar.value = hp
 
 	if hp <= 0:
 		hecking_die()

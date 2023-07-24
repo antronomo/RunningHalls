@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/img/Backgrounds/sewer/Sewers_Tiles.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/inSewerParallaxBackground.gd" type="Script" id=2]
 [ext_resource path="res://resources/SewesAnimation1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/img/Backgrounds/sewer/SewerBackground.png" type="Texture" id=4]
+[ext_resource path="res://Assets/img/Backgrounds/sewer/SewerBackground2.png" type="Texture" id=4]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Sewers_Tiles.png 0"
@@ -197,6 +197,5 @@ position = Vector2( 200, 136 )
 motion_mirroring = Vector2( 240, 0 )
 
 [node name="SewerBackground" type="Sprite" parent="ParallaxLayer2"]
-position = Vector2( 120, 68 )
-scale = Vector2( 1, 1.00741 )
+position = Vector2( 120, 67.4999 )
 texture = ExtResource( 4 )

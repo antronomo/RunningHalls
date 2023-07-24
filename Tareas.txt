@@ -1,4 +1,5 @@
 la lista de las cosas NO estan organizadas, el archivo contiene errores ortograficos y gramaticales
+(el VSCode me jode con el autocompletado)
 TODO (o ideas): -------------------------------------------------------------------------------------------
 
 ·Editar Sprites:
@@ -21,11 +22,8 @@ TODO (o ideas): ----------------------------------------------------------------
 ·Modo de juegos:
     -Infinito:
         Tiene 'checkpoints' cada x distancia recorrida o al derrotar x número de enemigos.
-        Al llegar al 'checkpoint' podrá tomar un descanso para mejorar el equipamineto y/o comprar.
+        Al llegar al 'checkpoint' podrá mejorar el equipamineto o dejar la partida para después.
         El objetivo es llegar lo más lejos posible, donde llegará al punto en que simplemente es imposible.
-
-·Crear el objeto  parallaxBackground:
-    -Crear un objeto donde todos los fondos ereden de el y así poder instanciarlos más fácilmente
 
 ·Crear backgrounds:
     -Interior de castillo
@@ -33,19 +31,31 @@ TODO (o ideas): ----------------------------------------------------------------
 ·Crear Evento:
     -grupo de animales para indicar que viene un jefe o enemigo grande
 
-WIP: ------------------------------------------------------------------------------------------------------
-
 ·Crear UIs:
     -interfaz de partida:
-        La idea es ver cosas como el oro obtenido, la barra de salud, la distancia recorrida...
+        La idea es ver cosas como el oro obtenido o la distancia recorrida
+
+
+WIP: ------------------------------------------------------------------------------------------------------
+
+·ParallaxBackground:
+    -en el objeto 'core' del parallaxBackground, crear una función para detener los fondos de manera progresiva
 
 ·Crear animacion de GameOver:
     -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion
 
-·ParallaxBackground:
-    -Crear un objeto donde todos los parallax puedan eredar de el, con el fin de poder usar funciones o detenerlo de manera más sencilla, si un parallax necesita mas o menos preparativo para realizar las acciones, ya se modificará en sus propios scrips.
 
 DONE: ------------------------------------------------------------------------------------------------------
+
+·ParallaxBackground:
+    -Crear un objeto donde todos los parallax puedan eredar de el, con el fin de poder usar funciones.
+
+·ParallaxBackground:
+    -Re-diesñar los fondos para que la acción esté algo más centrada a la pantalla, así poder dejar espacio en la parte inferior para poner los controles, como botones para beber pociones o usar habilidades.
+
+·Crear UIs:
+    -interfaz de partida:
+        ver la barra de salud del jugador
 
 ·Crear animacion de entrada:
     -Cuando empiezas la partida, un animacion donde el jugador aparece por la izquierda y una vez llegue,
@@ -75,5 +85,6 @@ DONE: --------------------------------------------------------------------------
 ·Game Feel:
     -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite
 
-FIXING: ------------------------------------------------------------------------------------------------------
+
+BUGS: ------------------------------------------------------------------------------------------------------
 

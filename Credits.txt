@@ -4,7 +4,7 @@ Juego creado por:
     ·antronomo
 
 
-Inspirado por: 
+Inspirado de: 
     ·"Buff Knight" de BuffStudios -> 
         https://play.google.com/store/apps/details?id=com.buffstudio.onthehero&hl=es_419&gl=US
 
@@ -21,11 +21,11 @@ Motor de videojuego:
 
 
 Otro software utilizado:
-    ·Aseprite, como editor de imagenes en pixelart
+    ·Aseprite, como editor de imagenes en pixelart.
 
-    ·Visual Studio Code (con plugins), como editor de texto 
+    ·Visual Studio Code (con plugins), como editor de texto.
 
-    ·Git y GitHub, como control del código fuente en la nube
+    ·Git y GitHub, como control del código fuente en la nube.
 
 
 Videos y canales relevantes que he visto a lo largo del desarrollo:
