@@ -15,6 +15,9 @@ Sprites (o arte):
 
     ·el resto por antronomo
 
+    ·Fuente 'Minecraft' de Craftron Gaming en ->
+        https://www.dafont.com/es/minecraft.font
+
 
 Motor de videojuego:
     ·GodotEngine 3.5.2
@@ -36,3 +39,4 @@ Videos y canales relevantes que he visto a lo largo del desarrollo:
 
     ·Easy Health Bar with Stretching and Recoloring in Godot. por Chris' Tutorials ->
         https://www.youtube.com/watch?v=aP8Cv_RvBlI
+

@@ -1,7 +1,6 @@
 extends CoreParallaxBackground
 
 
-# onready var layer5 : ParallaxLayer = $ParallaxLayer5
 onready var layer4 : ParallaxLayer = $ParallaxLayer4
 onready var layer3 : ParallaxLayer = $ParallaxLayer3
 onready var layer2 : ParallaxLayer = $ParallaxLayer2

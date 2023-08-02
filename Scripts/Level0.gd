@@ -1,13 +1,14 @@
 extends Node2D
 class_name Level
 
-
-var groundSpeed : int = -30
-
-
+onready var physic_ground = $PhysicGround
 onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
 onready var enemySpawner : Position2D = $EnemySpawner
 onready var timer : Timer = $Timer
+onready var finishing : bool = false
+
+
+var ground_speed : int = -30
 
 
 func _ready() -> void:
@@ -15,7 +16,7 @@ func _ready() -> void:
 
 	setterparallaxGround.set_background()
 
-	$PhysicGround.constant_linear_velocity.x = groundSpeed
+	physic_ground.constant_linear_velocity.x = ground_speed
 
 	$GUI.first_call($Player/CoreComponent.get_stats().life)
 
@@ -25,14 +26,25 @@ func _on_MataSobras5000_body_exited(body : Node) -> void:
 	body.queue_free()
 
 
-func start_timer() -> void:
-	timer.start()
-
-
 func _on_Timer_timeout() -> void:
 	enemySpawner.spawn_new_enemy()
 
 
-func start_game() -> void:
-	start_timer()
-	setterparallaxGround.get_child(0).set_paraspeed(groundSpeed)
+func start_game() -> void: # Llamado con el AnimationPlayer
+	timer.start()
+	setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
+
+
+func finish_game() -> void: # Llamado cuando el jugador manda la señal (al llegar a 0 de hp)
+	var game_over_ui: Control = $GameOverUI
+	game_over_ui.visible = true
+	# game_over_ui.appear()
+
+	timer.stop()
+
+	$Accelerator/AnimationPlayer.play('desaccelerate')
+
+
+func _on_Accelerator_value_changed(value:float) -> void:
+	physic_ground.constant_linear_velocity.x = ground_speed * value
+	setterparallaxGround.get_child(0).set_paraspeed(ground_speed * value)

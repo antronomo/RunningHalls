@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Level0.gd" type="Script" id=1]
 [ext_resource path="res://Components/UserInterface/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/SetterParallaxBackground.gd" type="Script" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/EnemySpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UIs/GameOverUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 160, 2.5 )
@@ -56,6 +57,56 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "finishing"
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "accelerate"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "desaccelerate"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
 [node name="Level0" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -91,11 +142,31 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Starting"
 anims/RESET = SubResource( 4 )
 anims/Starting = SubResource( 5 )
+anims/finishing = SubResource( 6 )
+
+[node name="GameOverUI" parent="." instance=ExtResource( 6 )]
+
+[node name="Accelerator" type="HSlider" parent="."]
+margin_left = -84.0
+margin_top = -37.0
+margin_right = -6.0
+margin_bottom = -21.0
+max_value = 1.0
+step = 0.01
+editable = false
+scrollable = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Accelerator"]
+anims/RESET = SubResource( 7 )
+anims/accelerate = SubResource( 8 )
+anims/desaccelerate = SubResource( 9 )
 
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="value_changed" from="Accelerator" to="." method="_on_Accelerator_value_changed"]

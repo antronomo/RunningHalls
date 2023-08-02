@@ -18,6 +18,33 @@ while true:
 0,1,1,2,3,5,8,13...
 
 
+Estoy planteando re-organizar las carpetas para que parezca que todo está más límpio
+
+
+Seguramente el 'Level0' quede como único nivel, ya que puedo customizar antes de empezar partida
+
+
+--------------Posibles logros-------------------------
+	·Conseguir todos los artefactos.
+	·Alcanzar x metros recorridos en total / en una partida
+	·Rescatar la princesa y sacar el final verdadero (mas que referencia esto es robo)
+------------------------------------------------------
+
+
+--------------Posibles artefactos----------------------
+	-Stats principales
+		·+% de vida máximo
+		·+% de ataque máximo
+		·+% de defensa máximo
+		·+% de crítico máximo
+
+	-Artefactos especiales
+		·% de robo de vida al atacar / matar un enemigo
+		·% de ser invulnerable al matar un eneigo
+		·+% de currency ganado
+-------------------------------------------------------
+
+
 vvv ---ya no es necesario--- vvv
 
 copypaste de LifeBar para los enemigos(.tscn): 

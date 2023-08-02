@@ -2,13 +2,15 @@ extends Position2D
 
 
 # Hay alguna manera de añadir al array 'enemies' todos los nodods de la carpeta 'Enemies'?
-var packedWizard : PackedScene = preload("res://enemies/DarkWizard.tscn")
-var packedHumacean : PackedScene = preload("res://enemies/Humacean.tscn")
+var packed_Wizard : PackedScene = preload("res://enemies/DarkWizard.tscn")
+var packed_Humacean : PackedScene = preload("res://enemies/Humacean.tscn")
+var packed_ghost : PackedScene = preload("res://Enemies/Ghost.tscn")
 
 
 var enemies : Array = [
-	packedWizard,
-	packedHumacean
+	packed_Wizard,
+	packed_Humacean,
+	packed_ghost
 ]
 
 

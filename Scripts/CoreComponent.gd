@@ -35,7 +35,7 @@ func get_stats() -> Dictionary:
 func hit() -> float:
 	var dmg : float = (attack * (randi() % 50 + 75)) / 100.00
 
-	if dmg <= 1:
+	if dmg < 1:
 		dmg = 1
 
 	if randi() % 100 + 1 <= critical_cahnce:
@@ -47,8 +47,9 @@ func hit() -> float:
 
 func get_hurt(entring_dmg : float) -> float:
 	#Se que puedo quitar variables del código y retornaría lo mismo, aún no estoy listo para ello
+	# return ((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1
 	var diff : float =  (entring_dmg * 100) / defense
-	var hurt : float = (((diff * entring_dmg) / 100) * -1)
+	var hurt : float = ((diff * entring_dmg) / 100) * -1
 
 	return hurt
 

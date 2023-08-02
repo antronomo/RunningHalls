@@ -1,5 +1,6 @@
 la lista de las cosas NO estan organizadas, el archivo contiene errores ortograficos y gramaticales
 (el VSCode me jode con el autocompletado)
+
 TODO (o ideas): -------------------------------------------------------------------------------------------
 
 ·Editar Sprites:
@@ -9,9 +10,6 @@ TODO (o ideas): ----------------------------------------------------------------
     -crear un enemigo, la rata a partir del enemigo base
 
 ·Crear Icono del Juego:
-
-·Crear UIs:
-    -Crear menú donde el jugador pueda navegar entre, configuración, creditos, personalización, empezar o seguir partida.
 
 ·Modo de juegos:
     -Aventura: 
@@ -28,24 +26,59 @@ TODO (o ideas): ----------------------------------------------------------------
 ·Crear backgrounds:
     -Interior de castillo
 
-·Crear Evento:
-    -grupo de animales para indicar que viene un jefe o enemigo grande
+·Mecánica:
+    -(evento) grupo de animales para indicar que viene un jefe o enemigo grande
 
 ·Crear UIs:
     -interfaz de partida:
         La idea es ver cosas como el oro obtenido o la distancia recorrida
 
+·Mecánica:
+    -Hacer que el jugador pueda consumir curas.
+
+·Mecánica:
+    -Crear logros.
+
+·Mecánica:
+    -Hacer que el jugador tenga habilidades.
+
+·Mecánica:
+    -Hacer que el jugador pueda tener una clase, cada clase tiene habilidades diferentes.
+
+·Mecánica:
+    -Un sistema donde el jugador pueda encontrar artefactos que podrá equipar al inicio de cada partida.
+
+·Mecánica: ?
+    -Hacer que aparezca determinado tipo de enemigos en funcion del fondo en partida. (solo en modo aventura).
+
+·Crear Autoload:
+    -Crear un archivo para guardar estado de la partida acutal.
+
+·Crear Autoload:
+    -Crear un archivo para guardar la configuración.
+
+·Crear Autoload:
+    -Crear un archivo para administrar los logros.
 
 WIP: ------------------------------------------------------------------------------------------------------
 
 ·ParallaxBackground:
-    -en el objeto 'core' del parallaxBackground, crear una función para detener los fondos de manera progresiva
+    -en el objeto 'core' del parallaxBackground, crear una función para detener los fondos de manera progresiva.
 
 ·Crear animacion de GameOver:
-    -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion
+    -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion.
+
+·Crear UIs:
+    -Crear menú donde el jugador pueda navegar entre, configuración, creditos, personalización, empezar o seguir partida.
+
+·Crear UIs:
+    -Crear menú que aparezca cuando da a fin de la partida.
 
 
 DONE: ------------------------------------------------------------------------------------------------------
+
+·Crear Enemigo, GHOST:
+    -crear un enemigo, el fantasma a partir del enemigo base.
 
 ·ParallaxBackground:
     -Crear un objeto donde todos los parallax puedan eredar de el, con el fin de poder usar funciones.
@@ -55,35 +88,35 @@ DONE: --------------------------------------------------------------------------
 
 ·Crear UIs:
     -interfaz de partida:
-        ver la barra de salud del jugador
+        ver la barra de salud del jugador.
 
 ·Crear animacion de entrada:
     -Cuando empiezas la partida, un animacion donde el jugador aparece por la izquierda y una vez llegue,
     empieza a moverse el parallax y a generar enemigos.
 
 ·Editar Sprites:
-    -Crear animacion para el cangrejo con cabeza de humano (2 para idle, 2 mientras camina)
+    -Crear animacion para el cangrejo con cabeza de humano (2 para idle, 2 mientras camina).
 
 ·Editar Sprites:
-    -Editar barriles y jarrones de colores
+    -Editar barriles y jarrones de colores.
 
 ·Editar Sprites:
-    -Editar los npc, un chavalin, una princesa
+    -Editar los npc, un chavalin, una princesa.
 
 ·Crear Jugador:
-    -personaje que se ocupará de dañar jarrones y empujar enemigos
+    -personaje que se ocupará de dañar jarrones y empujar enemigos.
 
 ·Crear Enemigo Base:
-    -progrmar funcionamineto para que pueda recibir daño, morir si pierda toda la vida y dañar al jugador con cada golpe
+    -progrmar funcionamineto para que pueda recibir daño, morir si pierda toda la vida y dañar al jugador con cada golpe.
 
 ·Crear componente 'core':
-    -Estoy haciendo un componente o objeto que debería ser usado tanto para 'player' como para los enemigos creados a futuro
+    -Estoy haciendo un componente o objeto que debería ser usado tanto para 'player' como para los enemigos creados a futuro.
 
 ·Crear escena:
     -Un lugar donde tendrá el gameplay, jugador, suelo, generador de enemigos, enemigos...
 
 ·Game Feel:
-    -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite
+    -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite.
 
 
 BUGS: ------------------------------------------------------------------------------------------------------

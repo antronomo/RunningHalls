@@ -1,61 +1,57 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scripts/CoreComponent.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Humacean.gd" type="Script" id=2]
-[ext_resource path="res://Assets/img/Crab.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Ghost.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CoreComponent.gd" type="Script" id=2]
+[ext_resource path="res://Assets/img/Ghost.png" type="Texture" id=3]
 [ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
-"name": "default",
+"name": "Default",
 "speed": 2.0
 } ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
 radius = 8.0
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 8 )
 
-[node name="Humacean" type="RigidBody2D"]
+[node name="Ghost" type="RigidBody2D"]
 collision_layer = 4
-script = ExtResource( 2 )
-my_name = "Humacean"
+script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
-frames = SubResource( 5 )
-frame = 1
+frames = SubResource( 3 )
+animation = "Default"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -8 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="CoreComponent" type="Area2D" parent="."]
-position = Vector2( 0, -8 )
 collision_layer = 4
 collision_mask = 2
-script = ExtResource( 1 )
-max_life = 125
-attack = 10
-defense = 50
+script = ExtResource( 2 )
+max_life = 250
+attack = 50
+defense = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 0, -8 )
+shape = SubResource( 5 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
 margin_left = -8.0
