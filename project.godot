@@ -45,8 +45,12 @@ _global_script_class_icons={
 [application]
 
 config/name="RunningHalls"
-run/main_scene="res://UIs/MainMenu.tscn"
+run/main_scene="res://UIs/MenuScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://Auto/GLOBALS.gd"
 
 [display]
 

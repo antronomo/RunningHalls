@@ -51,22 +51,17 @@ TODO (o ideas): ----------------------------------------------------------------
 ·Mecánica: ?
     -Hacer que aparezca determinado tipo de enemigos en funcion del fondo en partida. (solo en modo aventura).
 
-·Crear Autoload:
-    -Crear un archivo para guardar estado de la partida acutal.
+·Guardado de Partida:
+    -Crear un archivo (AUTOLOAD) para guardar estado de la partida acutal.
 
-·Crear Autoload:
-    -Crear un archivo para guardar la configuración.
+·MENU OPCIONES:
+    -Crear un archivo (AUTOLOAD) para guardar la configuración.
 
-·Crear Autoload:
-    -Crear un archivo para administrar los logros.
+·LOGROS: ?
+    -Crear un archivo (AUTOLOAD) para administrar los logros.
+
 
 WIP: ------------------------------------------------------------------------------------------------------
-
-·ParallaxBackground:
-    -en el objeto 'core' del parallaxBackground, crear una función para detener los fondos de manera progresiva.
-
-·Crear animacion de GameOver:
-    -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion.
 
 ·Crear UIs:
     -Crear menú donde el jugador pueda navegar entre, configuración, creditos, personalización, empezar o seguir partida.
@@ -119,5 +114,15 @@ DONE: --------------------------------------------------------------------------
     -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite.
 
 
-BUGS: ------------------------------------------------------------------------------------------------------
+BUGs o FIXs: ------------------------------------------------------------------------------------------------------
 
+·ParallaxBackground:
+    -en el objeto 'core' del parallaxBackground, crear una función para detener los fondos de manera progresiva.
+[HAY CAPAS QUE VAN A DIRECCION CONTRARIA SEGUNDOS ANTES DE DETENERSE POR COMPLETO]
+[SOLUCION: quitar los valores int por porcentajes del valor de velocidad, ej: (x + (x*0.5) * -1) * delta]
+    -es muy rebuscado, quizás busque la manera de simplificarlo a futuro
+
+·Crear animacion de GameOver:
+    -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion.
+[FALTA PULIR]
+[Solucion?: podría cambiar la animacion a una donde el jugador da media vuelta y se va]

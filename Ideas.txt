@@ -1,0 +1,59 @@
+el archivo contiene errores ortograficos y gramaticales
+IDEAS:
+
+¿Debería pasar el proyecto a GE4? -> no
+
+
+se ven variables comentadas, es porque si se usan una sola vez, creo que no valga la pena tenerlo ahí.
+
+
+Intento de Fibonacci por si a futuro debo aplicarlo en algo, es la manera más corta de escribir-lo que se me ocurre:
+x=0, y=1
+while true:
+	print(x)
+	x += y
+	print(y)
+	y += x
+0,1,1,2,3,5,8,13...
+
+
+Estoy planteando re-organizar las carpetas para que parezca que todo esté más límpio
+
+
+Seguramente el 'Level0' quede como único nivel, ya que puedo customizar antes de empezar partida
+
+
+No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el texto: 
+'pulsa la pantalla para continuar'
+
+
+--------------Posibles logros-------------------------
+	·Conseguir todos los artefactos.
+	·Alcanzar X metros recorridos en total / en una partida
+	·Rescatar la princesa y sacar el final verdadero (mas que referencia esto es robo)
+		-Conseguir todos los artefactos
+	·Matar X minijefes
+	·Matar X Jefes
+	·Sacar X finales 'malos' (acabar el juego X veces en modo aventura)
+	·Tocar manualmente para destruir X jarrones
+	·Abrir X cofres
+	·Alcanzar el nivel máximo de mejora de un arma o pieza de armadura
+	·Reforgar X veces
+------------------------------------------------------
+
+
+--------------Posibles artefactos----------------------
+	·Stats principales
+		-+% de vida máximo
+		-+% de ataque máximo
+		-+% de defensa máximo
+		-+% de tasa crítico máximo
+		-+% de daño crítico máximo
+		-+% de mana maximo
+		-+% regeneracion de mana
+
+	·Artefactos especiales
+		-% de robo de vida al atacar / matar un enemigo
+		-% de ser invulnerable al matar un eneigo por X tiempo
+		-+% de currency ganado
+-------------------------------------------------------

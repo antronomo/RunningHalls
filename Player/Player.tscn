@@ -121,7 +121,7 @@ anims/dying = SubResource( 4 )
 [node name="CoreComponent" parent="." instance=ExtResource( 2 )]
 collision_layer = 2
 collision_mask = 12
-max_life = 1000
+max_life = 200
 attack = 20
 defense = 20
 critical_cahnce = 15

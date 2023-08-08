@@ -60,7 +60,6 @@ margin_bottom = 52.0
 size_flags_horizontal = 5
 size_flags_vertical = 2
 custom_fonts/font = ExtResource( 2 )
-disabled = true
 text = "OPTIONS"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer3"]
@@ -70,7 +69,8 @@ margin_bottom = 82.0
 size_flags_horizontal = 5
 size_flags_vertical = 2
 custom_fonts/font = ExtResource( 2 )
-disabled = true
 text = "CREDITS"
 
 [connection signal="pressed" from="VBoxContainer3/StartButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer3/OptionButton" to="." method="_on_OptionButton_pressed"]
+[connection signal="pressed" from="VBoxContainer3/CreditsButton" to="." method="_on_CreditsButton_pressed"]

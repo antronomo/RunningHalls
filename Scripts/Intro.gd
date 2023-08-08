@@ -1,6 +1,13 @@
-extends Node
+extends Node2D
 
 
-func _on_AnimationPlayer_animation_finished(anim_name : String) -> void:
+signal IntroFinished
+
+
+func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
 	if anim_name == 'Intro':
-		get_tree().change_scene('res://UIs/MainMenu.tscn')
+		emit_signal('IntroFinished')
+
+
+func play_intro() -> void:
+	$AnimationPlayer.play('Intro')

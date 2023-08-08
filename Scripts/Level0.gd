@@ -36,9 +36,7 @@ func start_game() -> void: # Llamado con el AnimationPlayer
 
 
 func finish_game() -> void: # Llamado cuando el jugador manda la señal (al llegar a 0 de hp)
-	var game_over_ui: Control = $GameOverUI
-	game_over_ui.visible = true
-	# game_over_ui.appear()
+	$GameOverUI.visible = true
 
 	timer.stop()
 
