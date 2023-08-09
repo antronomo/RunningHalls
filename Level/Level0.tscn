@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Level0.gd" type="Script" id=1]
-[ext_resource path="res://Components/UserInterface/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UIs/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/SetterParallaxBackground.gd" type="Script" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/EnemySpawner.tscn" type="PackedScene" id=5]
@@ -91,22 +91,6 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "desaccelerate"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.0 ]
-}
-
 [node name="Level0" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -165,7 +149,6 @@ scrollable = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Accelerator"]
 anims/RESET = SubResource( 7 )
 anims/accelerate = SubResource( 8 )
-anims/desaccelerate = SubResource( 9 )
 
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

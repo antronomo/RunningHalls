@@ -30,17 +30,17 @@ func _on_Timer_timeout() -> void:
 	enemySpawner.spawn_new_enemy()
 
 
-func start_game() -> void: # Llamado con el AnimationPlayer
+func start_game() -> void: # Llamado por el AnimationPlayer
 	timer.start()
 	setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
 
 
-func finish_game() -> void: # Llamado cuando el jugador manda la señal (al llegar a 0 de hp)
+func finish_game() -> void: # Llamado cuando el jugador manda la señal morido
 	$GameOverUI.visible = true
 
 	timer.stop()
 
-	$Accelerator/AnimationPlayer.play('desaccelerate')
+	$Accelerator/AnimationPlayer.play_backwards('accelerate')
 
 
 func _on_Accelerator_value_changed(value:float) -> void:
