@@ -30,12 +30,12 @@ extents = Vector2( 8, 8 )
 [node name="Ghost" type="RigidBody2D"]
 collision_layer = 4
 script = ExtResource( 1 )
+my_name = "Ghost"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
 frames = SubResource( 3 )
 animation = "Default"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

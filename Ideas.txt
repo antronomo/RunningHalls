@@ -57,3 +57,6 @@ No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el
 		-% de ser invulnerable al matar un eneigo por X tiempo
 		-+% de currency ganado
 -------------------------------------------------------
+
+
+Tengo una seccion de ideas en EnemySpawner.gd, lo dejaré ahí por ahora

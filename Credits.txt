@@ -15,8 +15,9 @@ Sprites (o arte):
 
     ·el resto por antronomo
 
-    ·Fuente 'Minecraft' de Craftron Gaming en ->
-        https://www.dafont.com/es/minecraft.font
+
+Fuente:
+    ·'Minecraft' de Craftron Gaming en -> https://www.dafont.com/es/minecraft.font
 
 
 Motor de videojuego:

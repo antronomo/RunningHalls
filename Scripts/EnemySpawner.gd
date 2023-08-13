@@ -1,18 +1,119 @@
 extends Position2D
 
 
-# Hay alguna manera de añadir al array 'enemies' todos los nodods de la carpeta 'Enemies'?
+const dark_wizard : PackedScene = preload("res://Enemies/DarkWizard.tscn")
+const humacean : PackedScene = preload("res://Enemies/Humacean.tscn")
+const ghost : PackedScene = preload("res://Enemies/Ghost.tscn")
 
 
-var enemies : Array = [
-	preload("res://enemies/DarkWizard.tscn"),
-	preload("res://enemies/Humacean.tscn"),
-	preload("res://Enemies/Ghost.tscn")
+onready var timer : Timer = $Timer
+
+
+var spawn_list : Array = [
+	[dark_wizard,	1],
+	[humacean	,	2],
+	[ghost		,	3]
 ]
 
 
-#Puedo evitar que ciertos enemigos aparezcan añadiendo otra variable en la primera línea
-func spawn_new_enemy() -> void:
-	var num = randi() % enemies.size() # -X para quitar los ultimos de la lista y +X para quitar los primeros
-	var newEnemy = enemies[num].instance()
-	add_child(newEnemy)
+var token : int = 1
+var wave : int = 1
+
+
+func buy_enemies() -> Array:
+	var list : Array = []
+
+	while token > 0:
+		var num = randi() % spawn_list.size()
+
+		while spawn_list[num][1] > token:
+			num -= 1
+
+			if token<=0:
+				# print('woa romper')
+				break
+
+		token -= spawn_list[num][1]
+		print(str(token))
+		list.insert(list.size(), spawn_list[num][0])
+
+	list.sort()
+	print(str(list))
+	return list
+
+
+func spawn_enemies() -> void: 
+	var last_enemy : RigidBody2D
+	var list : Array = buy_enemies()
+
+	for i in list:
+		var new_enemy : RigidBody2D = i.instance()
+
+		if last_enemy != null:
+			if new_enemy.my_name != last_enemy.my_name:
+				yield(get_tree().create_timer(1.0), 'timeout')
+			else:
+				yield(get_tree().create_timer(randi() % (3 + 2) /10.0 ), 'timeout')
+
+		add_child(new_enemy)
+		last_enemy = new_enemy
+
+
+func token_manager() -> void:
+	var a : int = 0
+	var b : int = 1
+	var return_a : bool = true
+
+	for i in wave:
+		if return_a:
+			a += b
+			return_a = !return_a
+		else:
+			b +=a
+			return_a = !return_a
+
+	if return_a:
+		token = a
+	else:
+		token = b
+
+	print('token aviable: ' + str(token))
+
+func start_timer() -> void:
+	if timer.is_stopped():
+		spawn_enemies()
+
+	timer.start()
+
+
+func stop_timer() -> void:
+	timer.stop()
+
+
+func _on_Timer_timeout() -> void:
+	wave += 1
+	token_manager()
+	spawn_enemies()
+
+
+"""
+Lo que quiero conseguir es lo siguiente:
+Una manera de que aparezcan los enemigos en oleadas.
+
+Ideas:
+·Usar un sistema de tokens, asignar cada enemigo un valor y que el spawner compre enemigos asta acercarse a 0 tokens.
+
+·cada ronda aumentará el numero de tokens que el spawner tendrá.
+
+·la ronda se da como finalizada cuando todos los enemigos han sido derrotados o si pasa demasiado tiempo.
+
+·los enemigos deben aparecer uno detrás de otro rápido, pero no a la vez, podría hacer falta hacer subgrupos si aparecen distintos enemigos.
+
+·podría el spawner elegir 1 solo enemigo y que aparezcan tantos enemigos iguales como tokens tenga disponible.
+
+·¿los tokens no usados se guardan para la próxima ronda?
+
+·Impedir que enemigos más débiles aparezcan en oleadas altas, sino podria hacer aparecer demasiados enemigos en una oleada, aunque puede ser interesante.
+
+·Los enemigos deben tener mejores estadísticas confomre tenga más rondas, al menos, en hp
+"""
