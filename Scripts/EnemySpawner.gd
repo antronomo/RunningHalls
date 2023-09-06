@@ -6,18 +6,18 @@ const humacean : PackedScene = preload("res://Enemies/Humacean.tscn")
 const ghost : PackedScene = preload("res://Enemies/Ghost.tscn")
 
 
-onready var timer : Timer = $Timer
+var token : int = 1
+var wave : int = 1
+
+
+signal generate_loot
 
 
 var spawn_list : Array = [
 	[dark_wizard,	1],
-	[humacean	,	2],
-	[ghost		,	3]
+	[humacean	,	5],
+	[ghost		,	7]
 ]
-
-
-var token : int = 1
-var wave : int = 1
 
 
 func buy_enemies() -> Array:
@@ -29,16 +29,16 @@ func buy_enemies() -> Array:
 		while spawn_list[num][1] > token:
 			num -= 1
 
-			if token<=0:
+			if token <= 0:
 				# print('woa romper')
 				break
 
 		token -= spawn_list[num][1]
-		print(str(token))
+		# print(str(token))
 		list.insert(list.size(), spawn_list[num][0])
 
 	list.sort()
-	print(str(list))
+	# print(str(list))
 	return list
 
 
@@ -46,21 +46,24 @@ func spawn_enemies() -> void:
 	var last_enemy : RigidBody2D
 	var list : Array = buy_enemies()
 
+	print('invocando ' + str(list.size()) + ' malos malosos.')
+
 	for i in list:
 		var new_enemy : RigidBody2D = i.instance()
 
 		if last_enemy != null:
 			if new_enemy.my_name != last_enemy.my_name:
-				yield(get_tree().create_timer(1.0), 'timeout')
+				yield(get_tree().create_timer(1.0), 'timeout') # Si dejo tiempos mas grandes, podría hacerlo pasar por oleadas
 			else:
-				yield(get_tree().create_timer(randi() % (3 + 2) /10.0 ), 'timeout')
+				yield(get_tree().create_timer(randi() % (30 + 20) / 100.0 ), 'timeout')
 
 		add_child(new_enemy)
 		last_enemy = new_enemy
 
 
-func token_manager() -> void:
-	var a : int = 0
+# No quiero que repita la suseción cada vez que quiera tener un número de tokens, igual debería guardar los numeros anteriores y simplemente devolver el siguiente
+func token_manager() -> void: # Simulacion de fibonacci
+	var a : int = 1
 	var b : int = 1
 	var return_a : bool = true
 
@@ -69,7 +72,7 @@ func token_manager() -> void:
 			a += b
 			return_a = !return_a
 		else:
-			b +=a
+			b += a
 			return_a = !return_a
 
 	if return_a:
@@ -77,24 +80,19 @@ func token_manager() -> void:
 	else:
 		token = b
 
+	print('oleada: ' + str(wave))
 	print('token aviable: ' + str(token))
 
-func start_timer() -> void:
-	if timer.is_stopped():
+
+func end_wave(enemy_position : Vector2) -> void: # Llamado cuando un hijo 'muere'
+	yield(get_tree().create_timer(0.01), 'timeout') # Si lo borras/comentas, da error
+
+	emit_signal("generate_loot", enemy_position)
+
+	if get_child_count() == 0:
+		wave += 1
+		token_manager()
 		spawn_enemies()
-
-	timer.start()
-
-
-func stop_timer() -> void:
-	timer.stop()
-
-
-func _on_Timer_timeout() -> void:
-	wave += 1
-	token_manager()
-	spawn_enemies()
-
 
 """
 Lo que quiero conseguir es lo siguiente:

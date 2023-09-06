@@ -35,9 +35,9 @@ No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el
 	·Matar X minijefes
 	·Matar X Jefes
 	·Sacar X finales 'malos' (acabar el juego X veces en modo aventura)
-	·Tocar manualmente para destruir X jarrones
+	·Tocar manualmente para destruir X jarrones/barriles
 	·Abrir X cofres
-	·Alcanzar el nivel máximo de mejora de un arma o pieza de armadura
+	·Alcanzar el nivel máximo de mejora de un arma o pieza de armadura o todo
 	·Reforgar X veces
 ------------------------------------------------------
 
@@ -55,8 +55,9 @@ No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el
 	·Artefactos especiales
 		-% de robo de vida al atacar / matar un enemigo
 		-% de ser invulnerable al matar un eneigo por X tiempo
-		-+% de currency ganado
+		-+% de currency ganado (currency puede ser oro o gemas preciosas, que tal vez, tengan valor distinto o para distintas mejoras, cada una asociada a las gemas)
 -------------------------------------------------------
+Si acabo por poner los artefactos, haré que puedas ponerlos en cada checkpoint y al empezar/reanudar partida
 
 
 Tengo una seccion de ideas en EnemySpawner.gd, lo dejaré ahí por ahora

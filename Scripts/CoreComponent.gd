@@ -40,16 +40,19 @@ func hit() -> float:
 
 	if randi() % 100 + 1 <= critical_cahnce:
 		dmg += (dmg * critical_damage) / 100.00
-		print('Critical')
+		# print('Critical')
 
 	return dmg
 
 
-func get_hurt(entring_dmg : float) -> float:
+func get_hurt(entring_dmg : float) -> int:
 	#Se que puedo quitar variables del código y retornaría lo mismo, aún no estoy listo para ello
 	# return ((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1
-	var diff : float =  (entring_dmg * 100) / defense
-	var hurt : float = ((diff * entring_dmg) / 100) * -1
+	var diff : int =  (entring_dmg * 100) / defense
+	var hurt : int = ((diff * entring_dmg) / 100) * -1
+
+	if hurt > 0:
+		hurt = -1
 
 	return hurt
 

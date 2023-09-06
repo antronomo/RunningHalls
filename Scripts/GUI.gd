@@ -1,8 +1,16 @@
 extends Control
 
 
-onready var health_bar : TextureProgress = $MarginContainer/HealthBar
-onready var health_label : Label = $MarginContainer/Label
+onready var health_bar : TextureProgress = $HealthBarContainer/HealthBar
+onready var health_label : Label = $HealthBarContainer/Label
+onready var coin_label : Label = $CurrencyContainer/Label
+
+
+var loot : int = 0
+
+
+func _ready() -> void:
+	coin_label.text = str(loot)
 
 
 func first_call(maxHP : int) -> void:
@@ -15,6 +23,11 @@ func first_call(maxHP : int) -> void:
 func update_helath_bar(newHP : int) -> void : 
 	health_bar.value = newHP
 	health_label.text = str(newHP)
+
+
+func add_loot(add_loot : int) -> void:
+	loot += add_loot
+	coin_label.text = str(loot)
 
 
 """

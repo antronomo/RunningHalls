@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Level0.gd" type="Script" id=1]
 [ext_resource path="res://UIs/GUI.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/EnemySpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UIs/GameOverUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/LootManager.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 160, 2.5 )
@@ -105,6 +106,9 @@ position = Vector2( 35, 101 )
 [node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
 position = Vector2( 268, 76 )
 
+[node name="LootManager" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
 [node name="PhysicGround" type="StaticBody2D" parent="."]
 position = Vector2( 159, 103 )
 collision_mask = 0
@@ -147,5 +151,6 @@ scrollable = false
 anims/RESET = SubResource( 7 )
 anims/accelerate = SubResource( 8 )
 
+[connection signal="generate_loot" from="EnemySpawner" to="." method="_on_EnemySpawner_generate_loot"]
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
 [connection signal="value_changed" from="Accelerator" to="." method="_on_Accelerator_value_changed"]

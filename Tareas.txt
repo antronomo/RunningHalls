@@ -1,6 +1,7 @@
 la lista de las cosas NO estan organizadas, el archivo contiene errores ortograficos y gramaticales
 (el VSCode me jode con el autocompletado)
 
+
 TODO (o ideas): -------------------------------------------------------------------------------------------
 
 ·Editar Sprites:
@@ -29,15 +30,8 @@ TODO (o ideas): ----------------------------------------------------------------
 ·Mecánica:
     -(evento) grupo de animales para indicar que viene un jefe o enemigo grande
 
-·Crear UIs:
-    -interfaz de partida:
-        La idea es ver cosas como el oro obtenido o la distancia recorrida
-
 ·Mecánica:
     -Hacer que el jugador pueda consumir curas.
-
-·Mecánica:
-    -Crear logros.
 
 ·Mecánica:
     -Hacer que el jugador tenga habilidades.
@@ -51,26 +45,33 @@ TODO (o ideas): ----------------------------------------------------------------
 ·Mecánica: ?
     -Hacer que aparezca determinado tipo de enemigos en funcion del fondo en partida. (solo en modo aventura).
 
-·Guardado de Partida:
-    -Crear un archivo (AUTOLOAD) para guardar estado de la partida acutal.
-
-·MENU OPCIONES:
-    -Crear un archivo (AUTOLOAD) para guardar la configuración.
-
 ·LOGROS: ?
     -Crear un archivo (AUTOLOAD) para administrar los logros.
 
 
 WIP: ------------------------------------------------------------------------------------------------------
 
+.Mecánica:
+    -Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados.
+
+·Crear UIs:
+    -interfaz de partida:
+        La idea es ver cosas como el oro obtenido o la distancia recorrida
+
+·Guardado de Partida:
+    -Crear un archivo (AUTOLOAD) para guardar estado de la partida acutal.
+
+·MENU OPCIONES:
+    -Crear un archivo (AUTOLOAD) para guardar la configuración.
+
+
+DONE: ------------------------------------------------------------------------------------------------------
+
 ·Crear UIs:
     -Crear menú donde el jugador pueda navegar entre, configuración, creditos, personalización, empezar o seguir partida.
 
 ·Crear UIs:
     -Crear menú que aparezca cuando da a fin de la partida.
-
-
-DONE: ------------------------------------------------------------------------------------------------------
 
 ·Crear Enemigo, GHOST:
     -crear un enemigo, el fantasma a partir del enemigo base.
