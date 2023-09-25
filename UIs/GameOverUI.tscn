@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/GameOverUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/DynamicFonts/MinecraftTF_MM_Buttons.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/DynamicFonts/MineTTF_8_whtie_FixedToCenter.tres" type="DynamicFont" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -34,7 +35,6 @@ tracks/0/keys = {
 }
 
 [node name="GameOverUI" type="Control"]
-visible = false
 margin_left = 40.0
 margin_top = 16.0
 margin_right = 200.0
@@ -72,30 +72,41 @@ anchor_top = -0.154
 anchor_right = 1.25
 anchor_bottom = 1.154
 margin_left = 64.0
-margin_top = 56.016
+margin_top = 52.016
 margin_right = -64.0
-margin_bottom = -32.016
+margin_bottom = -28.016
 
-[node name="RestartButton" type="Button" parent="VBoxContainer3"]
+[node name="ShopButton" type="Button" parent="VBoxContainer3"]
 margin_right = 112.0
-margin_bottom = 22.0
+margin_bottom = 16.0
 size_flags_horizontal = 5
 size_flags_vertical = 2
-custom_fonts/font = ExtResource( 2 )
-text = "RESTART"
+custom_fonts/font = ExtResource( 3 )
+text = "OPEN SHOP"
+
+[node name="RetryButton" type="Button" parent="VBoxContainer3"]
+margin_top = 20.0
+margin_right = 112.0
+margin_bottom = 36.0
+size_flags_horizontal = 5
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "RE-TRY"
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer3"]
-margin_top = 26.0
+margin_top = 40.0
 margin_right = 112.0
-margin_bottom = 48.0
+margin_bottom = 56.0
 size_flags_horizontal = 5
 size_flags_vertical = 2
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "RETURN"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/appear = SubResource( 2 )
 
-[connection signal="pressed" from="VBoxContainer3/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="visibility_changed" from="." to="." method="_on_GameOverUI_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer3/ShopButton" to="." method="_on_ShopButton_pressed"]
+[connection signal="pressed" from="VBoxContainer3/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="VBoxContainer3/ReturnButton" to="." method="_on_ReturnButton_pressed"]

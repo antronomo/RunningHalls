@@ -3,7 +3,6 @@ la lista de las cosas NO estan organizadas, el archivo contiene errores ortograf
 
 
 TODO (o ideas): -------------------------------------------------------------------------------------------
-
 ·Editar Sprites:
     -Crear armas para la clase del guerrero (armas a dos manos) y para el mago (varitas y bastones)
 
@@ -48,24 +47,35 @@ TODO (o ideas): ----------------------------------------------------------------
 ·LOGROS: ?
     -Crear un archivo (AUTOLOAD) para administrar los logros.
 
-
-WIP: ------------------------------------------------------------------------------------------------------
-
 .Mecánica:
-    -Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados.
+-Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados.
 
 ·Crear UIs:
     -interfaz de partida:
         La idea es ver cosas como el oro obtenido o la distancia recorrida
 
-·Guardado de Partida:
-    -Crear un archivo (AUTOLOAD) para guardar estado de la partida acutal.
 
+WIP: ------------------------------------------------------------------------------------------------------
 ·MENU OPCIONES:
-    -Crear un archivo (AUTOLOAD) para guardar la configuración.
+    -crear escena donde tendrá lugar las opciones que el jugador pueda tocar
+
+
+·Mecánica:
+    -Tienda o forga donde puede mejorar su equipamiento a cambio de oro.
+    -popup de la tienda donde el jugador pueda mejorar armaduras, comprar pociones y mejorar estadísticas básicas.
+    -cuando le da a continuar puede recargar la escena para que la oleada anterior sin terminar vuelva a empezar
 
 
 DONE: ------------------------------------------------------------------------------------------------------
+·MENU OPCIONES:
+    -Crear un archivo (AUTOLOAD) para guardar la configuración.
+
+·SISTEMA DE GUARDADO:
+    [PRIORIDAD ALTA]
+        -Arreglar el sistema de guardado, quiero que sea el script de "globals" el que manege la informacion y que el script "CurrentGame" (cambiaré de nombre) se ocupe unica y exclusivamente de leer y escribir el archivo fuera del juego.
+
+·Guardado de Partida:
+    -Crear un archivo (AUTOLOAD) para guardar estado de la partida acutal.
 
 ·Crear UIs:
     -Crear menú donde el jugador pueda navegar entre, configuración, creditos, personalización, empezar o seguir partida.

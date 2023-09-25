@@ -6,11 +6,14 @@ const humacean : PackedScene = preload("res://Enemies/Humacean.tscn")
 const ghost : PackedScene = preload("res://Enemies/Ghost.tscn")
 
 
-var token : int = 1
-var wave : int = 1
+onready var wave : int setget set_wave, get_wave
 
 
 signal generate_loot
+signal wave_ended
+
+
+var token : int
 
 
 var spawn_list : Array = [
@@ -18,6 +21,19 @@ var spawn_list : Array = [
 	[humacean	,	5],
 	[ghost		,	7]
 ]
+
+
+func _ready() -> void:
+	set_wave(Globals.current_game.game_info.wave)
+	token_manager()
+
+
+func set_wave(new_wave : int) -> void:
+	wave = new_wave
+
+
+func get_wave() -> int: 
+	return wave
 
 
 func buy_enemies() -> Array:
@@ -49,16 +65,16 @@ func spawn_enemies() -> void:
 	print('invocando ' + str(list.size()) + ' malos malosos.')
 
 	for i in list:
-		var new_enemy : RigidBody2D = i.instance()
+		var next_enemy : RigidBody2D = i.instance()
 
 		if last_enemy != null:
-			if new_enemy.my_name != last_enemy.my_name:
+			if next_enemy.my_name != last_enemy.my_name:
 				yield(get_tree().create_timer(1.0), 'timeout') # Si dejo tiempos mas grandes, podría hacerlo pasar por oleadas
 			else:
 				yield(get_tree().create_timer(randi() % (30 + 20) / 100.0 ), 'timeout')
 
-		add_child(new_enemy)
-		last_enemy = new_enemy
+		add_child(next_enemy)
+		last_enemy = next_enemy
 
 
 # No quiero que repita la suseción cada vez que quiera tener un número de tokens, igual debería guardar los numeros anteriores y simplemente devolver el siguiente
@@ -93,25 +109,33 @@ func end_wave(enemy_position : Vector2) -> void: # Llamado cuando un hijo 'muere
 		wave += 1
 		token_manager()
 		spawn_enemies()
+		emit_signal("wave_ended")
+
 
 """
 Lo que quiero conseguir es lo siguiente:
 Una manera de que aparezcan los enemigos en oleadas.
 
 Ideas:
-·Usar un sistema de tokens, asignar cada enemigo un valor y que el spawner compre enemigos asta acercarse a 0 tokens.
-
-·cada ronda aumentará el numero de tokens que el spawner tendrá.
-
 ·la ronda se da como finalizada cuando todos los enemigos han sido derrotados o si pasa demasiado tiempo.
 
-·los enemigos deben aparecer uno detrás de otro rápido, pero no a la vez, podría hacer falta hacer subgrupos si aparecen distintos enemigos.
-
 ·podría el spawner elegir 1 solo enemigo y que aparezcan tantos enemigos iguales como tokens tenga disponible.
-
-·¿los tokens no usados se guardan para la próxima ronda?
 
 ·Impedir que enemigos más débiles aparezcan en oleadas altas, sino podria hacer aparecer demasiados enemigos en una oleada, aunque puede ser interesante.
 
 ·Los enemigos deben tener mejores estadísticas confomre tenga más rondas, al menos, en hp
+
+
+COMPLETADO:
+·Usar un sistema de tokens, asignar cada enemigo un valor y que el spawner compre enemigos asta acercarse a 0 tokens.
+
+·cada ronda aumentará el numero de tokens que el spawner tendrá.
+
+·los enemigos deben aparecer uno detrás de otro rápido, pero no a la vez, podría hacer falta hacer subgrupos si aparecen distintos enemigos.
+
+
+DESCARTADO:
+·¿los tokens no usados se guardan para la próxima ronda?
+
+
 """

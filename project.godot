@@ -50,9 +50,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Config="res://Auto/Config.gd"
+Config="*res://Auto/Config.gd"
+CurrentGame="*res://Auto/CurrentGame.gd"
 Globals="*res://Auto/GLOBALS.gd"
-CurrentGame="res://Auto/CurrentGame.gd"
 
 [display]
 
@@ -94,6 +94,14 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+
+[input]
+
+infor={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [layer_names]

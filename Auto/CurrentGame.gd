@@ -1,56 +1,56 @@
 extends Node
 
 
-const SAVEFILE = "user://SAVEFILE.save"
-const CurrentVersion = "0.0.1"
+const SAVEFILE : String = "user://SAVEFILE.save"
+const CurrentVersion : String = "0.0.1"
 const DefaultGameData : Dictionary = {
-    "wave" : 0,
+	"game_info" : {
+		"game_version" : CurrentVersion,
+		"wave" : 1,
+		"loot" : 0,
+	},
 	"player_upgrades" : {
-		"life" : 0,
-		"attack" : 0,
-		"deffense" : 0,
-		"crit_chance" : 0,
-		"crit_dmg" : 0
+		"helmet" : {
+			"level" : 1,
+		},
+		"ChestPlate" : {
+			"level" : 1,
+		},
+		"Bots" : {
+			"level" : 1,
+		},
+		"sword" : {
+			"level" : 1,
+		},
+		"shield" : {
+			"level" : 1,
+		},
 	},
-	"artifacts" : {
-		"solt_1" : "",
-		"solt_2" : "",
-		"solt_3" : ""
-	},
-	"game_version" : CurrentVersion
 }
 
 
-var game_data : Dictionary = {}
-var wave : int = 0
+func new_game() -> Dictionary:
+	print("new game")
+	save_game_data(DefaultGameData)
+	return DefaultGameData
 
 
-func _ready() -> void:	
-	load_data()
-
-
-func load_data() -> void:
-	var load_file = File.new()
-
-	if !load_file.file_exists(SAVEFILE):
-		to_default_data()
-		
-	load_file.open(SAVEFILE, File.READ)
-	game_data = load_file.get_var()
-	
-	# if !game_data.has("version") || game_data.version != CurrentVersion:
-	# 	to_default_data()
-		
-	load_file.close()
-
-
-func save_data() -> void:
-	var save_file = File.new()
+func save_game_data(game_data:Dictionary) -> void:
+	var save_file : File = File.new()
 	save_file.open(SAVEFILE, File.WRITE)
 	save_file.store_var(game_data)
 	save_file.close()
 
 
-func to_default_data() -> void:
-	game_data = DefaultGameData.duplicate()
-	save_data()
+func load_game() -> Dictionary:
+	var load_file : File = File.new()
+	
+	if !load_file.file_exists(SAVEFILE):
+		save_game_data(DefaultGameData.duplicate())
+		return new_game()
+	else:
+		load_file.open(SAVEFILE, File.READ)
+		var data : Dictionary = load_file.get_var()
+		load_file.close()
+		return data
+

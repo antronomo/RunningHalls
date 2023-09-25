@@ -32,6 +32,10 @@ func get_stats() -> Dictionary:
 	}
 
 
+# func set_stats(max_life : int, atk : int, def : int, crit_chn : int, crit_dmg : int) -> void:
+# 	pass
+
+
 func hit() -> float:
 	var dmg : float = (attack * (randi() % 50 + 75)) / 100.00
 
