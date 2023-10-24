@@ -13,7 +13,7 @@ Sprites (o arte):
     ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
         editado por: antronomo
 
-    ·el resto por antronomo
+    ·el resto por: antronomo
 
 
 Fuente:
@@ -21,7 +21,8 @@ Fuente:
 
 
 Motor de videojuego:
-    ·GodotEngine 3.5.2
+    ·creado con GodotEngine 3.5.2
+    ·continuado en GodotEngine 3.5.3
 
 
 Otro software utilizado:

@@ -35,7 +35,7 @@ TODO (o ideas): ----------------------------------------------------------------
 ·Mecánica:
     -Hacer que el jugador tenga habilidades.
 
-·Mecánica:
+·Mecánica: ?
     -Hacer que el jugador pueda tener una clase, cada clase tiene habilidades diferentes.
 
 ·Mecánica:
@@ -48,7 +48,7 @@ TODO (o ideas): ----------------------------------------------------------------
     -Crear un archivo (AUTOLOAD) para administrar los logros.
 
 .Mecánica:
--Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados.
+    -Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados.
 
 ·Crear UIs:
     -interfaz de partida:
@@ -56,6 +56,13 @@ TODO (o ideas): ----------------------------------------------------------------
 
 
 WIP: ------------------------------------------------------------------------------------------------------
+·MODIFICAR SCRIP:
+    -Seprar el script de CoreComponent para que las estadísticas estén en uno nuevo.
+        La idea es que CoreComponent solo sirva para colisionar con otros y modificar su propia vida,
+        haciendo otro script que lleve el tema de las estadísticas, puedo mejorar tanto al jugador como los
+        enemigos y así llevar a cabo la idea de la tienda y la subida de dificultad por distancia recorrida
+
+
 ·MENU OPCIONES:
     -crear escena donde tendrá lugar las opciones que el jugador pueda tocar
 

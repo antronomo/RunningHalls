@@ -2,6 +2,7 @@ extends Area2D
 class_name CoreComponent
 
 
+#Si hago que los atributos del personaje dependan de otro script, solo tendré que modificar este para que los actualice
 export var max_life : int = 1
 export var attack : int = 1
 export var defense : int = 1
@@ -30,10 +31,6 @@ func get_stats() -> Dictionary:
 		'crit_chance' : critical_cahnce,
 		'crit_dmg' : critical_damage
 	}
-
-
-# func set_stats(max_life : int, atk : int, def : int, crit_chn : int, crit_dmg : int) -> void:
-# 	pass
 
 
 func hit() -> float:

@@ -24,22 +24,22 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enemy.gd"
 }, {
+"base": "Node2D",
+"class": "Equipment",
+"language": "GDScript",
+"path": "res://Scripts/Equipment.gd"
+}, {
 "base": "TextureProgress",
 "class": "HealthBar",
 "language": "GDScript",
 "path": "res://Scripts/HealthBar.gd"
-}, {
-"base": "Node2D",
-"class": "Level",
-"language": "GDScript",
-"path": "res://Scripts/Level0.gd"
 } ]
 _global_script_class_icons={
 "CoreComponent": "",
 "CoreParallaxBackground": "",
 "Enemy": "",
-"HealthBar": "",
-"Level": ""
+"Equipment": "",
+"HealthBar": ""
 }
 
 [application]

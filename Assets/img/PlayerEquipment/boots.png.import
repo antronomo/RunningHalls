@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Shields_tiles.png-2ec8586353127d6e3a6ede833201f338.stex"
+path="res://.import/boots.png-e0187377462cfc67eb06a0365f62ad82.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/img/Shields_tiles.png"
-dest_files=[ "res://.import/Shields_tiles.png-2ec8586353127d6e3a6ede833201f338.stex" ]
+source_file="res://Assets/img/PlayerEquipment/boots.png"
+dest_files=[ "res://.import/boots.png-e0187377462cfc67eb06a0365f62ad82.stex" ]
 
 [params]
 

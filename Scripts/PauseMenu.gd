@@ -9,7 +9,7 @@ signal save_time
 
 
 func _ready() -> void:
-	visible = false # Solo quiero que desaparezca nada ser instanciado, por defecto es visible para el editor
+	visible = false # Por defecto lo dejo visible para el editor
 
 
 func game_pauser(el_booleano:bool) -> void:
@@ -47,3 +47,8 @@ func _on_AnimationPlayer_animation_started(anim_name:String):
 func _on_AnimationPlayer_animation_finished(anim_name:String):
 	if anim_name == "pause_out":
 		button_disabler(false)
+
+
+func _process(_delta) -> void:
+	if is_queued_for_deletion():
+		game_pauser(false)

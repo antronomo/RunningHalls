@@ -7,25 +7,16 @@ const DefaultGameData : Dictionary = {
 	"game_info" : {
 		"game_version" : CurrentVersion,
 		"wave" : 1,
-		"loot" : 0,
+		"loot" : 0
 	},
 	"player_upgrades" : {
-		"helmet" : {
-			"level" : 1,
-		},
-		"ChestPlate" : {
-			"level" : 1,
-		},
-		"Bots" : {
-			"level" : 1,
-		},
-		"sword" : {
-			"level" : 1,
-		},
-		"shield" : {
-			"level" : 1,
-		},
-	},
+		"helmet" : 0,
+		"chestPlate" :0,
+		"greaves" : 0,
+		"boots" :  0,
+		"sword" :  0,
+		"shield" : 0
+	}
 }
 
 

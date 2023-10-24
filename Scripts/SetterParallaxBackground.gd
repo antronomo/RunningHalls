@@ -2,8 +2,8 @@ extends ParallaxBackground
 
 
 # Aquí si me interesa tener variables por si quiero dar la opcion al jugador de elegir el fondo o escenario
-onready var sewer : PackedScene = preload("res://resources/inSewerParallaxBackground.tscn")
-onready var cave : PackedScene = preload("res://resources/inCaveParallaxBackground.tscn")
+onready var sewer : PackedScene = preload("res://BackGrounds/inSewerParallaxBackground.tscn")
+onready var cave : PackedScene = preload("res://BackGrounds/inCaveParallaxBackground.tscn")
 
 
 onready var backgrounds : Array = [

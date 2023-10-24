@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sowrds_tiles.png-2d358e5f2c4b75ec3ce91bdb661b884c.stex"
+path="res://.import/chestplate.png-4ba7444dfc3821a4e573ba856e11018e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/img/Sowrds_tiles.png"
-dest_files=[ "res://.import/Sowrds_tiles.png-2d358e5f2c4b75ec3ce91bdb661b884c.stex" ]
+source_file="res://Assets/img/PlayerEquipment/chestplate.png"
+dest_files=[ "res://.import/chestplate.png-4ba7444dfc3821a4e573ba856e11018e.stex" ]
 
 [params]
 

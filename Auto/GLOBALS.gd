@@ -1,9 +1,6 @@
 extends Node
 
 
-const coin : PackedScene = preload("res://Components/Coin.tscn")
-
-
 var current_game : Dictionary = {}
 # var config_data : Dictionary = {}
 
@@ -12,7 +9,6 @@ func _ready() -> void:
 	randomize()
 
 	current_game = CurrentGame.load_game()
-	# Config.load_data()
 
 
 func _input(event) -> void:
@@ -20,7 +16,7 @@ func _input(event) -> void:
 		print(str(current_game.duplicate()))
 
 
-# FUNCIONES CON CurrentGame.gd
+# FUNCIONES CON CurrentGame.gd -------------------------------------------------------
 func reset_game_data() -> void:
 	current_game = CurrentGame.new_game().duplicate()
 	save_data_to_file()
@@ -31,7 +27,7 @@ func save_data_to_file() -> void:
 	current_game = CurrentGame.load_game()
 
 
-# FUNCIONES que usan la variable current_game
+# FUNCIONES que modifican la variable current_game ----------------------------------------
 func set_game_data(what:String, much) -> void:
 	match what:
 		"wave":
@@ -46,11 +42,47 @@ func set_game_data(what:String, much) -> void:
 			else:
 				print(str(much) + " no es tipo Int")
 
+		"helmet":
+			if typeof(much) == TYPE_INT:
+				current_game.player_upgrades.helmet = much
+			else:
+				print("cannot save helmet with: " + str(much))
+		
+		"chestPlate":
+			if typeof(much) == TYPE_INT:
+				current_game.player_upgrades.chestPlate = much
+			else:
+				print("cannot save chestPlate with: " + str(much))
+
+		"greaves":
+			if typeof(much) == TYPE_INT:
+				current_game.player_upgrades.greaves = much
+			else:
+				print("cannot save greaves with: " + str(much))
+
+		"boots":
+			if typeof(much) == TYPE_INT:
+				current_game.player_upgrades.boots = much
+			else:
+				print("cannot save boots with: " + str(much))
+
+		"sword":
+			if typeof(much) == TYPE_INT:
+				current_game.player_upgrades.sword = much
+			else:
+				print("cannot save sword with: " + str(much))
+		
+		"shield":
+			if typeof(much) == TYPE_INT:
+				current_game.player_upgrades.shield = much
+			else:
+				print("cannot save shield with: " + str(much))
+
 		_: # Default
-			print("ERROR TRYING TO SAVE " + what + " with: " + str(much) + "!!!")
+			print(what + " does not exist")
 
 
-# FUNCIONES CON Config.gd
+# FUNCIONES con Config.gd ------------------------------------------------------------
 func save_new_config() -> void:pass
 
 

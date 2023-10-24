@@ -25,3 +25,8 @@ func _on_ReturnButton_pressed() -> void:
 func _on_GameOverUI_visibility_changed() -> void:
 	if visible:
 		$AnimationPlayer.play('appear')
+
+
+"""
+change gameOver to Rekt
+"""

@@ -1,23 +1,22 @@
 extends Node2D
-class_name Level
 
 
 onready var physic_ground = $PhysicGround
 onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
-onready var enemySpawner : Position2D = $EnemySpawner
 onready var finishing : bool = false
 onready var enemy_spawner : Position2D = $EnemySpawner
 onready var loot_manager : Node2D = $LootManager
 onready var gui : Control = $GUI
 onready var pasue_menu : Control = $PauseMenu
+onready var game_save_file : Dictionary
 
-onready var game_save_file : Dictionary = Globals.current_game.duplicate()
+
+const ground_speed : int = -30
 
 
 var current_wave : int
 var current_loot : int
 var wave_loot : int
-var ground_speed : int = -30
 
 
 func _ready() -> void:
@@ -35,12 +34,14 @@ func _ready() -> void:
 
 
 func get_vars() -> void:
+	game_save_file = Globals.current_game.duplicate()
+	
 	current_wave = game_save_file.game_info.wave
 	current_loot = game_save_file.game_info.loot
 	wave_loot = game_save_file.game_info.loot
 
 
-# Esta funcion empieza a sobrar
+# Esto empieza a sobrar
 func _on_MataSobras5000_body_exited(body : Node) -> void:
 	print(str(body) + ' has been deleted from existence')
 	body.queue_free()
@@ -90,7 +91,9 @@ func _on_PauseMenu_save_time() -> void:
 
 # FUNCIONES con GameOverUI----------------------------------------------
 func _on_GameOverUI_shop_pressed():
-	pass # Replace with function body.
+	var shop_menu = preload('res://UIs/ShopMenu.tscn')
+	shop_menu = shop_menu.instance()
+	add_child(shop_menu)
 
 
 func _on_GameOverUI_retry_pressed():
