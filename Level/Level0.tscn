@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Level0.gd" type="Script" id=1]
 [ext_resource path="res://UIs/GUI.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UIs/GameOverUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/LootManager.gd" type="Script" id=7]
 [ext_resource path="res://UIs/PauseMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UIs/ShopMenu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 160, 2.5 )
@@ -136,8 +137,6 @@ anims/RESET = SubResource( 4 )
 anims/Starting = SubResource( 5 )
 anims/finishing = SubResource( 6 )
 
-[node name="GameOverUI" parent="." instance=ExtResource( 6 )]
-
 [node name="Accelerator" type="HSlider" parent="."]
 margin_left = -84.0
 margin_top = -37.0
@@ -152,17 +151,22 @@ scrollable = false
 anims/RESET = SubResource( 7 )
 anims/accelerate = SubResource( 8 )
 
+[node name="GameOverUI" parent="." instance=ExtResource( 6 )]
+
 [node name="PauseMenu" parent="." instance=ExtResource( 8 )]
 margin_bottom = 0.0
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Shop" parent="." instance=ExtResource( 9 )]
+
 [connection signal="generate_loot" from="EnemySpawner" to="." method="_on_EnemySpawner_generate_loot"]
 [connection signal="wave_ended" from="EnemySpawner" to="." method="_on_EnemySpawner_wave_ended"]
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
+[connection signal="value_changed" from="Accelerator" to="." method="_on_Accelerator_value_changed"]
 [connection signal="retry_pressed" from="GameOverUI" to="." method="_on_GameOverUI_retry_pressed"]
 [connection signal="return_pressed" from="GameOverUI" to="." method="_on_GameOverUI_return_pressed"]
 [connection signal="shop_pressed" from="GameOverUI" to="." method="_on_GameOverUI_shop_pressed"]
-[connection signal="value_changed" from="Accelerator" to="." method="_on_Accelerator_value_changed"]
 [connection signal="save_time" from="PauseMenu" to="." method="_on_PauseMenu_save_time"]
+[connection signal="exiting" from="Shop" to="." method="_on_Shop_exiting"]

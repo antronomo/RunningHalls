@@ -1,10 +1,6 @@
 extends Node2D
 
 
-#max_hp por no poner max_life, variable que existe en coreComponent
-# onready var max_hp : int = $CoreComponent.get_stats().life
-
-
 export var my_name : String = 'player'
 
 
@@ -32,8 +28,8 @@ func going_to_die() -> void:
 	emit_signal('morido')
 	$AnimationPlayer.play('dying')
 
+
 func _on_CoreComponent_body_entered(body : Enemy) -> void:
 	#Esto es cuando el jugador colisiona con un enemigo, para empujar-lo
 	# print('empujacion')
-	body.apply_central_impulse(Vector2(randi() % 50 + 51, -randi() % 75 - 26))
-
+	body.apply_central_impulse(Vector2(randi() % 50 + 51, - randi() % 75 - 26))

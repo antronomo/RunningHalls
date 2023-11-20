@@ -20,7 +20,7 @@ while true:
 Estoy planteando re-organizar las carpetas para que parezca que todo esté más límpio
 
 
-Seguramente el 'Level0' quede como único nivel, ya que puedo customizar antes de empezar partida
+Seguramente el 'Level0' quede como único nivel, ya que puedo modificar antes de empezar partida
 
 
 No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el texto: 
@@ -30,7 +30,7 @@ No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el
 --------------Posibles logros--------------------------
 	·Conseguir todos los artefactos.
 	·Alcanzar X metros recorridos en total / en una partida
-	·Rescatar la princesa y sacar el final verdadero (mas que referencia esto es robo)
+	·Rescatar la princesa y sacar el final verdadero
 		-Conseguir todos los artefactos
 	·Matar X minijefes
 	·Matar X Jefes
@@ -44,18 +44,18 @@ No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el
 
 --------------Posibles artefactos----------------------
 	·Stats principales
-		-+% de vida máximo
-		-+% de ataque máximo
-		-+% de defensa máximo
-		-+% de tasa crítico máximo
-		-+% de daño crítico máximo
-		-+% de mana maximo
-		-+% regeneracion de mana
+		- +% de vida máximo
+		- +% de ataque máximo
+		- +% de defensa máximo
+		- +% de tasa crítico máximo
+		- +% de daño crítico máximo
+		- +% de mana maximo
+		- +% regeneracion de mana
 
-	·Artefactos especiales
-		-% de robo de vida al atacar / matar un enemigo
-		-% de ser invulnerable al matar un eneigo por X tiempo
-		-+% de currency ganado (currency puede ser oro o gemas preciosas, que tal vez, tengan valor distinto o para distintas mejoras, cada una asociada a las gemas)
+	·Artefactos especialesx
+		- % de robo de vida al atacar / matar un enemigo
+		- % de ser invulnerable al matar un eneigo por X tiempo
+		- +% de currency ganado (currency puede ser oro o gemas preciosas, que tal vez, tengan valor distinto o para distintas mejoras, cada una asociada a las gemas)
 
 Si acabo por poner los artefactos, haré que puedas ponerlos en cada checkpoint y al empezar/reanudar partida
 -------------------------------------------------------
@@ -82,7 +82,7 @@ Atributos por encantar armaduras:
 	Pechera:
 		- +%armadura
 		- vida
-		- mana(?):
+		- mana(?): (la implementación de mana sería por si me da por implementar habilidades/echizos)
 	pantalones:
 		- +%armadura
 		-
@@ -90,7 +90,6 @@ Atributos por encantar armaduras:
 		- +%armadura
 		- reducción de daño
 		-
-
 	espada:
 		- atk
 		- +%atk
@@ -107,13 +106,13 @@ Atributos por encantar armaduras:
 
 Ideas que cambiarian radicalmente el juego(?):
 ------------------------------------------------------------
-	-Los enemigos solo sueltan XP, con ese xp aumentas las estadísitas bases del jugador (hp, atk, deff...).
+	-Los enemigos solo sueltan XP, con ese xp aumentas las estadísitas bases del jugador (hp, atk, deff...). -> Descartado
 
 	-Los jarrones y cofres soltarán el oro que necesitas para comprar mejores armas y armaduras.
 
-	-Las armas y armaduras podría ser un inventario randomizado donde cada armadura tiene diferentes rarezas.
+	-Las armas y armaduras podría ser un inventario randomizado donde cada armadura tiene diferentes rarezas. -> Descartado
 
-	-Las rarezas hace que las armaduras tenga mas o menos modificadores.
+	-Las rarezas hace que las armaduras tenga mas o menos modificadores. -> Descartado
 
 	- tu solo puedes mejorar la deffensa y/o ataque base de los objetos, también con oro.
 

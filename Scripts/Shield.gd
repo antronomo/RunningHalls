@@ -16,5 +16,6 @@ func _ready() -> void:
 		[100,100]
 	]
 
+	max_upgrades = upgrade_list.size() - 1
 	upgrades = Globals.current_game.player_upgrades.shield
 	sprite.frame = int(clamp(upgrades, 0, sprite.hframes -1))

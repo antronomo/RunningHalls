@@ -26,7 +26,7 @@ func _ready() -> void:
 func get_stats() -> Dictionary:
 	return {
 		'life' : max_life,
-		'attack': attack,
+		'attack' : attack,
 		'defense' : defense,
 		'crit_chance' : critical_cahnce,
 		'crit_dmg' : critical_damage
@@ -47,15 +47,8 @@ func hit() -> float:
 
 
 func get_hurt(entring_dmg : float) -> int:
-	#Se que puedo quitar variables del código y retornaría lo mismo, aún no estoy listo para ello
-	# return ((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1
-	var diff : int =  (entring_dmg * 100) / defense
-	var hurt : int = ((diff * entring_dmg) / 100) * -1
-
-	if hurt > 0:
-		hurt = -1
-
-	return hurt
+	var hurt : int = ((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1
+	return hurt if hurt <= -1 else -1
 
 
 func set_hp(new_hp : int) -> void:

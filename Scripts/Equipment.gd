@@ -2,17 +2,21 @@ extends Node2D
 class_name Equipment
 
 
-var sprite : Sprite
+onready var sprite : Sprite = $Sprite
+
+
+var max_upgrades : int
 var sprite_hframes : int
 var upgrade_list : Array
 var upgrades : int = 0
 
 
-func _ready() -> void:
-	if get_node("Sprite"):
-		sprite = $Sprite
-	else:
-		print(name + " has no sprite node!!!")
+func get_item_stats() -> Dictionary:
+	return {
+		"level" : upgrades,
+		"price" : upgrade_list[upgrades][0],
+		"stat" : upgrade_list[upgrades][1]
+	}
 
 
 func get_sprite_info() -> Array:
@@ -20,9 +24,9 @@ func get_sprite_info() -> Array:
 
 
 func upgrade() -> void:
-	if !upgrades == upgrade_list.size():
+	if upgrades < max_upgrades:
 		upgrades += 1
-		sprite.frame = int(clamp(upgrades,0,sprite.hframes-1)) # el int() solo está para quitarme un aviso
+		sprite.frame = int(clamp(upgrades,0,sprite.hframes-1)) # el int() solo está para quitar un aviso
 
 
 """

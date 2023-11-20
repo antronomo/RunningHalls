@@ -3,9 +3,6 @@ la lista de las cosas NO estan organizadas, el archivo contiene errores ortograf
 
 
 TODO (o ideas): -------------------------------------------------------------------------------------------
-·Editar Sprites:
-    -Crear armas para la clase del guerrero (armas a dos manos) y para el mago (varitas y bastones)
-
 ·Crear Enemigo, RATA:
     -crear un enemigo, la rata a partir del enemigo base
 
@@ -47,20 +44,14 @@ TODO (o ideas): ----------------------------------------------------------------
 ·LOGROS: ?
     -Crear un archivo (AUTOLOAD) para administrar los logros.
 
-.Mecánica:
-    -Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados.
-
-·Crear UIs:
-    -interfaz de partida:
-        La idea es ver cosas como el oro obtenido o la distancia recorrida
-
 
 WIP: ------------------------------------------------------------------------------------------------------
 ·MODIFICAR SCRIP:
     -Seprar el script de CoreComponent para que las estadísticas estén en uno nuevo.
-        La idea es que CoreComponent solo sirva para colisionar con otros y modificar su propia vida,
+        -La idea es que CoreComponent solo sirva para colisionar con otros y modificar su propia vida,
         haciendo otro script que lleve el tema de las estadísticas, puedo mejorar tanto al jugador como los
-        enemigos y así llevar a cabo la idea de la tienda y la subida de dificultad por distancia recorrida
+        enemigos y así llevar a cabo la idea de la tienda y la subida de dificultad por distancia recorrida.
+        -Escript para jugador creado: PlayerStats.gd
 
 
 ·MENU OPCIONES:
@@ -68,9 +59,27 @@ WIP: ---------------------------------------------------------------------------
 
 
 ·Mecánica:
-    -Tienda o forga donde puede mejorar su equipamiento a cambio de oro.
+    -Tienda o forga donde puede mejorar su equipamiento a cambio de oro. [creado, pero no completado]
     -popup de la tienda donde el jugador pueda mejorar armaduras, comprar pociones y mejorar estadísticas básicas.
-    -cuando le da a continuar puede recargar la escena para que la oleada anterior sin terminar vuelva a empezar
+    -cuando le da a continuar puede recargar la escena para que la oleada anterior sin terminar vuelva a empezar [hecho]
+
+
+·Crear UIs:
+    -interfaz de partida(La idea es ver cosas como): 
+        -el oro obtenido [hecho]
+        -la distancia recorrida
+
+
+.Mecánica:
+    -Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados. 
+    [sólo los enemigos sueltan oro, los jarrones y barriles no están implenetados]
+
+
+·Editar Sprites:
+    -Crear armas para la clases:
+        -guerrero (arma y escudo) [hecho]
+        -guerrero (armas a dos manos) [hecho pero no implenetado, puede que lo descarte]
+        -mago (varitas y bastones) [hecho pero no implenetado, puede que lo descarte]
 
 
 DONE: ------------------------------------------------------------------------------------------------------
@@ -130,6 +139,10 @@ DONE: --------------------------------------------------------------------------
 
 ·Game Feel:
     -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite.
+
+·Jugador:
+    -El área de daño no se desactiva cuando el jugador muere.
+    [El área de daño(CoreComponent) apaga la CollisionShape(Nodo hijo) para que deje de chocar con enemigos]
 
 
 BUGs o FIXs: ------------------------------------------------------------------------------------------------------

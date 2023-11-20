@@ -78,7 +78,7 @@ func spawn_enemies() -> void:
 
 
 # No quiero que repita la suseción cada vez que quiera tener un número de tokens, igual debería guardar los numeros anteriores y simplemente devolver el siguiente
-func token_manager() -> void: # Simulacion de fibonacci
+func token_manager() -> void: # sucesion de fibonacci
 	var a : int = 1
 	var b : int = 1
 	var return_a : bool = true

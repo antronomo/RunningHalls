@@ -9,6 +9,8 @@ onready var loot_manager : Node2D = $LootManager
 onready var gui : Control = $GUI
 onready var pasue_menu : Control = $PauseMenu
 onready var game_save_file : Dictionary
+onready var shop_ui : Control = $Shop
+onready var game_over_ui : Control = $GameOverUI
 
 
 const ground_speed : int = -30
@@ -22,15 +24,17 @@ var wave_loot : int
 func _ready() -> void:
 	get_vars()
 	# print(str(game_save_file))
-
+	
 	setterparallaxGround.set_background()
 	physic_ground.constant_linear_velocity.x = ground_speed
-
+	
 	gui.first_call($Player/CoreComponent.get_stats().life)
 	gui.set_loot(current_loot)
-
+	
 	enemy_spawner.set_wave(current_wave)
 	enemy_spawner.spawn_enemies()
+	
+	shop_ui.rect_position = Vector2(0,-135)
 
 
 func get_vars() -> void:
@@ -90,16 +94,20 @@ func _on_PauseMenu_save_time() -> void:
 
 
 # FUNCIONES con GameOverUI----------------------------------------------
-func _on_GameOverUI_shop_pressed():
-	var shop_menu = preload('res://UIs/ShopMenu.tscn')
-	shop_menu = shop_menu.instance()
-	add_child(shop_menu)
+func _on_GameOverUI_shop_pressed() -> void:
+	shop_ui.rect_position = Vector2.ZERO
+	game_over_ui.rect_position = Vector2(40, -1000)
 
 
-func _on_GameOverUI_retry_pressed():
+func _on_GameOverUI_retry_pressed() -> void:
 	get_tree().reload_current_scene()
 
 
-func _on_GameOverUI_return_pressed():
+func _on_GameOverUI_return_pressed() -> void:
 	get_tree().change_scene('res://UIs/MenuScene.tscn')
 
+
+# FUNCIONES con ShopUI--------------------------------------------------
+func _on_Shop_exiting() -> void:
+	shop_ui.rect_position = Vector2(0, -135)
+	game_over_ui.rect_position = Vector2(40, 16)

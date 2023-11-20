@@ -26,7 +26,7 @@ func new_game() -> Dictionary:
 	return DefaultGameData
 
 
-func save_game_data(game_data:Dictionary) -> void:
+func save_game_data(game_data : Dictionary) -> void:
 	var save_file : File = File.new()
 	save_file.open(SAVEFILE, File.WRITE)
 	save_file.store_var(game_data)

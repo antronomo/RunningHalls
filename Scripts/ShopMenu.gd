@@ -15,52 +15,38 @@ onready var shield : Equipment = $TabContainer/ForgeTab/ShieldButton/Shield
 var item_name : String
 
 
+signal exiting
+
+
 func _on_HelmetButton_pressed() -> void:
-	var arr : Array = helmet.get_sprite_info()
-	item_show.texture = arr[0]
-	item_show.hframes = arr[1]
-	item_show.frame = arr[2]
-	item_name = "helmet"
+	get_item_to_show(helmet.get_sprite_info(), "helmet")
 
 
 func _on_ChestPlateButton_pressed() -> void:
-	var arr : Array = chestPlate.get_sprite_info()
-	item_show.texture = arr[0]
-	item_show.hframes = arr[1]
-	item_show.frame = arr[2]
-	item_name = "chestPlate"
+	get_item_to_show(chestPlate.get_sprite_info(), "chestPlate")
 
 
 func _on_GreavesButton_pressed() -> void:
-	var arr : Array = greaves.get_sprite_info()
-	item_show.texture = arr[0]
-	item_show.hframes = arr[1]
-	item_show.frame = arr[2]
-	item_name = "greaves"
+	get_item_to_show(greaves.get_sprite_info(), "greaves")
 
 
 func _on_BootsButton_pressed() -> void:
-	var arr : Array = boots.get_sprite_info()
-	item_show.texture = arr[0]
-	item_show.hframes = arr[1]
-	item_show.frame = arr[2]
-	item_name = "boots"
+	get_item_to_show(boots.get_sprite_info(), "boots")
 
 
 func _on_SwordButton_pressed() -> void:
-	var arr : Array = sword.get_sprite_info()
-	item_show.texture = arr[0]
-	item_show.hframes = arr[1]
-	item_show.frame = arr[2]
-	item_name = "sword"
+	get_item_to_show(sword.get_sprite_info(), "sword")
 
 
 func _on_ShieldButton_pressed() -> void:
-	var arr : Array = shield.get_sprite_info()
-	item_show.texture = arr[0]
-	item_show.hframes = arr[1]
-	item_show.frame = arr[2]
-	item_name = "shield"
+	get_item_to_show(shield.get_sprite_info(), "shield")
+
+
+func get_item_to_show(sprite_info : Array, name : String) -> void:
+	item_show.texture = sprite_info[0]
+	item_show.hframes = sprite_info[1]
+	item_show.frame = sprite_info[2]
+	item_name = name
 
 
 func _on_UpgradeButton_pressed() -> void:
@@ -114,4 +100,4 @@ func _on_StatsButton_pressed() -> void:
 
 func _on_ExitButton_pressed() -> void:
 	save_upgrades()
-	queue_free()
+	emit_signal("exiting")

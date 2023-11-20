@@ -21,7 +21,6 @@ func load_data() -> void:
 		
 	load_file.open(CONFIGFILE, File.READ)
 	config_data = load_file.get_var()
-		
 	load_file.close()
 
 
