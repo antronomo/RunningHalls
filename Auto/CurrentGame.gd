@@ -7,11 +7,11 @@ const DefaultGameData : Dictionary = {
 	"game_info" : {
 		"game_version" : CurrentVersion,
 		"wave" : 1,
-		"loot" : 0
+		"gold" : 0
 	},
 	"player_upgrades" : {
 		"helmet" : 0,
-		"chestPlate" :0,
+		"chestPlate" : 0,
 		"greaves" : 0,
 		"boots" :  0,
 		"sword" :  0,
@@ -36,12 +36,11 @@ func save_game_data(game_data : Dictionary) -> void:
 func load_game() -> Dictionary:
 	var load_file : File = File.new()
 	
-	if !load_file.file_exists(SAVEFILE):
-		save_game_data(DefaultGameData.duplicate())
-		return new_game()
-	else:
+	if load_file.file_exists(SAVEFILE):
 		load_file.open(SAVEFILE, File.READ)
 		var data : Dictionary = load_file.get_var()
 		load_file.close()
 		return data
-
+	else:
+		save_game_data(DefaultGameData.duplicate())
+		return new_game()

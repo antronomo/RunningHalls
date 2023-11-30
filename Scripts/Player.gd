@@ -25,8 +25,8 @@ func going_to_heal() -> void:
 
 
 func going_to_die() -> void:
-	emit_signal('morido')
 	$AnimationPlayer.play('dying')
+	emit_signal('morido')
 
 
 func _on_CoreComponent_body_entered(body : Enemy) -> void:

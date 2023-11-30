@@ -52,7 +52,7 @@ No se si cambiar el estilo del intro y hacer la tipica pantalla con el logo y el
 		- +% de mana maximo
 		- +% regeneracion de mana
 
-	·Artefactos especialesx
+	·Artefactos especiales
 		- % de robo de vida al atacar / matar un enemigo
 		- % de ser invulnerable al matar un eneigo por X tiempo
 		- +% de currency ganado (currency puede ser oro o gemas preciosas, que tal vez, tengan valor distinto o para distintas mejoras, cada una asociada a las gemas)
@@ -118,3 +118,20 @@ Ideas que cambiarian radicalmente el juego(?):
 
 	-en cofres podrías conseguir gemas para reforgar los mods de las armaduras, incluso tener variedad para mayor % de modificadores en concreto.
 ------------------------------------------------------------
+
+
+Cambiar la manera en la que genero enemigos?
+	·Actualmente para generar enemigos, asigno tokens eligiendo el numero "wave" de la sucesion de fibonacci y con esos tokens
+	"compro" enemigos asta gastar los tokens y los meto en un array, organizo el array y los invoco en orden haciendo pausas de tiempo aleatorio entre invocación.
+	·El problema es que llegará un punto en que invoque demasiados enemigos y actualmente lo hace injusto
+
+	·La nueva idea es tener diferentes diferentes grupo de enemigos, que cada enemigo tenga versiones lo mismo pero más grande para minijefes, el jefe al final de la lista y desecharla dando paso a la siguiente y vuelta a empezar.
+	·Los enemigos pueden aumentar ligeramente de estadísticas dependiendo de la oleada dentro de la lista.
+
+	·Puedo hacer que las oleadas sean aleatorios(entre 5 a 7, por ejemplo) donde el último siempre sea un jefe final o un enemigo gigante con mucha vida.
+
+
+La organización de este proyecto es un desastre
+
+
+aumentar el oro generado progresivamente (por oleadas)

@@ -17,8 +17,8 @@ const ground_speed : int = -30
 
 
 var current_wave : int
-var current_loot : int
-var wave_loot : int
+var current_gold : int
+var saved_gold : int # El oro que te quedas cuando terminas una oleada de enemigos
 
 
 func _ready() -> void:
@@ -29,20 +29,20 @@ func _ready() -> void:
 	physic_ground.constant_linear_velocity.x = ground_speed
 	
 	gui.first_call($Player/CoreComponent.get_stats().life)
-	gui.set_loot(current_loot)
+	gui.update_gold_label(current_gold)
 	
 	enemy_spawner.set_wave(current_wave)
 	enemy_spawner.spawn_enemies()
 	
-	shop_ui.rect_position = Vector2(0,-135)
+	shop_ui.rect_position = Vector2(0, -135)
 
 
 func get_vars() -> void:
 	game_save_file = Globals.current_game.duplicate()
 	
 	current_wave = game_save_file.game_info.wave
-	current_loot = game_save_file.game_info.loot
-	wave_loot = game_save_file.game_info.loot
+	current_gold = game_save_file.game_info.gold
+	saved_gold = current_gold
 
 
 # Esto empieza a sobrar
@@ -62,28 +62,32 @@ func finish_game() -> void:
 	$GameOverUI.visible = true
 	$Accelerator/AnimationPlayer.play_backwards('accelerate')
 	set_propetys()
+	yield(get_tree().create_timer(0.1), 'timeout')# Solucion temporal: al morir el oro actualiza dos veces
+	gui.update_gold_label(saved_gold)
 
 
+# Esta funcion fue JUSTO antes de saber de la existencia de tweens
 func _on_Accelerator_value_changed(value : float) -> void:
 	physic_ground.constant_linear_velocity.x = ground_speed * value
 	setterparallaxGround.get_child(0).set_paraspeed(ground_speed * value)
 
 
 func set_propetys() -> void:
-	Globals.set_game_data("loot", wave_loot)
+	Globals.set_game_data("gold", saved_gold)
 	Globals.set_game_data("wave", current_wave)
 	Globals.save_data_to_file()
 
 
-# FUNCIONES con EnemySpawner-----------------------------------------
+# FUNCIONES con EnemySpawner--------------------------------------------
 func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
-	var loot_quantity : int = randi() % 5 + 1
+	var loot_quantity : int = current_wave + int(randi() % current_wave + (current_wave / 2))
 	loot_manager.generate_loot(loot_position, loot_quantity)
-	gui.set_loot(loot_quantity)
+	current_gold = current_gold + loot_quantity
+	gui.update_gold_label(current_gold)
 
 
 func _on_EnemySpawner_wave_ended() -> void:
-	wave_loot = gui.get_loot()
+	saved_gold = current_gold
 	current_wave = enemy_spawner.get_wave()
 
 
@@ -95,6 +99,7 @@ func _on_PauseMenu_save_time() -> void:
 
 # FUNCIONES con GameOverUI----------------------------------------------
 func _on_GameOverUI_shop_pressed() -> void:
+	shop_ui.gold_update()
 	shop_ui.rect_position = Vector2.ZERO
 	game_over_ui.rect_position = Vector2(40, -1000)
 
@@ -109,5 +114,7 @@ func _on_GameOverUI_return_pressed() -> void:
 
 # FUNCIONES con ShopUI--------------------------------------------------
 func _on_Shop_exiting() -> void:
+	get_vars()
+	gui.update_gold_label(current_gold)
 	shop_ui.rect_position = Vector2(0, -135)
 	game_over_ui.rect_position = Vector2(40, 16)

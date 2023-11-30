@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Helmet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Greaves.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Player/Sword.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/ShopMenu.gd" type="Script" id=7]
 [ext_resource path="res://Assets/DynamicFonts/MineTTF_8_whtie_FixedToCenter.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Assets/img/GoldCoin.png" type="Texture" id=9]
 
 [node name="Shop" type="Control"]
 margin_right = 240.0
@@ -131,11 +132,11 @@ anchor_left = -0.375
 anchor_top = -0.261
 anchor_right = -0.375
 anchor_bottom = -0.261
-margin_left = 104.0
-margin_top = 24.012
-margin_right = 128.0
-margin_bottom = 48.012
-color = Color( 0, 0, 0, 0.592157 )
+margin_left = 64.0
+margin_top = 40.012
+margin_right = 88.0
+margin_bottom = 64.012
+color = Color( 0, 0, 0, 0.741176 )
 
 [node name="ItemShow" type="Sprite" parent="TabContainer/ForgeTab/SelectRect"]
 position = Vector2( 12, 12 )
@@ -145,12 +146,66 @@ anchor_left = -0.375
 anchor_top = -0.261
 anchor_right = -0.375
 anchor_bottom = -0.261
-margin_left = 92.0
-margin_top = 56.012
-margin_right = 140.0
-margin_bottom = 72.012
+margin_left = 80.0
+margin_top = 96.012
+margin_right = 128.0
+margin_bottom = 112.012
 custom_fonts/font = ExtResource( 8 )
 text = "UPGRADE"
+
+[node name="InfoRect" type="ColorRect" parent="TabContainer/ForgeTab"]
+margin_left = 36.0
+margin_right = 84.0
+margin_bottom = 64.0
+color = Color( 0, 0, 0, 0.741176 )
+
+[node name="UpgradeName" type="Label" parent="TabContainer/ForgeTab/InfoRect"]
+margin_right = 48.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="UpgradeStat" type="Label" parent="TabContainer/ForgeTab/InfoRect"]
+margin_left = 4.0
+margin_top = 20.0
+margin_right = 44.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="UpgradePrice" type="Label" parent="TabContainer/ForgeTab/InfoRect"]
+margin_left = 4.0
+margin_top = 44.0
+margin_right = 44.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="GoldContainer" type="Control" parent="TabContainer/ForgeTab"]
+margin_left = 14.0
+margin_top = 1.0
+margin_right = 26.0
+margin_bottom = 6.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="TabContainer/ForgeTab/GoldContainer"]
+position = Vector2( -6, 3 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="TabContainer/ForgeTab/GoldContainer"]
+margin_top = -2.0
+margin_right = 20.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+valign = 1
 
 [node name="PlayerStats" type="Tabs" parent="TabContainer"]
 visible = false

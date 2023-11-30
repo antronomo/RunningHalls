@@ -6,11 +6,8 @@ onready var health_label : Label = $HealthBarContainer/Label
 onready var coin_label : Label = $CurrencyContainer/Label
 
 
-var loot : int = 0 setget set_loot, get_loot
-
-
 func _ready() -> void:
-	coin_label.text = str(loot)
+	coin_label.text = str(0)
 
 
 func first_call(maxHP : int) -> void:
@@ -25,13 +22,8 @@ func update_helath_bar(newHP : int) -> void :
 	health_label.text = str(newHP)
 
 
-func set_loot(add_loot : int) -> void:
-	loot += add_loot
-	coin_label.text = str(loot)
-
-
-func get_loot() -> int: 
-	return loot
+func update_gold_label(new_gold : int) -> void:
+	coin_label.text = str(new_gold)
 
 
 """

@@ -7,7 +7,6 @@ var current_game : Dictionary = {}
 
 func _ready() -> void:
 	randomize()
-
 	current_game = CurrentGame.load_game()
 
 
@@ -16,7 +15,7 @@ func _input(event) -> void:
 		print(str(current_game.duplicate()))
 
 
-# FUNCIONES CON CurrentGame.gd ------------------------------------------------------------
+# FUNCIONES CON CurrentGame.gd -------------------------------------------------------------
 func reset_game_data() -> void:
 	current_game = CurrentGame.new_game().duplicate()
 	save_data_to_file()
@@ -37,9 +36,9 @@ func set_game_data(what:String, much) -> void:
 			else:
 				print("cannot save " + what + " with: " + str(much))
 
-		"loot":
+		"gold":
 			if typeof(much) == TYPE_INT:
-				current_game.game_info.loot = much
+				current_game.game_info.gold = much
 			else:
 				print("cannot save " + what + " with: " + str(much))
 
@@ -83,7 +82,7 @@ func set_game_data(what:String, much) -> void:
 			print(what + " does not exist")
 
 
-# FUNCIONES con Config.gd -----------------------------------------------------------------
+# FUNCIONES con Config.gd ------------------------------------------------------------------
 func save_new_config() -> void:pass
 
 

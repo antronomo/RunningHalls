@@ -10,9 +10,9 @@ const credits_cam_pos : Vector2 = Vector2(120, 203)
 onready var cam : Camera2D = $Camera2D
 
 
-func move_camera(new_pos:Vector2) -> void:
+func move_camera(new_pos : Vector2, secs : float = 0.5) -> void:
 	var tween : SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(cam, "global_position", new_pos, 0.50)
+	tween.tween_property(cam, "global_position", new_pos, secs)
 
 
 # MAIN MENU FUNCTIONS----------------------------------------

@@ -3,10 +3,16 @@ la lista de las cosas NO estan organizadas, el archivo contiene errores ortograf
 
 
 TODO (o ideas): -------------------------------------------------------------------------------------------
+·Mecanica(oleadas):
+    modificar la manera en la que aparecen enemigos para que cada X oleada, aparzca minijefes o jefes
+
+
 ·Crear Enemigo, RATA:
     -crear un enemigo, la rata a partir del enemigo base
 
+
 ·Crear Icono del Juego:
+
 
 ·Modo de juegos:
     -Aventura: 
@@ -14,35 +20,48 @@ TODO (o ideas): ----------------------------------------------------------------
         Solo puede mejorar el equipamiento al perder todos los puntos de salud y contará +1 a los intentos.
         El objetivo es derrotar al jefe en el menor número de intentos posibles.
 
+
 ·Modo de juegos:
     -Infinito:
         Tiene 'checkpoints' cada x distancia recorrida o al derrotar x número de enemigos.
         Al llegar al 'checkpoint' podrá mejorar el equipamineto o dejar la partida para después.
         El objetivo es llegar lo más lejos posible, donde llegará al punto en que simplemente es imposible.
 
+
 ·Crear backgrounds:
     -Interior de castillo
+
 
 ·Mecánica:
     -(evento) grupo de animales para indicar que viene un jefe o enemigo grande
 
+
 ·Mecánica:
     -Hacer que el jugador pueda consumir curas.
+
 
 ·Mecánica:
     -Hacer que el jugador tenga habilidades.
 
+
 ·Mecánica: ?
     -Hacer que el jugador pueda tener una clase, cada clase tiene habilidades diferentes.
+
 
 ·Mecánica:
     -Un sistema donde el jugador pueda encontrar artefactos que podrá equipar al inicio de cada partida.
 
+
 ·Mecánica: ?
     -Hacer que aparezca determinado tipo de enemigos en funcion del fondo en partida. (solo en modo aventura).
 
+
 ·LOGROS: ?
     -Crear un archivo (AUTOLOAD) para administrar los logros.
+
+
+·obtencion de oro:
+    -hacer que los jefes y minijefes suelten mucho más oro de lo normal.
 
 
 WIP: ------------------------------------------------------------------------------------------------------
@@ -51,28 +70,59 @@ WIP: ---------------------------------------------------------------------------
         -La idea es que CoreComponent solo sirva para colisionar con otros y modificar su propia vida,
         haciendo otro script que lleve el tema de las estadísticas, puedo mejorar tanto al jugador como los
         enemigos y así llevar a cabo la idea de la tienda y la subida de dificultad por distancia recorrida.
-        -Escript para jugador creado: PlayerStats.gd
+        [Escript para jugador creado: PlayerStats.gd]
+        [Escript para los enemigos creado: EnemyStats.gd, pero no iplementado]
 
 
 ·MENU OPCIONES:
     -crear escena donde tendrá lugar las opciones que el jugador pueda tocar
 
 
-·Mecánica:
-    -Tienda o forga donde puede mejorar su equipamiento a cambio de oro. [creado, pero no completado]
-    -popup de la tienda donde el jugador pueda mejorar armaduras, comprar pociones y mejorar estadísticas básicas.
-    -cuando le da a continuar puede recargar la escena para que la oleada anterior sin terminar vuelva a empezar [hecho]
+·La tienda:
+    - lugar donde el jugador pueda comprar pociones y/o cosas (no confundir con la forja)
 
 
 ·Crear UIs:
-    -interfaz de partida(La idea es ver cosas como): 
+    -interfaz de partida(La idea es ver cosas como):
+        -la salud del jugador [hecho]
         -el oro obtenido [hecho]
-        -la distancia recorrida
+        -la distancia recorrida [descartable]
+        -oleadas
 
 
-.Mecánica:
+·obtencion de oro:
     -Hacer que los enemigos (y a futuro los cofres o jarrones) puedan soltar oro al ser derrotados. 
     [sólo los enemigos sueltan oro, los jarrones y barriles no están implenetados]
+
+
+DONE: ------------------------------------------------------------------------------------------------------
+·Sprites: monedas
+    -he creado 3 monedas: bronce, plata y oro. No es algo que hice de manera premeditada, igual a futuro las use o incluso darles valor monetario para la tienda o forja
+
+
+·La forja:
+    -Ajustar los precios de la forja por cada nivel y por cada pieza de armadura, espada y escudo
+    [hecho, pero es temporal, seguramente se vuelva a modificar cuando llegue la fase de play-testing]
+
+
+·obtencion de oro:
+    -cambiar la cantidad soltada por los enemigos, deberíamos poder ganar mas oro en proporción en el progreso de la partida(medido por las oleadas)
+    [hecho]
+
+
+·la forja:
+    -popup de la tienda donde el jugador pueda mejorar armaduras, espada y escudo
+    [hecho]
+
+
+·SOLUCIONAR:
+    -cuando la partida acaba, puede dar la situacion donde el oro visualizado por GUI actualice el valor dos veces, la primera cuando el jugador muere y muestra el oro que te quedas y otra cuando un enemigo muere justo después, mostrando el oro ganado en esa oleada, es solo un bug visual, en el archivo de guardado no hay problema.
+    [RESUELTO, he puesto una funcion "yield" para retrasar la acutlizacion buena del oro que el jugador posee]
+
+
+·Mecánica:
+    -Tienda o forga donde puede mejorar su equipamiento a cambio de oro. [hecho]
+    -cuando le da a continuar puede recargar la escena para que la oleada anterior sin terminar vuelva a empezar [hecho]
 
 
 ·Editar Sprites:
@@ -82,70 +132,89 @@ WIP: ---------------------------------------------------------------------------
         -mago (varitas y bastones) [hecho pero no implenetado, puede que lo descarte]
 
 
-DONE: ------------------------------------------------------------------------------------------------------
+!!REFRACTOR!!
+    -change all currency/loot to gold [hecho]
+
+
 ·MENU OPCIONES:
     -Crear un archivo (AUTOLOAD) para guardar la configuración.
+
 
 ·SISTEMA DE GUARDADO:
     [PRIORIDAD ALTA]
         -Arreglar el sistema de guardado, quiero que sea el script de "globals" el que manege la informacion y que el script "CurrentGame" (cambiaré de nombre) se ocupe unica y exclusivamente de leer y escribir el archivo fuera del juego.
 
+
 ·Guardado de Partida:
     -Crear un archivo (AUTOLOAD) para guardar estado de la partida acutal.
+
 
 ·Crear UIs:
     -Crear menú donde el jugador pueda navegar entre, configuración, creditos, personalización, empezar o seguir partida.
 
+
 ·Crear UIs:
     -Crear menú que aparezca cuando da a fin de la partida.
+
 
 ·Crear Enemigo, GHOST:
     -crear un enemigo, el fantasma a partir del enemigo base.
 
+
 ·ParallaxBackground:
     -Crear un objeto donde todos los parallax puedan eredar de el, con el fin de poder usar funciones.
 
+
 ·ParallaxBackground:
     -Re-diesñar los fondos para que la acción esté algo más centrada a la pantalla, así poder dejar espacio en la parte inferior para poner los controles, como botones para beber pociones o usar habilidades.
+
 
 ·Crear UIs:
     -interfaz de partida:
         ver la barra de salud del jugador.
 
+
 ·Crear animacion de entrada:
     -Cuando empiezas la partida, un animacion donde el jugador aparece por la izquierda y una vez llegue,
     empieza a moverse el parallax y a generar enemigos.
 
+
 ·Editar Sprites:
     -Crear animacion para el cangrejo con cabeza de humano (2 para idle, 2 mientras camina).
+
 
 ·Editar Sprites:
     -Editar barriles y jarrones de colores.
 
+
 ·Editar Sprites:
     -Editar los npc, un chavalin, una princesa.
+
 
 ·Crear Jugador:
     -personaje que se ocupará de dañar jarrones y empujar enemigos.
 
+
 ·Crear Enemigo Base:
     -progrmar funcionamineto para que pueda recibir daño, morir si pierda toda la vida y dañar al jugador con cada golpe.
+
 
 ·Crear componente 'core':
     -Estoy haciendo un componente o objeto que debería ser usado tanto para 'player' como para los enemigos creados a futuro.
 
+
 ·Crear escena:
     -Un lugar donde tendrá el gameplay, jugador, suelo, generador de enemigos, enemigos...
 
+
 ·Game Feel:
     -ver la vida de los enemigos con una barra de vida, situada encima o abajo del sprite.
+
 
 ·Jugador:
     -El área de daño no se desactiva cuando el jugador muere.
     [El área de daño(CoreComponent) apaga la CollisionShape(Nodo hijo) para que deje de chocar con enemigos]
 
-
-BUGs o FIXs: ------------------------------------------------------------------------------------------------------
 
 ·ParallaxBackground:
     -en el objeto 'core' del parallaxBackground, crear una función para detener los fondos de manera progresiva.
@@ -153,6 +222,8 @@ BUGs o FIXs: -------------------------------------------------------------------
 [SOLUCION: quitar los valores int por porcentajes del valor de velocidad, ej: (x + (x*0.5) * -1) * delta]
     -es muy rebuscado, quizás busque la manera de simplificarlo a futuro
 
+
+BUGs o FIXs: ------------------------------------------------------------------------------------------------------
 ·Crear animacion de GameOver:
     -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion.
 [FALTA PULIR]

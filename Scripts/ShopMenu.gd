@@ -1,8 +1,12 @@
 extends Control
 
 
-onready var item_show : Sprite = $TabContainer/ForgeTab/SelectRect/ItemShow
 onready var tab_container : TabContainer = $TabContainer
+onready var item_show : Sprite = $TabContainer/ForgeTab/SelectRect/ItemShow
+onready var upgrade_name_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeName
+onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
+onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
+onready var goldLabel : Label = $TabContainer/ForgeTab/GoldContainer/Label
 
 onready var helmet : Equipment = $TabContainer/ForgeTab/HelmetButton/Helmet
 onready var chestPlate : Equipment = $TabContainer/ForgeTab/ChestPlateButton/ChestPlate
@@ -13,70 +17,102 @@ onready var shield : Equipment = $TabContainer/ForgeTab/ShieldButton/Shield
 
 
 var item_name : String
+var gold : int
+var upgrade_price : int
 
 
 signal exiting
 
 
+func _ready() -> void:
+	gold_update()
+
+
+func gold_update() -> void:
+	gold = Globals.current_game.game_info.gold
+	goldLabel.text = str(gold)
+
+
 func _on_HelmetButton_pressed() -> void:
-	get_item_to_show(helmet.get_sprite_info(), "helmet")
+	get_item_to_show(helmet, "helmet")
 
 
 func _on_ChestPlateButton_pressed() -> void:
-	get_item_to_show(chestPlate.get_sprite_info(), "chestPlate")
+	get_item_to_show(chestPlate, "chest plate")
 
 
 func _on_GreavesButton_pressed() -> void:
-	get_item_to_show(greaves.get_sprite_info(), "greaves")
+	get_item_to_show(greaves, "greaves")
 
 
 func _on_BootsButton_pressed() -> void:
-	get_item_to_show(boots.get_sprite_info(), "boots")
+	get_item_to_show(boots, "boots")
 
 
 func _on_SwordButton_pressed() -> void:
-	get_item_to_show(sword.get_sprite_info(), "sword")
+	get_item_to_show(sword, "sword")
 
 
 func _on_ShieldButton_pressed() -> void:
-	get_item_to_show(shield.get_sprite_info(), "shield")
+	get_item_to_show(shield, "shield")
 
 
-func get_item_to_show(sprite_info : Array, name : String) -> void:
-	item_show.texture = sprite_info[0]
-	item_show.hframes = sprite_info[1]
-	item_show.frame = sprite_info[2]
+func get_item_to_show(equipment : Equipment, name : String) -> void:
 	item_name = name
+
+	var sprite_info : Dictionary = equipment.get_sprite_info()
+	item_show.texture = sprite_info.texture
+	item_show.hframes = sprite_info.hframes
+	item_show.frame = sprite_info.frame
+
+	var equipment_info : Dictionary = equipment.get_item_stats()
+	upgrade_name_label.text = name
+	if equipment_info.level < equipment_info.max_upgrades:
+		var equipment_next_info : Dictionary = equipment.get_item_stats(1)
+		upgrade_stat_label.text = str(equipment_info.stat) + "  =>  " + str(equipment_next_info.stat)
+
+		upgrade_price = equipment_next_info.price
+		upgrade_price_label.text = str(upgrade_price)
+
+	else:
+		upgrade_stat_label.text = str(equipment_info.stat)
+
+		upgrade_price = 9223372036854775807
+		upgrade_price_label.text = "MAX"
 
 
 func _on_UpgradeButton_pressed() -> void:
-	match item_name:
-		"helmet": 
-			helmet.upgrade()
-			_on_HelmetButton_pressed()
+	if upgrade_price <= gold and upgrade_price != 9223372036854775807:
+		gold = gold - upgrade_price
+		goldLabel.text = str(gold)
 
-		"chestPlate":
-			chestPlate.upgrade()
-			_on_ChestPlateButton_pressed()
+		match item_name:
+			"helmet":
+				helmet.upgrade()
+				_on_HelmetButton_pressed()
 
-		"greaves": 
-			greaves.upgrade()
-			_on_GreavesButton_pressed()
+			"chest plate":
+				chestPlate.upgrade()
+				_on_ChestPlateButton_pressed()
 
-		"boots": 
-			boots.upgrade()
-			_on_BootsButton_pressed()
+			"greaves":
+				greaves.upgrade()
+				_on_GreavesButton_pressed()
 
-		"sword": 
-			sword.upgrade()
-			_on_SwordButton_pressed()
+			"boots":
+				boots.upgrade()
+				_on_BootsButton_pressed()
 
-		"shield": 
-			shield.upgrade()
-			_on_ShieldButton_pressed()
+			"sword":
+				sword.upgrade()
+				_on_SwordButton_pressed()
 
-		_:
-			print("Nothing selected!")
+			"shield":
+				shield.upgrade()
+				_on_ShieldButton_pressed()
+
+	else:
+		print("Can not upgrade!")
 
 
 func save_upgrades() -> void:
@@ -86,6 +122,7 @@ func save_upgrades() -> void:
 	Globals.set_game_data("boots", boots.upgrades)
 	Globals.set_game_data("sword", sword.upgrades)
 	Globals.set_game_data("shield", shield.upgrades)
+	Globals.set_game_data("gold", gold)
 	Globals.save_data_to_file()
 
 

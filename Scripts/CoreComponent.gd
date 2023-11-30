@@ -3,7 +3,7 @@ class_name CoreComponent
 
 
 #Si hago que los atributos del personaje dependan de otro script, solo tendré que modificar este para que los actualice
-export var max_life : int = 1
+export var max_life : int = 1 setget set_max_hp, get_max_hp
 export var attack : int = 1
 export var defense : int = 1
 export var critical_cahnce : int
@@ -23,7 +23,9 @@ func _ready() -> void:
 		connect('HPStatus', get_parent(), 'seeHP')
 
 
+# No se usa, no me acuerdo porqué existe esta función
 func get_stats() -> Dictionary:
+	#print('le estats')
 	return {
 		'life' : max_life,
 		'attack' : attack,
@@ -47,13 +49,14 @@ func hit() -> float:
 
 
 func get_hurt(entring_dmg : float) -> int:
-	var hurt : int = ((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1
-	return hurt if hurt <= -1 else -1
+	# int() para quitar la advertencia "float to int"
+	var hurt : int = int(((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1)
+	return hurt if hurt < -1 else -1
 
 
 func set_hp(new_hp : int) -> void:
 	life += new_hp
-	life = clamp(life, 0, max_life)
+	life = int(clamp(life, 0, max_life)) # int() para quitar "float to int" advertencia
 	emit_signal('HPStatus', life)
 
 
@@ -64,3 +67,11 @@ func get_hp() -> int:
 func _on_CoreComponent_area_entered(area : CoreComponent) -> void:
 	set_hp(get_hurt(area.hit()))
 
+
+func set_max_hp(new_max_life : int) -> void:
+	max_life = new_max_life
+	life = max_life
+
+
+func get_max_hp() -> int:
+	return max_life
