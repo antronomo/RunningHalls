@@ -20,10 +20,10 @@ func _ready() -> void:
 # Las estadísticas después de sumar el equipamiento
 func fixed_stats() -> void:
 	# Aumentar la defensa
-	defense = defense + helmet.get_item_stats().stat + chest_plate.get_item_stats().stat + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
+	defense += helmet.get_item_stats().stat + chest_plate.get_item_stats().stat + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
 
 	# Aumentar el ataque
-	attack = attack + sword.get_item_stats().stat
+	attack += sword.get_item_stats().stat
 
 	# Aumentar vida por numero de mejoras en total, a futuro cambiará
 	set_max_hp(max_life + max_life * (total_upgrades / 2))

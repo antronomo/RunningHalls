@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("infor"):
-		print(str(current_game.duplicate()))
+		print(JSON.print(current_game.duplicate(), "\t"))
 
 
 # FUNCIONES CON CurrentGame.gd -------------------------------------------------------------

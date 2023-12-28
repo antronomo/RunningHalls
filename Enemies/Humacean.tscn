@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scripts/CoreComponent.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/EnemyStats.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Humacean.gd" type="Script" id=2]
 [ext_resource path="res://Assets/img/Crab.png" type="Texture" id=3]
 [ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
@@ -46,7 +46,7 @@ position = Vector2( 0, -8 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
-max_life = 100
+max_life = 50
 attack = 15
 defense = 10
 

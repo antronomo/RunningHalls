@@ -1,103 +1,60 @@
 extends Position2D
 
 
-const dark_wizard : PackedScene = preload("res://Enemies/DarkWizard.tscn")
-const humacean : PackedScene = preload("res://Enemies/Humacean.tscn")
-const ghost : PackedScene = preload("res://Enemies/Ghost.tscn")
+onready var enemy_list_node : Node = $EnemyListNode
+
+# Esta variable y la funcion get_wave() son esenciales si no quieres tocar level0.gd
+onready var le_wave : int = Globals.current_game.game_info.wave
 
 
-onready var wave : int setget set_wave, get_wave
+var wave_list : Array
 
 
 signal generate_loot
 signal wave_ended
-
-
-var token : int
-
-
-var spawn_list : Array = [
-	[dark_wizard,	1],
-	[humacean	,	5],
-	[ghost		,	7]
-]
+signal enemy_list_ended
 
 
 func _ready() -> void:
-	set_wave(Globals.current_game.game_info.wave)
-	token_manager()
+	wave_generator(enemy_list_node.get_enemy_group())
 
 
-func set_wave(new_wave : int) -> void:
-	wave = new_wave
+func get_wave() -> int:
+	return le_wave
 
 
-func get_wave() -> int: 
-	return wave
+func wave_generator(enemy_list : Array) -> void:
+	var wave_num : int = randi() % 3 + 5
 
+	wave_list = [
+		[enemy_list[0]],
+		[enemy_list[0], enemy_list[0]],
+		[enemy_list[0], enemy_list[1], enemy_list[1]],
+		[enemy_list[1], enemy_list[2], enemy_list[2]],
+		[enemy_list[2]]
+	]
 
-func buy_enemies() -> Array:
-	var list : Array = []
+	if wave_num >= 6:
+		wave_list.append_array([[enemy_list[0], enemy_list[1], enemy_list[2], enemy_list[2]]])
 
-	while token > 0:
-		var num = randi() % spawn_list.size()
+		if wave_num == 7:
+			wave_list.append_array([[enemy_list[randi() % 3]]])
 
-		while spawn_list[num][1] > token:
-			num -= 1
-
-			if token <= 0:
-				# print('woa romper')
-				break
-
-		token -= spawn_list[num][1]
-		# print(str(token))
-		list.insert(list.size(), spawn_list[num][0])
-
-	list.sort()
-	# print(str(list))
-	return list
+	# print(str(wave_num), str(wave_list)) 
 
 
 func spawn_enemies() -> void: 
-	var last_enemy : RigidBody2D
-	var list : Array = buy_enemies()
+	for i1 in wave_list.size():
+		for i2 in wave_list[i1].size():
+			var next_enemy : RigidBody2D = wave_list[i1][i2].instance()
+			yield(get_tree().create_timer(randf() * 0.75 + 0.25), 'timeout')
+			add_child(next_enemy)
+		
+		# print("waiting")
+		yield(self, "wave_ended")
 
-	print('invocando ' + str(list.size()) + ' malos malosos.')
-
-	for i in list:
-		var next_enemy : RigidBody2D = i.instance()
-
-		if last_enemy != null:
-			if next_enemy.my_name != last_enemy.my_name:
-				yield(get_tree().create_timer(1.0), 'timeout') # Si dejo tiempos mas grandes, podría hacerlo pasar por oleadas
-			else:
-				yield(get_tree().create_timer(randi() % (30 + 20) / 100.0 ), 'timeout')
-
-		add_child(next_enemy)
-		last_enemy = next_enemy
-
-
-# No quiero que repita la suseción cada vez que quiera tener un número de tokens, igual debería guardar los numeros anteriores y simplemente devolver el siguiente
-func token_manager() -> void: # sucesion de fibonacci
-	var a : int = 1
-	var b : int = 1
-	var return_a : bool = true
-
-	for i in wave:
-		if return_a:
-			a += b
-			return_a = !return_a
-		else:
-			b += a
-			return_a = !return_a
-
-	if return_a:
-		token = a
-	else:
-		token = b
-
-	print('oleada: ' + str(wave))
-	print('token aviable: ' + str(token))
+	# print("spawn_enemies ended")
+	emit_signal("enemy_list_ended")
 
 
 func end_wave(enemy_position : Vector2) -> void: # Llamado cuando un hijo 'muere'
@@ -105,11 +62,19 @@ func end_wave(enemy_position : Vector2) -> void: # Llamado cuando un hijo 'muere
 
 	emit_signal("generate_loot", enemy_position)
 
-	if get_child_count() == 0:
-		wave += 1
-		token_manager()
-		spawn_enemies()
+	if get_child_count() == 1:
+		le_wave += 1
+		# spawn_enemies()
 		emit_signal("wave_ended")
+
+
+func _on_EnemySpawner_wave_ended() -> void:
+	return
+
+
+func _on_EnemySpawner_enemy_list_ended() -> void:
+	wave_generator(enemy_list_node.get_enemy_group())
+	spawn_enemies()
 
 
 """
@@ -117,19 +82,11 @@ Lo que quiero conseguir es lo siguiente:
 Una manera de que aparezcan los enemigos en oleadas.
 
 Ideas:
-·la ronda se da como finalizada cuando todos los enemigos han sido derrotados o si pasa demasiado tiempo.
-
-·podría el spawner elegir 1 solo enemigo y que aparezcan tantos enemigos iguales como tokens tenga disponible.
-
-·Impedir que enemigos más débiles aparezcan en oleadas altas, sino podria hacer aparecer demasiados enemigos en una oleada, aunque puede ser interesante.
-
 ·Los enemigos deben tener mejores estadísticas confomre tenga más rondas, al menos, en hp
 
 
 COMPLETADO:
-·Usar un sistema de tokens, asignar cada enemigo un valor y que el spawner compre enemigos asta acercarse a 0 tokens.
-
-·cada ronda aumentará el numero de tokens que el spawner tendrá.
+·la ronda se da como finalizada cuando todos los enemigos han sido derrotados.
 
 ·los enemigos deben aparecer uno detrás de otro rápido, pero no a la vez, podría hacer falta hacer subgrupos si aparecen distintos enemigos.
 
@@ -137,5 +94,8 @@ COMPLETADO:
 DESCARTADO:
 ·¿los tokens no usados se guardan para la próxima ronda?
 
+·cada ronda aumentará el numero de tokens que el spawner tendrá.
+
+·Usar un sistema de tokens, asignar cada enemigo un valor y que el spawner compre enemigos asta acercarse a 0 tokens.
 
 """

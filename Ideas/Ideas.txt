@@ -64,8 +64,8 @@ Si acabo por poner los artefactos, haré que puedas ponerlos en cada checkpoint 
 Tengo una seccion de ideas en EnemySpawner.gd, lo dejaré ahí por ahora
 
 
-ARMADURAS:
 ------------------------------------------------------------
+ARMADURAS:
 Puedo crear un objeto para las piezas de armadura (como 'CoreComponent' para enemigos y jugador)
 Tengo comentarios en CoreEquipment.gd
 requeridos:
@@ -98,14 +98,15 @@ Atributos por encantar armaduras:
 	escudo:
 		- +%armadura
 		- +knockback (como si hicieras parry)
+
 ------------------------------------------------------------
 
 
 ¿tendría sentido meter guantes como parte de la armadura? si acaso, ¿cambiarlo por pantalones?
 
 
-Ideas que cambiarian radicalmente el juego(?):
 ------------------------------------------------------------
+Ideas que cambiarian radicalmente el juego(?):
 	-Los enemigos solo sueltan XP, con ese xp aumentas las estadísitas bases del jugador (hp, atk, deff...). -> Descartado
 
 	-Los jarrones y cofres soltarán el oro que necesitas para comprar mejores armas y armaduras.
@@ -120,9 +121,11 @@ Ideas que cambiarian radicalmente el juego(?):
 ------------------------------------------------------------
 
 
+-----------------------------------------------------------------------------------------
 Cambiar la manera en la que genero enemigos?
 	·Actualmente para generar enemigos, asigno tokens eligiendo el numero "wave" de la sucesion de fibonacci y con esos tokens
 	"compro" enemigos asta gastar los tokens y los meto en un array, organizo el array y los invoco en orden haciendo pausas de tiempo aleatorio entre invocación.
+
 	·El problema es que llegará un punto en que invoque demasiados enemigos y actualmente lo hace injusto
 
 	·La nueva idea es tener diferentes diferentes grupo de enemigos, que cada enemigo tenga versiones lo mismo pero más grande para minijefes, el jefe al final de la lista y desecharla dando paso a la siguiente y vuelta a empezar.
@@ -130,8 +133,57 @@ Cambiar la manera en la que genero enemigos?
 
 	·Puedo hacer que las oleadas sean aleatorios(entre 5 a 7, por ejemplo) donde el último siempre sea un jefe final o un enemigo gigante con mucha vida.
 
+	·y que cuando invocas al último enemigo de la oleada, que empiece una cuenta atrás (excepto en jefes?) de 5 a 10 segundos (por ejemplo) y pasado el tiempo invocar la siguiente oleada.
+-----------------------------------------------------------------------------------------
+
 
 La organización de este proyecto es un desastre
 
 
 aumentar el oro generado progresivamente (por oleadas)
+
+
+Grupo de enemigos:
+--------------------------------------------------------------------------------------------
+UNHOLY, HUMAN, BEAST, STONEWORK, ELDRITCH, BLOODSUCKER, HUSK
+cada enemigo puede tener variaciones dependiendo de que si tienen varias razas o si ocupan varios roles
+animales:
+	-rata [sprites hechos]
+	-murcielago [sprite hecho]
+	-oso
+	-araña [sprite hecho]
+	-cangrejo
+	-zorro ?
+	-conejo
+
+fantasticos:
+	-slime
+	-rey slime
+	-dragon
+	-elementalista
+	-fenix
+	-golem
+	-goblin (puede haber uno especial, que lleve mucho oro)
+	-elfos
+	-hadas / pixies
+	-hidra
+	-ciclope
+	-demonio
+
+no-muertos:
+	-zombies
+	-esqueletos
+	-fantasma
+	-nigromance
+
+Furros(bestias, hibrido entre humano y otra cosa):
+	-licantropo (hombre-lobo)
+	-arpias
+	-medusa (la mujer-serpiente que te convierte en piedra al mirarla)
+	-sirenas ?
+	-vampiros [sprite hecho]
+
+--------------------------------------------------------------------------------------------
+
+
+Aunque no lo tenga implementado, se me ha ocurrido sustituir los sprites de las flechas por carcaj y las flechas verlas en partida.

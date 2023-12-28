@@ -3,10 +3,6 @@ la lista de las cosas NO estan organizadas, el archivo contiene errores ortograf
 
 
 TODO (o ideas): -------------------------------------------------------------------------------------------
-·Mecanica(oleadas):
-    modificar la manera en la que aparecen enemigos para que cada X oleada, aparzca minijefes o jefes
-
-
 ·Crear Enemigo, RATA:
     -crear un enemigo, la rata a partir del enemigo base
 
@@ -21,7 +17,7 @@ TODO (o ideas): ----------------------------------------------------------------
         El objetivo es derrotar al jefe en el menor número de intentos posibles.
 
 
-·Modo de juegos:
+·Modo de juegos: [descartable, el modo principal ya es esto, por ahora]
     -Infinito:
         Tiene 'checkpoints' cada x distancia recorrida o al derrotar x número de enemigos.
         Al llegar al 'checkpoint' podrá mejorar el equipamineto o dejar la partida para después.
@@ -86,8 +82,8 @@ WIP: ---------------------------------------------------------------------------
     -interfaz de partida(La idea es ver cosas como):
         -la salud del jugador [hecho]
         -el oro obtenido [hecho]
-        -la distancia recorrida [descartable]
         -oleadas
+        -la distancia recorrida
 
 
 ·obtencion de oro:
@@ -96,6 +92,21 @@ WIP: ---------------------------------------------------------------------------
 
 
 DONE: ------------------------------------------------------------------------------------------------------
+·Generador de eneimgos: Crear una lista de arrays con diferentes grupos de enemigos
+    -los enemigos deben tener sentido entre ellos.
+    -los enemigos están organizados al mas debil al mas fuerte.
+    -el ultimo enemigo está pensado para ser el jefe del Array.
+·Mecanica(oleadas):
+modificar la manera en la que aparecen enemigos para que siga el siguiente protocolo:
+    -Seleccionar un grupo de enemigos.
+    -Crear oleadas con dificultad ascendiente.
+    -a la oleada cinco a siete, sacar al jefe (tal vez, con subditos).
+    -Elegir nuevo grupo de enemigos.
+
+
+·Generador de enemigos: Aun no se como funcionar doble blucle for con array[x][y] y por eso no funciona como quiero
+
+
 ·Sprites: monedas
     -he creado 3 monedas: bronce, plata y oro. No es algo que hice de manera premeditada, igual a futuro las use o incluso darles valor monetario para la tienda o forja
 

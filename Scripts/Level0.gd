@@ -31,7 +31,7 @@ func _ready() -> void:
 	gui.first_call($Player/CoreComponent.get_stats().life)
 	gui.update_gold_label(current_gold)
 	
-	enemy_spawner.set_wave(current_wave)
+	# enemy_spawner.set_wave(current_wave)
 	enemy_spawner.spawn_enemies()
 	
 	shop_ui.rect_position = Vector2(0, -135)

@@ -36,6 +36,7 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
+scrolling_enabled = false
 
 [node name="HelmetButton" type="Button" parent="TabContainer/ForgeTab"]
 anchor_left = -0.375
@@ -146,9 +147,9 @@ anchor_left = -0.375
 anchor_top = -0.261
 anchor_right = -0.375
 anchor_bottom = -0.261
-margin_left = 80.0
+margin_left = 96.0
 margin_top = 96.012
-margin_right = 128.0
+margin_right = 144.0
 margin_bottom = 112.012
 custom_fonts/font = ExtResource( 8 )
 text = "UPGRADE"
@@ -160,7 +161,9 @@ margin_bottom = 64.0
 color = Color( 0, 0, 0, 0.741176 )
 
 [node name="UpgradeName" type="Label" parent="TabContainer/ForgeTab/InfoRect"]
-margin_right = 48.0
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 44.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 8 )
 align = 1

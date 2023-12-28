@@ -21,8 +21,7 @@ Fuente:
 
 
 Motor de videojuego:
-    ·creado con GodotEngine 3.5.2
-    ·continuado en GodotEngine 3.5.3
+    ·GodotEngine 3.5.3
 
 
 Otro software utilizado:
@@ -31,6 +30,9 @@ Otro software utilizado:
     ·Visual Studio Code (con plugins), como editor de texto.
 
     ·Git y GitHub, como control del código fuente en la nube.
+
+    ·Lorein, aplicación de canvas infinito donde escribo ideas y hago dibujos sobre el proyecto.
+        -https://github.com/mbrlabs/Lorien
 
 
 Videos y canales relevantes que he visto a lo largo del desarrollo:

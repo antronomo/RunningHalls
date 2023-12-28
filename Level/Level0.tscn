@@ -106,7 +106,7 @@ script = ExtResource( 3 )
 position = Vector2( 35, 101 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
-position = Vector2( 268, 76 )
+position = Vector2( 275, 75 )
 
 [node name="LootManager" type="Node2D" parent="."]
 script = ExtResource( 7 )

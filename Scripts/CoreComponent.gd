@@ -14,6 +14,7 @@ var life : int = 0 setget set_hp, get_hp
 
 
 signal HPStatus
+signal low_life # low_life status become true when life is below 50% of max_life
 
 
 func _ready() -> void:
@@ -25,7 +26,7 @@ func _ready() -> void:
 
 # No se usa, no me acuerdo porqué existe esta función
 func get_stats() -> Dictionary:
-	#print('le estats')
+	# print('le estats')
 	return {
 		'life' : max_life,
 		'attack' : attack,
@@ -56,9 +57,9 @@ func get_hurt(entring_dmg : float) -> int:
 
 func set_hp(new_hp : int) -> void:
 	life += new_hp
-	life = int(clamp(life, 0, max_life)) # int() para quitar "float to int" advertencia
+	life = int(clamp(life, 0, max_life)) # int() para quitar la advertencia "float to int"
 	emit_signal('HPStatus', life)
-
+	emit_signal('low_life', false if life > (max_life / 2) else true)
 
 func get_hp() -> int:
 	return life

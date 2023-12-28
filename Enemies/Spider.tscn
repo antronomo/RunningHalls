@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/img/Spider.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Spider.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/EnemyStats.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 4 )
+
+[node name="Spider" type="RigidBody2D"]
+collision_layer = 4
+script = ExtResource( 3 )
+my_name = "Spider"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -8 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 6 )
+
+[node name="CoreComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 4 )
+max_life = 100
+attack = 15
+defense = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
+position = Vector2( 0, -4 )
+shape = SubResource( 5 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 1 )]
+margin_left = -8.0
+margin_top = -16.0
+margin_right = 8.0
+margin_bottom = -12.0
+
+[connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]
