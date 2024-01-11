@@ -62,7 +62,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": false,
-"name": "CapuchantTime",
+"name": "DescapuchaTime",
 "speed": 4.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
@@ -102,7 +102,7 @@ shape = SubResource( 16 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 4 )
-max_life = 1000
+max_life = 300
 attack = 20
 defense = 20
 
@@ -118,4 +118,3 @@ margin_bottom = -20.0
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]
-[connection signal="low_life" from="CoreComponent" to="." method="_on_CoreComponent_low_life"]

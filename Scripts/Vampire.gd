@@ -1,21 +1,25 @@
 extends Enemy
 
 
-onready var anim_sprite : AnimatedSprite = $AnimatedSprite
-
-
-func _on_AnimatedSprite_animation_finished():
+func _on_AnimatedSprite_animation_finished() -> void:
 	var anim : String = anim_sprite.animation
 	
-	if anim == "CapuchaTime": 
-		anim_sprite.animation = 'Walk2'
-	elif anim == "CapuchantTime": 
-		anim_sprite.animation = 'Walk1'
+	match anim:
+		"CapuchaTime":
+			anim_sprite.animation = "Walk2"
+		"CapuchantTime":
+			anim_sprite.animation = "Walk1"
 
 
-func _on_CoreComponent_low_life(status : bool):
-	if low_life_status != status:
-		if status: 
-			anim_sprite.animation = 'CapuchaTime'
-		else: 
-			anim_sprite.animation = 'CapuchantTime'
+func update_status(status : String, value : bool) -> void:
+	match status:
+		"low_life":
+			if dict_status.low_life != value:
+				if value: 
+					anim_sprite.animation = "CapuchaTime"
+				else: 
+					anim_sprite.animation = "DescapuchaTime"
+			dict_status.low_life = value
+
+		_:
+			print(status + " not found")

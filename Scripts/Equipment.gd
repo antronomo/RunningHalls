@@ -1,5 +1,5 @@
-extends Node2D
 class_name Equipment
+extends Node2D
 
 
 onready var sprite : Sprite = $Sprite

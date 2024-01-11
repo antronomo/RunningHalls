@@ -1,42 +1,75 @@
-extends RigidBody2D
 class_name Enemy
+extends RigidBody2D
 
 
 export var my_name : String
 
 
-onready var health_bar : HealthBar = get_node('HealthBar')
+onready var health_bar : HealthBar = get_node("HealthBar")
+onready var core_compo : CoreComponent = $CoreComponent
+onready var anim_sprite : AnimatedSprite = $AnimatedSprite
 
 
 var stats : Dictionary
-var low_life_status : bool = false
+var im_boss : bool = false
+
+
+var dict_status : Dictionary = {
+	"low_life" : false
+}
 
 
 signal died
 
 
 func _ready() -> void:
-	connect('died', get_node('../'), 'end_wave')
+	mode = 2
+	connect("died", get_node("../"), "end_wave")
 
 	stats = $CoreComponent.get_stats()
 	if health_bar:
 		health_bar.max_value = stats.life
 		health_bar.value = stats.life
 	else:
-		print(my_name + ' does not have a healthbar')
+		print(my_name + " does not have a healthbar")
 
 
 func seeHP(hp : int) -> void:
-	# print(my_name + ' life is: ' + str(hp))
-
+	# print(my_name + " life is: " + str(hp))
 	health_bar.value = hp
 
 	if hp <= 0:
 		hecking_die()
 
 
+func boss_mode() -> void:
+	if !im_boss:
+		print(my_name + " is comming big")
+		# scale = Vector2(2,2)  # Funciona pero solo dura un frame?
+		anim_sprite.position = Vector2(8, -16)
+		anim_sprite.scale = Vector2(2, 2)
+		health_bar.rect_position = Vector2(-8, -48)
+		health_bar.rect_scale = Vector2(2, 2)
+		core_compo.boss_buff()
+		im_boss = true
+	else:
+		print(my_name + " is already a boss")
+
+
+# # Esto es para pruebas, debería ser eliminado antes del commit
+# func _input(event) -> void:
+# 	if event.is_action_pressed("ui_up"):
+# 		print("escalando")
+# 		boss_mode()
+# #-------------------------------------------------------------
+
+
+# Esta función se usa en los escrips heredados de este
+func update_status(status : String, value : bool) -> void: pass 
+
+
 func hecking_die() -> void:
-	emit_signal('died', global_position)
+	emit_signal("died", global_position)
 	queue_free()
 
 

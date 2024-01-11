@@ -14,11 +14,11 @@ var total_upgrades : int
 
 func _ready() -> void:
 	total_upgrades = get_total_upgrades()
-	fixed_stats()
+	update_stats()
 
 
 # Las estadísticas después de sumar el equipamiento
-func fixed_stats() -> void:
+func update_stats() -> void:
 	# Aumentar la defensa
 	defense += helmet.get_item_stats().stat + chest_plate.get_item_stats().stat + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
 

@@ -4,6 +4,7 @@ extends Position2D
 onready var enemy_list_node : Node = $EnemyListNode
 
 # Esta variable y la funcion get_wave() son esenciales si no quieres tocar level0.gd
+# La variable es utilizada por los enemigos para calcular estadísticas progresivas
 onready var le_wave : int = Globals.current_game.game_info.wave
 
 
@@ -47,8 +48,14 @@ func spawn_enemies() -> void:
 	for i1 in wave_list.size():
 		for i2 in wave_list[i1].size():
 			var next_enemy : RigidBody2D = wave_list[i1][i2].instance()
-			yield(get_tree().create_timer(randf() * 0.75 + 0.25), 'timeout')
+			yield(get_tree().create_timer(randf() * 0.75 + 0.25), "timeout")
 			add_child(next_enemy)
+
+			if i1 == 4 or i1 == 6:
+				print("boss time")
+				next_enemy.boss_mode()
+			
+			print(str(i1))
 		
 		# print("waiting")
 		yield(self, "wave_ended")
@@ -57,14 +64,14 @@ func spawn_enemies() -> void:
 	emit_signal("enemy_list_ended")
 
 
-func end_wave(enemy_position : Vector2) -> void: # Llamado cuando un hijo 'muere'
-	yield(get_tree().create_timer(0.01), 'timeout') # Si lo borras/comentas, da error
+func end_wave(enemy_position : Vector2) -> void: # Llamado cuando un hijo "muere"
+	yield(get_tree().create_timer(0.01), "timeout") # Si lo borras/comentas, da error
 
 	emit_signal("generate_loot", enemy_position)
 
 	if get_child_count() == 1:
-		le_wave += 1
 		# spawn_enemies()
+		le_wave += 1
 		emit_signal("wave_ended")
 
 
@@ -88,7 +95,7 @@ Ideas:
 COMPLETADO:
 ·la ronda se da como finalizada cuando todos los enemigos han sido derrotados.
 
-·los enemigos deben aparecer uno detrás de otro rápido, pero no a la vez, podría hacer falta hacer subgrupos si aparecen distintos enemigos.
+·los enemigos deben aparecer uno detrás de otro rápido, pero no a la vez
 
 
 DESCARTADO:

@@ -21,8 +21,9 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 4.0
+height = 8.0
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 4 )
@@ -40,6 +41,7 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -4 )
+rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="CoreComponent" type="Area2D" parent="."]

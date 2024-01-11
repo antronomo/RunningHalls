@@ -4,4 +4,5 @@
 
 [node name="Enemy" type="RigidBody2D"]
 collision_layer = 4
+mode = 2
 script = ExtResource( 1 )

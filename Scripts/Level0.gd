@@ -47,7 +47,7 @@ func get_vars() -> void:
 
 # Esto empieza a sobrar
 func _on_MataSobras5000_body_exited(body : Node) -> void:
-	print(str(body) + ' has been deleted from existence')
+	print(str(body) + " has been deleted from existence")
 	body.queue_free()
 
 
@@ -60,9 +60,9 @@ func start_game() -> void:
 func finish_game() -> void:
 	pasue_menu.queue_free()
 	$GameOverUI.visible = true
-	$Accelerator/AnimationPlayer.play_backwards('accelerate')
+	$Accelerator/AnimationPlayer.play_backwards("accelerate")
 	set_propetys()
-	yield(get_tree().create_timer(0.1), 'timeout')# Solucion temporal: al morir el oro actualiza dos veces
+	yield(get_tree().create_timer(0.1), "timeout")# Solucion temporal: al morir el oro actualiza dos veces
 	gui.update_gold_label(saved_gold)
 
 
@@ -90,11 +90,13 @@ func _on_EnemySpawner_wave_ended() -> void:
 	saved_gold = current_gold
 	current_wave = enemy_spawner.get_wave()
 
+	# print("next wave: " + str(current_wave))
+
 
 # FUNCIONES con PauseMenuUI---------------------------------------------
 func _on_PauseMenu_save_time() -> void:
 	set_propetys()
-	get_tree().change_scene('res://UIs/MenuScene.tscn')
+	get_tree().change_scene("res://UIs/MenuScene.tscn")
 
 
 # FUNCIONES con GameOverUI----------------------------------------------
@@ -109,7 +111,7 @@ func _on_GameOverUI_retry_pressed() -> void:
 
 
 func _on_GameOverUI_return_pressed() -> void:
-	get_tree().change_scene('res://UIs/MenuScene.tscn')
+	get_tree().change_scene("res://UIs/MenuScene.tscn")
 
 
 # FUNCIONES con ShopUI--------------------------------------------------

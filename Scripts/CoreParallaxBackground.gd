@@ -1,5 +1,5 @@
-extends ParallaxBackground
 class_name CoreParallaxBackground
+extends ParallaxBackground
 
 
 var parallax_speed : int = 0 setget set_paraspeed, get_paraspeed

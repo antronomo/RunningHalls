@@ -3,10 +3,6 @@ la lista de las cosas NO estan organizadas, el archivo contiene errores ortograf
 
 
 TODO (o ideas): -------------------------------------------------------------------------------------------
-·Crear Enemigo, RATA:
-    -crear un enemigo, la rata a partir del enemigo base
-
-
 ·Crear Icono del Juego:
 
 
@@ -40,7 +36,7 @@ TODO (o ideas): ----------------------------------------------------------------
     -Hacer que el jugador tenga habilidades.
 
 
-·Mecánica: ?
+·Mecánica: [descartable]
     -Hacer que el jugador pueda tener una clase, cada clase tiene habilidades diferentes.
 
 
@@ -48,11 +44,11 @@ TODO (o ideas): ----------------------------------------------------------------
     -Un sistema donde el jugador pueda encontrar artefactos que podrá equipar al inicio de cada partida.
 
 
-·Mecánica: ?
+·Mecánica: [descartable]
     -Hacer que aparezca determinado tipo de enemigos en funcion del fondo en partida. (solo en modo aventura).
 
 
-·LOGROS: ?
+·LOGROS: [descartable]
     -Crear un archivo (AUTOLOAD) para administrar los logros.
 
 
@@ -61,13 +57,25 @@ TODO (o ideas): ----------------------------------------------------------------
 
 
 WIP: ------------------------------------------------------------------------------------------------------
-·MODIFICAR SCRIP:
-    -Seprar el script de CoreComponent para que las estadísticas estén en uno nuevo.
-        -La idea es que CoreComponent solo sirva para colisionar con otros y modificar su propia vida,
-        haciendo otro script que lleve el tema de las estadísticas, puedo mejorar tanto al jugador como los
-        enemigos y así llevar a cabo la idea de la tienda y la subida de dificultad por distancia recorrida.
-        [Escript para jugador creado: PlayerStats.gd]
-        [Escript para los enemigos creado: EnemyStats.gd, pero no iplementado]
+problemas con el escalado de los enemigos:
+    -El problema es que no puedo escalar todo desde el nodo princial (RigidBody2D) con:
+    scale = Vector2(2, 2)
+    porque solo dura un frame y vuelve a su estado anterior, no pude editarlo en código ni guardando la escena porque al momento de instanciar vuelve al escalado 1, 1.
+    -lo que he hecho ha sido mover la posicion y tamaño del sprite y la barra de vida, pero me parece feo
+
+
+Ajustes de dificultad:
+    -estudiar y balancear las estadísticas de los enemigos, recuerda que cada enemigo se le cambian sus estadísticas desde su escena, no hay archivos de recursos ni nada que puedas arrastrar y cargar (aún, puede que no, mejor esperar a añadir mas enemigos)
+
+
+Añadir jefes:
+    -el juego cuenta con un sistema para hacer aparecer mini-jefes, que son enemigos más grandes y con mejores estadísticas, podría hacer enemigos únicos, que de por sí sean grandes y con fuertes estadísticas, como un dragón o cosas así.
+
+
+ARREGLOS:
+    -creo que el jugador recibe demasiado oro (aun no está la dificultad progresiva implementado)
+    -Cambiar la manera en la que cargan los sprites: todo por separado o un texture map gigante [DESCARTABLE]
+    -Quitar el borde de 2px de los sprites
 
 
 ·MENU OPCIONES:
@@ -92,6 +100,25 @@ WIP: ---------------------------------------------------------------------------
 
 
 DONE: ------------------------------------------------------------------------------------------------------
+·MODIFICAR SCRIP:
+    -Seprar el script de CoreComponent para que las estadísticas estén en uno nuevo.
+        -La idea es que CoreComponent solo sirva para colisionar con otros y modificar su propia vida,
+        haciendo otro script que lleve el tema de las estadísticas, puedo mejorar tanto al jugador como los
+        enemigos y así llevar a cabo la idea de la tienda y la subida de dificultad por distancia recorrida.
+        [Escript para jugador creado: PlayerStats.gd]
+        [Escript para los enemigos creado: EnemyStats.gd, iplementado.
+        La dificultad es una subída de estadísticas por parte de los enemigos dependiendo exclusivamente de cuantas rondas halla(?) superado el jugador, el jefe tiene un bosteo extra]
+
+
+ARREGLOS:
+    -La animacion del vampiro al ponerse la capucha se activa cada que recibe un golpe cuando llega al low_life_satus [hecho]
+    -arreglar las formas de colisión y posicionarlos bien para los enemigos más pequeños [hecho]
+
+
+·Crear Enemigo, RATA:
+    -crear un enemigo, la rata a partir del enemigo base
+
+
 ·Generador de eneimgos: Crear una lista de arrays con diferentes grupos de enemigos
     -los enemigos deben tener sentido entre ellos.
     -los enemigos están organizados al mas debil al mas fuerte.
@@ -233,9 +260,3 @@ modificar la manera en la que aparecen enemigos para que siga el siguiente proto
 [SOLUCION: quitar los valores int por porcentajes del valor de velocidad, ej: (x + (x*0.5) * -1) * delta]
     -es muy rebuscado, quizás busque la manera de simplificarlo a futuro
 
-
-BUGs o FIXs: ------------------------------------------------------------------------------------------------------
-·Crear animacion de GameOver:
-    -Cuando la salud del jugador alcanza a 0, que el esprite se tumbe, el parallax pare progresivametne, deje de aparecer enemigos y que los enemigos ya en pantalla se queden en la posicion.
-[FALTA PULIR]
-[Solucion?: podría cambiar la animacion a una donde el jugador da media vuelta y se va]

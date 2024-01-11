@@ -30,12 +30,12 @@ func _on_MainMenu_credit_pressed() -> void:
 
 # START MENU FUNCTIONS-------------------------------------
 func _on_StartMenu_resume_pressed() -> void:
-	get_tree().change_scene('res://Level/Level0.tscn')
+	get_tree().change_scene("res://Level/Level0.tscn")
 
 
 func _on_StartMenu_new_game_pressed() -> void:
 	Globals.reset_game_data()
-	get_tree().change_scene('res://Level/Level0.tscn')
+	get_tree().change_scene("res://Level/Level0.tscn")
 
 
 func _on_StartMenu_return_pressed() -> void:

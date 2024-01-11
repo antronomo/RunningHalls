@@ -17,7 +17,7 @@ func game_pauser(el_booleano:bool) -> void:
 
 
 func _input(event:InputEvent) -> void:
-	if event.is_action_pressed('ui_cancel'):
+	if event.is_action_pressed("ui_cancel"):
 		if get_tree().paused:
 			anim.play("pause_out")
 		else:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Ghost.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/CoreComponent.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/EnemyStats.gd" type="Script" id=2]
 [ext_resource path="res://Assets/img/Ghost.png" type="Texture" id=3]
 [ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
 
@@ -36,6 +36,7 @@ my_name = "Ghost"
 position = Vector2( 0, -8 )
 frames = SubResource( 3 )
 animation = "Default"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -47,7 +48,7 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource( 2 )
 max_life = 100
-attack = 15
+attack = 30
 defense = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]

@@ -27,8 +27,8 @@ func save_data_to_file() -> void:
 
 
 # FUNCIONES que modifican variables en current_game ----------------------------------------
-# Es necesario verificar el tipo de variable y su contenido? por ahora no, pero tampoco lo voy a aquitar
-func set_game_data(what:String, much) -> void:
+# Es necesario verificar el tipo de variable? por ahora no, pero tampoco lo voy a aquitar
+func set_game_data(what : String, much) -> void:
 	match what:
 		"wave":
 			if typeof(much) == TYPE_INT:
@@ -79,7 +79,7 @@ func set_game_data(what:String, much) -> void:
 				print("cannot save " + what + " with: " + str(much))
 
 		_: # Default
-			print(what + " does not exist")
+			print(what + " not found")
 
 
 # FUNCIONES con Config.gd ------------------------------------------------------------------

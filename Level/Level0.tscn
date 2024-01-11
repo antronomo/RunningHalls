@@ -11,10 +11,10 @@
 [ext_resource path="res://UIs/ShopMenu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 160, 2.5 )
+extents = Vector2( 160, 6.25 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 38.5, 68.5 )
+extents = Vector2( 37, 68.5 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -104,9 +104,11 @@ script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 35, 101 )
+z_index = 0
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
-position = Vector2( 275, 75 )
+position = Vector2( 272, 80 )
+z_index = -1
 
 [node name="LootManager" type="Node2D" parent="."]
 script = ExtResource( 7 )
@@ -116,6 +118,7 @@ position = Vector2( 159, 103 )
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicGround"]
+position = Vector2( 0, 3.75 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true

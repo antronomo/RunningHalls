@@ -9,7 +9,7 @@ Inspirado de:
         https://play.google.com/store/apps/details?id=com.buffstudio.onthehero&hl=es_419&gl=US
 
 
-Sprites (o arte): 
+Sprites (o arte gráfico): 
     ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
         editado por: antronomo
 
@@ -17,7 +17,7 @@ Sprites (o arte):
 
 
 Fuente:
-    ·'Minecraft' de Craftron Gaming en -> https://www.dafont.com/es/minecraft.font
+    ·"Minecraft" de Craftron Gaming -> https://www.dafont.com/es/minecraft.font
 
 
 Motor de videojuego:
@@ -25,11 +25,11 @@ Motor de videojuego:
 
 
 Otro software utilizado:
-    ·Aseprite, como editor de imagenes en pixelart.
+    ·Aseprite como aplicación de dibujo en pixelart.
 
-    ·Visual Studio Code (con plugins), como editor de texto.
+    ·Visual Studio Code (con plugins) como editor de texto.
 
-    ·Git y GitHub, como control del código fuente en la nube.
+    ·Git y GitHub como control del código fuente en la nube.
 
     ·Lorein, aplicación de canvas infinito donde escribo ideas y hago dibujos sobre el proyecto.
         -https://github.com/mbrlabs/Lorien
