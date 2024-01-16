@@ -12,6 +12,7 @@ onready var anim_sprite : AnimatedSprite = $AnimatedSprite
 
 var stats : Dictionary
 var im_boss : bool = false
+# var current_wave : int
 
 
 var dict_status : Dictionary = {
@@ -25,7 +26,10 @@ signal died
 func _ready() -> void:
 	mode = 2
 	connect("died", get_node("../"), "end_wave")
+	set_up_health_bar()
 
+
+func set_up_health_bar() -> void: 
 	stats = $CoreComponent.get_stats()
 	if health_bar:
 		health_bar.max_value = stats.life
@@ -44,7 +48,7 @@ func seeHP(hp : int) -> void:
 
 func boss_mode() -> void:
 	if !im_boss:
-		print(my_name + " is comming big")
+		# print(my_name + " is comming big")
 		# scale = Vector2(2,2)  # Funciona pero solo dura un frame?
 		anim_sprite.position = Vector2(8, -16)
 		anim_sprite.scale = Vector2(2, 2)
@@ -52,20 +56,16 @@ func boss_mode() -> void:
 		health_bar.rect_scale = Vector2(2, 2)
 		core_compo.boss_buff()
 		im_boss = true
-	else:
-		print(my_name + " is already a boss")
 
-
-# # Esto es para pruebas, debería ser eliminado antes del commit
-# func _input(event) -> void:
-# 	if event.is_action_pressed("ui_up"):
-# 		print("escalando")
-# 		boss_mode()
-# #-------------------------------------------------------------
+		set_up_health_bar()
 
 
 # Esta función se usa en los escrips heredados de este
 func update_status(status : String, value : bool) -> void: pass 
+	
+
+# func set_wave(new_wave : int) -> void:
+# 	current_wave = new_wave
 
 
 func hecking_die() -> void:

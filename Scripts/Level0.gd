@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var physic_ground = $PhysicGround
+onready var physic_ground : StaticBody2D = $PhysicGround
 onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
 onready var finishing : bool = false
 onready var enemy_spawner : Position2D = $EnemySpawner
@@ -89,6 +89,7 @@ func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
 func _on_EnemySpawner_wave_ended() -> void:
 	saved_gold = current_gold
 	current_wave = enemy_spawner.get_wave()
+	set_propetys()
 
 	# print("next wave: " + str(current_wave))
 

@@ -49,13 +49,14 @@ func spawn_enemies() -> void:
 		for i2 in wave_list[i1].size():
 			var next_enemy : RigidBody2D = wave_list[i1][i2].instance()
 			yield(get_tree().create_timer(randf() * 0.75 + 0.25), "timeout")
+			# next_enemy.set_wave(le_wave)
 			add_child(next_enemy)
 
 			if i1 == 4 or i1 == 6:
-				print("boss time")
+				# print("boss time")
 				next_enemy.boss_mode()
 			
-			print(str(i1))
+			# print(str(i1))
 		
 		# print("waiting")
 		yield(self, "wave_ended")

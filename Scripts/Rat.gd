@@ -16,5 +16,5 @@ func boss_mode() -> void:
 		health_bar.rect_scale = Vector2(2, 2)
 		core_compo.boss_buff()
 		im_boss = true
-	else:
-		print(my_name + " is already a boss")
+	
+		set_up_health_bar()

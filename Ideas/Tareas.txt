@@ -57,6 +57,12 @@ TODO (o ideas): ----------------------------------------------------------------
 
 
 WIP: ------------------------------------------------------------------------------------------------------
+Cambios para v0.23:
+    -Poner un timer para que genere las oleadas en vez de esperar a que el último enemigo sea derrotado.
+    -bostear enemigos o aumentar el multiplicador por oleadas.
+    -añadir jefes y hacer que sean generados en ciertas rondas.
+
+
 problemas con el escalado de los enemigos:
     -El problema es que no puedo escalar todo desde el nodo princial (RigidBody2D) con:
     scale = Vector2(2, 2)
@@ -76,6 +82,7 @@ ARREGLOS:
     -creo que el jugador recibe demasiado oro (aun no está la dificultad progresiva implementado)
     -Cambiar la manera en la que cargan los sprites: todo por separado o un texture map gigante [DESCARTABLE]
     -Quitar el borde de 2px de los sprites
+    -El vampiro en estado de mini-jefe, se pone la capucha mucho antes de lo que debe
 
 
 ·MENU OPCIONES:

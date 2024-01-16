@@ -1,31 +1,40 @@
 extends CoreComponent
 
 
-onready var current_wave : int = Globals.current_game.game_info.wave
+var wave_multiplier : float = 0.01
+var boss_multiplier : float = 2.0
+var current_wave : int = 0
 
 
 func _ready() -> void:
-	max_life += max_life * (current_wave * 0.01)
-	attack += attack * (current_wave * 0.01)
-	defense += defense * (current_wave * 0.01)
-	# critical_cahnce += critical_cahnce * (current_wave * 0.01)
-	# critical_damage += critical_damage * (current_wave * 0.01)
+	current_wave = Globals.saved_wave
+	# print(str(current_wave))
 
-	print_stats()
+	wave_buff()
 
 
 func print_stats() -> void:
 	print(get_stats())
 
 
-func boss_buff() -> void :
-	max_life += max_life * 1.5
-	attack += attack * 1.5
-	defense += defense * 1.5
-	# critical_cahnce += critical_cahnce * 1.5
-	# critical_damage += critical_damage * 1.5
+func wave_buff() -> void:
+	set_max_hp(max_life + max_life * (current_wave * wave_multiplier))
+	attack += attack * (current_wave * wave_multiplier)
+	defense += defense * (current_wave * wave_multiplier)
+	# critical_cahnce += critical_cahnce * (current_wave * 0.01)
+	# critical_damage += critical_damage * (current_wave * 0.01)
 
-	print_stats()
+	# print_stats()
+
+
+func boss_buff() -> void:
+	set_max_hp(max_life * boss_multiplier)
+	attack *= boss_multiplier
+	defense *= boss_multiplier
+	# critical_cahnce *= boss_multiplier
+	# critical_damage *= boss_multiplier
+
+	# print_stats()
 
 
 """
