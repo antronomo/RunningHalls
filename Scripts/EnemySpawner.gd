@@ -2,6 +2,7 @@ extends Position2D
 
 
 onready var enemy_list_node : Node = $EnemyListNode
+onready var timer : Node = $Timer
 
 # Esta variable y la funcion get_wave() son esenciales si no quieres tocar level0.gd
 # La variable es utilizada por los enemigos para calcular estadísticas progresivas
@@ -9,10 +10,11 @@ onready var le_wave : int = Globals.current_game.game_info.wave
 
 
 var wave_list : Array
+var work : bool = true # Cambiado por Level0 al llegar al game_over
 
 
 signal generate_loot
-signal wave_ended
+signal enemy_died
 signal enemy_list_ended
 
 
@@ -41,46 +43,44 @@ func wave_generator(enemy_list : Array) -> void:
 		if wave_num == 7:
 			wave_list.append_array([[enemy_list[randi() % 3]]])
 
-	# print(str(wave_num), str(wave_list)) 
+	# print(str(wave_num), str(wave_list))
 
 
-func spawn_enemies() -> void: 
+func spawn_enemies() -> void:
+	# Revisar que la partida no ha acabado
+	if !work:
+		return
+
 	for i1 in wave_list.size():
 		for i2 in wave_list[i1].size():
 			var next_enemy : RigidBody2D = wave_list[i1][i2].instance()
-			yield(get_tree().create_timer(randf() * 0.75 + 0.25), "timeout")
+
+			timer.start(randf() * 0.75 + 0.25); yield(timer, "timeout")
 			# next_enemy.set_wave(le_wave)
 			add_child(next_enemy)
 
 			if i1 == 4 or i1 == 6:
 				# print("boss time")
 				next_enemy.boss_mode()
-			
-			# print(str(i1))
 		
 		# print("waiting")
-		yield(self, "wave_ended")
+		timer.start(randi() % 3 + 3); yield(timer, "timeout")
+		le_wave += 1
 
-	# print("spawn_enemies ended")
 	emit_signal("enemy_list_ended")
 
 
-func end_wave(enemy_position : Vector2) -> void: # Llamado cuando un hijo "muere"
-	yield(get_tree().create_timer(0.01), "timeout") # Si lo borras/comentas, da error
-
+func _on_enemy_died(enemy_position : Vector2) -> void: # Llamado cuando un hijo "muere"
+	# timer.start(0.01); yield(timer, "timeout") # Si lo borras/comentas, da error -> parece que ya no
 	emit_signal("generate_loot", enemy_position)
-
-	if get_child_count() == 1:
-		# spawn_enemies()
-		le_wave += 1
-		emit_signal("wave_ended")
-
-
-func _on_EnemySpawner_wave_ended() -> void:
-	return
+	emit_signal("enemy_died")
 
 
 func _on_EnemySpawner_enemy_list_ended() -> void:
+	# if get_child_count() == 1: # Ahora 2
+	# 	emit_signal("enemy_list_ended")
+
+	# Generar lista de enemigos y empezar a invocar-los
 	wave_generator(enemy_list_node.get_enemy_group())
 	spawn_enemies()
 

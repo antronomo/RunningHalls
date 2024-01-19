@@ -62,6 +62,7 @@ func finish_game() -> void:
 	$GameOverUI.visible = true
 	$Accelerator/AnimationPlayer.play_backwards("accelerate")
 	set_propetys()
+	enemy_spawner.work = false
 	yield(get_tree().create_timer(0.1), "timeout")# Solucion temporal: al morir el oro actualiza dos veces
 	gui.update_gold_label(saved_gold)
 
@@ -84,9 +85,10 @@ func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
 	loot_manager.generate_loot(loot_position, loot_quantity)
 	current_gold = current_gold + loot_quantity
 	gui.update_gold_label(current_gold)
+	set_propetys()
 
 
-func _on_EnemySpawner_wave_ended() -> void:
+func _on_EnemySpawner_enemy_died() -> void:
 	saved_gold = current_gold
 	current_wave = enemy_spawner.get_wave()
 	set_propetys()

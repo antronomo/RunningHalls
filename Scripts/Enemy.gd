@@ -25,7 +25,7 @@ signal died
 
 func _ready() -> void:
 	mode = 2
-	connect("died", get_node("../"), "end_wave")
+	connect("died", get_node("../"), "_on_enemy_died")
 	set_up_health_bar()
 
 
