@@ -62,10 +62,6 @@ func boss_mode() -> void:
 
 # Esta función se usa en los escrips heredados de este
 func update_status(status : String, value : bool) -> void: pass 
-	
-
-# func set_wave(new_wave : int) -> void:
-# 	current_wave = new_wave
 
 
 func hecking_die() -> void:
@@ -75,7 +71,7 @@ func hecking_die() -> void:
 
 """
 La variable low_life_status solo puede ser cambiado por nodos heredados de este,
-ya que es CoreComponent (otro nodo como nodo hijo) quien manda la señal para cmabiar a true/false.
+ya que es CoreComponent (otro nodo como nodo hijo) quien manda la señal para cmabiar el valor.
 
 
 PARA MONTAR NUEVOS ENEMIGOS: Como no se automatizar eso, me toca hacer-lo a mano:

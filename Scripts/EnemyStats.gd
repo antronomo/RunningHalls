@@ -1,7 +1,7 @@
 extends CoreComponent
 
 
-var wave_multiplier : float = 0.01
+var wave_multiplier : float = 0.05
 var boss_multiplier : float = 2.0
 var current_wave : int = 0
 

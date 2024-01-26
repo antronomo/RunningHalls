@@ -1,7 +1,7 @@
 extends Node
 
 
-var saved_wave : int 
+var saved_wave : int
 var current_game : Dictionary = {}
 # var config_data : Dictionary = {}
 
@@ -9,6 +9,7 @@ var current_game : Dictionary = {}
 func _ready() -> void:
 	randomize()
 	current_game = CurrentGame.load_game()
+	
 	#Esto es demasiado importante y lo necesito accesible
 	saved_wave = current_game.game_info.wave #!
 
@@ -35,55 +36,55 @@ func save_data_to_file() -> void:
 
 # FUNCIONES que modifican variables en current_game ----------------------------------------
 # Es necesario verificar el tipo de variable? por ahora no, pero tampoco lo voy a aquitar
-func set_game_data(what : String, much) -> void:
+func set_game_data(what : String, with) -> void:
 	match what:
 		"wave":
-			if typeof(much) == TYPE_INT:
-				current_game.game_info.wave = much
+			if typeof(with) == TYPE_INT:
+				current_game.game_info.wave = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		"gold":
-			if typeof(much) == TYPE_INT:
-				current_game.game_info.gold = much
+			if typeof(with) == TYPE_INT:
+				current_game.game_info.gold = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		"helmet":
-			if typeof(much) == TYPE_INT:
-				current_game.player_upgrades.helmet = much
+			if typeof(with) == TYPE_INT:
+				current_game.player_upgrades.helmet = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		"chestPlate":
-			if typeof(much) == TYPE_INT:
-				current_game.player_upgrades.chestPlate = much
+			if typeof(with) == TYPE_INT:
+				current_game.player_upgrades.chestPlate = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		"greaves":
-			if typeof(much) == TYPE_INT:
-				current_game.player_upgrades.greaves = much
+			if typeof(with) == TYPE_INT:
+				current_game.player_upgrades.greaves = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		"boots":
-			if typeof(much) == TYPE_INT:
-				current_game.player_upgrades.boots = much
+			if typeof(with) == TYPE_INT:
+				current_game.player_upgrades.boots = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		"sword":
-			if typeof(much) == TYPE_INT:
-				current_game.player_upgrades.sword = much
+			if typeof(with) == TYPE_INT:
+				current_game.player_upgrades.sword = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		"shield":
-			if typeof(much) == TYPE_INT:
-				current_game.player_upgrades.shield = much
+			if typeof(with) == TYPE_INT:
+				current_game.player_upgrades.shield = with
 			else:
-				print("cannot save " + what + " with: " + str(much))
+				print("cannot save " + what + " with: " + str(with))
 
 		_: # Default
 			print(what + " not found")

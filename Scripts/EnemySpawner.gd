@@ -48,15 +48,14 @@ func wave_generator(enemy_list : Array) -> void:
 
 func spawn_enemies() -> void:
 	# Revisar que la partida no ha acabado
-	if !work:
+	if !work: 
 		return
 
 	for i1 in wave_list.size():
 		for i2 in wave_list[i1].size():
-			var next_enemy : RigidBody2D = wave_list[i1][i2].instance()
+			timer.start(randf() * 0.80 + 0.20); yield(timer, "timeout")
 
-			timer.start(randf() * 0.75 + 0.25); yield(timer, "timeout")
-			# next_enemy.set_wave(le_wave)
+			var next_enemy : RigidBody2D = wave_list[i1][i2].instance()
 			add_child(next_enemy)
 
 			if i1 == 4 or i1 == 6:
@@ -64,46 +63,18 @@ func spawn_enemies() -> void:
 				next_enemy.boss_mode()
 		
 		# print("waiting")
-		timer.start(randi() % 3 + 3); yield(timer, "timeout")
+		timer.start(randi() % 4 + 2); yield(timer, "timeout")
 		le_wave += 1
 
 	emit_signal("enemy_list_ended")
 
 
 func _on_enemy_died(enemy_position : Vector2) -> void: # Llamado cuando un hijo "muere"
-	# timer.start(0.01); yield(timer, "timeout") # Si lo borras/comentas, da error -> parece que ya no
 	emit_signal("generate_loot", enemy_position)
-	emit_signal("enemy_died")
+	emit_signal("enemy_died") # Aunque la señal tenga el mismo nombre, este es el que conecta con Level0
 
 
 func _on_EnemySpawner_enemy_list_ended() -> void:
-	# if get_child_count() == 1: # Ahora 2
-	# 	emit_signal("enemy_list_ended")
-
 	# Generar lista de enemigos y empezar a invocar-los
 	wave_generator(enemy_list_node.get_enemy_group())
 	spawn_enemies()
-
-
-"""
-Lo que quiero conseguir es lo siguiente:
-Una manera de que aparezcan los enemigos en oleadas.
-
-Ideas:
-·Los enemigos deben tener mejores estadísticas confomre tenga más rondas, al menos, en hp
-
-
-COMPLETADO:
-·la ronda se da como finalizada cuando todos los enemigos han sido derrotados.
-
-·los enemigos deben aparecer uno detrás de otro rápido, pero no a la vez
-
-
-DESCARTADO:
-·¿los tokens no usados se guardan para la próxima ronda?
-
-·cada ronda aumentará el numero de tokens que el spawner tendrá.
-
-·Usar un sistema de tokens, asignar cada enemigo un valor y que el spawner compre enemigos asta acercarse a 0 tokens.
-
-"""
