@@ -1,3 +1,3 @@
 - download the project
-- import it in godot 3.5.x (latest recomended)
+- import it in godot 4.2.x (latest recomended)
 - run the project

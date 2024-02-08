@@ -13,3 +13,4 @@ res://Enemies/Bat.tscn
 res://Player/Player.tscn
 res://Scripts/CoreComponent.gd
 res://Auto/CurrentGame.gd
+res://README.md
