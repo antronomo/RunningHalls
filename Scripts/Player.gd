@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export var my_name : String = 'player'
+@export var my_name : String = 'player'
 
 
 var dict_status : Dictionary = {
@@ -14,8 +14,8 @@ signal morido
 
 
 func _ready() -> void:
-	connect('updateHP', get_node('../GUI'), 'update_helath_bar')
-	connect('morido', get_node('../'), 'finish_game')
+	connect('updateHP', Callable(get_node('../GUI'), 'update_helath_bar'))
+	connect('morido', Callable(get_node('../'), 'finish_game'))
 
 
 func seeHP(hp : int) -> void:

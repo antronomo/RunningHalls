@@ -2,7 +2,7 @@ class_name Equipment
 extends Node2D
 
 
-onready var sprite : Sprite = $Sprite
+@onready var sprite : Sprite2D = $Sprite2D
 
 
 var max_upgrades : int

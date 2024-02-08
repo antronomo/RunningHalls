@@ -1,16 +1,16 @@
 extends Node2D
 
 
-onready var physic_ground : StaticBody2D = $PhysicGround
-onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
-onready var finishing : bool = false
-onready var enemy_spawner : Position2D = $EnemySpawner
-onready var loot_manager : Node2D = $LootManager
-onready var gui : Control = $GUI
-onready var pasue_menu : Control = $PauseMenu
-onready var game_save_file : Dictionary
-onready var shop_ui : Control = $Shop
-onready var game_over_ui : Control = $GameOverUI
+@onready var physic_ground : StaticBody2D = $PhysicGround
+@onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
+@onready var finishing : bool = false
+@onready var enemy_spawner : Marker2D = $EnemySpawner
+@onready var loot_manager : Node2D = $LootManager
+@onready var gui : Control = $GUI
+@onready var pasue_menu : Control = $PauseMenu
+@onready var game_save_file : Dictionary
+@onready var shop_ui : Control = $Shop
+@onready var game_over_ui : Control = $GameOverUI
 
 
 const ground_speed : int = -30
@@ -34,7 +34,7 @@ func _ready() -> void:
 	# enemy_spawner.set_wave(current_wave)
 	enemy_spawner.spawn_enemies()
 	
-	shop_ui.rect_position = Vector2(0, -135)
+	shop_ui.position = Vector2(0, -135)
 
 
 func get_vars() -> void:
@@ -63,7 +63,7 @@ func finish_game() -> void:
 	$Accelerator/AnimationPlayer.play_backwards("accelerate")
 	set_propetys()
 	enemy_spawner.work = false
-	yield(get_tree().create_timer(0.1), "timeout")# Solucion temporal: al morir el oro actualiza dos veces
+	await get_tree().create_timer(0.1).timeout# Solucion temporal: al morir el oro actualiza dos veces
 	gui.update_gold_label(saved_gold)
 
 
@@ -99,14 +99,14 @@ func _on_EnemySpawner_enemy_died() -> void:
 # FUNCIONES con PauseMenuUI---------------------------------------------
 func _on_PauseMenu_save_time() -> void:
 	set_propetys()
-	get_tree().change_scene("res://UIs/MenuScene.tscn")
+	get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
 
 
 # FUNCIONES con GameOverUI----------------------------------------------
 func _on_GameOverUI_shop_pressed() -> void:
 	shop_ui.gold_update()
-	shop_ui.rect_position = Vector2.ZERO
-	game_over_ui.rect_position = Vector2(40, -1000)
+	shop_ui.position = Vector2.ZERO
+	game_over_ui.position = Vector2(40, -1000)
 
 
 func _on_GameOverUI_retry_pressed() -> void:
@@ -114,12 +114,12 @@ func _on_GameOverUI_retry_pressed() -> void:
 
 
 func _on_GameOverUI_return_pressed() -> void:
-	get_tree().change_scene("res://UIs/MenuScene.tscn")
+	get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
 
 
 # FUNCIONES con ShopUI--------------------------------------------------
 func _on_Shop_exiting() -> void:
 	get_vars()
 	gui.update_gold_label(current_gold)
-	shop_ui.rect_position = Vector2(0, -135)
-	game_over_ui.rect_position = Vector2(40, 16)
+	shop_ui.position = Vector2(0, -135)
+	game_over_ui.position = Vector2(40, 16)

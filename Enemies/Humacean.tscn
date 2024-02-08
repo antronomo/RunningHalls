@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/EnemyStats.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Humacean.gd" type="Script" id=2]
-[ext_resource path="res://Assets/img/Crab.png" type="Texture" id=3]
+[ext_resource path="res://Assets/img/Crab.png" type="Texture2D" id=3]
 [ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=3]
@@ -32,7 +32,7 @@ collision_layer = 4
 script = ExtResource( 2 )
 my_name = "Humacean"
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2( 0, -8 )
 frames = SubResource( 5 )
 playing = true
@@ -57,9 +57,9 @@ __meta__ = {
 }
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
-margin_left = -8.0
-margin_top = -24.0
-margin_right = 8.0
-margin_bottom = -20.0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = -20.0
 
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

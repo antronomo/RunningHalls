@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Assets/img/Rats.png" type="Texture" id=1]
+[ext_resource path="res://Assets/img/Rats.png" type="Texture2D" id=1]
 [ext_resource path="res://Scripts/Rat.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/EnemyStats.gd" type="Script" id=3]
 [ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
@@ -46,7 +46,7 @@ collision_layer = 4
 script = ExtResource( 2 )
 my_name = "Rat"
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2( 0, -4 )
 frames = SubResource( 5 )
 animation = "Brown"
@@ -72,9 +72,9 @@ rotation = 1.5708
 shape = SubResource( 7 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
-margin_left = -8.0
-margin_top = -16.0
-margin_right = 8.0
-margin_bottom = -12.0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = -12.0
 
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

@@ -1,2 +1,2 @@
 class_name HealthBar
-extends TextureProgress
+extends TextureProgressBar

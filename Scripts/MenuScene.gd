@@ -7,11 +7,11 @@ const options_cam_pos : Vector2 = Vector2(-120, 67)
 const credits_cam_pos : Vector2 = Vector2(120, 203)
 
 
-onready var cam : Camera2D = $Camera2D
+@onready var cam : Camera2D = $Camera2D
 
 
 func move_camera(new_pos : Vector2, secs : float = 0.5) -> void:
-	var tween : SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+	var tween : Tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(cam, "global_position", new_pos, secs)
 
 
@@ -30,12 +30,12 @@ func _on_MainMenu_credit_pressed() -> void:
 
 # START MENU FUNCTIONS-------------------------------------
 func _on_StartMenu_resume_pressed() -> void:
-	get_tree().change_scene("res://Level/Level0.tscn")
+	get_tree().change_scene_to_file("res://Level/Level0.tscn")
 
 
 func _on_StartMenu_new_game_pressed() -> void:
 	Globals.reset_game_data()
-	get_tree().change_scene("res://Level/Level0.tscn")
+	get_tree().change_scene_to_file("res://Level/Level0.tscn")
 
 
 func _on_StartMenu_return_pressed() -> void:

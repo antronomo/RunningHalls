@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://68e8b8re2vya"]
+
+[ext_resource type="FontFile" uid="uid://cmpk6s8q1arsi" path="res://Assets/Fonts/Minecraft.ttf" id="1_0v37q"]
+
+[resource]
+base_font = ExtResource("1_0v37q")
+variation_transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
+spacing_glyph = 16
+spacing_top = 16

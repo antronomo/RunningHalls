@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/img/Godot_icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/img/antronomo.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=1]
+[ext_resource path="res://Assets/img/Godot_icon.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/img/antronomo.png" type="Texture2D" id=3]
 [ext_resource path="res://Scripts/Intro.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 outline_size = 1
 extra_spacing_char = 1
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 25
 outline_size = 1
 extra_spacing_char = 1
@@ -26,8 +26,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.3, 1.3, 2.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0.3, 1.3, 2.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -38,8 +38,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.3, 2.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.3, 2.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
@@ -50,8 +50,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 2.3, 3.3, 4.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 2.3, 3.3, 4.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -65,8 +65,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -77,8 +77,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -89,8 +89,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -101,8 +101,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -115,18 +115,18 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="AntronomoPng" type="Sprite" parent="Antronomo"]
+[node name="AntronomoPng" type="Sprite2D" parent="Antronomo"]
 position = Vector2( 120, 72 )
 scale = Vector2( 0.105, 0.105 )
 texture = ExtResource( 3 )
 
 [node name="AntronomoText" type="Label" parent="Antronomo"]
-margin_left = 56.0
-margin_top = 16.0
-margin_right = 184.0
-margin_bottom = 32.0
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 184.0
+offset_bottom = 32.0
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "ANTRONOMO"
 align = 1
 valign = 1
@@ -141,17 +141,17 @@ anchor_left = 0.233
 anchor_top = 0.652
 anchor_right = 0.8
 anchor_bottom = 0.889
-margin_left = 56.0
-margin_top = 16.0
-margin_right = 184.0
-margin_bottom = 32.0
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 184.0
+offset_bottom = 32.0
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "GodotEngine"
 align = 1
 valign = 1
 
-[node name="GodotIconPng" type="Sprite" parent="Godot"]
+[node name="GodotIconPng" type="Sprite2D" parent="Godot"]
 position = Vector2( 120, 72 )
 scale = Vector2( 0.0351563, 0.0351563 )
 texture = ExtResource( 2 )
@@ -167,13 +167,13 @@ anchor_left = 0.033
 anchor_top = 0.059
 anchor_right = 0.967
 anchor_bottom = 0.252
-margin_left = 0.0799999
-margin_top = 0.0349994
-margin_right = -0.0800171
-margin_bottom = -0.0200005
+offset_left = 0.0799999
+offset_top = 0.0349994
+offset_right = -0.0800171
+offset_bottom = -0.0200005
 size_flags_vertical = 1
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 4 )
 text = "Running Halls"
 align = 1
 valign = 1

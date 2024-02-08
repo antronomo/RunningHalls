@@ -1,11 +1,11 @@
 extends Node
 
 
-const SAVEFILE : String = "user://SAVEFILE.save"
-const CurrentVersion : String = "0.23.2"
-const DefaultGameData : Dictionary = {
+const GAMEPATHFILE : String = "user://SAVEFILE.save"
+const CURRENTVERSION : String = "0.23.3"
+const DEFAULTGAMEDATA : Dictionary = {
 	"game_info" : {
-		"game_version" : CurrentVersion,
+		"game_version" : CURRENTVERSION,
 		"wave" : 1,
 		"gold" : 0
 	},
@@ -22,25 +22,23 @@ const DefaultGameData : Dictionary = {
 
 func new_game() -> Dictionary:
 	print("new game")
-	save_game_data(DefaultGameData)
-	return DefaultGameData
+	save_game_data(DEFAULTGAMEDATA)
+	return DEFAULTGAMEDATA
 
 
 func save_game_data(game_data : Dictionary) -> void:
-	var save_file : File = File.new()
-	save_file.open(SAVEFILE, File.WRITE)
+	var save_file : FileAccess = FileAccess.open(GAMEPATHFILE, FileAccess.WRITE)
 	save_file.store_var(game_data)
 	save_file.close()
 
 
 func load_game() -> Dictionary:
-	var load_file : File = File.new()
-	
-	if load_file.file_exists(SAVEFILE):
-		load_file.open(SAVEFILE, File.READ)
+	if FileAccess.file_exists(GAMEPATHFILE):
+		var load_file : FileAccess = FileAccess.open(GAMEPATHFILE, FileAccess.READ)
 		var data : Dictionary = load_file.get_var()
 		load_file.close()
 		return data
 	else:
-		save_game_data(DefaultGameData.duplicate())
+		save_game_data(DEFAULTGAMEDATA.duplicate())
 		return new_game()
+		

@@ -1,12 +1,12 @@
-extends Position2D
+extends Marker2D
 
 
-onready var enemy_list_node : Node = $EnemyListNode
-onready var timer : Node = $Timer
+@onready var enemy_list_node : Node = $EnemyListNode
+@onready var timer : Node = $Timer
 
 # Esta variable y la funcion get_wave() son esenciales si no quieres tocar level0.gd
 # La variable es utilizada por los enemigos para calcular estadísticas progresivas
-onready var le_wave : int = Globals.current_game.game_info.wave
+@onready var le_wave : int = Globals.current_game.game_info.wave
 
 
 var wave_list : Array
@@ -53,9 +53,9 @@ func spawn_enemies() -> void:
 
 	for i1 in wave_list.size():
 		for i2 in wave_list[i1].size():
-			timer.start(randf() * 0.80 + 0.20); yield(timer, "timeout")
+			timer.start(randf() * 0.80 + 0.20); await timer.timeout
 
-			var next_enemy : RigidBody2D = wave_list[i1][i2].instance()
+			var next_enemy : RigidBody2D = wave_list[i1][i2].instantiate()
 			add_child(next_enemy)
 
 			if i1 == 4 or i1 == 6:
@@ -63,7 +63,7 @@ func spawn_enemies() -> void:
 				next_enemy.boss_mode()
 		
 		# print("waiting")
-		timer.start(randi() % 4 + 2); yield(timer, "timeout")
+		timer.start(randi() % 4 + 2); await timer.timeout
 		le_wave += 1
 
 	emit_signal("enemy_list_ended")

@@ -4,7 +4,7 @@ extends Control
 signal return_pressed
 
 
-onready var in_screen : bool = false
+@onready var in_screen : bool = false
 
 
 func _on_VisibilityNotifier2D_screen_entered():

@@ -1,19 +1,19 @@
 extends Control
 
 
-onready var tab_container : TabContainer = $TabContainer
-onready var item_show : Sprite = $TabContainer/ForgeTab/SelectRect/ItemShow
-onready var upgrade_name_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeName
-onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
-onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
-onready var goldLabel : Label = $TabContainer/ForgeTab/GoldContainer/Label
+@onready var tab_container : TabContainer = $TabContainer
+@onready var item_show : Sprite2D = $TabContainer/ForgeTab/SelectRect/ItemShow
+@onready var upgrade_name_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeName
+@onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
+@onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
+@onready var goldLabel : Label = $TabContainer/ForgeTab/GoldContainer/Label
 
-onready var helmet : Equipment = $TabContainer/ForgeTab/HelmetButton/Helmet
-onready var chestPlate : Equipment = $TabContainer/ForgeTab/ChestPlateButton/ChestPlate
-onready var greaves : Equipment = $TabContainer/ForgeTab/GreavesButton/Greaves
-onready var boots : Equipment = $TabContainer/ForgeTab/BootsButton/Boots
-onready var sword : Equipment = $TabContainer/ForgeTab/SwordButton/Sword
-onready var shield : Equipment = $TabContainer/ForgeTab/ShieldButton/Shield
+@onready var helmet : Equipment = $TabContainer/ForgeTab/HelmetButton/Helmet
+@onready var chestPlate : Equipment = $TabContainer/ForgeTab/ChestPlateButton/ChestPlate
+@onready var greaves : Equipment = $TabContainer/ForgeTab/GreavesButton/Greaves
+@onready var boots : Equipment = $TabContainer/ForgeTab/BootsButton/Boots
+@onready var sword : Equipment = $TabContainer/ForgeTab/SwordButton/Sword
+@onready var shield : Equipment = $TabContainer/ForgeTab/ShieldButton/Shield
 
 
 var item_name : String

@@ -1,292 +1,299 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=3 uid="uid://cy38ehjihtgys"]
 
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Components/CoreComponent.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/PlayerStats.gd" type="Script" id=3]
-[ext_resource path="res://Assets/img/Player.png" type="Texture" id=4]
-[ext_resource path="res://Player/Boots.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/Greaves.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Helmet.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Player/Sword.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player/ChestPlate.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player/Shield.tscn" type="PackedScene" id=10]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Components/CoreComponent.tscn" id="2"]
+[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://bmkiqu576mawq" path="res://Assets/img/Player.png" id="4"]
+[ext_resource type="PackedScene" path="res://Player/Boots.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Player/Greaves.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://Player/Helmet.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://Player/Sword.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://Player/ChestPlate.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://Player/Shield.tscn" id="10"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.0 ]
+"values": [0.0]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [Vector2(1, 1)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("CoreComponent/Shield:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( -5, -3 ) ]
+"values": [Vector2(-5, -3)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("CoreComponent/Sword:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 8, -10 ) ]
+"values": [Vector2(8, -10)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("CoreComponent/Sword:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.0 ]
+"values": [0.0]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("CoreComponent/Shield:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.0 ]
+"values": [0.0]
 }
 tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("CoreComponent/CollisionShape2D:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "Walking"
 length = 0.6
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ) ]
+"values": [Vector2(0, 0), Vector2(0, -2)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CoreComponent/Sword:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 8, -9 ), Vector2( 8, -11 ) ]
+"values": [Vector2(8, -9), Vector2(8, -11)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CoreComponent/Shield:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( -5, -3 ), Vector2( -5, -5 ) ]
+"values": [Vector2(-5, -3), Vector2(-5, -5)]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "dying"
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, -90.0 ]
+"values": [0.0, -90.0]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1.46409, 1.466, 0.466517, 0.63728 ),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1.46409, 1.466, 0.466517, 0.63728),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -15, -15 ), Vector2( -25, -2 ), Vector2( -35, -2 ) ]
+"values": [Vector2(0, 0), Vector2(-15, -15), Vector2(-25, -2), Vector2(-35, -2)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CoreComponent/Sword:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 8, -9 ), Vector2( 8, -9 ), Vector2( 8, -4 ), Vector2( 8, -2 ) ]
+"values": [Vector2(8, -9), Vector2(8, -9), Vector2(8, -4), Vector2(8, -2)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("CoreComponent/Shield:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( -5, -3 ), Vector2( -5, -3 ) ]
+"values": [Vector2(-5, -3), Vector2(-5, -3)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("CoreComponent/Sword:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 0.0, 0.0, 90.0 ]
+"values": [0.0, 0.0, 90.0]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("CoreComponent/Shield:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, -45.0 ]
+"values": [0.0, -45.0]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("CoreComponent/CollisionShape2D:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4, 16 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bo0de"]
+_data = {
+"RESET": SubResource("1"),
+"Walking": SubResource("2"),
+"dying": SubResource("4")
+}
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(8, 32)
 
 [node name="Player" type="Node2D" groups=["player"]]
 z_index = 1
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-offset = Vector2( 0, -8 )
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4")
+offset = Vector2(0, -8)
 hframes = 4
 vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bo0de")
+}
 autoplay = "Walking"
-anims/RESET = SubResource( 1 )
-anims/Walking = SubResource( 2 )
-anims/dying = SubResource( 4 )
 
-[node name="CoreComponent" parent="." instance=ExtResource( 2 )]
+[node name="CoreComponent" parent="." instance=ExtResource("2")]
 collision_layer = 2
 collision_mask = 12
-script = ExtResource( 3 )
+script = ExtResource("3")
 max_life = 200
 attack = 20
 defense = 20
 critical_cahnce = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
-position = Vector2( 12, -8 )
-shape = SubResource( 3 )
+position = Vector2(12, -8)
+shape = SubResource("3")
 
-[node name="Boots" parent="CoreComponent" instance=ExtResource( 5 )]
+[node name="Boots" parent="CoreComponent" instance=ExtResource("5")]
 visible = false
 
-[node name="ChestPlate" parent="CoreComponent" instance=ExtResource( 9 )]
+[node name="ChestPlate" parent="CoreComponent" instance=ExtResource("9")]
 visible = false
 
-[node name="Greaves" parent="CoreComponent" instance=ExtResource( 6 )]
+[node name="Greaves" parent="CoreComponent" instance=ExtResource("6")]
 visible = false
 
-[node name="Helmet" parent="CoreComponent" instance=ExtResource( 7 )]
+[node name="Helmet" parent="CoreComponent" instance=ExtResource("7")]
 visible = false
 
-[node name="Shield" parent="CoreComponent" instance=ExtResource( 10 )]
-position = Vector2( -5, -3 )
+[node name="Shield" parent="CoreComponent" instance=ExtResource("10")]
+position = Vector2(-5, -3)
 
-[node name="Sword" parent="CoreComponent" instance=ExtResource( 8 )]
-position = Vector2( 8, -10 )
+[node name="Sword" parent="CoreComponent" instance=ExtResource("8")]
+position = Vector2(8, -10)
 
 [connection signal="body_entered" from="CoreComponent" to="." method="_on_CoreComponent_body_entered"]

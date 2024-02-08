@@ -1,10 +1,10 @@
 extends CoreParallaxBackground
 
 
-onready var layer4 : ParallaxLayer = $ParallaxLayer4
-onready var layer3 : ParallaxLayer = $ParallaxLayer3
-onready var layer2 : ParallaxLayer = $ParallaxLayer2
-onready var layer1 : ParallaxLayer = $ParallaxLayer
+@onready var layer4 : ParallaxLayer = $ParallaxLayer4
+@onready var layer3 : ParallaxLayer = $ParallaxLayer3
+@onready var layer2 : ParallaxLayer = $ParallaxLayer2
+@onready var layer1 : ParallaxLayer = $ParallaxLayer
 
 
 func _physics_process(delta) -> void:

@@ -1,12 +1,12 @@
 extends CoreComponent
 
 
-onready var helmet : Equipment = $Helmet
-onready var chest_plate : Equipment = $ChestPlate
-onready var greaves : Equipment = $Greaves
-onready var boots : Equipment = $Boots
-onready var shield : Equipment = $Shield
-onready var sword : Equipment = $Sword
+@onready var helmet : Equipment = $Helmet
+@onready var chest_plate : Equipment = $ChestPlate
+@onready var greaves : Equipment = $Greaves
+@onready var boots : Equipment = $Boots
+@onready var shield : Equipment = $Shield
+@onready var sword : Equipment = $Sword
 
 
 var total_upgrades : int 

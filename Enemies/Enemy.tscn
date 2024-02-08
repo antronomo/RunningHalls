@@ -1,8 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bml2carnvlwcw"]
 
-[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1"]
 
 [node name="Enemy" type="RigidBody2D"]
 collision_layer = 4
-mode = 2
-script = ExtResource( 1 )
+script = ExtResource("1")

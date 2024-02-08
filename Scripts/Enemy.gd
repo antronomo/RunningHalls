@@ -2,12 +2,12 @@ class_name Enemy
 extends RigidBody2D
 
 
-export var my_name : String
+@export var my_name : String
 
 
-onready var health_bar : HealthBar = get_node("HealthBar")
-onready var core_compo : CoreComponent = $CoreComponent
-onready var anim_sprite : AnimatedSprite = $AnimatedSprite
+@onready var health_bar : HealthBar = get_node("HealthBar")
+@onready var core_compo : CoreComponent = $CoreComponent
+@onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 
 var stats : Dictionary
@@ -24,8 +24,8 @@ signal died
 
 
 func _ready() -> void:
-	mode = 2
-	connect("died", get_node("../"), "_on_enemy_died")
+	lock_rotation = true
+	connect("died", Callable(get_node("../"), "_on_enemy_died"))
 	set_up_health_bar()
 
 
@@ -52,8 +52,8 @@ func boss_mode() -> void:
 		# scale = Vector2(2,2)  # Funciona pero solo dura un frame?
 		anim_sprite.position = Vector2(8, -16)
 		anim_sprite.scale = Vector2(2, 2)
-		health_bar.rect_position = Vector2(-8, -48)
-		health_bar.rect_scale = Vector2(2, 2)
+		health_bar.position = Vector2(-8, -48)
+		health_bar.scale = Vector2(2, 2)
 		core_compo.boss_buff()
 		im_boss = true
 

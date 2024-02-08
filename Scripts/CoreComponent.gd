@@ -3,18 +3,18 @@ extends Area2D
 
 
 #Si hago que los atributos del personaje dependan de otro script, solo tendré que modificar este para que los actualice
-export var max_life : int = 1 setget set_max_hp, get_max_hp
-export var attack : int = 1
-export var defense : int = 1
-export var critical_cahnce : int
-export var critical_damage : int = 50
+@export var max_life : int = 1: get = get_max_hp, set = set_max_hp
+@export var attack : int = 1
+@export var defense : int = 1
+@export var critical_cahnce : int
+@export var critical_damage : int = 50
 
-export var dict_status : Dictionary = {
+@export var dict_status : Dictionary = {
 	"low_life" : false # low_life status become true when life is below 50% of max_life
 }
 
 
-var life : int = 0 setget set_hp, get_hp
+var life : int = 0: get = get_hp, set = set_hp
 
 
 signal HPStatus
@@ -22,12 +22,12 @@ signal status
 
 
 func _ready() -> void:
-	connect("status", get_parent(), "update_status")
+	connect("status", Callable(get_parent(), "update_status"))
 
 	life = max_life
 
 	if get_parent().has_method("seeHP"):
-		connect("HPStatus", get_parent(), "seeHP")
+		connect("HPStatus", Callable(get_parent(), "seeHP"))
 
 
 func set_dict_status(status : String, value : bool) -> void:
@@ -71,6 +71,7 @@ func hit() -> float:
 
 
 func get_hurt(entring_dmg : float) -> int:
+	#print(str(life)) # esto confirma que SI colisionan unos con otros como toca
 	# int() para quitar la advertencia "float to int"
 	var hurt : int = int(((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1)
 	return hurt if hurt < -1 else -1

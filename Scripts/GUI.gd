@@ -1,9 +1,9 @@
 extends Control
 
 
-onready var health_bar : TextureProgress = $HealthBarContainer/HealthBar
-onready var health_label : Label = $HealthBarContainer/Label
-onready var coin_label : Label = $CurrencyContainer/Label
+@onready var health_bar : TextureProgressBar = $HealthBarContainer/HealthBar
+@onready var health_label : Label = $HealthBarContainer/Label
+@onready var coin_label : Label = $CurrencyContainer/Label
 
 
 func _ready() -> void:

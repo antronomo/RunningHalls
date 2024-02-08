@@ -2,7 +2,7 @@ class_name CoreParallaxBackground
 extends ParallaxBackground
 
 
-var parallax_speed : int = 0 setget set_paraspeed, get_paraspeed
+var parallax_speed : int = 0: get = get_paraspeed, set = set_paraspeed
 var may_i_move : bool = false
 
 

@@ -1,8 +1,8 @@
 extends Control
 
-onready var anim : AnimationPlayer = $AnimationPlayer
-onready var resum_buttton : Button = $ButtonsContainer/ResumeButton
-onready var save_and_exit_buttton : Button = $ButtonsContainer/SaveButton
+@onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var resum_buttton : Button = $ButtonsContainer/ResumeButton
+@onready var save_and_exit_buttton : Button = $ButtonsContainer/SaveButton
 
 
 signal save_time
