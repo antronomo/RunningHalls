@@ -20,7 +20,6 @@ offset_left = 240.0
 offset_right = 480.0
 
 [node name="OptionsMenu" parent="." instance=ExtResource("2")]
-anchors_preset = 0
 offset_left = -240.0
 offset_right = 0.0
 
