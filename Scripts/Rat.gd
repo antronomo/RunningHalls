@@ -2,8 +2,8 @@ extends Enemy
 
 
 func _ready() -> void:
-	var random : int = randi() % 2
-	$AnimatedSprite2D.animation = "Brown" if random == 0 else "Silver"
+	super()
+	anim_sprite.animation = "Brown" if randi() % 2 == 0 else "Silver"
 
 
 # Repetí la función aquí porque la rata tiene un sprite más pequeño,
@@ -18,3 +18,4 @@ func boss_mode() -> void:
 		im_boss = true
 	
 		set_up_health_bar()
+

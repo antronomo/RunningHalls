@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 @onready var health_bar : TextureProgressBar = $HealthBarContainer/HealthBar
@@ -8,25 +8,21 @@ extends Control
 
 func _ready() -> void:
 	coin_label.text = str(0)
+	health_label.text = str(0)
 
 
-func first_call(maxHP : int) -> void:
-	health_bar.max_value = maxHP
-	health_bar.value = maxHP
+func first_call(max_player_health : int) -> void:
+	health_bar.max_value = max_player_health
+	health_bar.value = max_player_health
 
-	health_label.text = str(maxHP)
-
-
-func update_helath_bar(newHP : int) -> void : 
-	health_bar.value = newHP
-	health_label.text = str(newHP)
+	health_label.text = str(max_player_health)
 
 
-func update_gold_label(new_gold : int) -> void:
-	coin_label.text = str(new_gold)
+func update_helath_bar(new_player_health : int) -> void : 
+	health_bar.value = new_player_health
+	health_label.text = str(new_player_health)
 
 
-"""
-He perdido como 30 minutos porque no podía llamar la función 'first_call', 
-resulta que no asigné el script a la escena GUI.tscn jajaja
-"""
+func update_gold_label(new_gold_count : int) -> void:
+	coin_label.text = str(new_gold_count)
+

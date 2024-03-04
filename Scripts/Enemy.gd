@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 func set_up_health_bar() -> void: 
-	stats = $CoreComponent.get_stats()
+	stats = core_compo.get_stats()
 	if health_bar:
 		health_bar.max_value = stats.life
 		health_bar.value = stats.life
@@ -47,13 +47,14 @@ func seeHP(hp : int) -> void:
 
 
 func boss_mode() -> void:
+	printerr("la función 'boss_mode' no ha sido modificado aún")
 	if !im_boss:
 		# print(my_name + " is comming big")
 		# scale = Vector2(2,2)  # Funciona pero solo dura un frame?
 		anim_sprite.position = Vector2(8, -16)
-		anim_sprite.scale = Vector2(2, 2)
-		health_bar.position = Vector2(-8, -48)
-		health_bar.scale = Vector2(2, 2)
+		anim_sprite.scale += Vector2(2, 2)
+		health_bar.position *= Vector2(-0.25, 3)
+		health_bar.scale += Vector2(2, 2)
 		core_compo.boss_buff()
 		im_boss = true
 

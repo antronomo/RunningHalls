@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cmpk6s8q1arsi"
-path="res://.godot/imported/Minecraft.ttf-5f6638f398155e2f47c5ecdd9b344f48.fontdata"
+uid="uid://ce7r73x7ee1yt"
+path="res://.godot/imported/kenpixel_mini.ttf-65b125c22deae00db4484bca66ca667a.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/Minecraft.ttf"
-dest_files=["res://.godot/imported/Minecraft.ttf-5f6638f398155e2f47c5ecdd9b344f48.fontdata"]
+source_file="res://Assets/Fonts/kenpixel_mini.ttf"
+dest_files=["res://.godot/imported/kenpixel_mini.ttf-65b125c22deae00db4484bca66ca667a.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -27,7 +27,13 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}]
 language_support={}
 script_support={}
 opentype_features={}

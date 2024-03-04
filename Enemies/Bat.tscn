@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cden0lb6l1v5y"]
 
 [ext_resource type="Script" path="res://Scripts/Bat.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Components/HealthBar.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://bl7lacv1p1e1x" path="res://Assets/img/Bat.png" id="3"]
 [ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="4"]
 
@@ -39,11 +39,10 @@ script = ExtResource("1")
 my_name = "Bat"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -8)
 sprite_frames = SubResource("3")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
 shape = SubResource("6")
 
 [node name="CoreComponent" type="Area2D" parent="."]
@@ -55,13 +54,10 @@ attack = 10
 defense = 10
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CoreComponent"]
-position = Vector2(0, -8)
 shape = SubResource("5")
 
 [node name="HealthBar" parent="." instance=ExtResource("2")]
-offset_left = -8.0
-offset_top = -24.0
-offset_right = 8.0
-offset_bottom = -20.0
+offset_top = -21.0
+offset_bottom = -17.0
 
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

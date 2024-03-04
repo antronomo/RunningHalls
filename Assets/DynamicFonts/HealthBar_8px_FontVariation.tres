@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://b70ncbv6ik2e6"]
+
+[ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="1_w2w71"]
+
+[resource]
+base_font = ExtResource("1_w2w71")
+spacing_top = -2
+spacing_bottom = -2

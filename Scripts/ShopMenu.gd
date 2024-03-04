@@ -7,6 +7,7 @@ extends Control
 @onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
 @onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
 @onready var goldLabel : Label = $TabContainer/ForgeTab/GoldContainer/Label
+@onready var player_stats_label : Label = $TabContainer/PlayerStats/StatsLabel
 
 @onready var helmet : Equipment = $TabContainer/ForgeTab/HelmetButton/Helmet
 @onready var chestPlate : Equipment = $TabContainer/ForgeTab/ChestPlateButton/ChestPlate
@@ -57,8 +58,8 @@ func _on_ShieldButton_pressed() -> void:
 	get_item_to_show(shield, "shield")
 
 
-func get_item_to_show(equipment : Equipment, name : String) -> void:
-	item_name = name
+func get_item_to_show(equipment : Equipment, new_item_name : String) -> void:
+	item_name = new_item_name
 
 	var sprite_info : Dictionary = equipment.get_sprite_info()
 	item_show.texture = sprite_info.texture
@@ -66,7 +67,7 @@ func get_item_to_show(equipment : Equipment, name : String) -> void:
 	item_show.frame = sprite_info.frame
 
 	var equipment_info : Dictionary = equipment.get_item_stats()
-	upgrade_name_label.text = name
+	upgrade_name_label.text = new_item_name
 	if equipment_info.level < equipment_info.max_upgrades:
 		var equipment_next_info : Dictionary = equipment.get_item_stats(1)
 		upgrade_stat_label.text = str(equipment_info.stat) + "  =>  " + str(equipment_next_info.stat)
@@ -132,7 +133,7 @@ func _on_ForgeButton_pressed() -> void:
 
 func _on_StatsButton_pressed() -> void:
 	tab_container.current_tab = 1
-	$TabContainer/PlayerStats/StatsLabel.text = str(Globals.current_game.duplicate())
+	player_stats_label.text = str(Globals.current_game.duplicate())
 
 
 func _on_ExitButton_pressed() -> void:

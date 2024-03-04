@@ -1,80 +1,89 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://b5kfpafxgt2eq"]
 
-[ext_resource path="res://Assets/img/Rats.png" type="Texture2D" id=1]
-[ext_resource path="res://Scripts/Rat.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/EnemyStats.gd" type="Script" id=3]
-[ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource type="Texture2D" uid="uid://bqwvnpdf1cibm" path="res://Assets/img/Rats.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/Rat.gd" id="2"]
+[ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="4"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 8 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 16, 8)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 8 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(16, 0, 16, 8)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 8, 16, 8 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(0, 8, 16, 8)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 8, 16, 8 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(16, 8, 16, 8)
 
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}],
 "loop": true,
-"name": "Brown",
+"name": &"Brown",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}],
 "loop": true,
-"name": "Silver",
+"name": &"Silver",
 "speed": 2.0
-} ]
+}]
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id="8"]
 radius = 4.0
 height = 8.0
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 4, 8.00001 )
+[sub_resource type="RectangleShape2D" id="7"]
+size = Vector2(8, 16)
 
 [node name="Rat" type="RigidBody2D"]
 collision_layer = 4
-script = ExtResource( 2 )
+lock_rotation = true
+script = ExtResource("2")
 my_name = "Rat"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2( 0, -4 )
-frames = SubResource( 5 )
-animation = "Brown"
+sprite_frames = SubResource("5")
+animation = &"Brown"
+autoplay = "Brown"
 frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -4 )
 rotation = 1.5708
-shape = SubResource( 8 )
+shape = SubResource("8")
 
 [node name="CoreComponent" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource( 3 )
+script = ExtResource("3")
 max_life = 50
 attack = 10
 defense = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
-position = Vector2( -2.38419e-07, -4 )
+position = Vector2(4.26326e-13, 0)
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource("7")
 
-[node name="HealthBar" parent="." instance=ExtResource( 4 )]
-offset_left = -8.0
-offset_top = -16.0
-offset_right = 8.0
-offset_bottom = -12.0
+[node name="HealthBar" parent="." instance=ExtResource("4")]
+offset_top = -21.0
+offset_bottom = -17.0
 
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

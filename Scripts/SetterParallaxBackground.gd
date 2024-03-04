@@ -8,7 +8,7 @@ extends ParallaxBackground
 
 @onready var backgrounds : Array = [
 	sewer,
-	cave
+	#cave
 ]
 
 

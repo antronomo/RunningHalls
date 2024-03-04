@@ -1,13 +1,13 @@
 extends Control
 
 
-const main_cam_pos : Vector2 = Vector2(120, 67)
-const start_cam_pos : Vector2 = Vector2(360, 67)
-const options_cam_pos : Vector2 = Vector2(-120, 67)
-const credits_cam_pos : Vector2 = Vector2(120, 203)
-
-
 @onready var cam : Camera2D = $Camera2D
+
+
+const main_cam_pos : Vector2 = Vector2.ZERO
+const start_cam_pos : Vector2 = Vector2(240, 0)
+const options_cam_pos : Vector2 = Vector2(-240, 0)
+const credits_cam_pos : Vector2 = Vector2(0, 136) 
 
 
 func move_camera(new_pos : Vector2, secs : float = 0.5) -> void:

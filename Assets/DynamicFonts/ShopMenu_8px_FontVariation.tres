@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://ds2df6k5s8j30"]
+
+[ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="1_rpmdu"]
+
+[resource]
+base_font = ExtResource("1_rpmdu")
+spacing_glyph = 1
+spacing_top = -2
+spacing_bottom = -2

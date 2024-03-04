@@ -4,32 +4,54 @@
 [ext_resource type="PackedScene" uid="uid://by7ea8qrovwnd" path="res://UIs/OptionsMenu.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b0vqq1dpd78op" path="res://UIs/StartMenu.tscn" id="3"]
 [ext_resource type="Script" path="res://Scripts/MenuScene.gd" id="4"]
-[ext_resource type="PackedScene" path="res://UIs/CreditsMenu.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://igstc1pa4m15" path="res://UIs/CreditsMenu.tscn" id="5"]
 
 [node name="MenuScene" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 135.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4")
 
 [node name="MainMenu" parent="." instance=ExtResource("1")]
+layout_mode = 1
 
 [node name="StartMenu" parent="." instance=ExtResource("3")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 240.0
 offset_right = 480.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="OptionsMenu" parent="." instance=ExtResource("2")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = -240.0
-offset_right = 0.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="CreditsMenu" parent="." instance=ExtResource("5")]
+layout_mode = 1
 anchors_preset = 0
-offset_top = 135.0
-offset_bottom = 270.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 136.0
+offset_right = 240.0
+offset_bottom = 271.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(120, 67)
+anchor_mode = 0
 position_smoothing_enabled = true
 
 [connection signal="credit_pressed" from="MainMenu" to="." method="_on_MainMenu_credit_pressed"]

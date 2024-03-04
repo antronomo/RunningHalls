@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=1]
-[ext_resource path="res://Assets/img/Godot_icon.png" type="Texture2D" id=2]
-[ext_resource path="res://Assets/img/antronomo.png" type="Texture2D" id=3]
-[ext_resource path="res://Scripts/Intro.gd" type="Script" id=4]
+[ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="1"]
+[ext_resource type="Texture2D" uid="uid://bpy8faexejobk" path="res://Assets/img/Godot_icon.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://fgevo8ci2sux" path="res://Assets/img/antronomo.png" id="3"]
+[ext_resource type="Script" path="res://Scripts/Intro.gd" id="4"]
+
 
 [sub_resource type="FontFile" id=1]
 outline_size = 1

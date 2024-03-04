@@ -3,17 +3,20 @@ extends Node2D
 
 @onready var physic_ground : StaticBody2D = $PhysicGround
 @onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
-@onready var finishing : bool = false
+#@onready var finishing : bool = false
 @onready var enemy_spawner : Marker2D = $EnemySpawner
 @onready var loot_manager : Node2D = $LootManager
-@onready var gui : Control = $GUI
+@onready var gui : CanvasLayer = $GUI
 @onready var pasue_menu : Control = $PauseMenu
 @onready var game_save_file : Dictionary
 @onready var shop_ui : Control = $Shop
 @onready var game_over_ui : Control = $GameOverUI
+@onready var accelerator : AnimationPlayer = $Accelerator/AnimationPlayer
+@onready var player : Node2D = $Player
 
 
-const ground_speed : int = -30
+const ground_speed : int = -32
+const out_of_viewport : Vector2 = Vector2(0, 144)
 
 
 var current_wave : int
@@ -28,13 +31,13 @@ func _ready() -> void:
 	setterparallaxGround.set_background()
 	physic_ground.constant_linear_velocity.x = ground_speed
 	
-	gui.first_call($Player/CoreComponent.get_stats().life)
+	gui.first_call(player.get_node("CoreComponent").get_stats().life)
 	gui.update_gold_label(current_gold)
 	
 	# enemy_spawner.set_wave(current_wave)
 	enemy_spawner.spawn_enemies()
 	
-	shop_ui.position = Vector2(0, -135)
+	shop_ui.position = out_of_viewport
 
 
 func get_vars() -> void:
@@ -47,7 +50,7 @@ func get_vars() -> void:
 
 # Esto empieza a sobrar
 func _on_MataSobras5000_body_exited(body : Node) -> void:
-	print(str(body) + " has been deleted from existence")
+	printerr(str(body) + " has been deleted from existence")
 	body.queue_free()
 
 
@@ -59,11 +62,14 @@ func start_game() -> void:
 # Llamado cuando el jugador manda la señal morido
 func finish_game() -> void:
 	pasue_menu.queue_free()
-	$GameOverUI.visible = true
-	$Accelerator/AnimationPlayer.play_backwards("accelerate")
+	game_over_ui.position = Vector2.ZERO
+	game_over_ui.visible = true
+	accelerator.play_backwards("accelerate")
 	set_propetys()
 	enemy_spawner.work = false
-	await get_tree().create_timer(0.1).timeout# Solucion temporal: al morir el oro actualiza dos veces
+	
+	# Solucion temporal: al morir el oro actualiza dos veces
+	await get_tree().create_timer(0.1).timeout
 	gui.update_gold_label(saved_gold)
 
 
@@ -106,7 +112,7 @@ func _on_PauseMenu_save_time() -> void:
 func _on_GameOverUI_shop_pressed() -> void:
 	shop_ui.gold_update()
 	shop_ui.position = Vector2.ZERO
-	game_over_ui.position = Vector2(40, -1000)
+	game_over_ui.position = out_of_viewport
 
 
 func _on_GameOverUI_retry_pressed() -> void:
@@ -121,5 +127,5 @@ func _on_GameOverUI_return_pressed() -> void:
 func _on_Shop_exiting() -> void:
 	get_vars()
 	gui.update_gold_label(current_gold)
-	shop_ui.position = Vector2(0, -135)
-	game_over_ui.position = Vector2(40, 16)
+	shop_ui.position = out_of_viewport
+	game_over_ui.position = Vector2.ZERO

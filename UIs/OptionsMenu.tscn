@@ -1,81 +1,96 @@
-[gd_scene load_steps=5 format=3 uid="uid://by7ea8qrovwnd"]
+[gd_scene load_steps=4 format=3 uid="uid://by7ea8qrovwnd"]
 
 [ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="1"]
-[ext_resource type="FontFile" uid="uid://crg735udr6hu2" path="res://Assets/DynamicFonts/MineTTF_8_whtie_FixedToCenter.tres" id="2"]
-[ext_resource type="FontFile" uid="uid://cmpk6s8q1arsi" path="res://Assets/Fonts/Minecraft.ttf" id="3_nqxxr"]
-[ext_resource type="FontVariation" uid="uid://68e8b8re2vya" path="res://Assets/DynamicFonts/MineTTF_4_whtie.tres" id="4_ad4fm"]
+[ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="3_nqxxr"]
+[ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="4_2r7kk"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 135.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 64.0
+offset_right = 58.0
 offset_bottom = 128.0
 
 [node name="Button1" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
 text = "BUTTON 1"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
 text = "BUTTON 2"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = " "
 
 [node name="Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
 text = "RETURN"
 
 [node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 0
-offset_left = 100.0
+layout_mode = 1
+anchors_preset = -1
+offset_left = 64.0
 offset_top = 8.0
-offset_right = 430.0
-offset_bottom = 308.0
-scale = Vector2(0.4, 0.4)
+offset_right = 232.0
+offset_bottom = 128.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nqxxr")
-current_tab = 1
 tabs_visible = false
 
 [node name="TabBar" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/TabBar"]
-layout_mode = 0
+layout_mode = 1
 offset_left = 8.0
-offset_top = 7.0
-offset_right = 323.0
-offset_bottom = 292.0
-theme_override_fonts/font = ExtResource("4_ad4fm")
-text = "123465798
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "TAB1 tab1
+TAB 1 tab 1
+1 11 1 1 
 el pepe
 EL PEPE"
+autowrap_mode = 1
 
 [node name="Tabs2" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Tabs2"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 322.0
-offset_bottom = 292.0
-text = "123456789
-el pepe
-EL PEPE"
+offset_right = 160.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "tab2 tab 2
+TAB2 TAB 2
+el pepe 0123456789
+EL PEPE 0 1 2 3 4 5 6 7 8 9"
+autowrap_mode = 1
 
 [node name="Tabs3" type="TabBar" parent="TabContainer"]
 visible = false

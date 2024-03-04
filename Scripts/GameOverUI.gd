@@ -6,8 +6,9 @@ signal retry_pressed
 signal return_pressed
 
 
-func _ready():
+func _ready() -> void:
 	visible = false
+	#pass
 
 
 func _on_ShopButton_pressed() -> void:
@@ -26,7 +27,3 @@ func _on_GameOverUI_visibility_changed() -> void:
 	if visible:
 		$AnimationPlayer.play("appear")
 
-
-"""
-change gameOver to Rekt
-"""

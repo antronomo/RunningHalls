@@ -9,8 +9,8 @@ var current_wave : int = 0
 func _ready() -> void:
 	current_wave = Globals.saved_wave
 	# print(str(current_wave))
-
 	wave_buff()
+	super()
 
 
 func print_stats() -> void:

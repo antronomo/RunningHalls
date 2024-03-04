@@ -1,62 +1,63 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://de812juy536n8"]
 
-[ext_resource path="res://Components/CoreComponent.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/DarkWizard.gd" type="Script" id=2]
-[ext_resource path="res://Assets/img/DarkWizard.png" type="Texture2D" id=3]
-[ext_resource path="res://Components/HealthBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/EnemyStats.gd" type="Script" id=5]
+[ext_resource type="PackedScene" path="res://Components/CoreComponent.tscn" id="1"]
+[ext_resource type="Script" path="res://Scripts/DarkWizard.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dfoxw26yp4lu7" path="res://Assets/img/DarkWizard.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="4"]
+[ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="5"]
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 3 )
-region = Rect2( 16, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("3")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+[sub_resource type="SpriteFrames" id="8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 2.0
-} ]
+}]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id="4"]
 radius = 8.0
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 8, 8 )
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(16, 16)
 
 [node name="Darkwizard" type="RigidBody2D"]
 collision_layer = 4
-script = ExtResource( 2 )
+script = ExtResource("2")
 my_name = "DarkWizard"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2( 0, -8 )
-frames = SubResource( 8 )
+sprite_frames = SubResource("8")
+autoplay = "default"
 frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -8 )
-shape = SubResource( 4 )
+shape = SubResource("4")
 
-[node name="CoreComponent" parent="." instance=ExtResource( 1 )]
+[node name="CoreComponent" parent="." instance=ExtResource("1")]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource( 5 )
+script = ExtResource("5")
 max_life = 100
 attack = 25
 defense = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
-position = Vector2( 0, -8 )
-shape = SubResource( 5 )
+shape = SubResource("5")
 
-[node name="HealthBar" parent="." instance=ExtResource( 4 )]
-offset_left = -8.0
-offset_top = -24.0
-offset_right = 8.0
-offset_bottom = -20.0
+[node name="HealthBar" parent="." instance=ExtResource("4")]
+offset_top = -25.0
+offset_bottom = -21.0

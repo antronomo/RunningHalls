@@ -13,6 +13,7 @@ config_version=5
 config/name="RunningHalls"
 run/main_scene="res://UIs/MenuScene.tscn"
 config/features=PackedStringArray("4.2")
+run/max_fps=60
 config/icon="res://icon.png"
 
 [autoload]
@@ -29,6 +30,7 @@ window/size/resizable=false
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [global]
 
@@ -72,10 +74,18 @@ infor={
 
 [layer_names]
 
-2d_physics/layer_1="World"
+2d_render/layer_1="Environment"
+2d_render/layer_2="Player"
+2d_render/layer_3="Enemy"
+2d_render/layer_4="Object"
+2d_physics/layer_1="Environment"
+2d_navigation/layer_1="Environment"
 2d_physics/layer_2="Player"
+2d_navigation/layer_2="Player"
 2d_physics/layer_3="Enemy"
-2d_physics/layer_4="Breakable"
+2d_navigation/layer_3="Enemy"
+2d_physics/layer_4="Object"
+2d_navigation/layer_4="Object"
 
 [physics]
 
@@ -84,4 +94,12 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=0
+lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=0
+lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=0
+lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=0
 environment/defaults/default_environment="res://default_env.tres"

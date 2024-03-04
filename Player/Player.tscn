@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cy38ehjihtgys"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Components/CoreComponent.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ckic3jwkm6c2d" path="res://Components/CoreComponent.tscn" id="2"]
 [ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://bmkiqu576mawq" path="res://Assets/img/Player.png" id="4"]
 [ext_resource type="PackedScene" path="res://Player/Boots.tscn" id="5"]
@@ -249,7 +249,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="3"]
 size = Vector2(8, 32)
 
-[node name="Player" type="Node2D" groups=["player"]]
+[node name="Player" type="Node2D"]
 z_index = 1
 script = ExtResource("1")
 

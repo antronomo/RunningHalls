@@ -1,6 +1,10 @@
 extends Node2D
 
 
+@onready var core_component : CoreComponent = $CoreComponent
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
+
+
 @export var my_name : String = 'player'
 
 
@@ -26,7 +30,7 @@ func seeHP(hp : int) -> void:
 
 
 func going_to_heal() -> void:
-	$CoreComponent.set_hp(999999999)
+	core_component.set_hp(999999999)
 
 
 func update_status(status : String, value : bool) -> void: pass 
@@ -35,9 +39,9 @@ func update_status(status : String, value : bool) -> void: pass
 func _on_CoreComponent_body_entered(body : Enemy) -> void:
 	#Esto es cuando el jugador colisiona con un enemigo, para empujar-lo
 	# print('empujacion')
-	body.apply_central_impulse(Vector2(randi() % 50 + 51, - randi() % 75 - 26))
+	body.apply_central_impulse(Vector2(randi() % 100 + 51, - randi() % 175 - 126))
 
 
 func going_to_die() -> void:
-	$AnimationPlayer.play('dying')
+	anim_player.play('dying')
 	emit_signal('morido')

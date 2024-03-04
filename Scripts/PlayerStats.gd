@@ -15,7 +15,7 @@ var total_upgrades : int
 func _ready() -> void:
 	total_upgrades = get_total_upgrades()
 	update_stats()
-
+	super()
 
 # Las estadísticas después de sumar el equipamiento
 func update_stats() -> void:
