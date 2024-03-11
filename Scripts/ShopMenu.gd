@@ -2,7 +2,7 @@ extends Control
 
 
 @onready var tab_container : TabContainer = $TabContainer
-@onready var item_show : Sprite2D = $TabContainer/ForgeTab/SelectRect/ItemShow
+@onready var item_show : Sprite2D = $TabContainer/ForgeTab/SelectRect/ItemShow # Me mola, pero no tiene nada que hacer en este proyecto
 @onready var upgrade_name_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeName
 @onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
 @onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
@@ -73,7 +73,7 @@ func get_item_to_show(equipment : Equipment, new_item_name : String) -> void:
 		upgrade_stat_label.text = str(equipment_info.stat) + "  =>  " + str(equipment_next_info.stat)
 
 		upgrade_price = equipment_next_info.price
-		upgrade_price_label.text = str(upgrade_price)
+		upgrade_price_label.text = str(upgrade_price) + " coins"
 
 	else:
 		upgrade_stat_label.text = str(equipment_info.stat)

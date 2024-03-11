@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dq5cjouwd1omc"]
 
-[ext_resource path="res://Scripts/EnemySpawner.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/EnemyListNode.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="1"]
+[ext_resource type="Script" path="res://Scripts/WaveGenerator.gd" id="2"]
 
 [node name="EnemySpawner" type="Marker2D"]
 process_mode = 1
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="EnemyListNode" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="WaveGenerator" type="Node" parent="."]
+script = ExtResource("2")
 
 [node name="Timer" type="Timer" parent="."]
 

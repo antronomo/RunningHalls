@@ -40,7 +40,7 @@ Esto es el corazón que utilizaré para crear las piezas de armadura, espada y e
 necesito como variables:
 	-lista con los precios/estat
 	-sprite(s)
-	?-lsita de mejoras por encantamiento, vea ideas.txt para más
+	?-lsita de mejoras por encantamiento, vea el 'GDD' en obsidian para más
 
 funciones:
 	*-para devolver los valores de la siguiente mejora o de que está al máximo

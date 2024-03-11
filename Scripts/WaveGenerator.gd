@@ -19,6 +19,30 @@ const enemyGroupsList : Array = [
 # const bossesList : Array = []
 
 
-func get_enemy_group() -> Array:
-	var num = randi() % enemyGroupsList.size()
-	return enemyGroupsList[num]
+@onready var enemy_group_size : int = enemyGroupsList.size()
+
+
+var new_wave : Array
+
+
+func get_new_wave() -> Array:
+	var enemy_list = enemyGroupsList[randi() % enemy_group_size]
+	var wave_length : int = randi() % 3 + 5
+	
+	new_wave = [
+		[enemy_list[0]],
+		[enemy_list[0], enemy_list[0]],
+		[enemy_list[0], enemy_list[1], enemy_list[1]],
+		[enemy_list[1], enemy_list[2], enemy_list[2]],
+		[enemy_list[2]]
+	]
+
+	if wave_length >= 6:
+		new_wave.append_array([[enemy_list[0], enemy_list[1], enemy_list[2], enemy_list[2]]])
+
+		if wave_length == 7:
+			new_wave.append_array([[enemy_list[randi() % 3]]])
+
+	# print(str(wave_num), str(wave_list))
+	return new_wave
+

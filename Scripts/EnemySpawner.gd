@@ -1,12 +1,15 @@
 extends Marker2D
 
 
-@onready var enemy_list_node : Node = $EnemyListNode
+@onready var wave_generator : Node = $WaveGenerator
 @onready var timer : Node = $Timer
 
 # Esta variable y la funcion get_wave() son esenciales si no quieres tocar level0.gd
 # La variable es utilizada por los enemigos para calcular estadísticas progresivas
 @onready var le_wave : int = Globals.current_game.game_info.wave
+
+# Esto es un meme
+@onready var enemies_lock_rotation : bool = Globals.config_data.enemies_lock_rotation
 
 
 var wave_list : Array
@@ -19,36 +22,16 @@ signal enemy_list_ended
 
 
 func _ready() -> void:
-	wave_generator(enemy_list_node.get_enemy_group())
+	wave_list = wave_generator.get_new_wave()
 
 
 func get_wave() -> int:
 	return le_wave
 
 
-func wave_generator(enemy_list : Array) -> void:
-	var wave_num : int = randi() % 3 + 5
-
-	wave_list = [
-		[enemy_list[0]],
-		[enemy_list[0], enemy_list[0]],
-		[enemy_list[0], enemy_list[1], enemy_list[1]],
-		[enemy_list[1], enemy_list[2], enemy_list[2]],
-		[enemy_list[2]]
-	]
-
-	if wave_num >= 6:
-		wave_list.append_array([[enemy_list[0], enemy_list[1], enemy_list[2], enemy_list[2]]])
-
-		if wave_num == 7:
-			wave_list.append_array([[enemy_list[randi() % 3]]])
-
-	# print(str(wave_num), str(wave_list))
-
-
 func spawn_enemies() -> void:
 	# Revisar que la partida no ha acabado
-	if !work: 
+	if not work: 
 		return
 
 	for i1 in wave_list.size():
@@ -57,6 +40,7 @@ func spawn_enemies() -> void:
 
 			var next_enemy : RigidBody2D = wave_list[i1][i2].instantiate()
 			add_child(next_enemy)
+			next_enemy.lock_rotation = enemies_lock_rotation
 
 			if i1 == 4 or i1 == 6:
 				# print("boss time")
@@ -76,5 +60,5 @@ func _on_enemy_died(enemy_position : Vector2) -> void: # Llamado cuando un hijo 
 
 func _on_EnemySpawner_enemy_list_ended() -> void:
 	# Generar lista de enemigos y empezar a invocar-los
-	wave_generator(enemy_list_node.get_enemy_group())
+	wave_list = wave_generator.get_new_wave()
 	spawn_enemies()

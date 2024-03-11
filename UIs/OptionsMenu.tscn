@@ -33,10 +33,18 @@ theme_override_font_sizes/font_size = 8
 text = "BUTTON 2"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = " "
+
+[node name="Reset" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.117647, 0.117647, 1)
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Reset"
 
 [node name="Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -56,10 +64,10 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nqxxr")
 tabs_visible = false
 
-[node name="TabBar" type="TabBar" parent="TabContainer"]
+[node name="TabBar0" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/TabBar"]
+[node name="Label" type="Label" parent="TabContainer/TabBar0"]
 layout_mode = 1
 offset_left = 8.0
 offset_top = 8.0
@@ -74,11 +82,11 @@ el pepe
 EL PEPE"
 autowrap_mode = 1
 
-[node name="Tabs2" type="TabBar" parent="TabContainer"]
+[node name="Tabs1" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/Tabs2"]
+[node name="Label" type="Label" parent="TabContainer/Tabs1"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -92,14 +100,52 @@ el pepe 0123456789
 EL PEPE 0 1 2 3 4 5 6 7 8 9"
 autowrap_mode = 1
 
+[node name="Tabs2" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="EnemiesLockRotation" type="CheckButton" parent="TabContainer/Tabs2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+action_mode = 0
+text = "rotation locked"
+
 [node name="Tabs3" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Tabs4" type="TabBar" parent="TabContainer"]
-visible = false
-layout_mode = 2
+[node name="Label" type="Label" parent="TabContainer/Tabs3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+text = "are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/Tabs3"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 152.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(1, 0.117647, 0.117647, 1)
+theme_override_fonts/font = ExtResource("4_2r7kk")
+text = "reset
+settings
+to defauld"
 
 [connection signal="pressed" from="VBoxContainer/Button1" to="." method="_on_Button1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="toggled" from="TabContainer/Tabs2/EnemiesLockRotation" to="." method="_on_enemies_lock_rotation_toggled"]
+[connection signal="pressed" from="TabContainer/Tabs3/Button" to="." method="_on_button_pressed"]

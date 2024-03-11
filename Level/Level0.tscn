@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cfjpmmeypujrh" path="res://UIs/GUI.tscn" id="2"]
 [ext_resource type="Script" path="res://Scripts/SetterParallaxBackground.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://cy38ehjihtgys" path="res://Player/Player.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Components/EnemySpawner.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dq5cjouwd1omc" path="res://Components/EnemySpawner.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://do8y27yh4eck" path="res://UIs/GameOverUI.tscn" id="6"]
 [ext_resource type="Script" path="res://Scripts/LootManager.gd" id="7"]
 [ext_resource type="PackedScene" uid="uid://bi0ojv301m3qm" path="res://UIs/PauseMenu.tscn" id="8"]
@@ -175,8 +175,6 @@ grow_vertical = 1
 offset_top = 144.0
 offset_right = 240.0
 offset_bottom = 280.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Shop" parent="." instance=ExtResource("9")]
 offset_top = 144.0

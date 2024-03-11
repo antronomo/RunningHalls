@@ -2,7 +2,8 @@ class_name CoreComponent
 extends Area2D
 
 
-#Si hago que los atributos del personaje dependan de otro script, solo tendré que modificar este para que los actualice
+#Si hago que los atributos del personaje dependan de otro script, 
+#solo tendré que modificar este para que los actualice
 @export var max_life : int = 1: get = get_max_hp, set = set_max_hp
 @export var attack : int = 1
 @export var defense : int = 1
@@ -14,7 +15,9 @@ extends Area2D
 }
 
 
-var life : int = 0: get = get_hp, set = set_hp
+# setter y getter que aparecieron al pasar el proyecto a godot4
+# aún no se cómo funcionan
+var life : int = 0 : get = get_hp, set = set_hp
 
 
 signal HPStatus
@@ -30,14 +33,11 @@ func _ready() -> void:
 		connect("HPStatus", Callable(get_parent(), "seeHP"))
 
 
-func set_dict_status(status : String, value : bool) -> void:
-	match status:
+func set_dict_status(char_status : String, value : bool) -> void:
+	match char_status:
 		"low_life":
-			if typeof(value) == TYPE_BOOL:
-				dict_status.low_life = value
-				emit_signal("status", "low_life", value)
-			else:
-				print("cannot update " + status + " with: " + str(value))
+			dict_status.low_life = value
+			emit_signal("status", "low_life", value)
 		_:
 			print("status not found")
 

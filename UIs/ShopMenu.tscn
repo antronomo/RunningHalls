@@ -164,10 +164,10 @@ vertical_alignment = 1
 [node name="SelectRect" type="ColorRect" parent="TabContainer/ForgeTab"]
 visible = false
 layout_mode = 0
-offset_left = 8.0
-offset_top = -32.0
-offset_right = 24.0
-offset_bottom = -16.0
+offset_left = 64.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = -24.0
 color = Color(0, 0, 0, 0)
 
 [node name="ItemShow" type="Sprite2D" parent="TabContainer/ForgeTab/SelectRect"]

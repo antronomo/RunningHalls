@@ -25,7 +25,7 @@ var saved_gold : int # El oro que te quedas cuando terminas una oleada de enemig
 
 
 func _ready() -> void:
-	get_vars()
+	get_updated_vars()
 	# print(str(game_save_file))
 	
 	setterparallaxGround.set_background()
@@ -40,7 +40,7 @@ func _ready() -> void:
 	shop_ui.position = out_of_viewport
 
 
-func get_vars() -> void:
+func get_updated_vars() -> void:
 	game_save_file = Globals.current_game.duplicate()
 	
 	current_wave = game_save_file.game_info.wave
@@ -125,7 +125,7 @@ func _on_GameOverUI_return_pressed() -> void:
 
 # FUNCIONES con ShopUI--------------------------------------------------
 func _on_Shop_exiting() -> void:
-	get_vars()
+	get_updated_vars()
 	gui.update_gold_label(current_gold)
 	shop_ui.position = out_of_viewport
 	game_over_ui.position = Vector2.ZERO

@@ -17,8 +17,7 @@ Sprites (o arte gráfico):
 
 
 Fuente:
-    ·"kenpixel_mini" por kenney -> 
-		https://opengameart.org/content/kenney-fonts
+    ·"kenpixel_mini" por kenney -> https://opengameart.org/content/kenney-fonts
 
 
 Motor de videojuego:
@@ -32,16 +31,13 @@ Otro software utilizado:
 
     ·Git y GitHub como control del código fuente en la nube.
 
-    ·Lorein, aplicación de canvas infinito donde escribo ideas y hago dibujos sobre el proyecto. ->
-		https://github.com/mbrlabs/Lorien
+    ·Lorein, aplicación de canvas infinito donde escribo ideas y hago dibujos sobre el proyecto. -> https://github.com/mbrlabs/Lorien
 
 
 Videos y canales relevantes que he visto a lo largo del desarrollo:
     ·RafaLagoon -> https://www.twitch.tv/rafalagoon
 
-    ·How You Can Easily Make Your Code Simpler in Godot 4. por Bitlytic -> 
-        https://www.youtube.com/watch?v=74y6zWZfQKk&t
+    ·How You Can Easily Make Your Code Simpler in Godot 4. por Bitlytic -> https://www.youtube.com/watch?v=74y6zWZfQKk&t
 
-    ·Easy Health Bar with Stretching and Recoloring in Godot. por Chris' Tutorials ->
-        https://www.youtube.com/watch?v=aP8Cv_RvBlI
+    ·Easy Health Bar with Stretching and Recoloring in Godot. por Chris' Tutorials -> https://www.youtube.com/watch?v=aP8Cv_RvBlI
 
