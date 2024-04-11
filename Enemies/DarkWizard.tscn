@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://de812juy536n8"]
 
-[ext_resource type="PackedScene" path="res://Components/CoreComponent.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://ckic3jwkm6c2d" path="res://Components/CoreComponent.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/DarkWizard.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://dfoxw26yp4lu7" path="res://Assets/img/DarkWizard.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="4"]

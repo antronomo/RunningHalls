@@ -10,7 +10,7 @@ signal save_time
 
 
 func _ready() -> void:
-	visible = false # Por defecto lo dejo visible para el editor
+	visible = false 
 
 
 func game_pauser(el_booleano : bool) -> void:

@@ -1,13 +1,15 @@
 extends Control
 
 
-signal return_pressed
-
+@onready var conf_data : Dictionary = Globals.config_data
 
 @onready var tab_container : TabContainer = $TabContainer
+@onready var voice_slider : HSlider = $TabContainer/Tabs1/VoiceHSlider
+@onready var voice_value : Label = $TabContainer/Tabs1/VoiceValue
 @onready var enemies_lock_rotation_button : CheckButton = $TabContainer/Tabs2/EnemiesLockRotation
 
-@onready var conf_data : Dictionary = Globals.config_data
+
+signal return_pressed
 
 
 func _ready() -> void:
@@ -15,7 +17,13 @@ func _ready() -> void:
 
 
 func set_buttons_options() -> void: 
-	enemies_lock_rotation_button.button_pressed = conf_data.enemies_lock_rotation
+	#tab 0
+	
+	#tab1
+	_on_voice_h_slider_value_changed(conf_data.voice_volume)
+	
+	#tab2
+	enemies_lock_rotation_button.button_pressed = not conf_data.enemies_lock_rotation
 
 
 func _on_Button1_pressed() -> void:
@@ -40,13 +48,22 @@ func _on_Return_pressed() -> void:
 	emit_signal("return_pressed")
 
 
-# Secret section ---------------------------------------------------------
+# Volumen tab ------------------------------------------------------------
+func _on_voice_h_slider_value_changed(value : float) -> void:
+	conf_data.voice_volume = value
+	voice_value.text = str(value * 100.0) + "%"
+
+
+# Secret tab -------------------------------------------------------------
 func _on_enemies_lock_rotation_toggled(toggled_on : bool) -> void:
-	conf_data.enemies_lock_rotation = toggled_on
+	# Changed the name option to "rolling enemies"
+	# so inverted the toggled_on bool to make sense
+	conf_data.enemies_lock_rotation = not toggled_on
 
 
-# Reset section ----------------------------------------------------------
+# Reset tab --------------------------------------------------------------
 func _on_button_pressed() -> void:
 	Globals.resset_config_data()
 	conf_data = Globals.config_data
 	set_buttons_options()
+

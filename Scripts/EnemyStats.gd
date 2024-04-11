@@ -1,20 +1,26 @@
 extends CoreComponent
 
 
-var wave_multiplier : float = 0.05
+@onready var body : Enemy = get_node("../") 
+
+
+var wave_multiplier : float = 0.1
 var boss_multiplier : float = 2.0
 var current_wave : int = 0
 
 
 func _ready() -> void:
-	current_wave = Globals.saved_wave
+	connect("body_entered", Callable(self, "_on_EnemyStats_body_entered" ))
+	
+	current_wave = clamp(Globals.saved_wave, 0 , 150)
+	
 	# print(str(current_wave))
 	wave_buff()
 	super()
 
 
 func print_stats() -> void:
-	print(get_stats())
+	print(JSON.stringify(get_stats(), "\t"))
 
 
 func wave_buff() -> void:
@@ -35,6 +41,11 @@ func boss_buff() -> void:
 	# critical_damage *= boss_multiplier
 
 	# print_stats()
+
+
+func _on_CoreComponent_area_entered(area : CoreComponent) -> void:
+	super(area)
+	body.knock_back()
 
 
 """

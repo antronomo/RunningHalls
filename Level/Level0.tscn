@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://rmjr3fg1l0xe"]
+[gd_scene load_steps=21 format=3 uid="uid://rmjr3fg1l0xe"]
 
 [ext_resource type="Script" path="res://Scripts/Level0.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cfjpmmeypujrh" path="res://UIs/GUI.tscn" id="2"]
@@ -9,9 +9,13 @@
 [ext_resource type="Script" path="res://Scripts/LootManager.gd" id="7"]
 [ext_resource type="PackedScene" uid="uid://bi0ojv301m3qm" path="res://UIs/PauseMenu.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dfaw1u7n42udl" path="res://UIs/ShopMenu.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://md23rqrj4w7p" path="res://UIs/GameFinished.tscn" id="10_i7fc4"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(288, 32)
+size = Vector2(400, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i75hk"]
+size = Vector2(104, 16)
 
 [sub_resource type="RectangleShape2D" id="3"]
 size = Vector2(64, 160)
@@ -28,7 +32,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(40, 104)]
+"values": [Vector2(40, 100)]
 }
 
 [sub_resource type="Animation" id="5"]
@@ -43,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-20, 104), Vector2(40, 104)]
+"values": [Vector2(-20, 100), Vector2(40, 100)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -100,6 +104,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop_anim"
+}, {
+"args": [],
+"method": &"walk_anim"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ra1b"]
 _data = {
@@ -119,7 +140,7 @@ script = ExtResource("3")
 
 [node name="Player" parent="." instance=ExtResource("4")]
 z_index = 0
-position = Vector2(40, 104)
+position = Vector2(40, 100)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5")]
 z_index = -1
@@ -130,11 +151,18 @@ z_index = -1
 script = ExtResource("7")
 
 [node name="PhysicGround" type="StaticBody2D" parent="."]
-position = Vector2(144, 120)
+position = Vector2(168, 120)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicGround"]
+position = Vector2(-32, -4)
 shape = SubResource("2")
+
+[node name="OneWayCollider" type="CollisionShape2D" parent="PhysicGround"]
+position = Vector2(80, -68)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_i75hk")
+one_way_collision = true
 
 [node name="MataSobras5000" type="Area2D" parent="."]
 position = Vector2(-40, 88)
@@ -172,17 +200,24 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="GameOverUI" parent="." instance=ExtResource("6")]
-offset_top = 144.0
+offset_top = -192.0
 offset_right = 240.0
-offset_bottom = 280.0
+offset_bottom = -56.0
 
 [node name="Shop" parent="." instance=ExtResource("9")]
-offset_top = 144.0
+offset_top = -192.0
 offset_right = 0.0
-offset_bottom = 144.0
+offset_bottom = -192.0
+
+[node name="GameFinished" parent="." instance=ExtResource("10_i7fc4")]
+offset_top = -192.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="enemy_died" from="EnemySpawner" to="." method="_on_EnemySpawner_enemy_died"]
 [connection signal="generate_loot" from="EnemySpawner" to="." method="_on_EnemySpawner_generate_loot"]
+[connection signal="hand_defeated" from="EnemySpawner" to="." method="_on_enemy_spawner_hand_defeated"]
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
 [connection signal="value_changed" from="Accelerator" to="." method="_on_Accelerator_value_changed"]
 [connection signal="save_time" from="PauseMenu" to="." method="_on_PauseMenu_save_time"]

@@ -13,10 +13,12 @@ extends Node2D
 @onready var game_over_ui : Control = $GameOverUI
 @onready var accelerator : AnimationPlayer = $Accelerator/AnimationPlayer
 @onready var player : Node2D = $Player
+@onready var game_finished_ui : Control = $GameFinished
+
 
 
 const ground_speed : int = -32
-const out_of_viewport : Vector2 = Vector2(0, 144)
+const out_of_viewport : Vector2 = Vector2(0, -192)
 
 
 var current_wave : int
@@ -48,9 +50,9 @@ func get_updated_vars() -> void:
 	saved_gold = current_gold
 
 
-# Esto empieza a sobrar
+# Esto será utilizado para eliminar cofres no abiertos
 func _on_MataSobras5000_body_exited(body : Node) -> void:
-	printerr(str(body) + " has been deleted from existence")
+	print(str(body) + " has been deleted from existence")
 	body.queue_free()
 
 
@@ -83,7 +85,24 @@ func set_propetys() -> void:
 	Globals.set_game_data("gold", saved_gold)
 	Globals.set_game_data("wave", current_wave)
 	Globals.save_data_to_file()
-
+	
+	
+# Llamado cuando el jefe "aHand" a sido derrotado
+func _on_enemy_spawner_hand_defeated() -> void:
+	pasue_menu.queue_free()
+	accelerator.play_backwards("accelerate")
+	player.stop_anim()
+	set_propetys()
+	enemy_spawner.work = false
+	
+	# Solucion temporal: al morir el oro actualiza dos veces
+	await get_tree().create_timer(0.1).timeout
+	gui.update_gold_label(saved_gold)
+	
+	# UI FINAL DE VICTORIA
+	game_finished_ui.position = Vector2.ZERO
+	game_finished_ui.visible = true
+	
 
 # FUNCIONES con EnemySpawner--------------------------------------------
 func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
@@ -98,7 +117,6 @@ func _on_EnemySpawner_enemy_died() -> void:
 	saved_gold = current_gold
 	current_wave = enemy_spawner.get_wave()
 	set_propetys()
-
 	# print("next wave: " + str(current_wave))
 
 

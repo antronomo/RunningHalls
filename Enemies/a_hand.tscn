@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://c473f80j3oygd"]
+
+[ext_resource type="Script" path="res://Scripts/aHand.gd" id="1_jrup0"]
+[ext_resource type="Texture2D" uid="uid://1eqlo83ombg5" path="res://Assets/img/aHand.png" id="2_61em4"]
+[ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="2_ldh6f"]
+[ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="4_w3jik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3ne8"]
+atlas = ExtResource("2_61em4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soqx2"]
+atlas = ExtResource("2_61em4")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn15t"]
+atlas = ExtResource("2_61em4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpn3r"]
+atlas = ExtResource("2_61em4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ev6pc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3ne8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soqx2")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn15t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpn3r")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2rsd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fpq3"]
+
+[node name="aHand" type="RigidBody2D"]
+collision_layer = 4
+script = ExtResource("1_jrup0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -16)
+sprite_frames = SubResource("SpriteFrames_ev6pc")
+animation = &"Walking"
+autoplay = "Walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_2rsd5")
+
+[node name="CoreComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_ldh6f")
+max_life = 200
+attack = 30
+defense = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_8fpq3")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_w3jik")]
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -31.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="CoreComponent" to="." method="_on_CoreComponent_area_entered"]
+[connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

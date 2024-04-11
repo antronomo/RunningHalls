@@ -8,6 +8,8 @@ const bat : PackedScene = preload("res://Enemies/Bat.tscn")
 const rat : PackedScene = preload("res://Enemies/Rat.tscn")
 const spider : PackedScene = preload("res://Enemies/Spider.tscn")
 const vampire : PackedScene = preload("res://Enemies/Vampire.tscn")
+const a_hand : PackedScene = preload("res://Enemies/a_hand.tscn")
+
 
 const enemyGroupsList : Array = [
 	[bat, rat, spider],
@@ -45,4 +47,7 @@ func get_new_wave() -> Array:
 
 	# print(str(wave_num), str(wave_list))
 	return new_wave
-
+	
+	
+func get_boss() -> Array:
+	return [[a_hand]]

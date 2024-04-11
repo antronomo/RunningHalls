@@ -24,13 +24,13 @@ offset_bottom = 128.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "BUTTON 1"
+text = "how to"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "BUTTON 2"
+text = "Sonidos"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -75,30 +75,45 @@ offset_right = 160.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "TAB1 tab1
-TAB 1 tab 1
-1 11 1 1 
-el pepe
-EL PEPE"
+text = "Ve a cazar enemigos,
+cae, vuelve a levantar,
+comrpa mejoras en la tienda,
+repite"
 autowrap_mode = 1
 
 [node name="Tabs1" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/Tabs1"]
+[node name="VoiceLabel" type="Label" parent="TabContainer/Tabs1"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 160.0
-offset_bottom = 112.0
+offset_right = 128.0
+offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
-theme_override_font_sizes/font_size = 8
-text = "tab2 tab 2
-TAB2 TAB 2
-el pepe 0123456789
-EL PEPE 0 1 2 3 4 5 6 7 8 9"
-autowrap_mode = 1
+text = "Voice"
+
+[node name="VoiceValue" type="Label" parent="TabContainer/Tabs1"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 24.0
+offset_right = 168.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VoiceHSlider" type="HSlider" parent="TabContainer/Tabs1"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 120.0
+offset_bottom = 48.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="Tabs2" type="TabBar" parent="TabContainer"]
 visible = false
@@ -106,14 +121,14 @@ layout_mode = 2
 
 [node name="EnemiesLockRotation" type="CheckButton" parent="TabContainer/Tabs2"]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 8.0
 offset_top = 8.0
-offset_right = 152.0
+offset_right = 160.0
 offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 action_mode = 0
-text = "rotation locked"
+text = "rolling enemies"
 
 [node name="Tabs3" type="TabBar" parent="TabContainer"]
 visible = false
@@ -147,5 +162,6 @@ to defauld"
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="value_changed" from="TabContainer/Tabs1/VoiceHSlider" to="." method="_on_voice_h_slider_value_changed"]
 [connection signal="toggled" from="TabContainer/Tabs2/EnemiesLockRotation" to="." method="_on_enemies_lock_rotation_toggled"]
 [connection signal="pressed" from="TabContainer/Tabs3/Button" to="." method="_on_button_pressed"]

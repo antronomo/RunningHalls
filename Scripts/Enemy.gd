@@ -24,7 +24,6 @@ signal died
 
 
 func _ready() -> void:
-	#lock_rotation = true
 	connect("died", Callable(get_node("../"), "_on_enemy_died"))
 	set_up_health_bar()
 
@@ -35,7 +34,7 @@ func set_up_health_bar() -> void:
 		health_bar.max_value = stats.life
 		health_bar.value = stats.life
 	else:
-		print(my_name + " does not have a healthbar")
+		push_warning(my_name + " does not have a healthbar")
 
 
 func seeHP(hp : int) -> void:
@@ -70,6 +69,13 @@ func hecking_die() -> void:
 	queue_free()
 
 
+# Llamado desde EnemyStats.gd
+# No se si hacer el 'apply_central_impulse' desde el otro script en vez de llamar esta función
+func knock_back() -> void:
+	#print("knock_back")
+	apply_central_impulse(Vector2(randi() % 250 + 150, -10))
+
+
 """
 La variable low_life_status solo puede ser cambiado por nodos heredados de este,
 ya que es CoreComponent (otro nodo como nodo hijo) quien manda la señal para cmabiar el valor.
@@ -79,6 +85,7 @@ PARA MONTAR NUEVOS ENEMIGOS: Como no se automatizar eso, me toca hacer-lo a mano
 	-nueva escena con Enemy de base y atar un script heredado con su nombre, ajustar colision 3 y mascara 1
 	-añadir una colision redondo como hijo, centrar la colision de manera que la parte mas baja esté en y0
 	-añadir CoreComponent como hijo, atar el escript EnemyStats.gd, poner sus estadisticas y ajustar colision 3 y mascara 2
-	-conectar la señal de CoreComponent > AreaEntered con CoreComponent
+	-conectar la señal de CoreComponent > area_entered con CoreComponent
+	-conectar la señal de CoreComponent > body_entered con CoreComponent
 	-añadir y ajustar el nodo HealthBar como nodo hijo
 """

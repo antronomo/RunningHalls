@@ -6,6 +6,13 @@ extends CoreParallaxBackground
 @onready var layer2 : ParallaxLayer = $ParallaxLayer2
 @onready var layer1 : ParallaxLayer = $ParallaxLayer
 
+@onready var label : Label = $ColorRect/Label
+
+
+func _ready() -> void:
+	var tween : Tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(label, "modulate", Color(1,1,1,0), 1)
+
 
 func _physics_process(delta) -> void:
 	if may_i_move:

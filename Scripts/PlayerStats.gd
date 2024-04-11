@@ -20,7 +20,8 @@ func _ready() -> void:
 # Las estadísticas después de sumar el equipamiento
 func update_stats() -> void:
 	# Aumentar la defensa
-	defense += helmet.get_item_stats().stat + chest_plate.get_item_stats().stat + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
+	defense += helmet.get_item_stats().stat + chest_plate.get_item_stats().stat \
+	 + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
 
 	# Aumentar el ataque
 	attack += sword.get_item_stats().stat
@@ -31,4 +32,5 @@ func update_stats() -> void:
 
 
 func get_total_upgrades() -> int:
-	return helmet.upgrades + chest_plate.upgrades + greaves.upgrades + boots.upgrades + shield.upgrades + sword.upgrades
+	return helmet.upgrades + chest_plate.upgrades + greaves.upgrades \
+	 + boots.upgrades + shield.upgrades + sword.upgrades

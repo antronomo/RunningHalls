@@ -25,12 +25,17 @@ signal status
 
 
 func _ready() -> void:
-	connect("status", Callable(get_parent(), "update_status"))
-
 	life = max_life
 
 	if get_parent().has_method("seeHP"):
 		connect("HPStatus", Callable(get_parent(), "seeHP"))
+	else:
+		push_error("Cannot connect seeHP")
+	
+	if get_parent().has_method("update_status"):
+		connect("status", Callable(get_parent(), "update_status"))
+	else:
+		push_error("Cannot connect update_status")
 
 
 func set_dict_status(char_status : String, value : bool) -> void:
@@ -39,7 +44,7 @@ func set_dict_status(char_status : String, value : bool) -> void:
 			dict_status.low_life = value
 			emit_signal("status", "low_life", value)
 		_:
-			print("status not found")
+			push_warning("status not found")
 
 
 func get_dict_status() -> void: pass
@@ -72,14 +77,13 @@ func hit() -> float:
 
 func get_hurt(entring_dmg : float) -> int:
 	#print(str(life)) # esto confirma que SI colisionan unos con otros como toca
-	# int() para quitar la advertencia "float to int"
-	var hurt : int = int(((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1)
+	var hurt : int = ((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1
 	return hurt if hurt < -1 else -1
 
 
 func set_hp(new_hp : int) -> void:
 	life += new_hp
-	life = int(clamp(life, 0, max_life)) # int() para quitar la advertencia "float to int"
+	life = clamp(life, 0, max_life)
 	emit_signal("HPStatus", life)
 	set_dict_status("low_life", false if life > (max_life / 2) else true)
 

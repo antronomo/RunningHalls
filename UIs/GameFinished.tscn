@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://md23rqrj4w7p"]
+
+[ext_resource type="Script" path="res://Scripts/GameFinished.gd" id="1_eq0vm"]
+[ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="1_pe23p"]
+
+[node name="GameFinished" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_eq0vm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 232.0
+offset_bottom = 128.0
+tabs_visible = false
+
+[node name="TabBar0" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+clip_tabs = false
+scrolling_enabled = false
+scroll_to_selected = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/TabBar0"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 112.0
+theme_override_fonts/normal_font = ExtResource("1_pe23p")
+bbcode_enabled = true
+text = "[center][rainbow][wave]ENHORABUENA[/wave][/rainbow]
+
+as derrotado a la mano y devuelto la paz al mundo,
+ de momento...[/center]"
+
+[node name="TabBar1" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+scrolling_enabled = false
+
+[node name="Label" type="Label" parent="TabContainer/TabBar1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("1_pe23p")
+text = "Juego creado por:
+antronomo
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabBar2" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/TabBar2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("1_pe23p")
+text = "Arte por: Kenney
+editado por:
+antronomo
+
+Sonidos: antronomo"
+horizontal_alignment = 1
+
+[node name="TabBar3" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/TabBar3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("1_pe23p")
+text = "no olvides pulsar el
+hueco que hay entre
+dos botones en el
+menú de ajustes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabBar4" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/TabBar4"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("1_pe23p")
+text = "FIN"
+horizontal_alignment = 1
+vertical_alignment = 1
