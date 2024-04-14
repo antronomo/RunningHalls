@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjrjhkxby2hnx"]
+
+[ext_resource type="Script" path="res://Scripts/CrystalHeart.gd" id="1_m4cte"]
+[ext_resource type="Resource" uid="uid://cqhxgtuba2fiq" path="res://Jewelly/CrystalHeart.tres" id="2_pkwrh"]
+
+[node name="CrystalHeart" type="Node"]
+script = ExtResource("1_m4cte")
+recurso = ExtResource("2_pkwrh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

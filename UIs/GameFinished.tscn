@@ -8,6 +8,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_eq0vm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -31,13 +33,13 @@ offset_right = 232.0
 offset_bottom = 128.0
 tabs_visible = false
 
-[node name="TabBar0" type="TabBar" parent="TabContainer"]
+[node name="GzTab" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 clip_tabs = false
 scrolling_enabled = false
 scroll_to_selected = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/TabBar0"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/GzTab"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -50,48 +52,45 @@ text = "[center][rainbow][wave]ENHORABUENA[/wave][/rainbow]
 as derrotado a la mano y devuelto la paz al mundo,
  de momento...[/center]"
 
-[node name="TabBar1" type="TabBar" parent="TabContainer"]
+[node name="TitleTab" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 scrolling_enabled = false
 
-[node name="Label" type="Label" parent="TabContainer/TabBar1"]
+[node name="Label" type="Label" parent="TabContainer/TitleTab"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("1_pe23p")
-text = "Juego creado por:
+text = "Running Halls
+
+Juego creado por:
 antronomo
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TabBar2" type="TabBar" parent="TabContainer"]
+[node name="StatsTab" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/TabBar2"]
+[node name="StatsLabel" type="Label" parent="TabContainer/StatsTab"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("1_pe23p")
-text = "Arte por: Kenney
-editado por:
-antronomo
+theme_override_font_sizes/font_size = 8
 
-Sonidos: antronomo"
-horizontal_alignment = 1
-
-[node name="TabBar3" type="TabBar" parent="TabContainer"]
+[node name="EasterEggTab" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/TabBar3"]
-layout_mode = 0
+[node name="Label" type="Label" parent="TabContainer/EasterEggTab"]
+layout_mode = 2
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
@@ -104,11 +103,11 @@ menú de ajustes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TabBar4" type="TabBar" parent="TabContainer"]
+[node name="TheEndTab" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/TabBar4"]
+[node name="Label" type="Label" parent="TabContainer/TheEndTab"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -118,3 +117,5 @@ theme_override_fonts/font = ExtResource("1_pe23p")
 text = "FIN"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

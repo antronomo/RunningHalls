@@ -7,7 +7,7 @@ extends Node2D
 @onready var enemy_spawner : Marker2D = $EnemySpawner
 @onready var loot_manager : Node2D = $LootManager
 @onready var gui : CanvasLayer = $GUI
-@onready var pasue_menu : Control = $PauseMenu
+@onready var pause_menu : Control = $PauseMenu
 @onready var game_save_file : Dictionary
 @onready var shop_ui : Control = $Shop
 @onready var game_over_ui : Control = $GameOverUI
@@ -24,10 +24,12 @@ const out_of_viewport : Vector2 = Vector2(0, -192)
 var current_wave : int
 var current_gold : int
 var saved_gold : int # El oro que te quedas cuando terminas una oleada de enemigos
+var gained_gold : int
 
 
 func _ready() -> void:
 	get_updated_vars()
+	Globals.set_game_data("tries", game_save_file.game_info.tries + 1)
 	# print(str(game_save_file))
 	
 	setterparallaxGround.set_background()
@@ -48,6 +50,7 @@ func get_updated_vars() -> void:
 	current_wave = game_save_file.game_info.wave
 	current_gold = game_save_file.game_info.gold
 	saved_gold = current_gold
+	gained_gold = game_save_file.game_info.gains
 
 
 # Esto será utilizado para eliminar cofres no abiertos
@@ -63,7 +66,7 @@ func start_game() -> void:
 
 # Llamado cuando el jugador manda la señal morido
 func finish_game() -> void:
-	pasue_menu.queue_free()
+	pause_menu.queue_free()
 	game_over_ui.position = Vector2.ZERO
 	game_over_ui.visible = true
 	accelerator.play_backwards("accelerate")
@@ -84,31 +87,39 @@ func _on_Accelerator_value_changed(value : float) -> void:
 func set_propetys() -> void:
 	Globals.set_game_data("gold", saved_gold)
 	Globals.set_game_data("wave", current_wave)
+	Globals.set_game_data("gains", gained_gold)
 	Globals.save_data_to_file()
 	
 	
 # Llamado cuando el jefe "aHand" a sido derrotado
 func _on_enemy_spawner_hand_defeated() -> void:
-	pasue_menu.queue_free()
+	#print("woa a eliminar pause menu")
+	pause_menu.queue_free()
 	accelerator.play_backwards("accelerate")
+	await get_tree().create_timer(1.5).timeout
 	player.stop_anim()
 	set_propetys()
 	enemy_spawner.work = false
-	
 	# Solucion temporal: al morir el oro actualiza dos veces
 	await get_tree().create_timer(0.1).timeout
 	gui.update_gold_label(saved_gold)
 	
 	# UI FINAL DE VICTORIA
+	await get_node("EnemySpawner/aHand").hand_deleted
 	game_finished_ui.position = Vector2.ZERO
 	game_finished_ui.visible = true
-	
+
+
+# se supone que debe esperar a que el audio termine para lanzar esta función vacía
+func _on_hand_deleted() -> void: pass
+
 
 # FUNCIONES con EnemySpawner--------------------------------------------
 func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
 	var loot_quantity : int = current_wave + int(randi() % current_wave + (current_wave / 2))
 	loot_manager.generate_loot(loot_position, loot_quantity)
 	current_gold = current_gold + loot_quantity
+	gained_gold = gained_gold + loot_quantity
 	gui.update_gold_label(current_gold)
 	set_propetys()
 
@@ -124,6 +135,10 @@ func _on_EnemySpawner_enemy_died() -> void:
 func _on_PauseMenu_save_time() -> void:
 	set_propetys()
 	get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
+	
+	
+func _on_color_rect_pressed() -> void:
+	pause_menu.toggler_pauser()
 
 
 # FUNCIONES con GameOverUI----------------------------------------------
@@ -147,3 +162,4 @@ func _on_Shop_exiting() -> void:
 	gui.update_gold_label(current_gold)
 	shop_ui.position = out_of_viewport
 	game_over_ui.position = Vector2.ZERO
+

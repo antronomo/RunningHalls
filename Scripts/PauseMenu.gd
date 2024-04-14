@@ -19,10 +19,7 @@ func game_pauser(el_booleano : bool) -> void:
 
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		if get_tree().paused:
-			anim.play("pause_out")
-		else:
-			anim.play("pause_in")
+		toggler_pauser()
 
 
 func _on_ResumeButton_pressed() -> void:
@@ -40,6 +37,13 @@ func button_disabler(toggle : bool) -> void:
 	save_and_exit_buttton.disabled = toggle
 
 
+func toggler_pauser() -> void:
+	if get_tree().paused:
+		anim.play("pause_out")
+	else:
+		anim.play("pause_in")
+
+
 func _on_AnimationPlayer_animation_started(anim_name : String) -> void:
 	if anim_name == "pause_out":
 		button_disabler(true)
@@ -53,3 +57,9 @@ func _on_AnimationPlayer_animation_finished(anim_name : String) -> void:
 func _process(_delta) -> void:
 	if is_queued_for_deletion():
 		game_pauser(false)
+
+
+# No conviene borrar-lo
+func _on_tree_exited() -> void: 
+	#print("pause menu eliminado")
+	pass

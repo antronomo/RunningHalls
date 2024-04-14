@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://igstc1pa4m15"]
+[gd_scene load_steps=3 format=3 uid="uid://igstc1pa4m15"]
 
 [ext_resource type="Script" path="res://Scripts/CreditMenu.gd" id="1"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="2_wnkwj"]
-[ext_resource type="FontVariation" uid="uid://b70ncbv6ik2e6" path="res://Assets/DynamicFonts/HealthBar_8px_FontVariation.tres" id="3_g12g6"]
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -13,40 +12,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(120, 112)
+scale = Vector2(0.8, 0.8)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 232.0
-offset_bottom = 96.0
+offset_bottom = 128.0
 color = Color(0, 0, 0, 0.588235)
-
-[node name="Warning" type="Label" parent="."]
-layout_mode = 1
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 232.0
-offset_bottom = 96.0
-theme_override_fonts/font = ExtResource("2_wnkwj")
-text = "Creado por: antronomo
-arte por: Kenney
-editado por: antronomo
-sonido: antronomo"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 112.0
-offset_right = 188.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("3_g12g6")
-text = "ESC para volver"
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("2_wnkwj")
+theme_override_font_sizes/font_size = 8
+text = "juego creado por: antronomo
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(120, 24)
-scale = Vector2(0.8, 0.8)
+sprites: tiny dungeons por Kenney
+editdao por: antronomo
+
+fuente: kenpixel_mini por Kenney
+
+Doblaje: antronomo
+
+repo disponible en
+
+tap para volver..."
+
+[node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 96.0
+offset_right = 146.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_wnkwj")
+theme_override_font_sizes/font_size = 8
+text = "GitHub"
+uri = "https://github.com/antronomo/RunningHalls"
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

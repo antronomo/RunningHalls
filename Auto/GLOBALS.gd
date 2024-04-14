@@ -13,6 +13,8 @@ func _ready() -> void:
 	
 	#Esto es demasiado importante y lo necesito accesible
 	saved_wave = current_game.game_info.wave #!
+	
+	set_audiostreamplayers()
 
 
 func _input(event) -> void:
@@ -47,6 +49,18 @@ func set_game_data(what : String, with) -> void:
 		"gold":
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.gold = with
+			else:
+				print("cannot save " + what + " with: " + str(with))
+
+		"gains" : 
+			if typeof(with) == TYPE_INT:
+				current_game.game_info.gains = with
+			else:
+				print("cannot save " + what + " with: " + str(with))
+
+		"tries" : 
+			if typeof(with) == TYPE_INT:
+				current_game.game_info.tries = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
 
@@ -99,8 +113,16 @@ func resset_config_data() -> void:
 func save_config_to_file() -> void:
 	Config.save_conf_data(config_data)
 	config_data = Config.load_conf_data()
+	
+
+func set_audiostreamplayers() -> void:
+	AudioServer.set_bus_volume_db(1, linear_to_db(config_data.voice_volume))
 
 
+# Funcion completamente inutil, creo que porque estoy pasando los diccionarios
+# sin el .duplicate() y de algún modo se sobre-escribre
+# en todas las variables con ese diccionario
+# pero en set_game_data() si es necesario, no entiendo porqué
 func set_config_data(what : String, with) -> void:
 	match what:
 		"master_volume":
@@ -118,6 +140,13 @@ func set_config_data(what : String, with) -> void:
 		"sfx_volume":
 			if typeof(with) == TYPE_FLOAT:
 				print(what + "not config yet")
+			else:
+				print("cannot save " + what + " with: " + str(with))
+
+		"voice_volume":
+			if typeof(with) == TYPE_FLOAT:
+				config_data.voice_volume = with
+				set_audiostreamplayers()
 			else:
 				print("cannot save " + what + " with: " + str(with))
 

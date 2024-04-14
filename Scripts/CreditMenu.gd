@@ -16,5 +16,5 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 
 func _input(event) -> void:
-	if in_screen and event.is_action_pressed("ui_cancel"):
+	if in_screen and event.is_action_pressed("input_accept"):
 		emit_signal("return_pressed")

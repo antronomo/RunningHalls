@@ -25,6 +25,7 @@ signal hand_defeated
 func _ready() -> void:
 	# Conviene que genere una oleada normal antes del jefe final por si el jugador no ha mejorado al máximo todo
 	wave_list = wave_generator.get_new_wave()
+	#wave_list = wave_generator.get_boss()
 
 
 func get_wave() -> int:

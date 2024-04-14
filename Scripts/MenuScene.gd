@@ -2,12 +2,18 @@ extends Control
 
 
 @onready var cam : Camera2D = $Camera2D
+@onready var parallax_background : CoreParallaxBackground = $ParallaxBackground
 
 
 const main_cam_pos : Vector2 = Vector2.ZERO
 const start_cam_pos : Vector2 = Vector2(240, 0)
 const options_cam_pos : Vector2 = Vector2(-240, 0)
 const credits_cam_pos : Vector2 = Vector2(0, 136) 
+
+
+func _ready() -> void:
+	parallax_background.parallax_speed = -16
+	parallax_background.may_i_move = true
 
 
 func move_camera(new_pos : Vector2, secs : float = 0.5) -> void:

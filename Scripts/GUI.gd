@@ -25,4 +25,3 @@ func update_helath_bar(new_player_health : int) -> void :
 
 func update_gold_label(new_gold_count : int) -> void:
 	coin_label.text = str(new_gold_count)
-

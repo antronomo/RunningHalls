@@ -136,9 +136,9 @@ shape = SubResource("16")
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4")
-max_life = 300
-attack = 20
-defense = 20
+max_life = 200
+attack = 13
+defense = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
 shape = SubResource("17")

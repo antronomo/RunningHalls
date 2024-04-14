@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="JewelResource" load_steps=3 format=3 uid="uid://cqhxgtuba2fiq"]
+
+[ext_resource type="Script" path="res://Scripts/JewelResource.gd" id="1_t06p5"]
+[ext_resource type="Texture2D" uid="uid://cvf7u6ocwloyb" path="res://Assets/img/CristalHeart.png" id="2_jbqnt"]
+
+[resource]
+script = ExtResource("1_t06p5")
+name = "Crystal Heart"
+description = "A heart-shaped crystal that give you strength to receive damage"
+texture = ExtResource("2_jbqnt")

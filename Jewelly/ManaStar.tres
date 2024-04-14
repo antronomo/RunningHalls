@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="JewelResource" load_steps=3 format=3 uid="uid://dpki682jtfuvg"]
+
+[ext_resource type="Script" path="res://Scripts/JewelResource.gd" id="1_1jkux"]
+[ext_resource type="Texture2D" uid="uid://dps3iqdm5057q" path="res://Assets/img/ManaStar.png" id="2_cv0d6"]
+
+[resource]
+script = ExtResource("1_1jkux")
+name = "Mana Star"
+description = "A star-shaped Stone which can be used to store mana"
+texture = ExtResource("2_cv0d6")

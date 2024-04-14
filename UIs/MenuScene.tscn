@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsfuqwfmjeoas"]
+[gd_scene load_steps=8 format=3 uid="uid://dsfuqwfmjeoas"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnbm6mq2pwc" path="res://UIs/MainMenu.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://by7ea8qrovwnd" path="res://UIs/OptionsMenu.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b0vqq1dpd78op" path="res://UIs/StartMenu.tscn" id="3"]
 [ext_resource type="Script" path="res://Scripts/MenuScene.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://igstc1pa4m15" path="res://UIs/CreditsMenu.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://w81qn7x12iwi" path="res://BackGrounds/inSewerParallaxBackground.tscn" id="6_7liao"]
+[ext_resource type="PackedScene" uid="uid://cy38ehjihtgys" path="res://Player/Player.tscn" id="7_wbi6i"]
 
 [node name="MenuScene" type="Control"]
 layout_mode = 3
@@ -14,6 +16,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 135.0
+offset_right = 248.0
+offset_bottom = 280.0
+color = Color(0.239216, 0.282353, 0.203922, 1)
 
 [node name="MainMenu" parent="." instance=ExtResource("1")]
 layout_mode = 1
@@ -50,9 +60,21 @@ offset_bottom = 271.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="ParallaxBackground" parent="." instance=ExtResource("6_7liao")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 position_smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("7_wbi6i")]
+position = Vector2(260, 100)
+script = null
+
+[node name="CoreComponent" parent="Player" index="2"]
+script = null
+
+[node name="CollisionShape2D" parent="Player/CoreComponent" index="6"]
+visible = false
 
 [connection signal="credit_pressed" from="MainMenu" to="." method="_on_MainMenu_credit_pressed"]
 [connection signal="option_pressed" from="MainMenu" to="." method="_on_MainMenu_option_pressed"]
@@ -62,3 +84,5 @@ position_smoothing_enabled = true
 [connection signal="return_pressed" from="StartMenu" to="." method="_on_StartMenu_return_pressed"]
 [connection signal="return_pressed" from="OptionsMenu" to="." method="_on_OptionsMenu_return_pressed"]
 [connection signal="return_pressed" from="CreditsMenu" to="." method="_on_CreditsMenu_return_pressed"]
+
+[editable path="Player"]

@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://by7ea8qrovwnd"]
+[gd_scene load_steps=12 format=3 uid="uid://by7ea8qrovwnd"]
 
 [ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="3_nqxxr"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="4_2r7kk"]
+[ext_resource type="AudioStream" uid="uid://cp8gi725bwerx" path="res://Assets/Audio/audio_de_prueba.ogg" id="4_tpow6"]
+[ext_resource type="Texture2D" uid="uid://bmkiqu576mawq" path="res://Assets/img/Player.png" id="5_a44ko"]
+[ext_resource type="Texture2D" uid="uid://c4e3h6bkiuv6" path="res://Assets/img/ChestAndStuff.png" id="6_w8axi"]
+[ext_resource type="Texture2D" uid="uid://5goeqriujeqt" path="res://Assets/img/Potions.png" id="7_ovuef"]
+[ext_resource type="Texture2D" uid="uid://cqir20a8fxnpo" path="res://Assets/img/Dragons.png" id="8_w2p4y"]
+[ext_resource type="Texture2D" uid="uid://dps3iqdm5057q" path="res://Assets/img/ManaStar.png" id="9_7smru"]
+[ext_resource type="Texture2D" uid="uid://cvf7u6ocwloyb" path="res://Assets/img/CristalHeart.png" id="10_x11o0"]
+[ext_resource type="Texture2D" uid="uid://c78kp0vcs127k" path="res://Assets/img/SpikyGloves.png" id="11_5qhnu"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -20,33 +28,39 @@ offset_top = 8.0
 offset_right = 58.0
 offset_bottom = 128.0
 
-[node name="Button1" type="Button" parent="VBoxContainer"]
+[node name="HowToButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "how to"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="VolumeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Sonidos"
+text = "Volumen"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="ExtrasButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Extras"
+
+[node name="SecretButton" type="Button" parent="VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = " "
 
-[node name="Reset" type="Button" parent="VBoxContainer"]
+[node name="ResetButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.117647, 0.117647, 1)
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "Reset"
 
-[node name="Return" type="Button" parent="VBoxContainer"]
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
@@ -62,12 +76,14 @@ offset_bottom = 128.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nqxxr")
+current_tab = 2
 tabs_visible = false
 
-[node name="TabBar0" type="TabBar" parent="TabContainer"]
+[node name="HowToTab" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/TabBar0"]
+[node name="Label" type="Label" parent="TabContainer/HowToTab"]
 layout_mode = 1
 offset_left = 8.0
 offset_top = 8.0
@@ -81,11 +97,11 @@ comrpa mejoras en la tienda,
 repite"
 autowrap_mode = 1
 
-[node name="Tabs1" type="TabBar" parent="TabContainer"]
+[node name="VolumeTab" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="VoiceLabel" type="Label" parent="TabContainer/Tabs1"]
+[node name="VoiceLabel" type="Label" parent="TabContainer/VolumeTab"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -94,18 +110,18 @@ offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 text = "Voice"
 
-[node name="VoiceValue" type="Label" parent="TabContainer/Tabs1"]
+[node name="VoiceValue" type="Label" parent="TabContainer/VolumeTab"]
 layout_mode = 0
 offset_left = 120.0
 offset_top = 24.0
 offset_right = 168.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
-text = "100%"
+text = "null"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VoiceHSlider" type="HSlider" parent="TabContainer/Tabs1"]
+[node name="VoiceHSlider" type="HSlider" parent="TabContainer/VolumeTab"]
 layout_mode = 2
 offset_left = 8.0
 offset_top = 32.0
@@ -115,26 +131,360 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
-[node name="Tabs2" type="TabBar" parent="TabContainer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TabContainer/VolumeTab"]
+stream = ExtResource("4_tpow6")
+bus = &"VoiceAudio"
+
+[node name="ExtraTab" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="ExtraTabContainer" type="TabContainer" parent="TabContainer/ExtraTab"]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 144.0
+offset_bottom = 120.0
+current_tab = 7
+tabs_visible = false
+
+[node name="IntroTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="EnemiesLockRotation" type="CheckButton" parent="TabContainer/Tabs2"]
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/IntroTab"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Menu extras"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/IntroTab"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 120.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "material no usado
+y mas
+
+usa las flechas 
+para navegar
+
+tanto que contar en
+tan poco espacio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerClassesTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlayerClassesTab"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "clases para
+el jugador"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlayerClassesTab"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 120.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "guerrero
+
+mago
+
+???
+
+arquero"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/PlayerClassesTab"]
+position = Vector2(32, 64)
+texture = ExtResource("5_a44ko")
+
+[node name="StuffTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/StuffTab"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Cofres  y jarrones"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChestAndStuff" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/StuffTab"]
+position = Vector2(60, 44)
+texture = ExtResource("6_w8axi")
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/StuffTab"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 72.0
+offset_right = 124.0
+offset_bottom = 114.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Tenia la intencion
+de implementarlos
+para que el jugador
+tuviera algo que 
+hacer y no solo mirar
+"
+
+[node name="PotionsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PotionsTab"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Pociones"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Potions" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/PotionsTab"]
+position = Vector2(60, 32)
+texture = ExtResource("7_ovuef")
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PotionsTab"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 124.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Tambien un sistema
+para administrar
+pociones y durar
+mas por partida,
+podian ser encontrado
+en cofres y jarrones"
+
+[node name="DragonsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Dragon boss"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dragons" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
+position = Vector2(40, 48)
+texture = ExtResource("8_w2p4y")
+
+[node name="Label3" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 56.0
+offset_right = 112.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "<- ???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 88.0
+offset_right = 124.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "mi primera idea para 
+el jefe fue dragones"
+
+[node name="JewelTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Joyas o artefactos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManaStar" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
+position = Vector2(16, 28)
+texture = ExtResource("9_7smru")
+
+[node name="CristalHeart" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
+position = Vector2(16, 46)
+texture = ExtResource("10_x11o0")
+
+[node name="SpikyGloves" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
+position = Vector2(16, 65)
+texture = ExtResource("11_5qhnu")
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "<- mas mana
+
+<- mas vida
+
+<- mas daño"
+
+[node name="Label3" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 80.0
+offset_right = 124.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "artefacto son 
+ventajas para el 
+jugador, hiban a ser
+desbloqueables
+"
+
+[node name="JewelTab2" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab2"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Joyas o artefactos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "no solo en stats,
+tambien tenia la
+idea de darle pasivas
+como robo de vida,
+ejecutar enemigos..."
+
+[node name="PlannedThingsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlannedThingsTab"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "mas cosas planeadas"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlannedThingsTab"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 20.0
+offset_right = 117.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "-mas niveles (fondos)
+
+-habilidades para 
+los enemigos
+
+-hechizos para el 
+jugador
+
+-logros
+
+-NPCs (lore)"
+
+[node name="LeftExtraButton" type="Button" parent="TabContainer/ExtraTab"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+text = "<"
+
+[node name="RightExtraButton" type="Button" parent="TabContainer/ExtraTab"]
+layout_mode = 0
+offset_left = 144.0
+offset_right = 168.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+text = ">"
+
+[node name="SecretTab" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/SecretTab"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 160.0
-offset_bottom = 32.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "secret option"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemiesLockRotation" type="CheckButton" parent="TabContainer/SecretTab"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 160.0
+offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 action_mode = 0
 text = "rolling enemies"
 
-[node name="Tabs3" type="TabBar" parent="TabContainer"]
+[node name="RessetTab" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/Tabs3"]
+[node name="Label" type="Label" parent="TabContainer/RessetTab"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -145,7 +495,7 @@ text = "are you sure?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="TabContainer/Tabs3"]
+[node name="Button" type="Button" parent="TabContainer/RessetTab"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 40.0
@@ -157,11 +507,16 @@ text = "reset
 settings
 to defauld"
 
-[connection signal="pressed" from="VBoxContainer/Button1" to="." method="_on_Button1_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="VBoxContainer/Reset" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_Return_pressed"]
-[connection signal="value_changed" from="TabContainer/Tabs1/VoiceHSlider" to="." method="_on_voice_h_slider_value_changed"]
-[connection signal="toggled" from="TabContainer/Tabs2/EnemiesLockRotation" to="." method="_on_enemies_lock_rotation_toggled"]
-[connection signal="pressed" from="TabContainer/Tabs3/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HowToButton" to="." method="_on_HowToButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/VolumeButton" to="." method="_on_VolumeButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExtrasButton" to="." method="_on_extras_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SecretButton" to="." method="_on_SecretButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
+[connection signal="drag_ended" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_drag_ended"]
+[connection signal="drag_started" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_drag_started"]
+[connection signal="value_changed" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_value_changed"]
+[connection signal="pressed" from="TabContainer/ExtraTab/LeftExtraButton" to="." method="_on_left_extra_button_pressed"]
+[connection signal="pressed" from="TabContainer/ExtraTab/RightExtraButton" to="." method="_on_right_extra_button_pressed"]
+[connection signal="toggled" from="TabContainer/SecretTab/EnemiesLockRotation" to="." method="_on_enemies_lock_rotation_toggled"]
+[connection signal="pressed" from="TabContainer/RessetTab/Button" to="." method="_on_button_pressed"]
