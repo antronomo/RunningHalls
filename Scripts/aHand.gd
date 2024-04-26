@@ -31,7 +31,7 @@ func hecking_die() -> void:
 
 
 func _on_audio_stream_player_finished() -> void:
-	print("audio terminado")
+	#print("audio terminado")
 	emit_signal("hand_deleted")
 	queue_free()
 

@@ -47,10 +47,12 @@ offset_right = 216.0
 offset_bottom = 112.0
 theme_override_fonts/normal_font = ExtResource("1_pe23p")
 bbcode_enabled = true
-text = "[center][rainbow][wave]ENHORABUENA[/wave][/rainbow]
+text = "[center][rainbow][wave]Congratulations[/wave][/rainbow]
 
-as derrotado a la mano y devuelto la paz al mundo,
- de momento...[/center]"
+you have defeated 
+\"a hand\" and restored
+peace to this world...
+for now...[/center]"
 
 [node name="TitleTab" type="TabBar" parent="TabContainer"]
 visible = false
@@ -66,7 +68,7 @@ offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("1_pe23p")
 text = "Running Halls
 
-Juego creado por:
+game by:
 antronomo
 "
 horizontal_alignment = 1
@@ -84,6 +86,7 @@ offset_right = 216.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("1_pe23p")
 theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
 
 [node name="EasterEggTab" type="TabBar" parent="TabContainer"]
 visible = false
@@ -96,10 +99,10 @@ offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("1_pe23p")
-text = "no olvides pulsar el
-hueco que hay entre
-dos botones en el
-menú de ajustes"
+text = "you feel like
+tapping the space
+between two buttons
+in options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -114,7 +117,7 @@ offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("1_pe23p")
-text = "FIN"
+text = "the end"
 horizontal_alignment = 1
 vertical_alignment = 1
 

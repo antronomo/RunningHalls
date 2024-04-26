@@ -38,7 +38,7 @@ text = "how to"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Volumen"
+text = "Volume"
 
 [node name="ExtrasButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -76,11 +76,9 @@ offset_bottom = 128.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nqxxr")
-current_tab = 2
 tabs_visible = false
 
 [node name="HowToTab" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/HowToTab"]
@@ -91,10 +89,11 @@ offset_right = 160.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Ve a cazar enemigos,
-cae, vuelve a levantar,
-comrpa mejoras en la tienda,
-repite"
+text = "run
+fight enemies
+fall
+upgrade on shop
+repeat"
 autowrap_mode = 1
 
 [node name="VolumeTab" type="TabBar" parent="TabContainer"]
@@ -136,6 +135,7 @@ stream = ExtResource("4_tpow6")
 bus = &"VoiceAudio"
 
 [node name="ExtraTab" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ExtraTabContainer" type="TabContainer" parent="TabContainer/ExtraTab"]
@@ -143,11 +143,9 @@ layout_mode = 0
 offset_left = 24.0
 offset_right = 144.0
 offset_bottom = 120.0
-current_tab = 7
 tabs_visible = false
 
 [node name="IntroTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/IntroTab"]
@@ -156,7 +154,7 @@ offset_right = 120.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Menu extras"
+text = "extras"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -167,14 +165,14 @@ offset_right = 120.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "material no usado
-y mas
+text = "unused material
+and more
 
-usa las flechas 
-para navegar
+use the arrows
+to navigate
 
-tanto que contar en
-tan poco espacio"
+so much to tell in
+so little space"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -189,8 +187,7 @@ offset_right = 120.0
 offset_bottom = 20.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "clases para
-el jugador"
+text = "player classes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -202,13 +199,13 @@ offset_right = 120.0
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "guerrero
+text = "warrior
 
-mago
+mage
 
-???
+barbarian
 
-arquero"
+archer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -226,7 +223,7 @@ offset_right = 120.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Cofres  y jarrones"
+text = "Chest and vases"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -242,12 +239,10 @@ offset_right = 124.0
 offset_bottom = 114.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Tenia la intencion
-de implementarlos
-para que el jugador
-tuviera algo que 
-hacer y no solo mirar
-"
+text = "had the intention to
+implement them so that
+the player (you) had
+something to tap"
 
 [node name="PotionsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -259,7 +254,7 @@ offset_right = 120.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Pociones"
+text = "potions"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -275,12 +270,10 @@ offset_right = 124.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Tambien un sistema
-para administrar
-pociones y durar
-mas por partida,
-podian ser encontrado
-en cofres y jarrones"
+text = "also a potion manager
+system to last longer,
+could be found in
+chest and vases"
 
 [node name="DragonsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -320,8 +313,8 @@ offset_right = 124.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "mi primera idea para 
-el jefe fue dragones"
+text = "my first idea for
+boss was a dragon"
 
 [node name="JewelTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -333,7 +326,7 @@ offset_right = 120.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Joyas o artefactos"
+text = "jewerly and artifacts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -357,11 +350,11 @@ offset_right = 112.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "<- mas mana
+text = "<- more max mana
 
-<- mas vida
+<- more max hp
 
-<- mas daño"
+<- more damage"
 
 [node name="Label3" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
 layout_mode = 0
@@ -371,10 +364,10 @@ offset_right = 124.0
 offset_bottom = 113.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "artefacto son 
-ventajas para el 
-jugador, hiban a ser
-desbloqueables
+text = "those would give 
+advantages to 
+the player,
+would be unlockable
 "
 
 [node name="JewelTab2" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
@@ -387,7 +380,7 @@ offset_right = 120.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Joyas o artefactos"
+text = "jewerly and artifacts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -399,13 +392,14 @@ offset_right = 116.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "no solo en stats,
-tambien tenia la
-idea de darle pasivas
-como robo de vida,
-ejecutar enemigos..."
+text = "not only in stats,
+I also had the
+idea of giving passive
+like life leech,
+execute enemies..."
 
 [node name="PlannedThingsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlannedThingsTab"]
@@ -414,7 +408,7 @@ offset_right = 120.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "mas cosas planeadas"
+text = "more thingsplanned"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -426,17 +420,15 @@ offset_right = 117.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "-mas niveles (fondos)
+text = "-more backgrounds
 
--habilidades para 
-los enemigos
+-abilities for enemies
 
--hechizos para el 
-jugador
+-spells for the player
 
--logros
+-achievements
 
--NPCs (lore)"
+-NPCs (meant to lore)"
 
 [node name="LeftExtraButton" type="Button" parent="TabContainer/ExtraTab"]
 layout_mode = 0

@@ -32,25 +32,25 @@ offset_right = 224.0
 offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("2_wnkwj")
 theme_override_font_sizes/font_size = 8
-text = "juego creado por: antronomo
+text = "game by: antronomo
 
-sprites: tiny dungeons por Kenney
-editdao por: antronomo
+sprites: tiny dungeons by Kenney
+edited by: antronomo
 
-fuente: kenpixel_mini por Kenney
+font: kenpixel_mini by Kenney
 
-Doblaje: antronomo
+voices by: antronomo as \"a hand\"
 
-repo disponible en
+repo aviable on
 
-tap para volver..."
+tap to return..."
 
 [node name="LinkButton" type="LinkButton" parent="."]
 layout_mode = 0
-offset_left = 114.0
-offset_top = 96.0
-offset_right = 146.0
-offset_bottom = 104.0
+offset_left = 100.0
+offset_top = 97.0
+offset_right = 132.0
+offset_bottom = 105.0
 theme_override_fonts/font = ExtResource("2_wnkwj")
 theme_override_font_sizes/font_size = 8
 text = "GitHub"
