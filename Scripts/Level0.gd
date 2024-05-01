@@ -16,11 +16,10 @@ extends Node2D
 @onready var game_finished_ui : Control = $GameFinished
 
 
-
-const ground_speed : int = -32
+const gearbox : Array[int] = [-32, -48, -64]
 const out_of_viewport : Vector2 = Vector2(0, -192)
 
-
+var ground_speed : int # la variable que controla la velocidad del suelo y fondo
 var current_wave : int
 var current_gold : int
 var saved_gold : int # El oro que te quedas cuando terminas una oleada de enemigos
@@ -51,6 +50,8 @@ func get_updated_vars() -> void:
 	current_gold = game_save_file.game_info.gold
 	saved_gold = current_gold
 	gained_gold = game_save_file.game_info.gains
+	
+	ground_speed = gearbox[Globals.config_data.time_speed]
 
 
 # Esto será utilizado para eliminar cofres no abiertos
@@ -88,7 +89,9 @@ func set_propetys() -> void:
 	Globals.set_game_data("gold", saved_gold)
 	Globals.set_game_data("wave", current_wave)
 	Globals.set_game_data("gains", gained_gold)
-	Globals.save_data_to_file()
+	Globals.save_data_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
+	
+	Globals.save_config_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
 	
 	
 # Llamado cuando el jefe "aHand" a sido derrotado
@@ -137,7 +140,7 @@ func _on_PauseMenu_save_time() -> void:
 	get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
 	
 	
-func _on_color_rect_pressed() -> void:
+func _on_pause_button_pressed() -> void:
 	pause_menu.toggler_pauser()
 
 
@@ -162,4 +165,26 @@ func _on_Shop_exiting() -> void:
 	gui.update_gold_label(current_gold)
 	shop_ui.position = out_of_viewport
 	game_over_ui.position = Vector2.ZERO
+
+
+# Speed Buttnos, su propósito es ajustar la velocidad en la que transcurre el juego
+func _on_speed_button_1_pressed() -> void:
+	Globals.set_config_data("time_speed", 0)
+	cambio_de_marcha(0)
+
+
+func _on_speed_button_2_pressed() -> void:
+	Globals.set_config_data("time_speed", 1)
+	cambio_de_marcha(1)
+
+
+func _on_speed_button_3_pressed() -> void:
+	Globals.set_config_data("time_speed", 2)
+	cambio_de_marcha(2)
+	
+	
+func cambio_de_marcha(number : int) -> void:
+	ground_speed = gearbox[number]
+	physic_ground.constant_linear_velocity.x = ground_speed
+	setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
 

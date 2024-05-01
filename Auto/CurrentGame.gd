@@ -2,7 +2,7 @@ extends Node
 
 
 const GAMEPATHFILE : String = "user://SAVEFILE.save"
-const CURRENTVERSION : String = "0.25.2"
+const CURRENTVERSION : String = "0.26.0"
 const DEFAULTGAMEDATA : Dictionary = {
 	"game_info" : {
 		"game_version" : CURRENTVERSION,

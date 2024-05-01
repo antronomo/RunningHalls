@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://gomt6y3myau0" path="res://Assets/img/Backgrounds/inCave/BackGround-inCave6.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://b70e7vtodxnra" path="res://Assets/img/Backgrounds/inCave/BackGround-inCave1.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://6hf4a7ety2m2" path="res://Assets/img/Backgrounds/inCave/BackGround-inCave2.png" id="6"]
-[ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="7_niktk"]
+[ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="7_ne2jw"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1")
@@ -58,7 +58,7 @@ offset_left = 19.0
 offset_top = 10.0
 offset_right = 223.0
 offset_bottom = 33.0
-theme_override_fonts/font = ExtResource("7_niktk")
+theme_override_fonts/font = ExtResource("7_ne2jw")
 text = "suelo improvisado"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -8,7 +8,8 @@ const DEFAULTCONFIG : Dictionary = {
 	"sfx_volume" : 0.5,
 	"voice_volume" : 0.5,
 	"window_fullscreen" : false,
-	"enemies_lock_rotation" : true
+	"enemies_lock_rotation" : true,
+	"time_speed" : 1
 }
 
 

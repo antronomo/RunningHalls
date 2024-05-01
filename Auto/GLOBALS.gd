@@ -45,61 +45,61 @@ func set_game_data(what : String, with) -> void:
 				current_game.game_info.wave = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"gold":
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.gold = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"gains" : 
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.gains = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"tries" : 
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.tries = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"helmet":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.helmet = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"chestPlate":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.chestPlate = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"greaves":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.greaves = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"boots":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.boots = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"sword":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.sword = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"shield":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.shield = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		_: # Default
 			print(what + " not found")
 
@@ -130,38 +130,44 @@ func set_config_data(what : String, with) -> void:
 				print(what + "not config yet")
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"music_volume":
 			if typeof(with) == TYPE_FLOAT:
 				print(what + "not config yet")
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"sfx_volume":
 			if typeof(with) == TYPE_FLOAT:
 				print(what + "not config yet")
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"voice_volume":
 			if typeof(with) == TYPE_FLOAT:
 				config_data.voice_volume = with
 				set_audiostreamplayers()
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"window_fullscreen":
 			if typeof(with) == TYPE_BOOL:
 				print(what + "not config yet")
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
 		"enemies_lock_rotation":
 			if typeof(with) == TYPE_BOOL:
 				config_data.enemies_lock_rotation = with
 			else:
 				print("cannot save " + what + " with: " + str(with))
-
+		
+		"time_speed":
+			if typeof(with) == TYPE_INT:
+				config_data.time_speed = with
+			else:
+				print("cannot save " + what + " with: " + str(with))
+		
 		_: # Default
 			print(what + " not found") 
 

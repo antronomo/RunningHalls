@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfjpmmeypujrh"]
+[gd_scene load_steps=5 format=3 uid="uid://cfjpmmeypujrh"]
 
 [ext_resource type="Script" path="res://Scripts/GUI.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="2"]
-[ext_resource type="FontVariation" uid="uid://b70ncbv6ik2e6" path="res://Assets/DynamicFonts/HealthBar_8px_FontVariation.tres" id="3_fk6rc"]
 [ext_resource type="Texture2D" uid="uid://rmn12ygu7w0t" path="res://Assets/img/GoldCoin.png" id="4"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="5_n8prc"]
 
 [node name="GUI" type="CanvasLayer"]
+layer = -1
 script = ExtResource("1")
 
 [node name="HealthBarContainer" type="Control" parent="."]
@@ -37,7 +37,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_fk6rc")
+theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 1
@@ -61,18 +61,20 @@ layout_mode = 0
 offset_left = 24.0
 offset_right = 152.0
 offset_bottom = 16.0
-theme_override_fonts/font = ExtResource("3_fk6rc")
+theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
 text = "0"
 vertical_alignment = 1
 
-[node name="ColorRect" type="Button" parent="."]
+[node name="PauseButton" type="Button" parent="."]
 offset_left = 216.0
 offset_top = 8.0
 offset_right = 232.0
 offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_n8prc")
+theme_override_font_sizes/font_size = 8
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="PauseButton"]
 layout_mode = 0
 offset_left = 1.0
 offset_right = 17.0
@@ -82,3 +84,49 @@ theme_override_font_sizes/font_size = 8
 text = "||"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpeedControllerContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 128.0
+
+[node name="SpeedButton1" type="Button" parent="SpeedControllerContainer"]
+layout_mode = 2
+offset_left = 8.0
+offset_right = 24.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("5_n8prc")
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+action_mode = 0
+text = "1"
+
+[node name="SpeedButton2" type="Button" parent="SpeedControllerContainer"]
+layout_mode = 2
+offset_left = 32.0
+offset_right = 48.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("5_n8prc")
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+action_mode = 0
+text = "2"
+
+[node name="SpeedButton3" type="Button" parent="SpeedControllerContainer"]
+layout_mode = 2
+offset_left = 56.0
+offset_right = 72.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("5_n8prc")
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+action_mode = 0
+text = "3"
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="SpeedControllerContainer/SpeedButton1" to="." method="_on_speed_button_1_pressed"]
+[connection signal="pressed" from="SpeedControllerContainer/SpeedButton2" to="." method="_on_speed_button_2_pressed"]
+[connection signal="pressed" from="SpeedControllerContainer/SpeedButton3" to="." method="_on_speed_button_3_pressed"]

@@ -73,7 +73,7 @@ func _on_voice_h_slider_drag_started() -> void:
 	audio_stream_player.playing = true
 
 
-func _on_voice_h_slider_drag_ended(value_changed) -> void:
+func _on_voice_h_slider_drag_ended(_value_changed) -> void:
 	audio_stream_player.playing = false
 
 
