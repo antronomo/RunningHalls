@@ -34,3 +34,4 @@ func update_stats() -> void:
 func get_total_upgrades() -> int:
 	return helmet.upgrades + chest_plate.upgrades + greaves.upgrades \
 	 + boots.upgrades + shield.upgrades + sword.upgrades
+

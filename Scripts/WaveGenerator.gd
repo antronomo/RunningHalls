@@ -1,6 +1,6 @@
 extends Node
 
-
+# regular enemies
 const dark_wizard : PackedScene = preload("res://Enemies/DarkWizard.tscn")
 const humacean : PackedScene = preload("res://Enemies/Humacean.tscn")
 const ghost : PackedScene = preload("res://Enemies/Ghost.tscn")
@@ -8,7 +8,10 @@ const bat : PackedScene = preload("res://Enemies/Bat.tscn")
 const rat : PackedScene = preload("res://Enemies/Rat.tscn")
 const spider : PackedScene = preload("res://Enemies/Spider.tscn")
 const vampire : PackedScene = preload("res://Enemies/Vampire.tscn")
+
+# boss enemies
 const a_hand : PackedScene = preload("res://Enemies/a_hand.tscn")
+const dragon : PackedScene = preload("res://Enemies/Dragon.tscn")
 
 
 const enemyGroupsList : Array = [
@@ -18,7 +21,7 @@ const enemyGroupsList : Array = [
 	[bat, dark_wizard, vampire]
 ]
 
-# const bossesList : Array = []
+const bossesList : Array = [a_hand,]
 
 
 @onready var enemy_group_size : int = enemyGroupsList.size()
@@ -50,4 +53,4 @@ func get_new_wave() -> Array:
 	
 	
 func get_boss() -> Array:
-	return [[a_hand]]
+	return [[dragon]]

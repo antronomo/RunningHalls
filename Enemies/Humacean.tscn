@@ -57,7 +57,5 @@ defense = 10
 shape = SubResource("2")
 
 [node name="HealthBar" parent="." instance=ExtResource("4")]
-offset_top = -25.0
-offset_bottom = -21.0
-
-[connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]
+offset_top = -16.0
+offset_bottom = -12.0

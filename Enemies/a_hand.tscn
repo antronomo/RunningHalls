@@ -48,8 +48,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2rsd5"]
+radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fpq3"]
+size = Vector2(32, 32)
 
 [node name="aHand" type="RigidBody2D"]
 collision_layer = 4
@@ -57,13 +59,11 @@ script = ExtResource("1_jrup0")
 my_name = "a hand"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ev6pc")
 animation = &"Walking"
 autoplay = "Walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_2rsd5")
 
 [node name="CoreComponent" type="Area2D" parent="."]
@@ -75,20 +75,18 @@ attack = 30
 defense = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
-position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_8fpq3")
 
 [node name="HealthBar" parent="." instance=ExtResource("4_w3jik")]
 offset_left = -16.0
-offset_top = -36.0
+offset_top = -24.0
 offset_right = 16.0
-offset_bottom = -32.0
+offset_bottom = -20.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_v4g72")
 bus = &"VoiceAudio"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="CoreComponent" to="." method="_on_CoreComponent_area_entered"]
 [connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

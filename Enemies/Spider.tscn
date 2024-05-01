@@ -32,7 +32,7 @@ radius = 4.0
 height = 8.0
 
 [sub_resource type="RectangleShape2D" id="5"]
-size = Vector2(8, 8)
+size = Vector2(16, 8)
 
 [node name="Spider" type="RigidBody2D"]
 collision_layer = 4
@@ -46,7 +46,6 @@ autoplay = "default"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 0)
 rotation = 1.5708
 shape = SubResource("6")
 
@@ -60,10 +59,9 @@ attack = 15
 defense = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
+position = Vector2(3, 0)
 shape = SubResource("5")
 
 [node name="HealthBar" parent="." instance=ExtResource("1")]
 offset_top = -16.0
 offset_bottom = -12.0
-
-[connection signal="area_entered" from="CoreComponent" to="CoreComponent" method="_on_CoreComponent_area_entered"]

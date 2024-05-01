@@ -272,7 +272,7 @@ script = ExtResource("3")
 max_life = 200
 attack = 20
 defense = 20
-critical_cahnce = 15
+critical_chance = 15
 
 [node name="Boots" parent="CoreComponent" instance=ExtResource("5")]
 visible = false
@@ -293,7 +293,5 @@ position = Vector2(-5, -3)
 position = Vector2(8, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
-position = Vector2(12, -8)
+position = Vector2(8, -8)
 shape = SubResource("3")
-
-[connection signal="body_entered" from="CoreComponent" to="." method="_on_CoreComponent_body_entered"]

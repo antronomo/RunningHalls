@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://brry4hgp4l0ww"]
+
+[ext_resource type="Script" path="res://Scripts/Dragon.gd" id="1_4mw0u"]
+[ext_resource type="Texture2D" uid="uid://c1wec130dmlpq" path="res://Assets/img/Dragon_01.png" id="2_eftfx"]
+[ext_resource type="PackedScene" uid="uid://ckic3jwkm6c2d" path="res://Components/CoreComponent.tscn" id="3_r63ns"]
+[ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="4_dgtyr"]
+[ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="4_p63cj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fi7h2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eftfx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgebs"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tphxv"]
+size = Vector2(32, 32)
+
+[node name="Dragon" type="RigidBody2D"]
+collision_layer = 4
+script = ExtResource("1_4mw0u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fi7h2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vgebs")
+
+[node name="CoreComponent" parent="." instance=ExtResource("3_r63ns")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_p63cj")
+max_life = 200
+attack = 30
+defense = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
+shape = SubResource("RectangleShape2D_tphxv")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_dgtyr")]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = -20.0

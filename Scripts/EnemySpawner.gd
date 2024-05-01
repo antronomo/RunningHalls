@@ -8,7 +8,7 @@ extends Marker2D
 # La variable es utilizada por los enemigos para calcular estadísticas progresivas
 @onready var le_wave : int = Globals.current_game.game_info.wave
 
-# Esto es un meme
+# Esto es un meme, activable desde el "menu secreto"
 @onready var enemies_lock_rotation : bool = Globals.config_data.enemies_lock_rotation
 
 

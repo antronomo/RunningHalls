@@ -27,7 +27,7 @@ func wave_buff() -> void:
 	set_max_hp(max_life + max_life * (current_wave * wave_multiplier))
 	attack += attack * (current_wave * wave_multiplier)
 	defense += defense * (current_wave * wave_multiplier)
-	# critical_cahnce += critical_cahnce * (current_wave * 0.01)
+	# critical_chance += critical_chance * (current_wave * 0.01)
 	# critical_damage += critical_damage * (current_wave * 0.01)
 
 	# print_stats()
@@ -37,7 +37,7 @@ func boss_buff() -> void:
 	set_max_hp(max_life * boss_multiplier)
 	attack *= boss_multiplier
 	defense *= boss_multiplier
-	# critical_cahnce *= boss_multiplier
+	# critical_chance *= boss_multiplier
 	# critical_damage *= boss_multiplier
 
 	# print_stats()

@@ -7,7 +7,7 @@ extends Area2D
 @export var max_life : int = 1: get = get_max_hp, set = set_max_hp
 @export var attack : int = 1
 @export var defense : int = 1
-@export var critical_cahnce : int
+@export var critical_chance : int
 @export var critical_damage : int = 50
 
 @export var dict_status : Dictionary = {
@@ -26,12 +26,16 @@ signal status
 
 func _ready() -> void:
 	life = max_life
+	
+	connect("area_entered", Callable(self, "_on_CoreComponent_area_entered"))
 
+	# Actualizar barra de vida, si tiene
 	if get_parent().has_method("seeHP"):
 		connect("HPStatus", Callable(get_parent(), "seeHP"))
 	else:
 		push_error("Cannot connect seeHP")
 	
+	# Actualizar estados -(30/04/24) no implementado aún-
 	if get_parent().has_method("update_status"):
 		connect("status", Callable(get_parent(), "update_status"))
 	else:
@@ -57,7 +61,7 @@ func get_stats() -> Dictionary:
 		"life" : max_life,
 		"attack" : attack,
 		"defense" : defense,
-		"crit_chance" : critical_cahnce,
+		"crit_chance" : critical_chance,
 		"crit_dmg" : critical_damage
 	}
 
@@ -68,7 +72,7 @@ func hit() -> float:
 	if dmg < 1:
 		dmg = 1
 
-	if randi() % 100 + 1 <= critical_cahnce:
+	if randi() % 100 + 1 <= critical_chance:
 		dmg += (dmg * critical_damage) / 100.00
 		# print("Critical")
 

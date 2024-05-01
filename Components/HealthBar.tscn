@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dqen3ajja5j1f" path="res://Assets/img/ProgressBar2.png" id="3"]
 
 [node name="HealthBar" type="TextureProgressBar"]
+z_index = -2
 offset_left = -8.0
 offset_top = -2.0
 offset_right = 8.0

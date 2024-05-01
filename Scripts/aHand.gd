@@ -20,7 +20,7 @@ func _on_sprite_2d_animation_finished() -> void:
 		anim_sprite.play()
 
 
-func _on_CoreComponent_area_entered(area) -> void:
+func _on_CoreComponent_area_entered(_area : CoreComponent) -> void:
 	anim_sprite.animation = "Attack"
 
 

@@ -61,7 +61,7 @@ func boss_mode() -> void:
 
 
 # Esta función se usa en los escrips heredados de este
-func update_status(status : String, value : bool) -> void: pass 
+func update_status(_status : String, _value : bool) -> void: pass 
 
 
 func hecking_die() -> void:
@@ -82,10 +82,10 @@ ya que es CoreComponent (otro nodo como nodo hijo) quien manda la señal para cm
 
 
 PARA MONTAR NUEVOS ENEMIGOS: Como no se automatizar eso, me toca hacer-lo a mano:
-	-nueva escena con Enemy de base y atar un script heredado con su nombre, ajustar colision 3 y mascara 1
-	-añadir una colision redondo como hijo, centrar la colision de manera que la parte mas baja esté en y0
-	-añadir CoreComponent como hijo, atar el escript EnemyStats.gd, poner sus estadisticas y ajustar colision 3 y mascara 2
-	-conectar la señal de CoreComponent > area_entered con CoreComponent
-	-conectar la señal de CoreComponent > body_entered con CoreComponent
+	-nueva escena con Enemy de base y atar un script heredado con su nombre (lo del escript es opcional)
+	-revisa y ajustar las colisiones: capa 3 y mascara 1
+	-añadir una colision redondo como hijo, centrar la colision de manera que la parte mas baja esté en y=0
+	-añadir CoreComponent como hijo, atar el escript EnemyStats.gd y poner sus estadisticas
+	-revisar y ajustar las colisiones: capa 3 y mascara 2
 	-añadir y ajustar el nodo HealthBar como nodo hijo
 """

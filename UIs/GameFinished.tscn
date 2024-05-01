@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://md23rqrj4w7p"]
 
 [ext_resource type="Script" path="res://Scripts/GameFinished.gd" id="1_eq0vm"]
-[ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="1_pe23p"]
+[ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="2_fxrhy"]
 
 [node name="GameFinished" type="Control"]
 layout_mode = 3
@@ -45,14 +45,13 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
-theme_override_fonts/normal_font = ExtResource("1_pe23p")
+theme_override_fonts/normal_font = ExtResource("2_fxrhy")
 bbcode_enabled = true
 text = "[center][rainbow][wave]Congratulations[/wave][/rainbow]
 
 you have defeated 
-\"a hand\" and restored
-peace to this world...
-for now...[/center]"
+a menace and 
+restored peace to this world... for now...[/center]"
 
 [node name="TitleTab" type="TabBar" parent="TabContainer"]
 visible = false
@@ -65,7 +64,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
-theme_override_fonts/font = ExtResource("1_pe23p")
+theme_override_fonts/font = ExtResource("2_fxrhy")
 text = "Running Halls
 
 game by:
@@ -84,7 +83,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
-theme_override_fonts/font = ExtResource("1_pe23p")
+theme_override_fonts/font = ExtResource("2_fxrhy")
 theme_override_font_sizes/font_size = 8
 vertical_alignment = 1
 
@@ -98,7 +97,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
-theme_override_fonts/font = ExtResource("1_pe23p")
+theme_override_fonts/font = ExtResource("2_fxrhy")
 text = "you feel like
 tapping the space
 between two buttons
@@ -116,7 +115,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 216.0
 offset_bottom = 112.0
-theme_override_fonts/font = ExtResource("1_pe23p")
+theme_override_fonts/font = ExtResource("2_fxrhy")
 text = "the end"
 horizontal_alignment = 1
 vertical_alignment = 1
