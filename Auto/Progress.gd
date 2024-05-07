@@ -1,41 +1,40 @@
 extends Node
 
 
-const ARCHIVEMENTSPATH : String = "user://ARCHIVEMENTSFILE.save"
-const ARCHIVEMENTLIST : Dictionary = {
-	"trago bajo la lluvia" : false,
-	"Final verdadero" : false,
-	
-}
-
-const JEWELLYPATH : String = "user://JEWELLYFILE.save"
-const JEWELLYLIST : Dictionary = {
-	"Crystal Heart" : true,
-	"Mana Stone" : true, 
-	"Spiky Gloves" : true
+const ARCHIVEMENTSPATH : String = "user://PROGRESSFILE.save"
+const PROGRESSLIST : Dictionary = {
+	"ArchivementList" : {
+		"trago bajo la lluvia" : false,
+		"Final verdadero" : false,
+	},
+	"JewelList" : {
+		"Crystal Heart" : true,
+		"Mana Stone" : true, 
+		"Spiky Gloves" : true,
+	},
 }
 
 
 func new_jewelly() -> Dictionary:
-	print("new game")
-	save_jewelly_data(JEWELLYLIST)
-	return JEWELLYLIST
+	print("new progress")
+	save_jewelly_data(PROGRESSLIST)
+	return PROGRESSLIST
 
 
 func save_jewelly_data(game_data : Dictionary) -> void:
-	var save_file : FileAccess = FileAccess.open(JEWELLYPATH, FileAccess.WRITE)
+	var save_file : FileAccess = FileAccess.open(ARCHIVEMENTSPATH, FileAccess.WRITE)
 	save_file.store_var(game_data)
 	save_file.close()
 
 
 func load_jewelly() -> Dictionary:
-	if FileAccess.file_exists(JEWELLYPATH):
-		var load_file : FileAccess = FileAccess.open(JEWELLYPATH, FileAccess.READ)
+	if FileAccess.file_exists(ARCHIVEMENTSPATH):
+		var load_file : FileAccess = FileAccess.open(ARCHIVEMENTSPATH, FileAccess.READ)
 		var data : Dictionary = load_file.get_var()
 		load_file.close()
 		return data
 	else:
-		save_jewelly_data(JEWELLYLIST)
+		save_jewelly_data(PROGRESSLIST)
 		return new_jewelly()
 		
 

@@ -195,9 +195,7 @@ offset_top = -192.0
 offset_bottom = -192.0
 
 [connection signal="pressed" from="GUI/PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="GUI/SpeedControllerContainer/SpeedButton1" to="." method="_on_speed_button_1_pressed"]
-[connection signal="pressed" from="GUI/SpeedControllerContainer/SpeedButton2" to="." method="_on_speed_button_2_pressed"]
-[connection signal="pressed" from="GUI/SpeedControllerContainer/SpeedButton3" to="." method="_on_speed_button_3_pressed"]
+[connection signal="pressed" from="GUI/SpeedControllerContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
 [connection signal="enemy_died" from="EnemySpawner" to="." method="_on_EnemySpawner_enemy_died"]
 [connection signal="generate_loot" from="EnemySpawner" to="." method="_on_EnemySpawner_generate_loot"]
 [connection signal="hand_defeated" from="EnemySpawner" to="." method="_on_enemy_spawner_hand_defeated"]

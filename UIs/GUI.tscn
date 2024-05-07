@@ -88,45 +88,27 @@ vertical_alignment = 1
 [node name="SpeedControllerContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 80.0
+offset_left = 112.0
 offset_top = 112.0
-offset_right = 160.0
+offset_right = 128.0
 offset_bottom = 128.0
 
-[node name="SpeedButton1" type="Button" parent="SpeedControllerContainer"]
+[node name="SpeedButton" type="Button" parent="SpeedControllerContainer"]
 layout_mode = 2
-offset_left = 8.0
-offset_right = 24.0
+offset_right = 16.0
 offset_bottom = 16.0
-theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
-toggle_mode = true
 action_mode = 0
-text = "1"
 
-[node name="SpeedButton2" type="Button" parent="SpeedControllerContainer"]
-layout_mode = 2
-offset_left = 32.0
-offset_right = 48.0
+[node name="Label" type="Label" parent="SpeedControllerContainer/SpeedButton"]
+layout_mode = 0
+offset_right = 16.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
-toggle_mode = true
-action_mode = 0
-text = "2"
-
-[node name="SpeedButton3" type="Button" parent="SpeedControllerContainer"]
-layout_mode = 2
-offset_left = 56.0
-offset_right = 72.0
-offset_bottom = 16.0
-theme_override_fonts/font = ExtResource("5_n8prc")
-theme_override_font_sizes/font_size = 8
-toggle_mode = true
-action_mode = 0
-text = "3"
+text = ">"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="SpeedControllerContainer/SpeedButton1" to="." method="_on_speed_button_1_pressed"]
-[connection signal="pressed" from="SpeedControllerContainer/SpeedButton2" to="." method="_on_speed_button_2_pressed"]
-[connection signal="pressed" from="SpeedControllerContainer/SpeedButton3" to="." method="_on_speed_button_3_pressed"]
+[connection signal="pressed" from="SpeedControllerContainer/SpeedButton" to="." method="_on_speed_button_pressed"]

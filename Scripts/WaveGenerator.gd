@@ -21,7 +21,8 @@ const enemyGroupsList : Array = [
 	[bat, dark_wizard, vampire]
 ]
 
-const bossesList : Array = [a_hand,]
+# No invocar el dragón, no está bien iplementado
+const bossesList : Array = [a_hand, dragon]
 
 
 @onready var enemy_group_size : int = enemyGroupsList.size()
@@ -53,4 +54,4 @@ func get_new_wave() -> Array:
 	
 	
 func get_boss() -> Array:
-	return [[dragon]]
+	return [[a_hand]]

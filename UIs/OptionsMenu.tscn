@@ -199,11 +199,11 @@ offset_right = 120.0
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "warrior
+text = "knight
 
 mage
 
-barbarian
+warrior
 
 archer"
 horizontal_alignment = 1

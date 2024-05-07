@@ -119,6 +119,7 @@ func _on_hand_deleted() -> void: pass
 
 # FUNCIONES con EnemySpawner--------------------------------------------
 func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
+	@warning_ignore("integer_division") # <- Generado por el propio motor
 	var loot_quantity : int = current_wave + int(randi() % current_wave + (current_wave / 2))
 	loot_manager.generate_loot(loot_position, loot_quantity)
 	current_gold = current_gold + loot_quantity
@@ -168,23 +169,23 @@ func _on_Shop_exiting() -> void:
 
 
 # Speed Buttnos, su propósito es ajustar la velocidad en la que transcurre el juego
-func _on_speed_button_1_pressed() -> void:
-	Globals.set_config_data("time_speed", 0)
-	cambio_de_marcha(0)
-
-
-func _on_speed_button_2_pressed() -> void:
-	Globals.set_config_data("time_speed", 1)
-	cambio_de_marcha(1)
-
-
-func _on_speed_button_3_pressed() -> void:
-	Globals.set_config_data("time_speed", 2)
-	cambio_de_marcha(2)
+func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> void:
+	match number:
+		0:
+			Globals.set_config_data("time_speed", 1)
+			ground_speed = gearbox[1]
 	
+		1:
+			Globals.set_config_data("time_speed", 2)
+			ground_speed = gearbox[2]
 	
-func cambio_de_marcha(number : int) -> void:
-	ground_speed = gearbox[number]
+		2:
+			Globals.set_config_data("time_speed", 0)
+			ground_speed = gearbox[0]
+	
+		_:
+			push_warning("Error at changing speed")
+	
 	physic_ground.constant_linear_velocity.x = ground_speed
 	setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
 

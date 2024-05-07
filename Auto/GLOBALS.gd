@@ -11,8 +11,8 @@ func _ready() -> void:
 	current_game = CurrentGame.load_game()
 	config_data = Config.load_conf_data()
 	
-	if !current_game.has("game_version") or \
-		current_game.game_info.current_version != CurrentGame.game_info.DEFAULTGAMEDATA.current_version:
+	if !current_game.game_info.has("game_version") or \
+		current_game.game_info.game_version != CurrentGame.CURRENTVERSION:
 		print("save file and game version are different, to avoid problems, will be resetted")
 		CurrentGame.new_game()
 		Config.to_default_data()
