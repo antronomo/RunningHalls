@@ -107,15 +107,17 @@ offset_top = 8.0
 offset_right = 128.0
 offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
 text = "Voice"
 
 [node name="VoiceValue" type="Label" parent="TabContainer/VolumeTab"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 24.0
+offset_left = 128.0
+offset_top = 16.0
 offset_right = 168.0
-offset_bottom = 48.0
+offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
 text = "null"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -123,9 +125,46 @@ vertical_alignment = 1
 [node name="VoiceHSlider" type="HSlider" parent="TabContainer/VolumeTab"]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 32.0
+offset_top = 16.0
 offset_right = 120.0
-offset_bottom = 48.0
+offset_bottom = 32.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="SoundFXsection" type="Control" parent="TabContainer/VolumeTab"]
+anchors_preset = 0
+offset_top = 40.0
+offset_right = 168.0
+offset_bottom = 64.0
+
+[node name="SoundFXlabel" type="Label" parent="TabContainer/VolumeTab/SoundFXsection"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Sound FX"
+
+[node name="SoundFXvalue" type="Label" parent="TabContainer/VolumeTab/SoundFXsection"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundFXHSlider" type="HSlider" parent="TabContainer/VolumeTab/SoundFXsection"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 24.0
 max_value = 1.0
 step = 0.01
 value = 0.5
@@ -508,6 +547,9 @@ to defauld"
 [connection signal="drag_ended" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_drag_ended"]
 [connection signal="drag_started" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_drag_started"]
 [connection signal="value_changed" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_value_changed"]
+[connection signal="drag_ended" from="TabContainer/VolumeTab/SoundFXsection/SoundFXHSlider" to="." method="_on_sound_fxh_slider_drag_ended"]
+[connection signal="drag_started" from="TabContainer/VolumeTab/SoundFXsection/SoundFXHSlider" to="." method="_on_sound_fxh_slider_drag_started"]
+[connection signal="value_changed" from="TabContainer/VolumeTab/SoundFXsection/SoundFXHSlider" to="." method="_on_sound_fxh_slider_value_changed"]
 [connection signal="pressed" from="TabContainer/ExtraTab/LeftExtraButton" to="." method="_on_left_extra_button_pressed"]
 [connection signal="pressed" from="TabContainer/ExtraTab/RightExtraButton" to="." method="_on_right_extra_button_pressed"]
 [connection signal="toggled" from="TabContainer/SecretTab/EnemiesLockRotation" to="." method="_on_enemies_lock_rotation_toggled"]

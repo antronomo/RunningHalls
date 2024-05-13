@@ -12,8 +12,10 @@ func _ready() -> void:
 
 
 func hecking_die() -> void:
+	toggle_area(false)
 	emit_signal("hand_died")
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.6).timeout
+	
 	emit_signal("hand_deleted")
-	await get_tree().create_timer(0.1).timeout
-	queue_free()
+	super()
+

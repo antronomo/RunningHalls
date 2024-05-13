@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cy38ehjihtgys"]
+[gd_scene load_steps=17 format=3 uid="uid://cy38ehjihtgys"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ckic3jwkm6c2d" path="res://Components/CoreComponent.tscn" id="2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://Player/Sword.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Player/ChestPlate.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Player/Shield.tscn" id="10"]
+[ext_resource type="AudioStream" uid="uid://b6g2vxt1yhy4p" path="res://Assets/Audio/hurt_461656581.ogg" id="11_tom5s"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -295,3 +296,8 @@ position = Vector2(8, -10)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoreComponent"]
 position = Vector2(8, -8)
 shape = SubResource("3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_tom5s")
+volume_db = -0.8
+bus = &"SoundFX"

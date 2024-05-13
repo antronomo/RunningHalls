@@ -39,7 +39,7 @@ func spawn_enemies() -> void:
 
 	for i1 in wave_list.size():
 		for i2 in wave_list[i1].size():
-			timer.start(randf() * 0.80 + 0.20); await timer.timeout
+			timer.start(randf_range(0.05, 0.35)); await timer.timeout
 			
 			var next_enemy : RigidBody2D = wave_list[i1][i2].instantiate()
 			add_child(next_enemy)
@@ -50,7 +50,7 @@ func spawn_enemies() -> void:
 				next_enemy.boss_mode()
 		
 		# print("waiting")
-		timer.start(randi() % 4 + 2); await timer.timeout
+		timer.start(randi_range(1, 2)); await timer.timeout
 		le_wave += 1
 
 	emit_signal("enemy_list_ended")

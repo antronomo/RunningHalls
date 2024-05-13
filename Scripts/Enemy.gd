@@ -76,6 +76,12 @@ func knock_back() -> void:
 	apply_central_impulse(Vector2(randi() % 250 + 150, -10))
 
 
+func toggle_area(boleano : bool) -> void:
+	core_compo.set_deferred("monitoring", boleano)   
+	core_compo.set_deferred("monitorable", boleano)  
+
+
+
 """
 La variable low_life_status solo puede ser cambiado por nodos heredados de este,
 ya que es CoreComponent (otro nodo como nodo hijo) quien manda la señal para cmabiar el valor.

@@ -22,7 +22,7 @@ func first_call(max_player_health : int) -> void:
 	
 	
 	var number : int  = Globals.config_data.time_speed -1 if not Globals.config_data.time_speed == 0 else 2
-	_on_speed_button_pressed(number) # Por algún motivo en el primer llamado falla
+	_on_speed_button_pressed(number)
 
 
 func update_helath_bar(new_player_health : int) -> void: 

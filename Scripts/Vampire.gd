@@ -9,6 +9,10 @@ func _on_AnimatedSprite_animation_finished() -> void:
 			anim_sprite.animation = "Walk2"
 		"CapuchantTime":
 			anim_sprite.animation = "Walk1"
+		_:
+			push_warning("vampire anim failed")
+	
+	anim_sprite.play()
 
 
 func update_status(status : String, value : bool) -> void:
@@ -20,6 +24,6 @@ func update_status(status : String, value : bool) -> void:
 				else: 
 					anim_sprite.animation = "DescapuchaTime"
 			dict_status.low_life = value
-
+			
 		_:
 			print(status + " not found")

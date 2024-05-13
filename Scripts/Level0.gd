@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var physic_ground : StaticBody2D = $PhysicGround
 @onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
-#@onready var finishing : bool = false
+# @onready var finishing : bool = false
 @onready var enemy_spawner : Marker2D = $EnemySpawner
 @onready var loot_manager : Node2D = $LootManager
 @onready var gui : CanvasLayer = $GUI
@@ -18,6 +18,7 @@ extends Node2D
 
 const gearbox : Array[int] = [-32, -48, -64]
 const out_of_viewport : Vector2 = Vector2(0, -192)
+
 
 var ground_speed : int # la variable que controla la velocidad del suelo y fondo
 var current_wave : int
@@ -41,6 +42,10 @@ func _ready() -> void:
 	enemy_spawner.spawn_enemies()
 	
 	shop_ui.position = out_of_viewport
+	
+	# ???
+	#$PhysicGround/OneWayCollider.disabled = Globals.config_data.enemies_lock_rotation
+
 
 
 func get_updated_vars() -> void:
@@ -67,12 +72,12 @@ func start_game() -> void:
 
 # Llamado cuando el jugador manda la señal morido
 func finish_game() -> void:
-	pause_menu.queue_free()
 	game_over_ui.position = Vector2.ZERO
 	game_over_ui.visible = true
 	accelerator.play_backwards("accelerate")
 	set_propetys()
 	enemy_spawner.work = false
+	pause_menu.queue_free()
 	
 	# Solucion temporal: al morir el oro actualiza dos veces
 	await get_tree().create_timer(0.1).timeout
@@ -92,12 +97,11 @@ func set_propetys() -> void:
 	Globals.save_data_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
 	
 	Globals.save_config_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
-	
-	
-# Llamado cuando el jefe "aHand" a sido derrotado
+
+
+# Llamado cuando un jefe a sido derrotado
 func _on_enemy_spawner_hand_defeated() -> void:
 	#print("woa a eliminar pause menu")
-	pause_menu.queue_free()
 	accelerator.play_backwards("accelerate")
 	await get_tree().create_timer(1.5).timeout
 	player.stop_anim()
@@ -108,7 +112,9 @@ func _on_enemy_spawner_hand_defeated() -> void:
 	gui.update_gold_label(saved_gold)
 	
 	# UI FINAL DE VICTORIA
-	await get_node("EnemySpawner/aHand").hand_deleted
+	@warning_ignore("redundant_await")
+	await _on_hand_deleted() # si funciona y sí es necesário
+	pause_menu.queue_free()
 	game_finished_ui.position = Vector2.ZERO
 	game_finished_ui.visible = true
 
@@ -139,8 +145,8 @@ func _on_EnemySpawner_enemy_died() -> void:
 func _on_PauseMenu_save_time() -> void:
 	set_propetys()
 	get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
-	
-	
+
+
 func _on_pause_button_pressed() -> void:
 	pause_menu.toggler_pauser()
 
@@ -174,15 +180,15 @@ func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> 
 		0:
 			Globals.set_config_data("time_speed", 1)
 			ground_speed = gearbox[1]
-	
+			
 		1:
 			Globals.set_config_data("time_speed", 2)
 			ground_speed = gearbox[2]
-	
+			
 		2:
 			Globals.set_config_data("time_speed", 0)
 			ground_speed = gearbox[0]
-	
+			
 		_:
 			push_warning("Error at changing speed")
 	

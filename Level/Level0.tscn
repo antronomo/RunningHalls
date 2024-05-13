@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://md23rqrj4w7p" path="res://UIs/GameFinished.tscn" id="10_i7fc4"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(400, 32)
+size = Vector2(640, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i75hk"]
 size = Vector2(104, 16)
@@ -125,7 +125,7 @@ z_index = 0
 position = Vector2(40, 100)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5")]
-position = Vector2(280, 72)
+position = Vector2(296, 72)
 
 [node name="LootManager" type="Node2D" parent="."]
 z_index = -1
@@ -136,7 +136,7 @@ position = Vector2(168, 120)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicGround"]
-position = Vector2(-32, -4)
+position = Vector2(88, -4)
 shape = SubResource("2")
 
 [node name="OneWayCollider" type="CollisionShape2D" parent="PhysicGround"]

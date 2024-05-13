@@ -126,6 +126,7 @@ func save_config_to_file() -> void:
 
 func set_audiostreamplayers() -> void:
 	AudioServer.set_bus_volume_db(1, linear_to_db(config_data.voice_volume))
+	AudioServer.set_bus_volume_db(2, linear_to_db(config_data.sfx_volume))
 
 
 # Funcion completamente inutil, creo que porque estoy pasando los diccionarios
@@ -161,7 +162,8 @@ func set_config_data(what : String, with) -> void:
 		
 		"window_fullscreen":
 			if typeof(with) == TYPE_BOOL:
-				print(what + "not config yet")
+				config_data.sfx_volume = with
+				set_audiostreamplayers()
 			else:
 				print("cannot save " + what + " with: " + str(with))
 		

@@ -54,4 +54,4 @@ func get_new_wave() -> Array:
 	
 	
 func get_boss() -> Array:
-	return [[a_hand]]
+	return [[dragon]]

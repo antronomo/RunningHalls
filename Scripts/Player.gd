@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var core_component : CoreComponent = $CoreComponent
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player = $AudioStreamPlayer
 
 
 @export var my_name : String = 'player'
@@ -55,4 +56,9 @@ func walk_anim() -> void:
 
 func stop_anim() -> void:
 	anim_player.pause()
+
+
+func blip() -> void:
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.2)
+	audio_stream_player.play()
 

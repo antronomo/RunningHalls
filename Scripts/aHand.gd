@@ -36,6 +36,7 @@ func _on_audio_stream_player_finished() -> void:
 	queue_free()
 
 
+
 func toggle_area(boleano : bool) -> void:
 	core_component.set_deferred("monitoring", boleano)   
 	core_component.set_deferred("monitorable", boleano)  

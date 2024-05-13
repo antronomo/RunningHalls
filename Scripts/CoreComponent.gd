@@ -51,6 +51,7 @@ func set_dict_status(char_status : String, value : bool) -> void:
 			push_warning("status not found")
 
 
+# ???
 func get_dict_status() -> void: pass
 
 
@@ -81,6 +82,7 @@ func hit() -> float:
 
 func get_hurt(entring_dmg : float) -> int:
 	#print(str(life)) # esto confirma que SI colisionan unos con otros como toca
+	@warning_ignore("narrowing_conversion")
 	var hurt : int = ((((entring_dmg * 100) / defense) * entring_dmg) / 100) * -1
 	return hurt if hurt < -1 else -1
 
@@ -89,6 +91,7 @@ func set_hp(new_hp : int) -> void:
 	life += new_hp
 	life = clamp(life, 0, max_life)
 	emit_signal("HPStatus", life)
+	@warning_ignore("integer_division")
 	set_dict_status("low_life", false if life > (max_life / 2) else true)
 
 

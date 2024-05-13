@@ -10,6 +10,9 @@ extends Control
 @onready var enemies_lock_rotation_button : CheckButton = $TabContainer/SecretTab/EnemiesLockRotation
 @onready var extra_tab_container : TabContainer = $TabContainer/ExtraTab/ExtraTabContainer
 
+@onready var sound_fx_value : Label = $TabContainer/VolumeTab/SoundFXsection/SoundFXvalue
+@onready var sound_fxh_slider : HSlider = $TabContainer/VolumeTab/SoundFXsection/SoundFXHSlider
+
 
 var max_extra_tabs : int
 
@@ -29,6 +32,8 @@ func set_buttons_options() -> void:
 	# volume tab
 	_on_voice_h_slider_value_changed(conf_data.voice_volume)
 	voice_slider.value = conf_data.voice_volume
+	_on_sound_fxh_slider_value_changed(conf_data.sfx_volume)
+	sound_fxh_slider.value = conf_data.sfx_volume
 	
 	# secret tab
 	enemies_lock_rotation_button.button_pressed = not conf_data.enemies_lock_rotation
@@ -63,6 +68,7 @@ func _on_ReturnButton_pressed() -> void:
 
 
 # Volumen tab ------------------------------------------------------------
+# Voices
 func _on_voice_h_slider_value_changed(value : float) -> void:
 	conf_data.voice_volume = value
 	AudioServer.set_bus_volume_db(1, linear_to_db(value))
@@ -71,9 +77,26 @@ func _on_voice_h_slider_value_changed(value : float) -> void:
 
 func _on_voice_h_slider_drag_started() -> void:
 	audio_stream_player.playing = true
+	audio_stream_player.bus = "VoiceAudio"
 
 
-func _on_voice_h_slider_drag_ended(_value_changed) -> void:
+func _on_voice_h_slider_drag_ended(_value_changed : float) -> void:
+	audio_stream_player.playing = false
+
+
+# SoundFX
+func _on_sound_fxh_slider_value_changed(value : float):
+	conf_data.sfx_volume = value
+	AudioServer.set_bus_volume_db(2, linear_to_db(value))
+	sound_fx_value.text = str(value * 100.0) + "%"
+
+
+func _on_sound_fxh_slider_drag_started():
+	audio_stream_player.playing = true
+	audio_stream_player.bus = "SoundFX"
+
+
+func _on_sound_fxh_slider_drag_ended(_value_changed : float):
 	audio_stream_player.playing = false
 
 
@@ -98,3 +121,4 @@ func _on_left_extra_button_pressed() -> void:
 
 func _on_right_extra_button_pressed() -> void:
 	extra_tab_container.current_tab = clamp(extra_tab_container.current_tab +1 , 0, max_extra_tabs)
+

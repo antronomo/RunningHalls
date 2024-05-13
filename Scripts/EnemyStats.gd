@@ -1,7 +1,7 @@
 extends CoreComponent
 
 
-@onready var body : Enemy = get_node("../") 
+@onready var body : Enemy = get_node("../")
 
 
 var wave_multiplier : float = 0.1
@@ -24,8 +24,11 @@ func print_stats() -> void:
 
 
 func wave_buff() -> void:
+	@warning_ignore("narrowing_conversion")
 	set_max_hp(max_life + max_life * (current_wave * wave_multiplier))
+	@warning_ignore("narrowing_conversion")
 	attack += attack * (current_wave * wave_multiplier)
+	@warning_ignore("narrowing_conversion")
 	defense += defense * (current_wave * wave_multiplier)
 	# critical_chance += critical_chance * (current_wave * 0.01)
 	# critical_damage += critical_damage * (current_wave * 0.01)
@@ -34,8 +37,11 @@ func wave_buff() -> void:
 
 
 func boss_buff() -> void:
+	@warning_ignore("narrowing_conversion")
 	set_max_hp(max_life * boss_multiplier)
+	@warning_ignore("narrowing_conversion")
 	attack *= boss_multiplier
+	@warning_ignore("narrowing_conversion")
 	defense *= boss_multiplier
 	# critical_chance *= boss_multiplier
 	# critical_damage *= boss_multiplier
@@ -44,19 +50,6 @@ func boss_buff() -> void:
 
 
 func _on_CoreComponent_area_entered(area : CoreComponent) -> void:
-	super(area)
 	body.knock_back()
+	super(area)
 
-
-"""
-La idea de este escript es la de aumentar las estadísticas de los enemigos (de manera individual) dependiendo de cosas como:
-	-la oleada actual de la partida
-	-si es minijefe o jefe
-
-creo que será algo como:
-	var stats : Diccionary { estadisticas... }
-	stats = stats + stats * oleada * 0.01
-	se suma todo por (oleada * 0.01) en cada estat y ya, las estadísticas base de cada enemigo se modifican desde su escena
-
-	y si es jefe todo multiplicado por 1.5 o 2 y ya
-"""
