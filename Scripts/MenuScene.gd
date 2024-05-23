@@ -2,7 +2,7 @@ extends Control
 
 
 @onready var cam : Camera2D = $Camera2D
-@onready var parallax_background : CoreParallaxBackground = $ParallaxBackground
+@onready var parallax_background : CoreParallaxBackground = $ForestParallaxBackground
 
 
 const main_cam_pos : Vector2 = Vector2.ZERO
@@ -56,3 +56,4 @@ func _on_OptionsMenu_return_pressed() -> void:
 # CREDIT MENU FUNCTIONS-------------------------------------
 func _on_CreditsMenu_return_pressed() -> void:
 	move_camera(main_cam_pos)
+

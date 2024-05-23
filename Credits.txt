@@ -12,7 +12,9 @@ Inspirado de:
 Sprites (o arte gráfico): 
     ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
         editado por: antronomo
-
+		
+	·Adventure Pack - Grassland by anokolisa -> https://anokolisa.itch.io/basic-140-tiles-grassland-and-mines
+	
     ·el resto por: antronomo
 
 

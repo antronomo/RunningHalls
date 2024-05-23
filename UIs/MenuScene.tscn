@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b0vqq1dpd78op" path="res://UIs/StartMenu.tscn" id="3"]
 [ext_resource type="Script" path="res://Scripts/MenuScene.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://igstc1pa4m15" path="res://UIs/CreditsMenu.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://w81qn7x12iwi" path="res://BackGrounds/inSewerParallaxBackground.tscn" id="6_7liao"]
+[ext_resource type="PackedScene" uid="uid://b0d5k3cuk5e00" path="res://BackGrounds/ForestParallaxBackground.tscn" id="7_meibh"]
 [ext_resource type="PackedScene" uid="uid://cy38ehjihtgys" path="res://Player/Player.tscn" id="7_wbi6i"]
 
 [node name="MenuScene" type="Control"]
@@ -23,7 +23,7 @@ offset_left = -8.0
 offset_top = 136.0
 offset_right = 248.0
 offset_bottom = 280.0
-color = Color(0.239216, 0.282353, 0.203922, 1)
+color = Color(0.435294, 0.247059, 0.270588, 1)
 
 [node name="MainMenu" parent="." instance=ExtResource("1")]
 layout_mode = 1
@@ -60,7 +60,7 @@ offset_bottom = 271.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("6_7liao")]
+[node name="ForestParallaxBackground" parent="." instance=ExtResource("7_meibh")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
