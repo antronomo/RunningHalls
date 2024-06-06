@@ -11,11 +11,16 @@ config_version=5
 [application]
 
 config/name="RunningHalls"
-config/version="0.25.0"
+config/version="0.27.0"
 run/main_scene="res://UIs/MenuScene.tscn"
 config/features=PackedStringArray("4.2")
 run/max_fps=60
+boot_splash/use_filter=false
 config/icon="res://icon.png"
+
+[audio]
+
+driver/mix_rate.web=44100
 
 [autoload]
 
@@ -31,7 +36,19 @@ window/size/resizable=false
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
+window/vsync/vsync_mode=2
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "yellow",
+"res://Auto/": "red",
+"res://BackGrounds/": "teal",
+"res://Components/": "pink",
+"res://Enemies/": "orange",
+"res://Scripts/": "blue",
+"res://UIs/": "green"
+}
 
 [global]
 
@@ -104,6 +121,7 @@ common/enable_pause_aware_picking=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0

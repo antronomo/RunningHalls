@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b0vqq1dpd78op" path="res://UIs/StartMenu.tscn" id="3"]
 [ext_resource type="Script" path="res://Scripts/MenuScene.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://igstc1pa4m15" path="res://UIs/CreditsMenu.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://b0d5k3cuk5e00" path="res://BackGrounds/ForestParallaxBackground.tscn" id="7_meibh"]
+[ext_resource type="PackedScene" uid="uid://731e15d1cmmf" path="res://BackGrounds/setter_parallax_background.tscn" id="6_ye2kw"]
 [ext_resource type="PackedScene" uid="uid://cy38ehjihtgys" path="res://Player/Player.tscn" id="7_wbi6i"]
 
 [node name="MenuScene" type="Control"]
@@ -60,13 +60,15 @@ offset_bottom = 271.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="ForestParallaxBackground" parent="." instance=ExtResource("7_meibh")]
+[node name="SetterParallaxBackground" parent="." instance=ExtResource("6_ye2kw")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 position_smoothing_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("7_wbi6i")]
+visible = false
+z_index = 0
 position = Vector2(260, 100)
 script = null
 

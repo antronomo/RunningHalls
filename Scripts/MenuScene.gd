@@ -2,7 +2,9 @@ extends Control
 
 
 @onready var cam : Camera2D = $Camera2D
-@onready var parallax_background : CoreParallaxBackground = $ForestParallaxBackground
+@onready var setter_parallax_background = $SetterParallaxBackground
+@onready var player : Node2D = $Player
+@onready var player_animation_player: AnimationPlayer = $Player/AnimationPlayer
 
 
 const main_cam_pos : Vector2 = Vector2.ZERO
@@ -12,8 +14,9 @@ const credits_cam_pos : Vector2 = Vector2(0, 136)
 
 
 func _ready() -> void:
-	parallax_background.parallax_speed = -16
-	parallax_background.may_i_move = true
+	setter_parallax_background.get_child(0).set_paraspeed(-16)
+	
+	player_animation_player.play('RESET')
 
 
 func move_camera(new_pos : Vector2, secs : float = 0.5) -> void:
@@ -35,13 +38,15 @@ func _on_MainMenu_credit_pressed() -> void:
 
 
 # START MENU FUNCTIONS-------------------------------------
-func _on_StartMenu_resume_pressed() -> void:
-	get_tree().change_scene_to_file("res://Level/Level0.tscn")
-
-
 func _on_StartMenu_new_game_pressed() -> void:
 	Globals.reset_game_data()
 	get_tree().change_scene_to_file("res://Level/Level0.tscn")
+	#Globals.change_scene("res://Level/Level0.tscn")
+
+
+func _on_StartMenu_resume_pressed() -> void:
+	get_tree().change_scene_to_file("res://Level/Level0.tscn")
+	#Globals.change_scene("res://Level/Level0.tscn")
 
 
 func _on_StartMenu_return_pressed() -> void:

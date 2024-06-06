@@ -30,8 +30,9 @@ func seeHP(hp : int) -> void:
 		going_to_die()
 
 
-# Seguramente lo mueva a PlayerStats.gd, actualmente sin uso
+# Seguramente lo mueva a PlayerStats.gd
 func going_to_heal() -> void:
+	core_component.revive_player()
 	core_component.set_hp(999999999)
 
 
@@ -48,10 +49,14 @@ func _on_CoreComponent_body_entered(_body : Enemy) -> void: pass
 func going_to_die() -> void:
 	anim_player.play('dying')
 	emit_signal('morido')
+	
+	#await get_tree().create_timer(1).timeout
+	#disconnect('updateHP', Callable(get_node('../GUI'), 'update_helath_bar'))
+	#disconnect('morido', Callable(get_node('../'), 'finish_game'))
 
 
 func walk_anim() -> void: 
-	anim_player.play()
+	anim_player.play("walking")
 
 
 func stop_anim() -> void:
@@ -61,4 +66,13 @@ func stop_anim() -> void:
 func blip() -> void:
 	audio_stream_player.pitch_scale = randf_range(0.8, 1.2)
 	audio_stream_player.play()
+
+
+func _on_animation_player_animation_finished(anim_name : String) -> void:
+	match anim_name:
+		"dying":
+			anim_player.play("vanishing")
+			
+		"vanishing":
+			pass
 

@@ -32,7 +32,7 @@ func wave_buff() -> void:
 	defense += defense * (current_wave * wave_multiplier)
 	# critical_chance += critical_chance * (current_wave * 0.01)
 	# critical_damage += critical_damage * (current_wave * 0.01)
-
+	
 	# print_stats()
 
 
@@ -45,7 +45,7 @@ func boss_buff() -> void:
 	defense *= boss_multiplier
 	# critical_chance *= boss_multiplier
 	# critical_damage *= boss_multiplier
-
+	
 	# print_stats()
 
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Level0.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cfjpmmeypujrh" path="res://UIs/GUI.tscn" id="2"]
-[ext_resource type="Script" path="res://Scripts/SetterParallaxBackground.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://731e15d1cmmf" path="res://BackGrounds/setter_parallax_background.tscn" id="3_547dl"]
 [ext_resource type="PackedScene" uid="uid://cy38ehjihtgys" path="res://Player/Player.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://dq5cjouwd1omc" path="res://Components/EnemySpawner.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://do8y27yh4eck" path="res://UIs/GameOverUI.tscn" id="6"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://md23rqrj4w7p" path="res://UIs/GameFinished.tscn" id="10_i7fc4"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(640, 32)
+size = Vector2(464, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i75hk"]
 size = Vector2(104, 16)
@@ -61,6 +61,34 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"start_game"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"walk_anim"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"going_to_heal"
 }]
 }
 
@@ -117,8 +145,7 @@ script = ExtResource("1")
 
 [node name="GUI" parent="." instance=ExtResource("2")]
 
-[node name="SetterParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("3")
+[node name="SetterParallaxBackground" parent="." instance=ExtResource("3_547dl")]
 
 [node name="Player" parent="." instance=ExtResource("4")]
 z_index = 0
@@ -132,21 +159,21 @@ z_index = -1
 script = ExtResource("7")
 
 [node name="PhysicGround" type="StaticBody2D" parent="."]
-position = Vector2(168, 120)
+position = Vector2(168, 111)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicGround"]
-position = Vector2(88, -4)
+position = Vector2(0, 6)
 shape = SubResource("2")
 
 [node name="OneWayCollider" type="CollisionShape2D" parent="PhysicGround"]
-position = Vector2(80, -68)
+position = Vector2(80, -63)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_i75hk")
 one_way_collision = true
 
 [node name="MataSobras5000" type="Area2D" parent="."]
-position = Vector2(-40, 88)
+position = Vector2(-88, 96)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MataSobras5000"]
@@ -156,13 +183,12 @@ shape = SubResource("3")
 libraries = {
 "": SubResource("AnimationLibrary_jtdv0")
 }
-autoplay = "Starting"
 
 [node name="Accelerator" type="HSlider" parent="."]
-offset_left = -136.0
-offset_top = -37.0
-offset_right = -6.0
-offset_bottom = -21.0
+offset_left = -160.0
+offset_top = -40.0
+offset_right = -30.0
+offset_bottom = -24.0
 max_value = 1.0
 step = 0.01
 editable = false
@@ -172,6 +198,7 @@ scrollable = false
 libraries = {
 "": SubResource("AnimationLibrary_1ra1b")
 }
+autoplay = "RESET"
 
 [node name="PauseMenu" parent="." instance=ExtResource("8")]
 layout_direction = 1

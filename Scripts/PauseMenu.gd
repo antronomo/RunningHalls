@@ -6,6 +6,9 @@ extends Control
 @onready var save_and_exit_buttton : Button = $ButtonsContainer/SaveButton
 
 
+var callable : bool = false
+
+
 signal save_time
 
 
@@ -38,10 +41,11 @@ func button_disabler(toggle : bool) -> void:
 
 
 func toggler_pauser() -> void:
-	if get_tree().paused:
-		anim.play("pause_out")
-	else:
-		anim.play("pause_in")
+	if callable:
+		if get_tree().paused:
+			anim.play("pause_out")
+		else:
+			anim.play("pause_in")
 
 
 func _on_AnimationPlayer_animation_started(anim_name : String) -> void:
@@ -55,11 +59,12 @@ func _on_AnimationPlayer_animation_finished(anim_name : String) -> void:
 
 
 func _process(_delta) -> void:
-	if is_queued_for_deletion():
+	#if is_queued_for_deletion():
+	if not callable:
 		game_pauser(false)
 
 
-# No conviene borrar-lo
+# No conviene borrar-lo # ¿porqué?
 func _on_tree_exited() -> void: 
 	#print("pause menu eliminado")
 	pass

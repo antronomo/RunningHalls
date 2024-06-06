@@ -22,6 +22,7 @@ func _input(event : InputEvent) -> void:
 		if tab_container.current_tab == max_atabs:
 			Globals.reset_game_data()
 			get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
+			#Globals.change_scene("res://UIs/MenuScene.tscn")
 		
 		tab_container.current_tab = clamp(tab_container.current_tab + 1, 0, max_atabs)
 

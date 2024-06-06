@@ -30,7 +30,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	in_screen = false
 	polygon_mask_2d.visible = false
-	rich_text_label.position.y = credit_window_size.y
+	rich_text_label.position.y = credit_window_size.y + 10
 	#print(str(in_screen))
 
 
@@ -38,4 +38,6 @@ func _process(_delta) -> void:
 	if in_screen:
 		if rich_text_label.position.y >= -rich_text_label.size.y:
 			rich_text_label.position.y += -0.5
+		else:
+			rich_text_label.position.y = credit_window_size.y + 10
 

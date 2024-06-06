@@ -21,19 +21,29 @@ func _ready() -> void:
 	super()
 	connect('player_got_hit', Callable(get_node('../'), 'blip'))
 
+
+func revive_player() -> void:
+	for i in get_child_count():
+		if get_child(i) is Equipment:
+			get_child(i).get_upgrades()
+	total_upgrades = get_total_upgrades()
+	update_stats()
+
+
 # Las estadísticas después de sumar el equipamiento
 func update_stats() -> void:
 	# Aumentar la defensa
-	defense += helmet.get_item_stats().stat + chest_plate.get_item_stats().stat \
+	defense = 20 + helmet.get_item_stats().stat + chest_plate.get_item_stats().stat \
 	 + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
 
 	# Aumentar el ataque
-	attack += sword.get_item_stats().stat
+	attack = 20 + sword.get_item_stats().stat
 
 	# Aumentar vida por numero de mejoras en total, a futuro cambiará
 	@warning_ignore("integer_division")
-	set_max_hp(max_life + max_life * (total_upgrades / 2))
-	# print(str(max_life) + ' - ' + str(total_upgrades))
+	# Revisar que el cálculo sea correcto
+	set_max_hp(200 + 200 * (total_upgrades / 2))
+	#print(str(max_life) + ' - ' + str(total_upgrades))
 
 
 func get_total_upgrades() -> int:

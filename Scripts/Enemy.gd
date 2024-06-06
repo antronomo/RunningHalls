@@ -26,6 +26,7 @@ signal died
 func _ready() -> void:
 	connect("died", Callable(get_node("../"), "_on_enemy_died"))
 	set_up_health_bar()
+	can_sleep = false
 
 
 func set_up_health_bar() -> void: 

@@ -3,7 +3,6 @@ extends Node2D
 
 @onready var physic_ground : StaticBody2D = $PhysicGround
 @onready var setterparallaxGround : ParallaxBackground = $SetterParallaxBackground
-# @onready var finishing : bool = false
 @onready var enemy_spawner : Marker2D = $EnemySpawner
 @onready var loot_manager : Node2D = $LootManager
 @onready var gui : CanvasLayer = $GUI
@@ -14,6 +13,7 @@ extends Node2D
 @onready var accelerator : AnimationPlayer = $Accelerator/AnimationPlayer
 @onready var player : Node2D = $Player
 @onready var game_finished_ui : Control = $GameFinished
+@onready var level_animation_player : AnimationPlayer = $AnimationPlayer
 
 
 const gearbox : Array[int] = [-32, -48, -64]
@@ -28,24 +28,21 @@ var gained_gold : int
 
 
 func _ready() -> void:
+	setup_game()
+	enemy_spawner._on_EnemySpawner_enemy_list_ended()
+
+
+func setup_game() -> void:
 	get_updated_vars()
 	Globals.set_game_data("tries", game_save_file.game_info.tries + 1)
-	# print(str(game_save_file))
-	
-	setterparallaxGround.set_background()
-	physic_ground.constant_linear_velocity.x = ground_speed
 	
 	gui.first_call(player.get_node("CoreComponent").get_stats().life)
 	gui.update_gold_label(current_gold)
 	
-	# enemy_spawner.set_wave(current_wave)
-	enemy_spawner.spawn_enemies()
-	
 	shop_ui.position = out_of_viewport
 	
-	# ???
-	#$PhysicGround/OneWayCollider.disabled = Globals.config_data.enemies_lock_rotation
-
+	pause_menu.callable = true
+	level_animation_player.play("Starting")
 
 
 func get_updated_vars() -> void:
@@ -67,7 +64,12 @@ func _on_MataSobras5000_body_exited(body : Node) -> void:
 
 # Llamado por el AnimationPlayer
 func start_game() -> void:
-	setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
+	#setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
+	setterparallaxGround.set_parallax_speed(ground_speed)
+	
+	physic_ground.constant_linear_velocity.x = ground_speed
+	
+	enemy_spawner.work = true
 
 
 # Llamado cuando el jugador manda la señal morido
@@ -77,7 +79,7 @@ func finish_game() -> void:
 	accelerator.play_backwards("accelerate")
 	set_propetys()
 	enemy_spawner.work = false
-	pause_menu.queue_free()
+	pause_menu.callable = false
 	
 	# Solucion temporal: al morir el oro actualiza dos veces
 	await get_tree().create_timer(0.1).timeout
@@ -87,15 +89,16 @@ func finish_game() -> void:
 # Esta funcion fue JUSTO antes de saber de la existencia de tweens
 func _on_Accelerator_value_changed(value : float) -> void:
 	physic_ground.constant_linear_velocity.x = ground_speed * value
-	setterparallaxGround.get_child(0).set_paraspeed(ground_speed * value)
+	#setterparallaxGround.get_child(0).set_paraspeed(ground_speed * value)
+	setterparallaxGround.set_parallax_speed(ground_speed * value)
 
 
 func set_propetys() -> void:
 	Globals.set_game_data("gold", saved_gold)
 	Globals.set_game_data("wave", current_wave)
 	Globals.set_game_data("gains", gained_gold)
-	Globals.save_data_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
 	
+	Globals.save_data_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
 	Globals.save_config_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
 
 
@@ -114,7 +117,7 @@ func _on_enemy_spawner_hand_defeated() -> void:
 	# UI FINAL DE VICTORIA
 	@warning_ignore("redundant_await")
 	await _on_hand_deleted() # si funciona y sí es necesário
-	pause_menu.queue_free()
+	pause_menu.callable = false
 	game_finished_ui.position = Vector2.ZERO
 	game_finished_ui.visible = true
 
@@ -136,9 +139,14 @@ func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
 
 func _on_EnemySpawner_enemy_died() -> void:
 	saved_gold = current_gold
-	current_wave = enemy_spawner.get_wave()
+	#current_wave = enemy_spawner.get_wave()
 	set_propetys()
 	# print("next wave: " + str(current_wave))
+
+
+func _on_EnemySpawner_wave_increased(new_wave) -> void:
+	current_wave = new_wave
+	check_bg()
 
 
 # FUNCIONES con PauseMenuUI---------------------------------------------
@@ -159,7 +167,9 @@ func _on_GameOverUI_shop_pressed() -> void:
 
 
 func _on_GameOverUI_retry_pressed() -> void:
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	game_over_ui.position = out_of_viewport
+	setup_game()
 
 
 func _on_GameOverUI_return_pressed() -> void:
@@ -192,6 +202,15 @@ func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> 
 		_:
 			push_warning("Error at changing speed")
 	
+	# Si le das cuando hace la animación de empezar/re-aparacer puedes activar el suelo y fondo antes de tiempo
 	physic_ground.constant_linear_velocity.x = ground_speed
-	setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
+	#setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
+	setterparallaxGround.set_parallax_speed(ground_speed)
+
+
+# falta perfeccionar, podría saltar multiples veces o no saltar
+# tambien revisar cómo se llama este metodo 
+func check_bg() -> void: 
+	if current_wave == 33:
+		setterparallaxGround.set_transicion("cave")
 

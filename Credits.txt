@@ -9,13 +9,13 @@ Inspirado de:
         https://play.google.com/store/apps/details?id=com.buffstudio.onthehero&hl=es_419&gl=US
 
 
-Sprites (o arte gráfico): 
+Sprites (o arte gráfico):
     ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
-        editado por: antronomo
-		
+		·editado por: antronomo
+	
 	·Adventure Pack - Grassland by anokolisa -> https://anokolisa.itch.io/basic-140-tiles-grassland-and-mines
 	
-    ·el resto por: antronomo
+	·el resto por: antronomo
 
 
 Fuente:
