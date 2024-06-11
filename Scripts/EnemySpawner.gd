@@ -74,7 +74,7 @@ func _on_EnemySpawner_enemy_list_ended() -> void:
 		wave_list = wave_generator.get_new_wave()
 		spawn_enemies()
 	else:
-		if work:
+		if work: # <-Porqué?
 			wave_list = wave_generator.get_boss()
 			#wave_generator.queue_free()
 			spawn_enemies()

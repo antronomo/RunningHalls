@@ -93,7 +93,11 @@ text = "run
 fight enemies
 fall
 upgrade on shop
-repeat"
+repeat
+
+hint:
+is good idea upgrade the 
+sword as soon as possible"
 autowrap_mode = 1
 
 [node name="VolumeTab" type="TabBar" parent="TabContainer"]

@@ -1,7 +1,8 @@
 extends Node
 
-
+#Esto es demasiado importante y lo necesito accesible
 var saved_wave : int
+
 var current_game : Dictionary = {}
 var config_data : Dictionary = {}
 
@@ -20,7 +21,6 @@ func _ready() -> void:
 		current_game = CurrentGame.load_game()
 		config_data = Config.load_conf_data()
 	
-	#Esto es demasiado importante y lo necesito accesible
 	saved_wave = current_game.game_info.wave #!
 	
 	set_audiostreamplayers()

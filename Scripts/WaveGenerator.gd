@@ -16,6 +16,8 @@ const dragon : PackedScene = preload("res://Enemies/Dragon.tscn")
 
 const enemyGroupsList : Array = [
 	[bat, rat, spider],
+	[rat, spider, humacean],
+	[spider, humacean, dark_wizard],
 	[humacean, ghost, dark_wizard],
 	[humacean, dark_wizard, vampire],
 	[bat, dark_wizard, vampire]
@@ -32,7 +34,15 @@ var new_wave : Array
 
 
 func get_new_wave() -> Array:
-	var enemy_list = enemyGroupsList[randi() % enemy_group_size]
+	var enemy_list : Array
+	var waes : int = Globals.saved_wave
+	if waes < 33:
+		enemy_list = enemyGroupsList[randi() % 3]
+	elif waes > 66:
+		enemy_list = enemyGroupsList[randi() % 3 + 3]
+	else:
+		enemy_list = enemyGroupsList[randi() % enemyGroupsList.size()]
+	
 	var wave_length : int = randi() % 3 + 5
 	
 	new_wave = [
@@ -54,4 +64,4 @@ func get_new_wave() -> Array:
 	
 	
 func get_boss() -> Array:
-	return [[dragon]]
+	return [[dragon]] if randi() % 2 == 0 else [[a_hand]]

@@ -7,8 +7,9 @@ extends ParallaxBackground
 @onready var sewer : PackedScene = preload("res://BackGrounds/inSewerParallaxBackground.tscn")
 
 # Escenas que usaré como entradas para transicioanr entre fondos
-@onready var cave_entrance : PackedScene = preload("res://BackGrounds/cave_entrance.tscn")
-@onready var dungeon_entrance : int = 0
+@onready var cave_entrance : PackedScene = preload("res://BackGrounds/CaveEntrance.tscn")
+@onready var dungeon_entrance : PackedScene = preload("res://BackGrounds/DungeonEntrance.tscn")
+
 @onready var current_wave : int = Globals.saved_wave
 
 
@@ -50,7 +51,11 @@ func set_transicion(next_bg : String) -> void:
 			add_child(cave.instantiate())
 			set_parallax_speed(parallax_speed)
 		"sewer":
-			pass
+			add_child(dungeon_entrance.instantiate())
+			get_child(1).set_paraspeed(parallax_speed)
+			await get_child(1).transitiontime
+			add_child(sewer.instantiate())
+			set_parallax_speed(parallax_speed)
 		_:
 			push_error("No background as " + next_bg)
 

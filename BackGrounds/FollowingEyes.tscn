@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpw6y17s2yxc3"]
+
+[ext_resource type="Texture2D" uid="uid://dyec5f8rgnmya" path="res://Assets/img/tilemap_packed_Modified.png" id="1_hvndg"]
+[ext_resource type="Script" path="res://Scripts/FollowingEyes.gd" id="2_tlsut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sybad"]
+atlas = ExtResource("1_hvndg")
+region = Rect2(0, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6uqi"]
+atlas = ExtResource("1_hvndg")
+region = Rect2(16, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlc6q"]
+atlas = ExtResource("1_hvndg")
+region = Rect2(32, 272, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4cq2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sybad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6uqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlc6q")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_7bidn"]
+length = 136.0
+
+[node name="FollowingEyes" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_n4cq2")
+frame = 2
+frame_progress = 1.0
+script = ExtResource("2_tlsut")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SeparationRayShape2D_7bidn")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
