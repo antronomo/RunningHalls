@@ -13,7 +13,7 @@ extends Marker2D
 
 
 var wave_list : Array
-var work : bool = false # Cambiado por Level0 al llegar al game_over
+var work : bool = true # Cambiado por Level0 al llegar al game_over
 
 
 signal generate_loot

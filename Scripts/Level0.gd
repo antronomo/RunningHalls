@@ -69,7 +69,8 @@ func start_game() -> void:
 	
 	physic_ground.constant_linear_velocity.x = ground_speed
 	
-	enemy_spawner.work = true
+	if current_wave < 100:
+		enemy_spawner.work = true
 
 
 # Llamado cuando el jugador manda la señal morido

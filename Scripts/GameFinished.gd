@@ -13,8 +13,6 @@ func _ready() -> void:
 	visible = false
 	tab_container.current_tab = 0
 	max_atabs = tab_container.get_tab_count() - 1
-	
-	current_game = Globals.current_game.duplicate()
 
 
 func _input(event : InputEvent) -> void:
@@ -28,6 +26,7 @@ func _input(event : InputEvent) -> void:
 
 
 func _on_visibility_changed() -> void:
+	current_game = Globals.current_game.duplicate()
 	if visible == true:
 		await get_tree().create_timer(0.1).timeout # Solucion de mierda para mal timing
 		stats_label.text = "attemps: " + str(current_game.game_info.tries) + "\n" \
