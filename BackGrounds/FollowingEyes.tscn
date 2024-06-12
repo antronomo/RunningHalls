@@ -37,8 +37,6 @@ length = 136.0
 
 [node name="FollowingEyes" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_n4cq2")
-frame = 2
-frame_progress = 1.0
 script = ExtResource("2_tlsut")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -53,7 +53,7 @@ func spawn_enemies() -> void:
 				# print("boss time")
 				next_enemy.boss_mode()
 			
-			while work == false:
+			while !work:
 				timer.start(1); await timer.timeout
 		
 		# print("waiting")
@@ -69,16 +69,17 @@ func _on_enemy_died(enemy_position : Vector2) -> void: # Llamado cuando un hijo 
 
 
 func _on_EnemySpawner_enemy_list_ended() -> void:
-	# Generar lista de enemigos y empezar a invocar-los
+	while !work:
+		timer.start(1); await timer.timeout
+	
 	if le_wave < 100:
 		wave_list = wave_generator.get_new_wave()
 		spawn_enemies()
 	else:
-		if work: # <-Porqué?
-			wave_list = wave_generator.get_boss()
-			#wave_generator.queue_free()
-			spawn_enemies()
-			work = false
+		wave_list = wave_generator.get_boss()
+		#wave_generator.queue_free()
+		spawn_enemies()
+		work = false
 
 
 func _on_hand_died() -> void:
