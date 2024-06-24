@@ -14,12 +14,11 @@ func _ready() -> void:
 	health_label.text = str(0)
 
 
-func first_call(max_player_health : int) -> void:
+func first_call(max_player_health : int) -> void: # Cambiar nombre?
 	health_bar.max_value = max_player_health
 	health_bar.value = max_player_health
 	
 	health_label.text = str(max_player_health)
-	
 	
 	var number : int  = Globals.config_data.time_speed -1 if not Globals.config_data.time_speed == 0 else 2
 	_on_speed_button_pressed(number)

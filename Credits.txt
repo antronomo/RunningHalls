@@ -17,6 +17,10 @@ Sprites (o arte gráfico):
 	
 	·el resto por: antronomo
 
+Music:
+	·Main menu: JRPG_battle_loop by Yubatake (CC3) -> https://opengameart.org/content/jrpg-collection or https://opengameart.org/users/yubatake
+	·in Game: leap[8bit] by nene (CC0) -> https://opengameart.org/content/leap-8bit
+
 
 Fuente:
     ·"kenpixel_mini" por kenney -> https://opengameart.org/content/kenney-fonts

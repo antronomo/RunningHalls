@@ -2,8 +2,14 @@ extends Control
 
 
 @onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var color_rect : ColorRect = $ColorRect
+@onready var label : Label = $Label
+@onready var buttons_container : HBoxContainer = $ButtonsContainer
 @onready var resum_buttton : Button = $ButtonsContainer/ResumeButton
+@onready var options_button : Button = $ButtonsContainer/OptionsButton
 @onready var save_and_exit_buttton : Button = $ButtonsContainer/SaveButton
+@onready var options_menu : Control = $OptionsMenu
+@onready var button_fx : AudioStreamPlayer = $ButtonFX
 
 
 var callable : bool = false
@@ -13,7 +19,9 @@ signal save_time
 
 
 func _ready() -> void:
-	visible = false 
+	visible = false
+	show_options(false)
+	options_menu.get_node("TabContainer").current_tab = 1
 
 
 func game_pauser(el_booleano : bool) -> void:
@@ -26,10 +34,17 @@ func _input(event : InputEvent) -> void:
 
 
 func _on_ResumeButton_pressed() -> void:
+	button_fx.play()
 	anim.play("pause_out")
 
 
+func _on_options_button_pressed() -> void:
+	button_fx.play()
+	show_options(true)
+
+
 func _on_SaveButton_pressed() -> void:
+	button_fx.play()
 	game_pauser(false)
 	emit_signal("save_time")
 
@@ -45,6 +60,7 @@ func toggler_pauser() -> void:
 		if get_tree().paused:
 			anim.play("pause_out")
 		else:
+			button_fx.play()
 			anim.play("pause_in")
 
 
@@ -58,6 +74,18 @@ func _on_AnimationPlayer_animation_finished(anim_name : String) -> void:
 		button_disabler(false)
 
 
+func _on_options_menu_return_pressed() -> void:
+	button_fx.play()
+	show_options(false)
+
+
+func show_options(booleano : bool) -> void:
+	color_rect.visible = !booleano
+	label.visible = !booleano
+	buttons_container.visible = !booleano
+	options_menu.visible = booleano
+
+
 func _process(_delta) -> void:
 	#if is_queued_for_deletion():
 	if not callable:
@@ -68,3 +96,7 @@ func _process(_delta) -> void:
 func _on_tree_exited() -> void: 
 	#print("pause menu eliminado")
 	pass
+
+
+func _on_options_menu_button_pressed() -> void:
+	button_fx.play()

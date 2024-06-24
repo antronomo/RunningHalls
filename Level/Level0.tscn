@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://rmjr3fg1l0xe"]
+[gd_scene load_steps=22 format=3 uid="uid://rmjr3fg1l0xe"]
 
 [ext_resource type="Script" path="res://Scripts/Level0.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cfjpmmeypujrh" path="res://UIs/GUI.tscn" id="2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bi0ojv301m3qm" path="res://UIs/PauseMenu.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dfaw1u7n42udl" path="res://UIs/ShopMenu.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://md23rqrj4w7p" path="res://UIs/GameFinished.tscn" id="10_i7fc4"]
+[ext_resource type="AudioStream" uid="uid://ctwuene25niug" path="res://Assets/Audio/leap_by_nene.ogg" id="11_vbiv1"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(464, 32)
@@ -202,10 +203,6 @@ autoplay = "RESET"
 
 [node name="PauseMenu" parent="." instance=ExtResource("8")]
 layout_direction = 1
-offset_top = 16.0
-offset_bottom = 120.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="GameOverUI" parent="." instance=ExtResource("6")]
 offset_top = -192.0
@@ -220,6 +217,13 @@ offset_bottom = -192.0
 [node name="GameFinished" parent="." instance=ExtResource("10_i7fc4")]
 offset_top = -192.0
 offset_bottom = -192.0
+
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("11_vbiv1")
+volume_db = -7.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="GUI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="GUI/SpeedControllerContainer/SpeedButton" to="." method="_on_speed_button_pressed"]

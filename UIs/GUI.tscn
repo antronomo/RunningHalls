@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfjpmmeypujrh"]
+[gd_scene load_steps=6 format=3 uid="uid://cfjpmmeypujrh"]
 
 [ext_resource type="Script" path="res://Scripts/GUI.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://rmn12ygu7w0t" path="res://Assets/img/GoldCoin.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cww6yy5bn5ux7" path="res://Assets/img/pause.png" id="5_300hs"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="5_n8prc"]
 
 [node name="GUI" type="CanvasLayer"]
@@ -69,21 +70,13 @@ vertical_alignment = 1
 [node name="PauseButton" type="Button" parent="."]
 offset_left = 216.0
 offset_top = 8.0
-offset_right = 232.0
-offset_bottom = 24.0
+offset_right = 280.0
+offset_bottom = 72.0
+scale = Vector2(0.25, 0.25)
 theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
-
-[node name="Label" type="Label" parent="PauseButton"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 17.0
-offset_bottom = 16.0
-theme_override_fonts/font = ExtResource("5_n8prc")
-theme_override_font_sizes/font_size = 8
-text = "||"
-horizontal_alignment = 1
-vertical_alignment = 1
+icon = ExtResource("5_300hs")
+icon_alignment = 1
 
 [node name="SpeedControllerContainer" type="Control" parent="."]
 layout_mode = 3

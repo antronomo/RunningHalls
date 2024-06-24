@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5arj8pdvms2e"]
 
-[ext_resource type="Texture2D" uid="uid://x27rrlj10vsp" path="res://Assets/img/BronceCoin.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://rmn12ygu7w0t" path="res://Assets/img/GoldCoin.png" id="1_8r111"]
 [ext_resource type="Script" path="res://Scripts/Coin.gd" id="2"]
 
 [sub_resource type="Curve" id="1"]
@@ -20,7 +20,7 @@ one_shot = true
 explosiveness = 0.5
 randomness = 0.5
 lifetime_randomness = 0.5
-texture = ExtResource("1")
+texture = ExtResource("1_8r111")
 direction = Vector2(0, -1)
 spread = 50.0
 gravity = Vector2(0, 0)

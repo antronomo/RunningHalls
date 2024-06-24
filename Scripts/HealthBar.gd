@@ -18,6 +18,9 @@ func _on_changed() -> void:
 
 
 func _on_value_changed(new_value : int, sec : float = 0.75) -> void:
-	var tween : Tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(damage_indicator, "value", new_value, sec)
+	if damage_indicator.value > new_value:
+		var tween : Tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(damage_indicator, "value", new_value, sec)
+	else:
+		damage_indicator.value = new_value
 

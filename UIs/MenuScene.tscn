@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsfuqwfmjeoas"]
+[gd_scene load_steps=9 format=3 uid="uid://dsfuqwfmjeoas"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnbm6mq2pwc" path="res://UIs/MainMenu.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://by7ea8qrovwnd" path="res://UIs/OptionsMenu.tscn" id="2"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/MenuScene.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://igstc1pa4m15" path="res://UIs/CreditsMenu.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://731e15d1cmmf" path="res://BackGrounds/setter_parallax_background.tscn" id="6_ye2kw"]
-[ext_resource type="PackedScene" uid="uid://cy38ehjihtgys" path="res://Player/Player.tscn" id="7_wbi6i"]
+[ext_resource type="AudioStream" uid="uid://b256di8syku5r" path="res://Assets/Audio/JRPG_fields_loop.ogg" id="7_626vu"]
+[ext_resource type="AudioStream" uid="uid://30ae23w5c5t0" path="res://Assets/Audio/pussButton.ogg" id="8_q2bvu"]
 
 [node name="MenuScene" type="Control"]
 layout_mode = 3
@@ -66,17 +67,15 @@ grow_vertical = 1
 anchor_mode = 0
 position_smoothing_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("7_wbi6i")]
-visible = false
-z_index = 0
-position = Vector2(260, 100)
-script = null
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_626vu")
+volume_db = -7.0
+autoplay = true
+bus = &"Music"
 
-[node name="CoreComponent" parent="Player" index="2"]
-script = null
-
-[node name="CollisionShape2D" parent="Player/CoreComponent" index="6"]
-visible = false
+[node name="ButtonFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_q2bvu")
+bus = &"SoundFX"
 
 [connection signal="credit_pressed" from="MainMenu" to="." method="_on_MainMenu_credit_pressed"]
 [connection signal="option_pressed" from="MainMenu" to="." method="_on_MainMenu_option_pressed"]
@@ -84,7 +83,6 @@ visible = false
 [connection signal="new_game_pressed" from="StartMenu" to="." method="_on_StartMenu_new_game_pressed"]
 [connection signal="resume_pressed" from="StartMenu" to="." method="_on_StartMenu_resume_pressed"]
 [connection signal="return_pressed" from="StartMenu" to="." method="_on_StartMenu_return_pressed"]
+[connection signal="button_pressed" from="OptionsMenu" to="." method="_on_options_menu_button_pressed"]
 [connection signal="return_pressed" from="OptionsMenu" to="." method="_on_OptionsMenu_return_pressed"]
 [connection signal="return_pressed" from="CreditsMenu" to="." method="_on_CreditsMenu_return_pressed"]
-
-[editable path="Player"]

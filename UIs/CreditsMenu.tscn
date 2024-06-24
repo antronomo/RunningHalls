@@ -39,6 +39,7 @@ text = "[center]game by antronomo
 
 
 sprites: 
+
 tiny dungeons by Kenney
 edited by antronomo
 
@@ -46,7 +47,17 @@ Adventure Pack - Grassland by anokolisa
 
 
 font:
+
 kenpixel_mini by Kenney
+
+
+music:
+
+Main menu:
+ JRPG_battle_loop by Yubatake
+
+in Game:
+leap[8bit] by nene
 
 
 SoundFX made with:
@@ -54,6 +65,7 @@ chiptone by sfbgames
 
 
 voices by:
+
 antronomo as \"audio de prueba\"
 
 

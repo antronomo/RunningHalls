@@ -73,6 +73,6 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 		"dying":
 			anim_player.play("vanishing")
 			
-		"vanishing":
+		_:
 			pass
 

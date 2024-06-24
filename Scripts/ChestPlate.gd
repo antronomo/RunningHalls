@@ -21,5 +21,5 @@ func _ready() -> void:
 
 
 func get_upgrades() -> void:
-	upgrades = Globals.current_game.player_upgrades.chestPlate
+	upgrades = Globals.current_game.player_upgrades.chest_plate
 	sprite.frame = int(clamp(upgrades, 0, sprite.hframes -1))

@@ -14,9 +14,10 @@ extends Node2D
 @onready var player : Node2D = $Player
 @onready var game_finished_ui : Control = $GameFinished
 @onready var level_animation_player : AnimationPlayer = $AnimationPlayer
+@onready var back_ground_music : AudioStreamPlayer = $BackGroundMusic
 
 
-const gearbox : Array[int] = [-32, -48, -64]
+const gearbox : Array[int] = [-32, -48, -72]
 const out_of_viewport : Vector2 = Vector2(0, -192)
 
 
@@ -36,13 +37,19 @@ func setup_game() -> void:
 	get_updated_vars()
 	Globals.set_game_data("tries", game_save_file.game_info.tries + 1)
 	
-	gui.first_call(player.get_node("CoreComponent").get_stats().life)
-	gui.update_gold_label(current_gold)
-	
 	shop_ui.position = out_of_viewport
 	
 	pause_menu.callable = true
+	update_player_hp_bar()
 	level_animation_player.play("Starting")
+	
+	gui.update_gold_label(current_gold)
+
+
+func update_player_hp_bar() -> void:
+	await player.get_node("CoreComponent").player_stats_updated
+	var new_hp : int = player.get_node("CoreComponent").get_stats().life
+	gui.first_call(new_hp)
 
 
 func get_updated_vars() -> void:
@@ -151,14 +158,11 @@ func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> 
 	setterparallaxGround.set_parallax_speed(ground_speed)
 
 
-# falta perfeccionar, podría saltar multiples veces o no saltar
 # tambien revisar cómo se llama este metodo 
 func check_bg() -> void: 
 	if current_wave == 33:
-		print("trans to cave" + str(current_wave))
 		setterparallaxGround.set_transicion("cave")
-	elif current_wave == 66: 
-		print("trans to dung" + str(current_wave))
+	elif current_wave == 66:
 		setterparallaxGround.set_transicion("sewer")
 
 
@@ -175,9 +179,7 @@ func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
 
 func _on_EnemySpawner_enemy_died() -> void:
 	saved_gold = current_gold
-	#current_wave = enemy_spawner.get_wave()
 	set_propetys()
-	# print("next wave: " + str(current_wave))
 
 
 func _on_EnemySpawner_wave_increased(new_wave) -> void:
@@ -187,6 +189,7 @@ func _on_EnemySpawner_wave_increased(new_wave) -> void:
 
 # FUNCIONES con PauseMenuUI---------------------------------------------
 func _on_PauseMenu_save_time() -> void:
+	back_ground_music.playing = false
 	set_propetys()
 	get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
 
@@ -203,7 +206,6 @@ func _on_GameOverUI_shop_pressed() -> void:
 
 
 func _on_GameOverUI_retry_pressed() -> void:
-	#get_tree().reload_current_scene()
 	game_over_ui.position = out_of_viewport
 	setup_game()
 

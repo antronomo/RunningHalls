@@ -5,7 +5,7 @@ var saved_wave : int
 
 var current_game : Dictionary = {}
 var config_data : Dictionary = {}
-
+#var payer_stats_upgraded : Dictionary
 
 func _ready() -> void:
 	randomize()
@@ -13,7 +13,7 @@ func _ready() -> void:
 	config_data = Config.load_conf_data()
 	
 	if !current_game.game_info.has("game_version") or \
-		current_game.game_info.game_version != CurrentGame.CURRENTVERSION:
+	current_game.game_info.game_version != CurrentGame.CURRENTVERSION:
 		print("save file and game version are different, to avoid problems, will be resetted")
 		CurrentGame.new_game()
 		Config.to_default_data()
@@ -35,14 +35,14 @@ func _input(event) -> void:
 func reset_game_data() -> void:
 	current_game = CurrentGame.new_game()
 	save_data_to_file()
-
+	
 	saved_wave = current_game.game_info.wave #!
 
 
 func save_data_to_file() -> void:
 	CurrentGame.save_game_data(current_game)
 	current_game = CurrentGame.load_game()
-
+	
 	saved_wave = current_game.game_info.wave #!
 
 
@@ -54,61 +54,61 @@ func set_game_data(what : String, with) -> void:
 				current_game.game_info.wave = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"gold":
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.gold = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"gains" : 
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.gains = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"tries" : 
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.tries = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"helmet":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.helmet = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
-		"chestPlate":
+				
+		"chest_plate":
 			if typeof(with) == TYPE_INT:
-				current_game.player_upgrades.chestPlate = with
+				current_game.player_upgrades.chest_plate = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"greaves":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.greaves = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"boots":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.boots = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"sword":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.sword = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"shield":
 			if typeof(with) == TYPE_INT:
 				current_game.player_upgrades.shield = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		_: # Default
 			push_error(what + " not found")
 
@@ -122,17 +122,14 @@ func resset_config_data() -> void:
 func save_config_to_file() -> void:
 	Config.save_conf_data(config_data)
 	config_data = Config.load_conf_data()
-	
+
 
 func set_audiostreamplayers() -> void:
 	AudioServer.set_bus_volume_db(1, linear_to_db(config_data.voice_volume))
 	AudioServer.set_bus_volume_db(2, linear_to_db(config_data.sfx_volume))
+	AudioServer.set_bus_volume_db(3, linear_to_db(config_data.music_volume))
 
 
-# Funcion completamente inutil, creo que porque estoy pasando los diccionarios
-# sin el .duplicate() y de algún modo se sobre-escribre
-# en todas las variables con ese diccionario
-# pero en set_game_data() si es necesario, no entiendo porqué
 func set_config_data(what : String, with) -> void:
 	match what:
 		"master_volume":
@@ -140,51 +137,46 @@ func set_config_data(what : String, with) -> void:
 				push_error(what + "not config yet")
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"music_volume":
 			if typeof(with) == TYPE_FLOAT:
-				push_error(what + "not config yet")
+				config_data.music_volume = with
+				set_audiostreamplayers()
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"sfx_volume":
 			if typeof(with) == TYPE_FLOAT:
-				push_error(what + "not config yet")
+				config_data.sfx_volume = with
+				set_audiostreamplayers()
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"voice_volume":
 			if typeof(with) == TYPE_FLOAT:
 				config_data.voice_volume = with
 				set_audiostreamplayers()
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"window_fullscreen":
 			if typeof(with) == TYPE_BOOL:
-				config_data.sfx_volume = with
-				set_audiostreamplayers()
+				push_error(what + "not config yet")
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"enemies_lock_rotation":
 			if typeof(with) == TYPE_BOOL:
 				config_data.enemies_lock_rotation = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		"time_speed":
 			if typeof(with) == TYPE_INT:
 				config_data.time_speed = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
-		
+				
 		_: # Default
 			push_error(what + " not found") 
 
-
-"""
-He descubierto que las funciones setter y getter funcionan sin que llames las funciones:
-	los setters funciona cada que cambias el valor de la variable
-	los getter salta cada que la variable es llamado, incluso en el setter
-"""

@@ -104,7 +104,12 @@ autowrap_mode = 1
 visible = false
 layout_mode = 2
 
-[node name="VoiceLabel" type="Label" parent="TabContainer/VolumeTab"]
+[node name="VoiceSection" type="Control" parent="TabContainer/VolumeTab"]
+anchors_preset = 0
+offset_right = 168.0
+offset_bottom = 24.0
+
+[node name="VoiceLabel" type="Label" parent="TabContainer/VolumeTab/VoiceSection"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -114,7 +119,7 @@ theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "Voice"
 
-[node name="VoiceValue" type="Label" parent="TabContainer/VolumeTab"]
+[node name="VoiceValue" type="Label" parent="TabContainer/VolumeTab/VoiceSection"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 16.0
@@ -126,7 +131,7 @@ text = "null"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VoiceHSlider" type="HSlider" parent="TabContainer/VolumeTab"]
+[node name="VoiceHSlider" type="HSlider" parent="TabContainer/VolumeTab/VoiceSection"]
 layout_mode = 2
 offset_left = 8.0
 offset_top = 16.0
@@ -164,6 +169,43 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SoundFXHSlider" type="HSlider" parent="TabContainer/VolumeTab/SoundFXsection"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 24.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="MusicSection" type="Control" parent="TabContainer/VolumeTab"]
+anchors_preset = 0
+offset_top = 72.0
+offset_right = 168.0
+offset_bottom = 96.0
+
+[node name="MusicLabel" type="Label" parent="TabContainer/VolumeTab/MusicSection"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "Music"
+
+[node name="MusicValue" type="Label" parent="TabContainer/VolumeTab/MusicSection"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("4_2r7kk")
+theme_override_font_sizes/font_size = 8
+text = "null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicHSlider" type="HSlider" parent="TabContainer/VolumeTab/MusicSection"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -548,12 +590,15 @@ to defauld"
 [connection signal="pressed" from="VBoxContainer/SecretButton" to="." method="_on_SecretButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
-[connection signal="drag_ended" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_drag_ended"]
-[connection signal="drag_started" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_drag_started"]
-[connection signal="value_changed" from="TabContainer/VolumeTab/VoiceHSlider" to="." method="_on_voice_h_slider_value_changed"]
+[connection signal="drag_ended" from="TabContainer/VolumeTab/VoiceSection/VoiceHSlider" to="." method="_on_voice_h_slider_drag_ended"]
+[connection signal="drag_started" from="TabContainer/VolumeTab/VoiceSection/VoiceHSlider" to="." method="_on_voice_h_slider_drag_started"]
+[connection signal="value_changed" from="TabContainer/VolumeTab/VoiceSection/VoiceHSlider" to="." method="_on_voice_h_slider_value_changed"]
 [connection signal="drag_ended" from="TabContainer/VolumeTab/SoundFXsection/SoundFXHSlider" to="." method="_on_sound_fxh_slider_drag_ended"]
 [connection signal="drag_started" from="TabContainer/VolumeTab/SoundFXsection/SoundFXHSlider" to="." method="_on_sound_fxh_slider_drag_started"]
 [connection signal="value_changed" from="TabContainer/VolumeTab/SoundFXsection/SoundFXHSlider" to="." method="_on_sound_fxh_slider_value_changed"]
+[connection signal="drag_ended" from="TabContainer/VolumeTab/MusicSection/MusicHSlider" to="." method="_on_music_h_slider_drag_ended"]
+[connection signal="drag_started" from="TabContainer/VolumeTab/MusicSection/MusicHSlider" to="." method="_on_music_h_slider_drag_started"]
+[connection signal="value_changed" from="TabContainer/VolumeTab/MusicSection/MusicHSlider" to="." method="_on_music_h_slider_value_changed"]
 [connection signal="pressed" from="TabContainer/ExtraTab/LeftExtraButton" to="." method="_on_left_extra_button_pressed"]
 [connection signal="pressed" from="TabContainer/ExtraTab/RightExtraButton" to="." method="_on_right_extra_button_pressed"]
 [connection signal="toggled" from="TabContainer/SecretTab/EnemiesLockRotation" to="." method="_on_enemies_lock_rotation_toggled"]
