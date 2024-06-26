@@ -20,7 +20,7 @@ func _on_sprite_2d_animation_finished() -> void:
 		anim_sprite.play()
 
 
-func _on_CoreComponent_area_entered(_area : CoreComponent) -> void:
+func _on_core_component_area_entered(_area : CoreComponent) -> void:
 	anim_sprite.animation = "Attack"
 
 
@@ -41,3 +41,4 @@ func toggle_area(boleano : bool) -> void:
 	core_component.set_deferred("monitoring", boleano)   
 	core_component.set_deferred("monitorable", boleano)  
 	
+

@@ -221,7 +221,7 @@ offset_bottom = -192.0
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_vbiv1")
-volume_db = -7.0
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 

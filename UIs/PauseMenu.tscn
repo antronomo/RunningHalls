@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1"]
 [ext_resource type="FontVariation" uid="uid://b70ncbv6ik2e6" path="res://Assets/DynamicFonts/HealthBar_8px_FontVariation.tres" id="2_eh77v"]
-[ext_resource type="Texture2D" uid="uid://dim83n2fhx7iq" path="res://Assets/img/save.png" id="3_1kt5x"]
+[ext_resource type="Texture2D" uid="uid://hjivf7m7vyjg" path="res://Assets/img/home.png" id="3_2gyvg"]
 [ext_resource type="Texture2D" uid="uid://c6la2yxtt515l" path="res://Assets/img/gear.png" id="5_dmdst"]
 [ext_resource type="Texture2D" uid="uid://c158wmbvot6od" path="res://Assets/img/forward.png" id="5_el14i"]
 [ext_resource type="PackedScene" uid="uid://by7ea8qrovwnd" path="res://UIs/OptionsMenu.tscn" id="6_euxqd"]
@@ -152,7 +152,7 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_eh77v")
-icon = ExtResource("3_1kt5x")
+icon = ExtResource("3_2gyvg")
 
 [node name="OptionsButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2

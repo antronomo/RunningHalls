@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://do8y27yh4eck"]
+[gd_scene load_steps=9 format=3 uid="uid://do8y27yh4eck"]
 
 [ext_resource type="Script" path="res://Scripts/GameOverUI.gd" id="1"]
 [ext_resource type="FontVariation" uid="uid://b70ncbv6ik2e6" path="res://Assets/DynamicFonts/HealthBar_8px_FontVariation.tres" id="2_r5xwc"]
+[ext_resource type="Texture2D" uid="uid://bspogv6q81nfy" path="res://Assets/img/cart.png" id="3_grjo3"]
+[ext_resource type="Texture2D" uid="uid://ct0ibvqko4pbg" path="res://Assets/img/return.png" id="4_7qcrd"]
+[ext_resource type="Texture2D" uid="uid://hjivf7m7vyjg" path="res://Assets/img/home.png" id="5_ttiak"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -71,40 +74,42 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -27.5
-offset_right = 72.0
+offset_left = -48.0
+offset_top = -11.5
+offset_right = 144.0
 offset_bottom = 52.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+alignment = 1
 
-[node name="ShopButton" type="Button" parent="VBoxContainer3"]
+[node name="ShopButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("2_r5xwc")
-text = "OPEN SHOP"
+icon = ExtResource("3_grjo3")
 
-[node name="RetryButton" type="Button" parent="VBoxContainer3"]
+[node name="RetryButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("2_r5xwc")
-text = "RETRY"
+icon = ExtResource("4_7qcrd")
 
-[node name="ReturnButton" type="Button" parent="VBoxContainer3"]
+[node name="ReturnButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("2_r5xwc")
-text = "RETURN"
+icon = ExtResource("5_ttiak")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -112,6 +117,6 @@ libraries = {
 }
 
 [connection signal="visibility_changed" from="." to="." method="_on_GameOverUI_visibility_changed"]
-[connection signal="pressed" from="VBoxContainer3/ShopButton" to="." method="_on_ShopButton_pressed"]
-[connection signal="pressed" from="VBoxContainer3/RetryButton" to="." method="_on_RetryButton_pressed"]
-[connection signal="pressed" from="VBoxContainer3/ReturnButton" to="." method="_on_ReturnButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/ShopButton" to="." method="_on_ShopButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
