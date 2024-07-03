@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfjpmmeypujrh"]
+[gd_scene load_steps=8 format=3 uid="uid://cfjpmmeypujrh"]
 
 [ext_resource type="Script" path="res://Scripts/GUI.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bl0b2wwhs7q8d" path="res://Assets/img/OverBar2.png" id="2_jl11u"]
+[ext_resource type="Texture2D" uid="uid://dqen3ajja5j1f" path="res://Assets/img/ProgressBar2.png" id="3_3wplu"]
 [ext_resource type="Texture2D" uid="uid://rmn12ygu7w0t" path="res://Assets/img/GoldCoin.png" id="4"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="4_pnj3x"]
 [ext_resource type="Texture2D" uid="uid://cww6yy5bn5ux7" path="res://Assets/img/pause.png" id="5_300hs"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="5_n8prc"]
 
@@ -20,15 +22,50 @@ offset_bottom = 16.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="HealthBar" parent="HealthBarContainer" instance=ExtResource("2")]
+[node name="HealthBar" type="TextureProgressBar" parent="HealthBarContainer"]
+z_index = -2
 layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 96.0
-offset_bottom = 8.0
+offset_bottom = 9.0
 pivot_offset = Vector2(1.90735e-06, 9.53674e-07)
-size_flags_horizontal = 1
-size_flags_vertical = 1
+rounded = true
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_over = ExtResource("2_jl11u")
+texture_progress = ExtResource("3_3wplu")
+tint_under = Color(0.188235, 0.188235, 0.188235, 1)
+tint_over = Color(0, 0, 0, 1)
+tint_progress = Color(0.223529, 0.87451, 0.223529, 1)
+script = ExtResource("4_pnj3x")
+
+[node name="DamageIndicator" type="TextureProgressBar" parent="HealthBarContainer/HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 8.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(8, 2)
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("3_3wplu")
+texture_progress = ExtResource("3_3wplu")
+tint_under = Color(0.188235, 0.188235, 0.188235, 1)
+tint_over = Color(0, 0, 0, 1)
+tint_progress = Color(0.596078, 1, 0.654902, 1)
 
 [node name="Label" type="Label" parent="HealthBarContainer"]
 layout_mode = 1
@@ -38,6 +75,8 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0.0980392, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
 text = "0"
@@ -103,5 +142,7 @@ text = ">"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="changed" from="HealthBarContainer/HealthBar" to="HealthBarContainer/HealthBar" method="_on_changed"]
+[connection signal="value_changed" from="HealthBarContainer/HealthBar" to="HealthBarContainer/HealthBar" method="_on_value_changed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="SpeedControllerContainer/SpeedButton" to="." method="_on_speed_button_pressed"]

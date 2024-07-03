@@ -616,7 +616,7 @@ shape = SubResource("3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_tom5s")
-volume_db = -0.8
+volume_db = -6.0
 bus = &"SoundFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

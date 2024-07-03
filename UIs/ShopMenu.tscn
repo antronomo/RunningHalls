@@ -199,11 +199,11 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="StatsLabel" type="Label" parent="TabContainer/PlayerStats"]
-layout_mode = 1
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 144.0
+[node name="StatsLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 64.0
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("11_jpkaf")
 theme_override_font_sizes/font_size = 8
@@ -216,14 +216,17 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 64.0
 offset_bottom = 120.0
+alignment = 2
 
 [node name="ForgeButton" type="Button" parent="ButtonsControl"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_jpkaf")
 theme_override_font_sizes/font_size = 8
 text = "Forge"
 
 [node name="StatsButton" type="Button" parent="ButtonsControl"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_jpkaf")
 theme_override_font_sizes/font_size = 8
@@ -233,7 +236,7 @@ text = "Stats"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_jpkaf")
 theme_override_font_sizes/font_size = 8
-text = "Exit"
+text = "Return"
 
 [connection signal="pressed" from="TabContainer/ForgeTab/HelmetButton" to="." method="_on_HelmetButton_pressed"]
 [connection signal="pressed" from="TabContainer/ForgeTab/ChestPlateButton" to="." method="_on_ChestPlateButton_pressed"]
@@ -242,6 +245,4 @@ text = "Exit"
 [connection signal="pressed" from="TabContainer/ForgeTab/SwordButton" to="." method="_on_SwordButton_pressed"]
 [connection signal="pressed" from="TabContainer/ForgeTab/ShieldButton" to="." method="_on_ShieldButton_pressed"]
 [connection signal="pressed" from="TabContainer/ForgeTab/UpgradeButton" to="." method="_on_UpgradeButton_pressed"]
-[connection signal="pressed" from="ButtonsControl/ForgeButton" to="." method="_on_ForgeButton_pressed"]
-[connection signal="pressed" from="ButtonsControl/StatsButton" to="." method="_on_StatsButton_pressed"]
 [connection signal="pressed" from="ButtonsControl/ExitButton" to="." method="_on_ExitButton_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://rmjr3fg1l0xe"]
+[gd_scene load_steps=25 format=3 uid="uid://rmjr3fg1l0xe"]
 
 [ext_resource type="Script" path="res://Scripts/Level0.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cfjpmmeypujrh" path="res://UIs/GUI.tscn" id="2"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dfaw1u7n42udl" path="res://UIs/ShopMenu.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://md23rqrj4w7p" path="res://UIs/GameFinished.tscn" id="10_i7fc4"]
 [ext_resource type="AudioStream" uid="uid://ctwuene25niug" path="res://Assets/Audio/leap_by_nene.ogg" id="11_vbiv1"]
+[ext_resource type="PackedScene" uid="uid://by7ea8qrovwnd" path="res://UIs/OptionsMenu.tscn" id="11_wym51"]
+[ext_resource type="AudioStream" uid="uid://30ae23w5c5t0" path="res://Assets/Audio/pussButton.ogg" id="12_port3"]
+[ext_resource type="Script" path="res://Scripts/ButtonFX.gd" id="13_60slc"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(464, 32)
@@ -218,10 +221,37 @@ offset_bottom = -192.0
 offset_top = -192.0
 offset_bottom = -192.0
 
+[node name="OptionsMenu" parent="." instance=ExtResource("11_wym51")]
+process_mode = 3
+offset_top = -192.0
+offset_bottom = -192.0
+
+[node name="VBoxContainer" parent="OptionsMenu" index="0"]
+offset_top = 16.0
+offset_bottom = 120.0
+alignment = 2
+
+[node name="HowToButton" parent="OptionsMenu/VBoxContainer" index="0"]
+visible = false
+
+[node name="VolumeButton" parent="OptionsMenu/VBoxContainer" index="1"]
+visible = false
+
+[node name="ExtrasButton" parent="OptionsMenu/VBoxContainer" index="2"]
+visible = false
+
+[node name="SecretButton" parent="OptionsMenu/VBoxContainer" index="3"]
+visible = false
+
+[node name="ButtonFX" type="AudioStreamPlayer" parent="OptionsMenu"]
+stream = ExtResource("12_port3")
+bus = &"SoundFX"
+script = ExtResource("13_60slc")
+
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_vbiv1")
-volume_db = -10.0
+volume_db = -12.0
 autoplay = true
 bus = &"Music"
 
@@ -232,10 +262,15 @@ bus = &"Music"
 [connection signal="hand_defeated" from="EnemySpawner" to="." method="_on_enemy_spawner_hand_defeated"]
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
 [connection signal="value_changed" from="Accelerator" to="." method="_on_Accelerator_value_changed"]
+[connection signal="pause_option_pressed" from="PauseMenu" to="." method="_on_pause_menu_pause_option_pressed"]
 [connection signal="save_time" from="PauseMenu" to="." method="_on_PauseMenu_save_time"]
+[connection signal="options_pressed" from="GameOverUI" to="." method="_on_game_over_ui_options_pressed"]
 [connection signal="retry_pressed" from="GameOverUI" to="." method="_on_GameOverUI_retry_pressed"]
 [connection signal="return_pressed" from="GameOverUI" to="." method="_on_GameOverUI_return_pressed"]
 [connection signal="shop_pressed" from="GameOverUI" to="." method="_on_GameOverUI_shop_pressed"]
 [connection signal="exiting" from="Shop" to="." method="_on_Shop_exiting"]
+[connection signal="pressed" from="OptionsMenu/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/VBoxContainer/ReturnButton" to="OptionsMenu/ButtonFX" method="_on_return_button_pressed"]
 
 [editable path="GUI"]
+[editable path="OptionsMenu"]

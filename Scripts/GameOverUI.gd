@@ -4,6 +4,7 @@ extends Control
 signal shop_pressed
 signal retry_pressed
 signal return_pressed
+signal options_pressed
 
 
 func _ready() -> void:
@@ -23,7 +24,13 @@ func _on_ReturnButton_pressed() -> void:
 	emit_signal("return_pressed")
 
 
+func _on_options_menu_pressed() -> void:
+	emit_signal("options_pressed")
+
+
 func _on_GameOverUI_visibility_changed() -> void:
 	if visible:
 		$AnimationPlayer.play("appear")
+
+
 

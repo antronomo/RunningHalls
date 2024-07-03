@@ -15,6 +15,7 @@ extends Node2D
 @onready var game_finished_ui : Control = $GameFinished
 @onready var level_animation_player : AnimationPlayer = $AnimationPlayer
 @onready var back_ground_music : AudioStreamPlayer = $BackGroundMusic
+@onready var options_menu : Control = $OptionsMenu
 
 
 const gearbox : Array[int] = [-32, -48, -72]
@@ -31,6 +32,7 @@ var gained_gold : int
 func _ready() -> void:
 	setup_game()
 	enemy_spawner._on_EnemySpawner_enemy_list_ended()
+	options_menu.get_node("TabContainer").current_tab = 1
 
 
 func setup_game() -> void:
@@ -71,17 +73,18 @@ func _on_MataSobras5000_body_exited(body : Node) -> void:
 
 # Llamado por el AnimationPlayer
 func start_game() -> void:
+	gui.show()
 	#setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
 	setterparallaxGround.set_parallax_speed(ground_speed)
 	
 	physic_ground.constant_linear_velocity.x = ground_speed
 	
-	if current_wave < 100:
+	if current_wave <= 100:
 		enemy_spawner.work = true
 
 
 # Llamado cuando el jugador manda la señal morido
-func finish_game() -> void:
+func finish_game() -> void: # el nombre no es coherete, es porque lleva mucho tiempo...
 	game_over_ui.position = Vector2.ZERO
 	game_over_ui.visible = true
 	accelerator.play_backwards("accelerate")
@@ -128,6 +131,7 @@ func _on_enemy_spawner_hand_defeated() -> void:
 	pause_menu.callable = false
 	game_finished_ui.position = Vector2.ZERO
 	game_finished_ui.visible = true
+	gui.hide()
 
 
 # se supone que debe esperar a que el audio termine para lanzar esta función vacía
@@ -154,7 +158,6 @@ func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> 
 	
 	# Si le das cuando hace la animación de empezar/re-aparacer puedes activar el suelo y fondo antes de tiempo
 	physic_ground.constant_linear_velocity.x = ground_speed
-	#setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
 	setterparallaxGround.set_parallax_speed(ground_speed)
 
 
@@ -198,14 +201,22 @@ func _on_pause_button_pressed() -> void:
 	pause_menu.toggler_pauser()
 
 
+func _on_pause_menu_pause_option_pressed() -> void:
+	gui.hide()
+	pause_menu.position = out_of_viewport
+	options_menu.position = Vector2.ZERO
+
+
 # FUNCIONES con GameOverUI----------------------------------------------
 func _on_GameOverUI_shop_pressed() -> void:
+	gui.hide()
 	shop_ui.gold_update()
 	shop_ui.position = Vector2.ZERO
 	game_over_ui.position = out_of_viewport
 
 
 func _on_GameOverUI_retry_pressed() -> void:
+	gui.show()
 	game_over_ui.position = out_of_viewport
 	setup_game()
 
@@ -214,10 +225,27 @@ func _on_GameOverUI_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
 
 
+func _on_game_over_ui_options_pressed() -> void:
+	gui.hide()
+	options_menu.position = Vector2.ZERO
+	game_over_ui.position = out_of_viewport
+
+
 # FUNCIONES con ShopUI--------------------------------------------------
 func _on_Shop_exiting() -> void:
+	gui.show()
 	get_updated_vars()
 	gui.update_gold_label(current_gold)
 	shop_ui.position = out_of_viewport
 	game_over_ui.position = Vector2.ZERO
+
+
+# FUNCIONES con OptionsMenu --------------------------------------------
+func _on_return_button_pressed() -> void:
+	gui.show()
+	options_menu.position = out_of_viewport
+	if pause_menu.callable:
+		pause_menu.position = Vector2.ZERO
+	else:
+		game_over_ui.position = Vector2.ZERO
 

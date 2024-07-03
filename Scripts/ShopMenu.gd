@@ -8,7 +8,7 @@ extends Control
 @onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
 @onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
 @onready var goldLabel : Label = $TabContainer/ForgeTab/GoldContainer/Label
-@onready var player_stats_label : Label = $TabContainer/PlayerStats/StatsLabel
+@onready var player_stats_label : Label = $StatsLabel
 
 @onready var helmet : Equipment = $TabContainer/ForgeTab/HelmetButton/Helmet
 @onready var chest_plate : Equipment = $TabContainer/ForgeTab/ChestPlateButton/ChestPlate
@@ -28,6 +28,7 @@ signal exiting
 
 func _ready() -> void:
 	tab_container.current_tab = 0
+	update_stats_label()
 
 
 func gold_update() -> void:
@@ -121,6 +122,8 @@ func _on_UpgradeButton_pressed() -> void:
 				
 	else:
 		print("Can not upgrade!")
+	
+	update_stats_label()
 
 
 func save_upgrades() -> void:
@@ -138,26 +141,24 @@ func _on_ForgeButton_pressed() -> void:
 	tab_container.current_tab = 0
 
 
-func _on_StatsButton_pressed() -> void:
-	if tab_container.current_tab != 1: # Por si acaso
-		save_upgrades()
-		tab_container.current_tab = 1
-		
-		# Literal un copy/paste del PlayerStats.gd
-		var defense = 20 + helmet.get_item_stats().stat + chest_plate.get_item_stats().stat \
-		 + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
-		
-		var attack = 20 + sword.get_item_stats().stat
-		
-		var total_upgrades : int = helmet.upgrades + chest_plate.upgrades + greaves.upgrades \
-		 + boots.upgrades + shield.upgrades + sword.upgrades
-		@warning_ignore("integer_division")
-		var hp : int = 200 + 200 * (total_upgrades / 2)
-		# ----------------------------------------
-		
-		player_stats_label.text = "HP: " + str(hp) + "\n" \
-		+ "attack: " + str(attack) + "\n" \
-		+ "deff: " + str(defense) + "\n"
+func update_stats_label() -> void:
+	save_upgrades()
+	
+	# Literal un copy/paste del PlayerStats.gd
+	var defense = 20 + helmet.get_item_stats().stat + chest_plate.get_item_stats().stat \
+	 + greaves.get_item_stats().stat + boots.get_item_stats().stat + shield.get_item_stats().stat
+	
+	var attack = 20 + sword.get_item_stats().stat
+	
+	var total_upgrades : int = helmet.upgrades + chest_plate.upgrades + greaves.upgrades \
+	 + boots.upgrades + shield.upgrades + sword.upgrades
+	@warning_ignore("integer_division")
+	var hp : int = 200 + 200 * (total_upgrades / 2)
+	# ----------------------------------------
+	
+	player_stats_label.text = "HP: " + "\n" + str(hp) + "\n" + "\n" \
+	+ "attack: " + "\n" + str(attack) + "\n" + "\n" \
+	+ "deff: " + "\n" + str(defense) + "\n"
 
 
 func _on_ExitButton_pressed() -> void:
