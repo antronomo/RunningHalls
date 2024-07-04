@@ -14,6 +14,7 @@ extends Marker2D
 
 var wave_list : Array
 var work : bool = true # Cambiado por Level0 al llegar al game_over
+var boss_summoned = false
 
 
 signal generate_loot
@@ -41,6 +42,8 @@ func get_wave() -> int:
 
 
 func spawn_enemies() -> void:
+	if boss_summoned : return
+	
 	for i1 in wave_list.size():
 		for i2 in wave_list[i1].size():
 			timer.start(randf_range(0.05, 0.35)); await timer.timeout
@@ -80,6 +83,7 @@ func _on_EnemySpawner_enemy_list_ended() -> void:
 		#wave_generator.queue_free()
 		spawn_enemies()
 		work = false
+		boss_summoned = true
 
 
 func _on_hand_died() -> void:
