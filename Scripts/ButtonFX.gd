@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
 
+func _on_return_button_pressed() -> void:
+	play()
 
-#func _on_return_button_pressed() -> void:
-	#play()

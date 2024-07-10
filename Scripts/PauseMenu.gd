@@ -4,7 +4,6 @@ extends Control
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var color_rect : ColorRect = $ColorRect
 @onready var label : Label = $Label
-@onready var buttons_container : HBoxContainer = $ButtonsContainer
 @onready var resum_buttton : Button = $ButtonsContainer/ResumeButton
 @onready var options_button : Button = $ButtonsContainer/OptionsButton
 @onready var save_and_exit_buttton : Button = $ButtonsContainer/SaveButton

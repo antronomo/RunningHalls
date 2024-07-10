@@ -55,6 +55,7 @@ func boss_mode() -> void:
 		anim_sprite.scale += Vector2(2, 2)
 		health_bar.position *= Vector2(-0.25, 3)
 		health_bar.scale += Vector2(2, 2)
+		z_index += 1
 		core_compo.boss_buff()
 		im_boss = true
 

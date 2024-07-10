@@ -69,14 +69,14 @@ func get_stats() -> Dictionary:
 
 func hit() -> float:
 	var dmg : float = (attack * (randi() % 50 + 75)) / 100.00
-
+	
 	if dmg < 1:
 		dmg = 1
-
+	
 	if randi() % 100 + 1 <= critical_chance:
 		dmg += (dmg * critical_damage) / 100.00
 		# print("Critical")
-
+	
 	return dmg
 
 

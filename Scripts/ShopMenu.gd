@@ -1,9 +1,10 @@
 extends Control
 
 
-@onready var tab_container : TabContainer = $TabContainer
 # Me mola, pero no tiene nada que hacer en este proyecto
 @onready var item_show : Sprite2D = $TabContainer/ForgeTab/SelectRect/ItemShow 
+
+@onready var tab_container : TabContainer = $TabContainer
 @onready var upgrade_name_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeName
 @onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
 @onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
@@ -24,6 +25,7 @@ var upgrade_price : int
 
 
 signal exiting
+signal anything_pressed
 
 
 func _ready() -> void:
@@ -38,26 +40,32 @@ func gold_update() -> void:
 
 func _on_HelmetButton_pressed() -> void:
 	get_item_to_show(helmet, "helmet")
+	emit_signal("anything_pressed")
 
 
 func _on_ChestPlateButton_pressed() -> void:
 	get_item_to_show(chest_plate, "chest plate")
+	emit_signal("anything_pressed")
 
 
 func _on_GreavesButton_pressed() -> void:
 	get_item_to_show(greaves, "greaves")
+	emit_signal("anything_pressed")
 
 
 func _on_BootsButton_pressed() -> void:
 	get_item_to_show(boots, "boots")
+	emit_signal("anything_pressed")
 
 
 func _on_SwordButton_pressed() -> void:
 	get_item_to_show(sword, "sword")
-
+	emit_signal("anything_pressed")
+	
 
 func _on_ShieldButton_pressed() -> void:
 	get_item_to_show(shield, "shield")
+	emit_signal("anything_pressed")
 
 
 func get_item_to_show(equipment : Equipment, new_item_name : String) -> void:
@@ -118,11 +126,12 @@ func _on_UpgradeButton_pressed() -> void:
 				_on_ShieldButton_pressed()
 				
 			_:
-				push_error(item_name + " ???")
+				push_error("item_name not found")
 				
 	else:
 		print("Can not upgrade!")
 	
+	emit_signal("anything_pressed")
 	update_stats_label()
 
 
@@ -139,6 +148,7 @@ func save_upgrades() -> void:
 
 func _on_ForgeButton_pressed() -> void:
 	tab_container.current_tab = 0
+	emit_signal("anything_pressed")
 
 
 func update_stats_label() -> void:
@@ -165,4 +175,5 @@ func _on_ExitButton_pressed() -> void:
 	emit_signal("exiting")
 	save_upgrades()
 	tab_container.current_tab = 0
+	emit_signal("anything_pressed")
 
