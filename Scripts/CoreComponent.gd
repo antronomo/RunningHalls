@@ -4,7 +4,7 @@ extends Area2D
 
 #Si hago que los atributos del personaje dependan de otro script, 
 #solo tendré que modificar este para que los actualice
-@export var max_life : int = 1: get = get_max_hp, set = set_max_hp
+@export var max_life : int = 1 : get = get_max_hp, set = set_max_hp
 @export var attack : int = 1
 @export var defense : int = 1
 @export var critical_chance : int

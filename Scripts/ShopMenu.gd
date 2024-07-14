@@ -142,8 +142,6 @@ func save_upgrades() -> void:
 	Globals.set_game_data("boots", boots.upgrades)
 	Globals.set_game_data("sword", sword.upgrades)
 	Globals.set_game_data("shield", shield.upgrades)
-	Globals.set_game_data("gold", gold)
-	Globals.save_data_to_file()
 
 
 func _on_ForgeButton_pressed() -> void:
@@ -172,8 +170,9 @@ func update_stats_label() -> void:
 
 
 func _on_ExitButton_pressed() -> void:
-	emit_signal("exiting")
+	Globals.set_game_data("gold", gold)
 	save_upgrades()
 	tab_container.current_tab = 0
+	emit_signal("exiting")
 	emit_signal("anything_pressed")
 

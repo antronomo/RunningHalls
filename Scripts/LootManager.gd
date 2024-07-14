@@ -4,7 +4,7 @@ extends Node2D
 const coin_scene : PackedScene = preload("res://Components/Coin.tscn")
 
 
-func generate_loot(loot_position : Vector2, _quantity : int) -> void:
+func generate_loot(loot_position : Vector2) -> void:
 	var coin : = coin_scene.instantiate()
 	coin.amount = randi() % 10 + 6
 	coin.position = loot_position

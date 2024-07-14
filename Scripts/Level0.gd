@@ -7,7 +7,6 @@ extends Node2D
 @onready var loot_manager : Node2D = $LootManager
 @onready var gui : CanvasLayer = $GUI
 @onready var pause_menu : Control = $PauseMenu
-@onready var game_save_file : Dictionary
 @onready var shop_ui : Control = $Shop
 @onready var game_over_ui : Control = $GameOverUI
 @onready var accelerator : AnimationPlayer = $Accelerator/AnimationPlayer
@@ -16,6 +15,7 @@ extends Node2D
 @onready var level_animation_player : AnimationPlayer = $AnimationPlayer
 @onready var back_ground_music : AudioStreamPlayer = $BackGroundMusic
 @onready var options_menu : Control = $OptionsMenu
+@onready var button_fx : AudioStreamPlayer = $ButtonFX
 
 
 const gearbox : Array[int] = [-32, -48, -72]
@@ -24,9 +24,7 @@ const out_of_viewport : Vector2 = Vector2(0, -192)
 
 var ground_speed : int # la variable que controla la velocidad del suelo y fondo
 var current_wave : int
-var current_gold : int
-var saved_gold : int # El oro que te quedas cuando terminas una oleada de enemigos
-var gained_gold : int
+var gold : int
 
 
 func _ready() -> void:
@@ -37,15 +35,15 @@ func _ready() -> void:
 
 func setup_game() -> void:
 	get_updated_vars()
-	Globals.set_game_data("tries", game_save_file.game_info.tries + 1)
+	gui.update_gold_label(gold)
 	
-	shop_ui.position = out_of_viewport
+	Globals.set_game_data("tries", Globals.current_game.game_info.tries + 1)
+	
+	shop_ui.position = out_of_viewport # Esto para cuando le das al "retry"
 	
 	pause_menu.callable = true
 	update_player_hp_bar()
 	level_animation_player.play("Starting")
-	
-	gui.update_gold_label(current_gold)
 
 
 func update_player_hp_bar() -> void:
@@ -55,12 +53,8 @@ func update_player_hp_bar() -> void:
 
 
 func get_updated_vars() -> void:
-	game_save_file = Globals.current_game.duplicate()
-	
-	current_wave = game_save_file.game_info.wave
-	current_gold = game_save_file.game_info.gold
-	saved_gold = current_gold
-	gained_gold = game_save_file.game_info.gains
+	current_wave = Globals.current_game.game_info.wave
+	gold = Globals.current_game.game_info.gold
 	
 	ground_speed = gearbox[Globals.config_data.time_speed]
 
@@ -74,26 +68,23 @@ func _on_MataSobras5000_body_exited(body : Node) -> void:
 # Llamado por el AnimationPlayer
 func start_game() -> void:
 	gui.show()
-	#setterparallaxGround.get_child(0).set_paraspeed(ground_speed)
 	setterparallaxGround.set_parallax_speed(ground_speed)
-	
 	physic_ground.constant_linear_velocity.x = ground_speed
-	
 	enemy_spawner.work = true
 
 
 # Llamado cuando el jugador manda la señal morido
-func finish_game() -> void: # el nombre no es coherete, es porque lleva mucho tiempo...
-	game_over_ui.position = Vector2.ZERO
-	game_over_ui.visible = true
-	accelerator.play_backwards("accelerate")
+func finish_game() -> void: # el nombre no es coherente, es porque lleva mucho tiempo...
+	#gui.hide()
 	set_propetys()
+	accelerator.play_backwards("accelerate")
 	enemy_spawner.work = false
 	pause_menu.callable = false
 	
-	# Solucion temporal: al morir el oro actualiza dos veces
-	await get_tree().create_timer(0.1).timeout
-	gui.update_gold_label(saved_gold)
+	game_over_ui.position = Vector2.ZERO
+	game_over_ui.visible = true
+	await get_tree().create_timer(0.1).timeout # Solución por mal timing
+	game_over_ui.coin_label_updater()
 
 
 # Esta funcion fue JUSTO antes de saber de la existencia de tweens
@@ -104,12 +95,8 @@ func _on_Accelerator_value_changed(value : float) -> void:
 
 
 func set_propetys() -> void:
-	Globals.set_game_data("gold", saved_gold)
 	Globals.set_game_data("wave", current_wave)
-	Globals.set_game_data("gains", gained_gold)
-	
-	Globals.save_data_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
-	Globals.save_config_to_file() # No debería ser llamado solo cuando va a cerrar el juego?
+	Globals.set_game_data("gold", gold)
 
 
 # Llamado cuando un jefe a sido derrotado
@@ -120,13 +107,10 @@ func _on_enemy_spawner_hand_defeated() -> void:
 	player.stop_anim()
 	set_propetys()
 	enemy_spawner.work = false
-	# Solucion temporal: al morir el oro actualiza dos veces
-	await get_tree().create_timer(0.1).timeout
-	gui.update_gold_label(saved_gold)
 	
 	# UI FINAL DE VICTORIA
-	@warning_ignore("redundant_await")
-	await _on_hand_deleted() # si funciona y sí es necesário
+	@warning_ignore("redundant_await") # si funciona y sí es necesário
+	await _on_hand_deleted() # El jefe manda una señal antes de morir
 	pause_menu.callable = false
 	game_finished_ui.position = Vector2.ZERO
 	game_finished_ui.visible = true
@@ -160,7 +144,6 @@ func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> 
 	setterparallaxGround.set_parallax_speed(ground_speed)
 
 
-# tambien revisar cómo se llama este metodo 
 func check_bg() -> void: 
 	if current_wave == 33:
 		setterparallaxGround.set_transicion("cave")
@@ -168,28 +151,25 @@ func check_bg() -> void:
 		setterparallaxGround.set_transicion("sewer")
 
 
-# FUNCIONES con EnemySpawner--------------------------------------------
+#region FUNCIONES con EnemySpawner--------------------------------------------
 func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
 	@warning_ignore("integer_division")
 	var loot_quantity : int = current_wave + int(randi() % current_wave + (current_wave / 2))
-	loot_manager.generate_loot(loot_position, loot_quantity)
-	current_gold = current_gold + loot_quantity
-	gained_gold = gained_gold + loot_quantity
-	gui.update_gold_label(current_gold)
+	loot_manager.generate_loot(loot_position)
+	gold = gold + loot_quantity
 	set_propetys()
+	gui.update_gold_label(gold)
 
 
-func _on_EnemySpawner_enemy_died() -> void:
-	saved_gold = current_gold
-	set_propetys()
-
-
-func _on_EnemySpawner_wave_increased(new_wave) -> void:
+# Señal conectada por código, no recuerdo la razón
+func _on_EnemySpawner_wave_increased(new_wave) -> void: 
 	current_wave = new_wave
 	check_bg()
+	set_propetys()
+#endregion
 
 
-# FUNCIONES con PauseMenuUI---------------------------------------------
+#region FUNCIONES con PauseMenuUI---------------------------------------------
 func _on_PauseMenu_save_time() -> void:
 	back_ground_music.playing = false
 	set_propetys()
@@ -204,9 +184,10 @@ func _on_pause_menu_pause_option_pressed() -> void:
 	gui.hide()
 	pause_menu.position = out_of_viewport
 	options_menu.position = Vector2.ZERO
+#endregion
 
 
-# FUNCIONES con GameOverUI----------------------------------------------
+#region FUNCIONES con GameOverUI----------------------------------------------
 func _on_GameOverUI_shop_pressed() -> void:
 	gui.hide()
 	shop_ui.gold_update()
@@ -230,16 +211,28 @@ func _on_game_over_ui_options_pressed() -> void:
 	game_over_ui.position = out_of_viewport
 
 
-# FUNCIONES con ShopUI--------------------------------------------------
+func _on_game_over_ui_anything_pressed() -> void:
+	button_fx.play()
+#endregion
+
+
+#region FUNCIONES con ShopUI--------------------------------------------------
 func _on_Shop_exiting() -> void:
-	gui.show()
+	#gui.update_gold_label(current_gold)
 	get_updated_vars()
-	gui.update_gold_label(current_gold)
+	gui.update_gold_label(gold)
+	gui.show()
 	shop_ui.position = out_of_viewport
+	game_over_ui.coin_label_updater()
 	game_over_ui.position = Vector2.ZERO
 
 
-# FUNCIONES con OptionsMenu --------------------------------------------
+func _on_shop_anything_pressed() -> void:
+	button_fx.play()
+#endregion
+
+
+#region FUNCIONES con OptionsMenu --------------------------------------------
 func _on_return_button_pressed() -> void:
 	gui.show()
 	options_menu.position = out_of_viewport
@@ -247,4 +240,5 @@ func _on_return_button_pressed() -> void:
 		pause_menu.position = Vector2.ZERO
 	else:
 		game_over_ui.position = Vector2.ZERO
+#endregion
 

@@ -10,7 +10,7 @@ extends ParallaxBackground
 @onready var cave_entrance : PackedScene = preload("res://BackGrounds/CaveEntrance.tscn")
 @onready var dungeon_entrance : PackedScene = preload("res://BackGrounds/DungeonEntrance.tscn")
 
-@onready var current_wave : int = Globals.saved_wave
+@onready var current_wave : int = Globals.current_game.game_info.wave
 
 
 var parallax_speed : int : set = set_parallax_speed, get = get_parallax_speed 

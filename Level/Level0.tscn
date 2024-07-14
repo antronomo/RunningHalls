@@ -245,6 +245,7 @@ visible = false
 
 [node name="ButtonFX" type="AudioStreamPlayer" parent="OptionsMenu"]
 stream = ExtResource("12_port3")
+volume_db = -6.0
 bus = &"SoundFX"
 script = ExtResource("13_60slc")
 
@@ -255,19 +256,25 @@ volume_db = -12.0
 autoplay = true
 bus = &"Music"
 
+[node name="ButtonFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_port3")
+volume_db = -6.0
+bus = &"SoundFX"
+
 [connection signal="pressed" from="GUI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="GUI/SpeedControllerContainer/SpeedButton" to="." method="_on_speed_button_pressed"]
-[connection signal="enemy_died" from="EnemySpawner" to="." method="_on_EnemySpawner_enemy_died"]
 [connection signal="generate_loot" from="EnemySpawner" to="." method="_on_EnemySpawner_generate_loot"]
 [connection signal="hand_defeated" from="EnemySpawner" to="." method="_on_enemy_spawner_hand_defeated"]
 [connection signal="body_exited" from="MataSobras5000" to="." method="_on_MataSobras5000_body_exited"]
 [connection signal="value_changed" from="Accelerator" to="." method="_on_Accelerator_value_changed"]
 [connection signal="pause_option_pressed" from="PauseMenu" to="." method="_on_pause_menu_pause_option_pressed"]
 [connection signal="save_time" from="PauseMenu" to="." method="_on_PauseMenu_save_time"]
+[connection signal="anything_pressed" from="GameOverUI" to="." method="_on_game_over_ui_anything_pressed"]
 [connection signal="options_pressed" from="GameOverUI" to="." method="_on_game_over_ui_options_pressed"]
 [connection signal="retry_pressed" from="GameOverUI" to="." method="_on_GameOverUI_retry_pressed"]
 [connection signal="return_pressed" from="GameOverUI" to="." method="_on_GameOverUI_return_pressed"]
 [connection signal="shop_pressed" from="GameOverUI" to="." method="_on_GameOverUI_shop_pressed"]
+[connection signal="anything_pressed" from="Shop" to="." method="_on_shop_anything_pressed"]
 [connection signal="exiting" from="Shop" to="." method="_on_Shop_exiting"]
 [connection signal="pressed" from="OptionsMenu/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="OptionsMenu/VBoxContainer/ReturnButton" to="OptionsMenu/ButtonFX" method="_on_return_button_pressed"]

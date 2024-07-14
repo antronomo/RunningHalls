@@ -12,10 +12,10 @@ var current_wave : int = 0
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_EnemyStats_body_entered" ))
 	
-	current_wave = clamp(Globals.saved_wave, 0 , 150)
-	
-	# print(str(current_wave))
+	current_wave = clamp(Globals.current_game.game_info.wave, 0 , 150)
+	#print(str(current_wave))
 	wave_buff()
+	
 	super()
 
 

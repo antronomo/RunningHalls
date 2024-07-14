@@ -30,4 +30,4 @@ func _on_visibility_changed() -> void:
 	if visible == true:
 		await get_tree().create_timer(0.1).timeout # Solucion de mierda para mal timing
 		stats_label.text = "attemps: " + str(current_game.game_info.tries) + "\n" \
-		 + "gold obtained: " + str(current_game.game_info.gains)
+		 + "gold obtained: " + str(current_game.game_info.gold)

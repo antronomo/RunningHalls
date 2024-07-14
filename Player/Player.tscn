@@ -591,6 +591,8 @@ max_life = 200
 attack = 20
 defense = 20
 critical_chance = 15
+critical_damage = null
+dict_status = null
 
 [node name="Boots" parent="CoreComponent" instance=ExtResource("5")]
 visible = false

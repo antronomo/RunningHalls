@@ -6,7 +6,7 @@ extends Marker2D
 
 # Esta variable y la funcion get_wave() son esenciales si no quieres tocar level0.gd
 # La variable es utilizada por los enemigos para calcular estadísticas progresivas
-@onready var le_wave : int = Globals.current_game.game_info.wave : set = set_lewave, get = get_wave
+@onready var le_wave : int = Globals.current_game.game_info.wave : set = set_lewave
 
 # Esto es un meme, activable desde el "menu secreto"
 @onready var enemies_lock_rotation : bool = Globals.config_data.enemies_lock_rotation
@@ -18,7 +18,6 @@ var boss_summoned = false
 
 
 signal generate_loot
-signal enemy_died
 signal enemy_list_ended
 signal hand_defeated
 signal increased_wave
@@ -34,11 +33,6 @@ func _ready() -> void:
 func set_lewave(one : int = 1) -> void:
 	le_wave += one
 	emit_signal("increased_wave", le_wave)
-
-
-# funcion obsoleta
-func get_wave() -> int:
-	return le_wave
 
 
 func spawn_enemies() -> void:
@@ -68,7 +62,6 @@ func spawn_enemies() -> void:
 
 func _on_enemy_died(enemy_position : Vector2) -> void: # Llamado cuando un hijo "muere"
 	emit_signal("generate_loot", enemy_position)
-	emit_signal("enemy_died") # Aunque la señal tenga el mismo nombre, este es el que conecta con Level0
 
 
 func _on_EnemySpawner_enemy_list_ended() -> void:

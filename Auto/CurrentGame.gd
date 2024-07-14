@@ -2,13 +2,12 @@ extends Node
 
 
 const GAMEPATHFILE : String = "user://SAVEFILE.save"
-const CURRENTVERSION : String = "0.27.4"
+const CURRENTVERSION : String = "0.27.5"
 const DEFAULTGAMEDATA : Dictionary = {
 	"game_info" : {
 		"game_version" : CURRENTVERSION,
 		"wave" : 1,
 		"gold" : 0,
-		"gains" : 0,
 		"tries" : 0
 	},
 	"player_upgrades" : {
@@ -25,7 +24,7 @@ const DEFAULTGAMEDATA : Dictionary = {
 func new_game() -> Dictionary:
 	print("new game")
 	save_game_data(DEFAULTGAMEDATA)
-	return DEFAULTGAMEDATA
+	return load_game()
 
 
 func save_game_data(game_data : Dictionary) -> void:
@@ -41,6 +40,5 @@ func load_game() -> Dictionary:
 		load_file.close()
 		return data
 	else:
-		save_game_data(DEFAULTGAMEDATA)
 		return new_game()
 		

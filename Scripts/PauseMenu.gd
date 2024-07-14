@@ -78,9 +78,3 @@ func _process(_delta) -> void:
 	if not callable:
 		game_pauser(false)
 
-
-# No conviene borrar-lo # ¿porqué?
-func _on_tree_exited() -> void: 
-	#print("pause menu eliminado")
-	pass
-

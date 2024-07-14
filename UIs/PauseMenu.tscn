@@ -193,7 +193,6 @@ stream = ExtResource("7_tk2e7")
 volume_db = -6.0
 bus = &"SoundFX"
 
-[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="pressed" from="ButtonsContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="ButtonsContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="ButtonsContainer/OptionsButton" to="." method="_on_options_button_pressed"]

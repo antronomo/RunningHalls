@@ -35,7 +35,7 @@ var new_wave : Array
 
 func get_new_wave() -> Array:
 	var enemy_list : Array
-	var waes : int = Globals.saved_wave
+	var waes : int = Globals.current_game.game_info.wave
 	if waes < 33:
 		enemy_list = enemyGroupsList[randi() % 3]
 	elif waes > 66:

@@ -1,11 +1,9 @@
 extends Node
 
-#Esto es demasiado importante y lo necesito accesible
-var saved_wave : int
 
 var current_game : Dictionary = {}
 var config_data : Dictionary = {}
-#var payer_stats_upgraded : Dictionary
+
 
 func _ready() -> void:
 	randomize()
@@ -16,14 +14,25 @@ func _ready() -> void:
 	current_game.game_info.game_version != CurrentGame.CURRENTVERSION:
 		print("save file and game version are different, to avoid problems, will be resetted")
 		CurrentGame.new_game()
-		Config.to_default_data()
-		
 		current_game = CurrentGame.load_game()
+		
+		Config.to_default_data()
 		config_data = Config.load_conf_data()
 	
-	saved_wave = current_game.game_info.wave #!
-	
 	set_audiostreamplayers()
+
+
+func _notification(what : int) -> void:
+	match what:
+		NOTIFICATION_WM_CLOSE_REQUEST:
+			#print("cerrando windows")
+			save_data_to_file()
+			save_config_to_file()
+		
+		NOTIFICATION_WM_GO_BACK_REQUEST:
+			#print("cerrando android")
+			save_data_to_file()
+			save_config_to_file()
 
 
 func _input(event) -> void:
@@ -31,19 +40,21 @@ func _input(event) -> void:
 		print(JSON.stringify(current_game, "\t"))
 
 
-# FUNCIONES CON CurrentGame.gd -------------------------------------------------------------
+func set_audiostreamplayers() -> void:
+	AudioServer.set_bus_volume_db(1, linear_to_db(config_data.voice_volume))
+	AudioServer.set_bus_volume_db(2, linear_to_db(config_data.sfx_volume))
+	AudioServer.set_bus_volume_db(3, linear_to_db(config_data.music_volume))
+
+
+#region FUNCIONES CON CurrentGame.gd -------------------------------------------------------------
 func reset_game_data() -> void:
 	current_game = CurrentGame.new_game()
 	save_data_to_file()
-	
-	saved_wave = current_game.game_info.wave #!
 
 
 func save_data_to_file() -> void:
 	CurrentGame.save_game_data(current_game)
 	current_game = CurrentGame.load_game()
-	
-	saved_wave = current_game.game_info.wave #!
 
 
 # Es necesario verificar el tipo de variable? por ahora no, pero tampoco lo voy a aquitar
@@ -58,12 +69,6 @@ func set_game_data(what : String, with) -> void:
 		"gold":
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.gold = with
-			else:
-				push_error("cannot save " + what + " with: " + str(with))
-				
-		"gains" : 
-			if typeof(with) == TYPE_INT:
-				current_game.game_info.gains = with
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
 				
@@ -111,9 +116,10 @@ func set_game_data(what : String, with) -> void:
 				
 		_: # Default
 			push_error(what + " not found")
+#endregion
 
 
-# FUNCIONES con Config.gd ------------------------------------------------------------------
+#region FUNCIONES con Config.gd ------------------------------------------------------------------
 func resset_config_data() -> void:
 	config_data = Config.to_default_data()
 	save_config_to_file()
@@ -122,12 +128,6 @@ func resset_config_data() -> void:
 func save_config_to_file() -> void:
 	Config.save_conf_data(config_data)
 	config_data = Config.load_conf_data()
-
-
-func set_audiostreamplayers() -> void:
-	AudioServer.set_bus_volume_db(1, linear_to_db(config_data.voice_volume))
-	AudioServer.set_bus_volume_db(2, linear_to_db(config_data.sfx_volume))
-	AudioServer.set_bus_volume_db(3, linear_to_db(config_data.music_volume))
 
 
 func set_config_data(what : String, with) -> void:
@@ -179,4 +179,5 @@ func set_config_data(what : String, with) -> void:
 				
 		_: # Default
 			push_error(what + " not found") 
+#endregion
 
