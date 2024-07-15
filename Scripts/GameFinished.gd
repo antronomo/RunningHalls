@@ -20,7 +20,7 @@ func _input(event : InputEvent) -> void:
 		if tab_container.current_tab == max_atabs:
 			Globals.reset_game_data()
 			get_tree().change_scene_to_file("res://UIs/MenuScene.tscn")
-			#Globals.change_scene("res://UIs/MenuScene.tscn")
+			return
 		
 		tab_container.current_tab = clamp(tab_container.current_tab + 1, 0, max_atabs)
 
@@ -30,4 +30,5 @@ func _on_visibility_changed() -> void:
 	if visible == true:
 		await get_tree().create_timer(0.1).timeout # Solucion de mierda para mal timing
 		stats_label.text = "attemps: " + str(current_game.game_info.tries) + "\n" \
-		 + "gold obtained: " + str(current_game.game_info.gold)
+		 + "gold obtained: " + str(current_game.game_info.total_gold)
+

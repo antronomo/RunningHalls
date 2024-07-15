@@ -72,6 +72,12 @@ func set_game_data(what : String, with) -> void:
 			else:
 				push_error("cannot save " + what + " with: " + str(with))
 				
+		"total_gold":
+			if typeof(with) == TYPE_INT:
+				current_game.game_info.total_gold = with
+			else:
+				push_error("cannot save " + what + " with: " + str(with))
+				
 		"tries" : 
 			if typeof(with) == TYPE_INT:
 				current_game.game_info.tries = with

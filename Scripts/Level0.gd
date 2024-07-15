@@ -81,10 +81,9 @@ func finish_game() -> void: # el nombre no es coherente, es porque lleva mucho t
 	enemy_spawner.work = false
 	pause_menu.callable = false
 	
+	await game_over_ui.coin_label_updater()
 	game_over_ui.position = Vector2.ZERO
 	game_over_ui.visible = true
-	await get_tree().create_timer(0.1).timeout # Solución por mal timing
-	game_over_ui.coin_label_updater()
 
 
 # Esta funcion fue JUSTO antes de saber de la existencia de tweens
@@ -157,6 +156,7 @@ func _on_EnemySpawner_generate_loot(loot_position : Vector2) -> void:
 	var loot_quantity : int = current_wave + int(randi() % current_wave + (current_wave / 2))
 	loot_manager.generate_loot(loot_position)
 	gold = gold + loot_quantity
+	Globals.set_game_data("total_gold", Globals.current_game.game_info.total_gold + loot_quantity)
 	set_propetys()
 	gui.update_gold_label(gold)
 

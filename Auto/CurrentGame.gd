@@ -8,6 +8,7 @@ const DEFAULTGAMEDATA : Dictionary = {
 		"game_version" : CURRENTVERSION,
 		"wave" : 1,
 		"gold" : 0,
+		"total_gold" : 0,
 		"tries" : 0
 	},
 	"player_upgrades" : {

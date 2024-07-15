@@ -15,8 +15,8 @@ func _ready() -> void:
 	visible = false
 
 
-func coin_label_updater() -> void:
-	coin_label.text = str(Globals.current_game.game_info.gold)
+func coin_label_updater(gold : int = Globals.current_game.game_info.gold) -> void:
+	coin_label.text = str(gold)
 
 
 func _on_ShopButton_pressed() -> void:
