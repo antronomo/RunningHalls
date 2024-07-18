@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://hsqypvq3rmbs"]
+[gd_scene load_steps=4 format=3 uid="uid://hsqypvq3rmbs"]
 
 [ext_resource type="Texture2D" uid="uid://dn27ta72lrrff" path="res://Assets/img/Backgrounds/sewer/SewesAnimation1.png" id="1"]
 
@@ -19,25 +19,9 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jggev"]
 _data = {
-"Animation": SubResource("1"),
-"RESET": SubResource("2")
+"Animation": SubResource("1")
 }
 
 [node name="SewesAnimation1" type="Sprite2D"]
