@@ -43,6 +43,8 @@ func setup_game() -> void:
 	
 	pause_menu.callable = true
 	update_player_hp_bar()
+	
+	level_animation_player.stop()
 	level_animation_player.play("Starting")
 
 
@@ -67,7 +69,6 @@ func _on_MataSobras5000_body_exited(body : Node) -> void:
 
 # Llamado por el AnimationPlayer
 func start_game() -> void:
-	gui.show()
 	setterparallaxGround.set_parallax_speed(ground_speed)
 	physic_ground.constant_linear_velocity.x = ground_speed
 	enemy_spawner.work = true
@@ -75,15 +76,16 @@ func start_game() -> void:
 
 # Llamado cuando el jugador manda la señal morido
 func finish_game() -> void: # el nombre no es coherente, es porque lleva mucho tiempo...
-	#gui.hide()
-	set_propetys()
+	level_animation_player.pause()
 	accelerator.play_backwards("accelerate")
 	enemy_spawner.work = false
 	pause_menu.callable = false
+	gui.hide()
+	set_propetys()
 	
 	await game_over_ui.coin_label_updater()
 	game_over_ui.position = Vector2.ZERO
-	game_over_ui.visible = true
+	game_over_ui.appear_animation()
 
 
 # Esta funcion fue JUSTO antes de saber de la existencia de tweens
@@ -189,15 +191,16 @@ func _on_pause_menu_pause_option_pressed() -> void:
 
 #region FUNCIONES con GameOverUI----------------------------------------------
 func _on_GameOverUI_shop_pressed() -> void:
-	gui.hide()
+	#gui.hide()
 	shop_ui.gold_update()
 	shop_ui.position = Vector2.ZERO
 	game_over_ui.position = out_of_viewport
 
 
 func _on_GameOverUI_retry_pressed() -> void:
-	gui.show()
+	accelerator.play("RESET")
 	game_over_ui.position = out_of_viewport
+	gui.show()
 	setup_game()
 
 
@@ -206,7 +209,7 @@ func _on_GameOverUI_return_pressed() -> void:
 
 
 func _on_game_over_ui_options_pressed() -> void:
-	gui.hide()
+	#gui.hide()
 	options_menu.position = Vector2.ZERO
 	game_over_ui.position = out_of_viewport
 
@@ -221,7 +224,7 @@ func _on_Shop_exiting() -> void:
 	#gui.update_gold_label(current_gold)
 	get_updated_vars()
 	gui.update_gold_label(gold)
-	gui.show()
+	#gui.show()
 	shop_ui.position = out_of_viewport
 	game_over_ui.coin_label_updater()
 	game_over_ui.position = Vector2.ZERO
@@ -234,10 +237,10 @@ func _on_shop_anything_pressed() -> void:
 
 #region FUNCIONES con OptionsMenu --------------------------------------------
 func _on_return_button_pressed() -> void:
-	gui.show()
 	options_menu.position = out_of_viewport
 	if pause_menu.callable:
 		pause_menu.position = Vector2.ZERO
+		gui.show()
 	else:
 		game_over_ui.position = Vector2.ZERO
 #endregion

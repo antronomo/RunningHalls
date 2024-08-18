@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://rmn12ygu7w0t" path="res://Assets/img/GoldCoin.png" id="3_171t0"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="3_bq4q4"]
 [ext_resource type="Texture2D" uid="uid://bspogv6q81nfy" path="res://Assets/img/cart.png" id="3_grjo3"]
-[ext_resource type="Texture2D" uid="uid://ct0ibvqko4pbg" path="res://Assets/img/return.png" id="4_7qcrd"]
 [ext_resource type="Texture2D" uid="uid://hjivf7m7vyjg" path="res://Assets/img/home.png" id="5_ttiak"]
 [ext_resource type="Texture2D" uid="uid://c6la2yxtt515l" path="res://Assets/img/gear.png" id="6_61db7"]
+[ext_resource type="Texture2D" uid="uid://c158wmbvot6od" path="res://Assets/img/forward.png" id="7_a661j"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -37,6 +37,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"buttons_disabler"
+}, {
+"args": [false],
+"method": &"buttons_disabler"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vhrqr"]
@@ -73,7 +90,8 @@ offset_right = 72.0
 offset_bottom = 48.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_r5xwc")
-text = "GAME OVER"
+theme_override_font_sizes/font_size = 8
+text = "not supposed to see this"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -144,7 +162,7 @@ offset_bottom = 48.0
 size_flags_horizontal = 5
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("2_r5xwc")
-icon = ExtResource("4_7qcrd")
+icon = ExtResource("7_a661j")
 icon_alignment = 1
 
 [node name="OptionsMenu" type="Button" parent="ButtonContainer"]
@@ -165,7 +183,6 @@ libraries = {
 "": SubResource("AnimationLibrary_vhrqr")
 }
 
-[connection signal="visibility_changed" from="." to="." method="_on_GameOverUI_visibility_changed"]
 [connection signal="pressed" from="ButtonContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
 [connection signal="pressed" from="ButtonContainer/ShopButton" to="." method="_on_ShopButton_pressed"]
 [connection signal="pressed" from="ButtonContainer/RetryButton" to="." method="_on_RetryButton_pressed"]

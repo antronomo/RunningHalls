@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func seeHP(hp : int) -> void:
 	emit_signal('updateHP', hp)
-
+	
 	if hp <= 0:
 		going_to_die()
 
@@ -49,13 +49,10 @@ func _on_CoreComponent_body_entered(_body : Enemy) -> void: pass
 func going_to_die() -> void:
 	anim_player.play('dying')
 	emit_signal('morido')
-	
-	#await get_tree().create_timer(1).timeout
-	#disconnect('updateHP', Callable(get_node('../GUI'), 'update_helath_bar'))
-	#disconnect('morido', Callable(get_node('../'), 'finish_game'))
 
 
 func walk_anim() -> void: 
+	anim_player.stop()
 	anim_player.play("walking")
 
 
@@ -72,7 +69,8 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 	match anim_name:
 		"dying":
 			anim_player.play("vanishing")
+			return
 			
 		_:
-			pass
+			return
 

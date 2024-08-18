@@ -77,11 +77,9 @@ offset_bottom = 128.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nqxxr")
-current_tab = 1
 tabs_visible = false
 
 [node name="HowToTab" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/HowToTab"]
@@ -104,6 +102,7 @@ sword as soon as possible"
 autowrap_mode = 1
 
 [node name="VolumeTab" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VoiceSection" type="Control" parent="TabContainer/VolumeTab"]
@@ -413,7 +412,7 @@ offset_right = 120.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "jewerly and artifacts"
+text = "Jewery and artifacts"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,7 +1,20 @@
 extends Control
 
 
+const frases : Array[String] = [
+	"One more try?",
+	"you aren't done yet",
+	"better gear, better chances",
+	"better get you gold in good use"
+]
+
+
 @onready var coin_label : Label = $CurrencyContainer/CoinLabel
+@onready var game_over_label : Label = $GameOverLabel
+@onready var return_button : Button = $ButtonContainer/ReturnButton
+@onready var shop_button : Button = $ButtonContainer/ShopButton
+@onready var retry_button : Button = $ButtonContainer/RetryButton
+@onready var option_button : Button = $ButtonContainer/OptionsMenu
 
 
 signal shop_pressed
@@ -12,7 +25,7 @@ signal anything_pressed
 
 
 func _ready() -> void:
-	visible = false
+	buttons_disabler(true)
 
 
 func coin_label_updater(gold : int = Globals.current_game.game_info.gold) -> void:
@@ -25,13 +38,14 @@ func _on_ShopButton_pressed() -> void:
 
 
 func _on_RetryButton_pressed() -> void:
+	buttons_disabler(true)
+	retry_button.release_focus() # Por si acaso
 	emit_signal("retry_pressed")
 	emit_signal("anything_pressed")
 
 
 func _on_ReturnButton_pressed() -> void:
 	emit_signal("return_pressed")
-	#emit_signal("anything_pressed")
 
 
 func _on_options_menu_pressed() -> void:
@@ -39,7 +53,14 @@ func _on_options_menu_pressed() -> void:
 	emit_signal("anything_pressed")
 
 
-func _on_GameOverUI_visibility_changed() -> void:
-	if visible:
-		$AnimationPlayer.play("appear")
+func buttons_disabler(disable : bool):
+	return_button.disabled = disable
+	shop_button.disabled = disable
+	retry_button.disabled = disable
+	option_button.disabled = disable
+
+
+func appear_animation() -> void:
+	game_over_label.text = frases[randi() % frases.size()]
+	$AnimationPlayer.play("appear")
 
