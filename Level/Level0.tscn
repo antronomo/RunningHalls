@@ -243,6 +243,9 @@ visible = false
 [node name="VolumeButton" parent="OptionsMenu/VBoxContainer" index="1"]
 visible = false
 
+[node name="ExtrasButton" parent="OptionsMenu/VBoxContainer" index="2"]
+visible = false
+
 [node name="SecretButton" parent="OptionsMenu/VBoxContainer" index="3"]
 visible = false
 
