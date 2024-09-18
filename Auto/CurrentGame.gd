@@ -2,8 +2,10 @@ extends Node
 
 
 const GAMEPATHFILE : String = "user://SAVEFILE.save"
-const CURRENTVERSION : String = "0.27.6"
-const DEFAULTGAMEDATA : Dictionary = {
+
+# es necesario el @onready ?
+@onready var  CURRENTVERSION : String = ProjectSettings.get_setting("application/config/version")
+@onready var DEFAULTGAMEDATA : Dictionary = {
 	"game_info" : {
 		"game_version" : CURRENTVERSION,
 		"wave" : 1,
