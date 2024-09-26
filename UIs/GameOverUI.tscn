@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://do8y27yh4eck"]
+[gd_scene load_steps=13 format=3 uid="uid://do8y27yh4eck"]
 
 [ext_resource type="Script" path="res://Scripts/GameOverUI.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bp31w7no4qwgd" path="res://Assets/img/UIassets/RunningHallsButtons.png" id="2_6ffm4"]
 [ext_resource type="FontVariation" uid="uid://b70ncbv6ik2e6" path="res://Assets/DynamicFonts/HealthBar_8px_FontVariation.tres" id="2_r5xwc"]
 [ext_resource type="Texture2D" uid="uid://rmn12ygu7w0t" path="res://Assets/img/GoldCoin.png" id="3_171t0"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="3_bq4q4"]
@@ -38,23 +39,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"buttons_disabler"
-}, {
-"args": [false],
-"method": &"buttons_disabler"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vhrqr"]
 _data = {
@@ -72,12 +56,28 @@ grow_vertical = 2
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 32.0
 offset_top = 24.0
 offset_right = 208.0
 offset_bottom = 112.0
-color = Color(0.136826, 0.136826, 0.136826, 0.784314)
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 112.0
+texture = ExtResource("2_6ffm4")
+region_rect = Rect2(48, 48, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="GameOverLabel" type="Label" parent="."]
 layout_mode = 1
@@ -89,6 +89,7 @@ offset_top = 32.0
 offset_right = 72.0
 offset_bottom = 48.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_r5xwc")
 theme_override_font_sizes/font_size = 8
 text = "not supposed to see this"
@@ -98,10 +99,10 @@ vertical_alignment = 1
 [node name="CurrencyContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 68.0
-offset_top = 88.0
-offset_right = 132.0
-offset_bottom = 104.0
+offset_left = 72.0
+offset_top = 80.0
+offset_right = 136.0
+offset_bottom = 96.0
 size_flags_horizontal = 15
 size_flags_vertical = 15
 
@@ -123,60 +124,67 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 0
 offset_left = 32.0
-offset_top = 64.0
-offset_right = 384.0
-offset_bottom = 144.0
-scale = Vector2(0.5, 0.5)
+offset_top = 56.0
+offset_right = 208.0
+offset_bottom = 112.0
 
 [node name="ReturnButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 offset_left = 16.0
-offset_top = 32.0
-offset_right = 80.0
-offset_bottom = 96.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 48.0
 scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 5
 size_flags_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_r5xwc")
 icon = ExtResource("5_ttiak")
 icon_alignment = 1
+expand_icon = true
 
 [node name="ShopButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-offset_left = 96.0
-offset_top = -16.0
-offset_right = 160.0
-offset_bottom = 48.0
+offset_left = 48.0
+offset_top = -8.0
+offset_right = 80.0
+offset_bottom = 24.0
 size_flags_horizontal = 5
 size_flags_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_r5xwc")
 icon = ExtResource("3_grjo3")
 icon_alignment = 1
+expand_icon = true
 
 [node name="RetryButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-offset_left = 192.0
-offset_top = -16.0
-offset_right = 256.0
-offset_bottom = 48.0
+offset_left = 96.0
+offset_top = -8.0
+offset_right = 128.0
+offset_bottom = 24.0
 size_flags_horizontal = 5
 size_flags_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_r5xwc")
 icon = ExtResource("7_a661j")
 icon_alignment = 1
+expand_icon = true
 
 [node name="OptionsMenu" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-offset_left = 288.0
-offset_top = 32.0
-offset_right = 352.0
-offset_bottom = 96.0
+offset_left = 136.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 48.0
 scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 5
 size_flags_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_r5xwc")
 icon = ExtResource("6_61db7")
 icon_alignment = 1
+expand_icon = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -36,7 +36,7 @@ window/size/resizable=false
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=2
+window/vsync/vsync_mode=0
 
 [file_customization]
 
@@ -56,6 +56,8 @@ scene=false
 
 [gui]
 
+theme/custom="res://Assets/Themes/MainTheme.tres"
+theme/custom_font="res://Assets/Fonts/kenpixel_mini.ttf"
 common/drop_mouse_on_gui_input_disabled=true
 
 [importer_defaults]

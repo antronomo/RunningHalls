@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://by7ea8qrovwnd"]
+[gd_scene load_steps=13 format=3 uid="uid://by7ea8qrovwnd"]
 
 [ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bp31w7no4qwgd" path="res://Assets/img/UIassets/RunningHallsButtons.png" id="2_1medo"]
 [ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="3_nqxxr"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="4_2r7kk"]
 [ext_resource type="AudioStream" uid="uid://cp8gi725bwerx" path="res://Assets/Audio/audio_de_prueba.ogg" id="4_tpow6"]
@@ -21,48 +22,75 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 235.0
+offset_bottom = 131.0
+texture = ExtResource("2_1medo")
+region_rect = Rect2(48, 48, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 58.0
-offset_bottom = 128.0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 61.0
+offset_bottom = 125.0
 
 [node name="HowToButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 14)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "how to"
 
 [node name="VolumeButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 14)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "Volume"
 
 [node name="ExtrasButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 14)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "Extras"
 
 [node name="SecretButton" type="Button" parent="VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 14)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = " "
 
 [node name="ResetButton" type="Button" parent="VBoxContainer"]
 visible = false
+custom_minimum_size = Vector2(50, 14)
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0.117647, 0.117647, 1)
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "Reset"
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 14)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "RETURN"
@@ -70,10 +98,10 @@ text = "RETURN"
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 64.0
-offset_top = 8.0
-offset_right = 232.0
-offset_bottom = 128.0
+offset_left = 65.0
+offset_top = 10.0
+offset_right = 229.0
+offset_bottom = 125.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nqxxr")
@@ -226,9 +254,9 @@ layout_mode = 2
 
 [node name="ExtraTabContainer" type="TabContainer" parent="TabContainer/ExtraTab"]
 layout_mode = 0
-offset_left = 24.0
-offset_right = 144.0
-offset_bottom = 120.0
+offset_left = 22.0
+offset_right = 142.0
+offset_bottom = 115.0
 tabs_visible = false
 
 [node name="IntroTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
@@ -319,9 +347,9 @@ texture = ExtResource("6_w8axi")
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/StuffTab"]
 layout_mode = 0
-offset_left = 4.0
+offset_left = 3.0
 offset_top = 72.0
-offset_right = 124.0
+offset_right = 123.0
 offset_bottom = 114.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
@@ -490,7 +518,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlannedThingsTab"]
 layout_mode = 0
-offset_right = 120.0
+offset_left = -2.0
+offset_right = 118.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
@@ -500,9 +529,9 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlannedThingsTab"]
 layout_mode = 0
-offset_left = 4.0
+offset_left = 2.0
 offset_top = 20.0
-offset_right = 117.0
+offset_right = 120.0
 offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
@@ -518,16 +547,16 @@ text = "-more backgrounds
 
 [node name="LeftExtraButton" type="Button" parent="TabContainer/ExtraTab"]
 layout_mode = 0
-offset_right = 24.0
-offset_bottom = 120.0
+offset_right = 18.0
+offset_bottom = 113.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 text = "<"
 
 [node name="RightExtraButton" type="Button" parent="TabContainer/ExtraTab"]
 layout_mode = 0
 offset_left = 144.0
-offset_right = 168.0
-offset_bottom = 120.0
+offset_right = 162.0
+offset_bottom = 113.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 text = ">"
 
@@ -553,6 +582,7 @@ offset_left = 8.0
 offset_top = 32.0
 offset_right = 160.0
 offset_bottom = 56.0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 action_mode = 0
@@ -579,8 +609,10 @@ offset_left = 16.0
 offset_top = 40.0
 offset_right = 152.0
 offset_bottom = 112.0
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0.117647, 0.117647, 1)
 theme_override_fonts/font = ExtResource("4_2r7kk")
+disabled = true
 text = "reset
 settings
 to defauld"

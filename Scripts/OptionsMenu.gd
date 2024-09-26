@@ -71,9 +71,9 @@ func _on_ResetButton_pressed() -> void:
 
 func _on_ReturnButton_pressed() -> void:
 	emit_signal("button_pressed")
-	#Globals.set_config_data("enemies_lock_rotation", conf_data.enemies_lock_rotation)
+	Globals.set_config_data("enemies_lock_rotation", conf_data.enemies_lock_rotation)
 	#Globals.set_config_data("voice_volume", conf_data.voice_volume)
-	Globals.save_config_to_file()
+	#Globals.save_config_to_file()
 	emit_signal("return_pressed")
 
 

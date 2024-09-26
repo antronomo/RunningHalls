@@ -111,9 +111,9 @@ vertical_alignment = 1
 [node name="PauseButton" type="Button" parent="."]
 offset_left = 216.0
 offset_top = 8.0
-offset_right = 280.0
-offset_bottom = 72.0
-scale = Vector2(0.25, 0.25)
+offset_right = 232.0
+offset_bottom = 24.0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("5_300hs")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi0ojv301m3qm"]
+[gd_scene load_steps=12 format=3 uid="uid://bi0ojv301m3qm"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1"]
 [ext_resource type="FontVariation" uid="uid://b70ncbv6ik2e6" path="res://Assets/DynamicFonts/HealthBar_8px_FontVariation.tres" id="2_eh77v"]
+[ext_resource type="Texture2D" uid="uid://bp31w7no4qwgd" path="res://Assets/img/UIassets/RunningHallsButtons.png" id="2_gbkxa"]
 [ext_resource type="Texture2D" uid="uid://hjivf7m7vyjg" path="res://Assets/img/home.png" id="3_2gyvg"]
 [ext_resource type="Texture2D" uid="uid://c6la2yxtt515l" path="res://Assets/img/gear.png" id="5_dmdst"]
 [ext_resource type="Texture2D" uid="uid://c158wmbvot6od" path="res://Assets/img/forward.png" id="5_el14i"]
@@ -120,12 +121,35 @@ offset_bottom = 136.0
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 56.0
 offset_top = 32.0
 offset_right = 184.0
 offset_bottom = 104.0
 color = Color(0.137255, 0.137255, 0.137255, 0.784314)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -36.0
+offset_right = 64.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gbkxa")
+region_rect = Rect2(48, 48, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -141,46 +165,51 @@ vertical_alignment = 1
 [node name="ButtonsContainer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 48.0
-offset_top = 8.0
-offset_right = 336.0
-offset_bottom = 200.0
-scale = Vector2(0.5, 0.5)
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 184.0
+offset_bottom = 104.0
 
 [node name="SaveButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
-offset_left = 32.0
-offset_top = 128.0
-offset_right = 96.0
-offset_bottom = 192.0
-scale = Vector2(0.75, 0.75)
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 32.0
+offset_bottom = 64.0
 size_flags_vertical = 3
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_eh77v")
 icon = ExtResource("3_2gyvg")
 icon_alignment = 1
+expand_icon = true
 
 [node name="ResumeButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
-offset_left = 112.0
-offset_top = 96.0
-offset_right = 176.0
-offset_bottom = 160.0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 88.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_eh77v")
 icon = ExtResource("5_el14i")
 icon_alignment = 1
+expand_icon = true
 
 [node name="OptionsButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
-offset_left = 208.0
-offset_top = 128.0
-offset_right = 272.0
-offset_bottom = 192.0
-scale = Vector2(0.75, 0.75)
+offset_left = 96.0
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 64.0
 size_flags_vertical = 3
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_eh77v")
 icon = ExtResource("5_dmdst")
 icon_alignment = 1
+expand_icon = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

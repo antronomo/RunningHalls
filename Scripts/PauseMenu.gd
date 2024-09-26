@@ -1,6 +1,5 @@
 extends Control
 
-
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var color_rect : ColorRect = $ColorRect
 @onready var label : Label = $Label
@@ -9,13 +8,11 @@ extends Control
 @onready var save_and_exit_buttton : Button = $ButtonsContainer/SaveButton
 @onready var button_fx : AudioStreamPlayer = $ButtonFX
 
-
 var callable : bool = false
 
 signal pause_option_pressed
 signal save_time
 signal hidded
-
 
 func _ready() -> void:
 	visible = false
@@ -46,8 +43,8 @@ func _on_ResumeButton_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	button_fx.play()
+	options_button.release_focus()
 	emit_signal("pause_option_pressed")
-	#show_options(true)
 
 
 func _on_SaveButton_pressed() -> void:
@@ -60,6 +57,7 @@ func _on_SaveButton_pressed() -> void:
 func button_disabler(toggle : bool) -> void:
 	resum_buttton.disabled = toggle
 	save_and_exit_buttton.disabled = toggle
+	options_button.disabled = toggle
 
 
 func _on_AnimationPlayer_animation_started(anim_name : String) -> void:
@@ -77,4 +75,3 @@ func _process(_delta) -> void:
 	#if is_queued_for_deletion():
 	if not callable:
 		game_pauser(false)
-

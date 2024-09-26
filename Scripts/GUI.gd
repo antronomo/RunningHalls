@@ -33,10 +33,6 @@ func update_gold_label(new_gold_count : int) -> void:
 	coin_label.text = str(new_gold_count)
 
 
-func _on_pause_button_pressed() -> void:
-	pause_button.release_focus()
-
-
 func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> void:
 	speed_button.release_focus()
 	match number:

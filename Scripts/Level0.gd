@@ -191,7 +191,6 @@ func _on_pause_menu_pause_option_pressed() -> void:
 
 #region FUNCIONES con GameOverUI----------------------------------------------
 func _on_GameOverUI_shop_pressed() -> void:
-	#gui.hide()
 	shop_ui.gold_update()
 	shop_ui.position = Vector2.ZERO
 	game_over_ui.position = out_of_viewport
@@ -209,7 +208,6 @@ func _on_GameOverUI_return_pressed() -> void:
 
 
 func _on_game_over_ui_options_pressed() -> void:
-	#gui.hide()
 	options_menu.position = Vector2.ZERO
 	game_over_ui.position = out_of_viewport
 
@@ -221,10 +219,8 @@ func _on_game_over_ui_anything_pressed() -> void:
 
 #region FUNCIONES con ShopUI--------------------------------------------------
 func _on_Shop_exiting() -> void:
-	#gui.update_gold_label(current_gold)
 	get_updated_vars()
 	gui.update_gold_label(gold)
-	#gui.show()
 	shop_ui.position = out_of_viewport
 	game_over_ui.coin_label_updater()
 	game_over_ui.position = Vector2.ZERO

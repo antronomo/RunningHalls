@@ -10,6 +10,14 @@ extends Control
 @onready var upgrade_price_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradePrice
 @onready var goldLabel : Label = $TabContainer/ForgeTab/GoldContainer/Label
 @onready var player_stats_label : Label = $StatsLabel
+@onready var upgrade_button : Button = $TabContainer/ForgeTab/UpgradeButton
+
+#@onready var helmet_button : Button = $TabContainer/ForgeTab/HelmetButton
+#@onready var chest_plate_button : Button = $TabContainer/ForgeTab/ChestPlateButton
+#@onready var greaves_button : Button = $TabContainer/ForgeTab/GreavesButton
+#@onready var boots_button : Button = $TabContainer/ForgeTab/BootsButton
+#@onready var sword_button : Button = $TabContainer/ForgeTab/SwordButton
+#@onready var shield_button : Button = $TabContainer/ForgeTab/ShieldButton
 
 @onready var helmet : Equipment = $TabContainer/ForgeTab/HelmetButton/Helmet
 @onready var chest_plate : Equipment = $TabContainer/ForgeTab/ChestPlateButton/ChestPlate
@@ -76,7 +84,7 @@ func get_item_to_show(equipment : Equipment, new_item_name : String) -> void:
 	item_show.hframes = sprite_info.hframes
 	item_show.frame = sprite_info.frame
 	
-	var def_or_atk : String = "attack" if item_name == "sword" else "deff"
+	var def_or_atk : String = "attack" if item_name == "sword" else "deff" # Solucion de vagos
 	
 	var equipment_info : Dictionary = equipment.get_item_stats()
 	upgrade_name_label.text = new_item_name
@@ -173,6 +181,8 @@ func _on_ExitButton_pressed() -> void:
 	Globals.set_game_data("gold", gold)
 	save_upgrades()
 	tab_container.current_tab = 0
+	upgrade_button.grab_focus()
+	upgrade_button.release_focus()
 	emit_signal("exiting")
 	emit_signal("anything_pressed")
 

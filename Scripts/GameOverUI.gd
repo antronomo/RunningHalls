@@ -24,22 +24,17 @@ signal options_pressed
 signal anything_pressed
 
 
-func _ready() -> void:
-	buttons_disabler(true)
-
-
 func coin_label_updater(gold : int = Globals.current_game.game_info.gold) -> void:
 	coin_label.text = str(gold)
 
 
 func _on_ShopButton_pressed() -> void:
+
 	emit_signal("shop_pressed")
 	emit_signal("anything_pressed")
 
 
 func _on_RetryButton_pressed() -> void:
-	buttons_disabler(true)
-	retry_button.release_focus() # Por si acaso
 	emit_signal("retry_pressed")
 	emit_signal("anything_pressed")
 
@@ -51,13 +46,6 @@ func _on_ReturnButton_pressed() -> void:
 func _on_options_menu_pressed() -> void:
 	emit_signal("options_pressed")
 	emit_signal("anything_pressed")
-
-
-func buttons_disabler(disable : bool):
-	return_button.disabled = disable
-	shop_button.disabled = disable
-	retry_button.disabled = disable
-	option_button.disabled = disable
 
 
 func appear_animation() -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfaw1u7n42udl"]
+[gd_scene load_steps=12 format=3 uid="uid://dfaw1u7n42udl"]
 
 [ext_resource type="PackedScene" path="res://Player/Helmet.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Player/Greaves.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bp31w7no4qwgd" path="res://Assets/img/UIassets/RunningHallsButtons.png" id="2_bckqk"]
 [ext_resource type="PackedScene" path="res://Player/ChestPlate.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Player/Shield.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cjctdar6ju3tx" path="res://Player/Boots.tscn" id="5"]
@@ -25,6 +26,21 @@ offset_top = 8.0
 offset_right = 232.0
 offset_bottom = 128.0
 color = Color(0.152941, 0.152941, 0.152941, 0.784314)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 232.0
+offset_bottom = 128.0
+texture = ExtResource("2_bckqk")
+region_rect = Rect2(48, 48, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
@@ -218,22 +234,10 @@ offset_right = 64.0
 offset_bottom = 120.0
 alignment = 2
 
-[node name="ForgeButton" type="Button" parent="ButtonsControl"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("11_jpkaf")
-theme_override_font_sizes/font_size = 8
-text = "Forge"
-
-[node name="StatsButton" type="Button" parent="ButtonsControl"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("11_jpkaf")
-theme_override_font_sizes/font_size = 8
-text = "Stats"
-
 [node name="ExitButton" type="Button" parent="ButtonsControl"]
+custom_minimum_size = Vector2(48, 14)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("11_jpkaf")
 theme_override_font_sizes/font_size = 8
 text = "Return"
