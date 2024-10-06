@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://igstc1pa4m15"]
+[gd_scene load_steps=4 format=3 uid="uid://igstc1pa4m15"]
 
 [ext_resource type="Script" path="res://Scripts/CreditMenu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bp31w7no4qwgd" path="res://Assets/img/UIassets/RunningHallsButtons.png" id="2_quk08"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="2_wnkwj"]
 
 [node name="CreditsMenu" type="Control"]
@@ -13,24 +14,25 @@ grow_vertical = 2
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
-offset_right = 240.0
-offset_bottom = 136.0
-color = Color(0, 0, 0, 0.588235)
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(120, 16)
-scale = Vector2(0.8, 0.8)
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 134.0
+color = Color(0.396078, 0.45098, 0.54902, 1)
 
 [node name="PolygonMask2D" type="Polygon2D" parent="."]
 clip_children = 1
-polygon = PackedVector2Array(8, 8, 224, 8, 224, 128, 8, 128)
+position = Vector2(0.0170929, -0.0461437)
+scale = Vector2(1.04076, 1.12538)
+polygon = PackedVector2Array(-0.0164235, 0.0410028, 230.584, 0.0410028, 230.584, 120.889, -0.0164235, 120.889)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PolygonMask2D"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 232.0
-offset_bottom = 177.0
+offset_left = 2.86609
+offset_top = 0.0410028
+offset_right = 226.866
+offset_bottom = 267.041
 theme_override_constants/line_separation = 1
 theme_override_fonts/normal_font = ExtResource("2_wnkwj")
 theme_override_font_sizes/normal_font_size = 8
@@ -78,15 +80,43 @@ fit_content = true
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="PolygonMask2D"]
-offset_left = 8.0
-offset_top = 120.0
-offset_right = 85.0
-offset_bottom = 127.0
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 125.0
+offset_right = 83.0
+offset_bottom = 133.0
+color = Color(0, 0, 0, 0.588235)
+
+[node name="Label" type="Label" parent="ColorRect2"]
+layout_mode = 0
+offset_left = 1.97166
+offset_top = 0.952385
+offset_right = 82.9717
+offset_bottom = 7.95238
 theme_override_fonts/font = ExtResource("2_wnkwj")
 theme_override_font_sizes/font_size = 8
 text = "tap to return..."
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(120, 16)
+scale = Vector2(0.8, 0.8)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 135.0
+texture = ExtResource("2_quk08")
+draw_center = false
+region_rect = Rect2(0, 48, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[connection signal="meta_clicked" from="PolygonMask2D/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="meta_clicked" from="PolygonMask2D/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]

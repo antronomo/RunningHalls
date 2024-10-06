@@ -61,22 +61,15 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = -27.5
-offset_right = 56.0
-offset_bottom = 52.5
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 64.0
+offset_top = 40.0
+offset_right = 176.0
+offset_bottom = 120.0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
-size_flags_vertical = 0
+size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_j503r")
 text = "START"
@@ -84,7 +77,7 @@ icon_alignment = 1
 
 [node name="OptionButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_j503r")
 text = "OPTIONS"
@@ -92,7 +85,7 @@ text = "OPTIONS"
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
-size_flags_vertical = 2
+size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_j503r")
 text = "CREDITS"

@@ -105,9 +105,11 @@ offset_bottom = 125.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nqxxr")
+current_tab = 3
 tabs_visible = false
 
 [node name="HowToTab" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/HowToTab"]
@@ -254,9 +256,10 @@ layout_mode = 2
 
 [node name="ExtraTabContainer" type="TabContainer" parent="TabContainer/ExtraTab"]
 layout_mode = 0
-offset_left = 22.0
-offset_right = 142.0
-offset_bottom = 115.0
+offset_left = 18.0
+offset_top = -4.0
+offset_right = 136.0
+offset_bottom = 109.0
 tabs_visible = false
 
 [node name="IntroTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
@@ -264,8 +267,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/IntroTab"]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 16.0
+offset_left = -4.0
+offset_right = 112.0
+offset_bottom = 14.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "extras"
@@ -274,9 +278,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/IntroTab"]
 layout_mode = 0
-offset_top = 24.0
-offset_right = 120.0
-offset_bottom = 112.0
+offset_left = -3.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 107.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "unused material
@@ -296,9 +301,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlayerClassesTab"]
 layout_mode = 0
-offset_top = 4.0
-offset_right = 120.0
-offset_bottom = 20.0
+offset_left = -4.0
+offset_right = 112.0
+offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "player classes"
@@ -307,9 +312,9 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlayerClassesTab"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 62.0
 offset_top = 32.0
-offset_right = 120.0
+offset_right = 112.0
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
@@ -324,7 +329,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/PlayerClassesTab"]
-position = Vector2(32, 64)
+position = Vector2(29, 64)
 texture = ExtResource("5_a44ko")
 
 [node name="StuffTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
@@ -333,8 +338,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/StuffTab"]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 16.0
+offset_left = -4.0
+offset_right = 112.0
+offset_bottom = 15.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "Chest and vases"
@@ -342,21 +348,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChestAndStuff" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/StuffTab"]
-position = Vector2(60, 44)
+position = Vector2(54, 35)
 texture = ExtResource("6_w8axi")
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/StuffTab"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 72.0
-offset_right = 123.0
-offset_bottom = 114.0
+offset_left = -4.0
+offset_top = 63.0
+offset_right = 112.0
+offset_bottom = 102.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "had the intention to
-implement them so that
-the player (you) had
-something to tap"
+text = "had the intention
+to implement them 
+so that the player 
+had something to tap"
+horizontal_alignment = 1
 
 [node name="PotionsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -364,8 +371,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PotionsTab"]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 16.0
+offset_left = -4.0
+offset_right = 112.0
+offset_bottom = 17.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "potions"
@@ -373,21 +381,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Potions" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/PotionsTab"]
-position = Vector2(60, 32)
+position = Vector2(52, 32)
 texture = ExtResource("7_ovuef")
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PotionsTab"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 56.0
-offset_right = 124.0
-offset_bottom = 112.0
+offset_left = -5.0
+offset_top = 64.0
+offset_right = 115.0
+offset_bottom = 100.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "also a potion manager
 system to last longer,
 could be found in
 chest and vases"
+horizontal_alignment = 1
 
 [node name="DragonsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -395,8 +404,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 16.0
+offset_left = -4.0
+offset_right = 112.0
+offset_bottom = 15.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "Dragon boss"
@@ -404,15 +414,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Dragons" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
-position = Vector2(40, 48)
+position = Vector2(33, 48)
 texture = ExtResource("8_w2p4y")
 
 [node name="Label3" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 56.0
-offset_right = 112.0
-offset_bottom = 72.0
+offset_left = 68.0
+offset_top = 59.0
+offset_right = 100.0
+offset_bottom = 75.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "<- ???"
@@ -421,14 +431,15 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/DragonsTab"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 88.0
-offset_right = 124.0
-offset_bottom = 112.0
+offset_left = -4.0
+offset_top = 84.0
+offset_right = 112.0
+offset_bottom = 103.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "my first idea for
 boss was a dragon"
+horizontal_alignment = 1
 
 [node name="JewelTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -436,32 +447,34 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 16.0
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 112.0
+offset_bottom = 15.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "Jewery and artifacts"
+text = "trinkets and artifacts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ManaStar" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
-position = Vector2(16, 28)
+position = Vector2(8, 24)
 texture = ExtResource("9_7smru")
 
 [node name="CristalHeart" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
-position = Vector2(16, 46)
+position = Vector2(8, 42)
 texture = ExtResource("10_x11o0")
 
 [node name="SpikyGloves" type="Sprite2D" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
-position = Vector2(16, 65)
+position = Vector2(8, 59)
 texture = ExtResource("11_5qhnu")
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 24.0
-offset_right = 112.0
-offset_bottom = 80.0
+offset_left = 19.0
+offset_top = 20.0
+offset_right = 107.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "<- more max mana
@@ -472,10 +485,10 @@ text = "<- more max mana
 
 [node name="Label3" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 80.0
-offset_right = 124.0
-offset_bottom = 113.0
+offset_left = -4.0
+offset_top = 70.0
+offset_right = 116.0
+offset_bottom = 103.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "those would give 
@@ -483,6 +496,7 @@ advantages to
 the player,
 would be unlockable
 "
+horizontal_alignment = 1
 
 [node name="JewelTab2" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -490,19 +504,20 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab2"]
 layout_mode = 0
-offset_right = 120.0
+offset_left = -4.0
+offset_right = 112.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
-text = "jewerly and artifacts"
+text = "trinkets and artifacts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/JewelTab2"]
 layout_mode = 0
-offset_left = 4.0
+offset_left = -4.0
 offset_top = 32.0
-offset_right = 116.0
+offset_right = 112.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
@@ -511,6 +526,7 @@ I also had the
 idea of giving passive
 like life leech,
 execute enemies..."
+horizontal_alignment = 1
 
 [node name="PlannedThingsTab" type="TabBar" parent="TabContainer/ExtraTab/ExtraTabContainer"]
 visible = false
@@ -518,8 +534,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlannedThingsTab"]
 layout_mode = 0
-offset_left = -2.0
-offset_right = 118.0
+offset_left = -4.0
+offset_right = 112.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
@@ -529,47 +545,51 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TabContainer/ExtraTab/ExtraTabContainer/PlannedThingsTab"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 20.0
-offset_right = 120.0
-offset_bottom = 112.0
+offset_left = -2.0
+offset_top = 22.0
+offset_right = 114.0
+offset_bottom = 103.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "-more backgrounds
 
 -abilities for enemies
 
--spells for the player
+-spells 
 
 -achievements
 
--NPCs (meant to lore)"
+-NPCs"
 
 [node name="LeftExtraButton" type="Button" parent="TabContainer/ExtraTab"]
 layout_mode = 0
-offset_right = 18.0
-offset_bottom = 113.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 17.0
+offset_bottom = 108.0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 text = "<"
 
 [node name="RightExtraButton" type="Button" parent="TabContainer/ExtraTab"]
 layout_mode = 0
-offset_left = 144.0
-offset_right = 162.0
-offset_bottom = 113.0
+offset_left = 137.0
+offset_top = -3.0
+offset_right = 157.0
+offset_bottom = 108.0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 text = ">"
 
 [node name="SecretTab" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/SecretTab"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 160.0
-offset_bottom = 24.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 154.0
+offset_bottom = 17.0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8
 text = "secret option"
@@ -578,10 +598,10 @@ vertical_alignment = 1
 
 [node name="EnemiesLockRotation" type="CheckButton" parent="TabContainer/SecretTab"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 32.0
-offset_right = 160.0
-offset_bottom = 56.0
+offset_left = 2.0
+offset_top = 25.0
+offset_right = 154.0
+offset_bottom = 50.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r7kk")
 theme_override_font_sizes/font_size = 8

@@ -111,8 +111,8 @@ vertical_alignment = 1
 [node name="PauseButton" type="Button" parent="."]
 offset_left = 216.0
 offset_top = 8.0
-offset_right = 232.0
-offset_bottom = 24.0
+offset_right = 240.0
+offset_bottom = 33.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
@@ -136,8 +136,10 @@ action_mode = 0
 
 [node name="Label" type="Label" parent="SpeedControllerContainer/SpeedButton"]
 layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = 15.0
 theme_override_fonts/font = ExtResource("5_n8prc")
 theme_override_font_sizes/font_size = 8
 text = ">"

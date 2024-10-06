@@ -19,14 +19,6 @@ offset_right = 240.0
 offset_bottom = 135.0
 script = ExtResource("7")
 
-[node name="Window" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 232.0
-offset_bottom = 128.0
-color = Color(0.152941, 0.152941, 0.152941, 0.784314)
-
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = 8.0

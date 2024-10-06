@@ -2,7 +2,7 @@ extends Control
 
 
 # Me mola, pero no tiene nada que hacer en este proyecto
-@onready var item_show : Sprite2D = $TabContainer/ForgeTab/SelectRect/ItemShow 
+#@onready var item_show : Sprite2D = $TabContainer/ForgeTab/SelectRect/ItemShow
 
 @onready var tab_container : TabContainer = $TabContainer
 @onready var upgrade_name_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeName
@@ -12,12 +12,6 @@ extends Control
 @onready var player_stats_label : Label = $StatsLabel
 @onready var upgrade_button : Button = $TabContainer/ForgeTab/UpgradeButton
 
-#@onready var helmet_button : Button = $TabContainer/ForgeTab/HelmetButton
-#@onready var chest_plate_button : Button = $TabContainer/ForgeTab/ChestPlateButton
-#@onready var greaves_button : Button = $TabContainer/ForgeTab/GreavesButton
-#@onready var boots_button : Button = $TabContainer/ForgeTab/BootsButton
-#@onready var sword_button : Button = $TabContainer/ForgeTab/SwordButton
-#@onready var shield_button : Button = $TabContainer/ForgeTab/ShieldButton
 
 @onready var helmet : Equipment = $TabContainer/ForgeTab/HelmetButton/Helmet
 @onready var chest_plate : Equipment = $TabContainer/ForgeTab/ChestPlateButton/ChestPlate
@@ -79,10 +73,10 @@ func _on_ShieldButton_pressed() -> void:
 func get_item_to_show(equipment : Equipment, new_item_name : String) -> void:
 	item_name = new_item_name
 	
-	var sprite_info : Dictionary = equipment.get_sprite_info()
-	item_show.texture = sprite_info.texture
-	item_show.hframes = sprite_info.hframes
-	item_show.frame = sprite_info.frame
+	#var sprite_info : Dictionary = equipment.get_sprite_info()
+	#item_show.texture = sprite_info.texture
+	#item_show.hframes = sprite_info.hframes
+	#item_show.frame = sprite_info.frame
 	
 	var def_or_atk : String = "attack" if item_name == "sword" else "deff" # Solucion de vagos
 	
@@ -172,6 +166,7 @@ func update_stats_label() -> void:
 	var hp : int = 200 + 200 * (total_upgrades / 2)
 	# ----------------------------------------
 	
+	# ¿Hay una mejor manera de hacer esto?
 	player_stats_label.text = "HP: " + "\n" + str(hp) + "\n" + "\n" \
 	+ "attack: " + "\n" + str(attack) + "\n" + "\n" \
 	+ "deff: " + "\n" + str(defense) + "\n"
