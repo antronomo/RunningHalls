@@ -41,10 +41,10 @@ scroll_to_selected = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/GzTab"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 112.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 107.0
 theme_override_fonts/normal_font = ExtResource("2_fxrhy")
 bbcode_enabled = true
 text = "[center][rainbow][wave]Congratulations[/wave][/rainbow]
@@ -60,10 +60,10 @@ scrolling_enabled = false
 
 [node name="Label" type="Label" parent="TabContainer/TitleTab"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 112.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 107.0
 theme_override_fonts/font = ExtResource("2_fxrhy")
 text = "Running Halls
 
@@ -79,10 +79,10 @@ layout_mode = 2
 
 [node name="StatsLabel" type="Label" parent="TabContainer/StatsTab"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 112.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 107.0
 theme_override_fonts/font = ExtResource("2_fxrhy")
 theme_override_font_sizes/font_size = 8
 vertical_alignment = 1
@@ -93,10 +93,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/EasterEggTab"]
 layout_mode = 2
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 112.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 107.0
 theme_override_fonts/font = ExtResource("2_fxrhy")
 text = "you feel like
 tapping the space
@@ -111,10 +111,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/TheEndTab"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 112.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 107.0
 theme_override_fonts/font = ExtResource("2_fxrhy")
 text = "the end"
 horizontal_alignment = 1

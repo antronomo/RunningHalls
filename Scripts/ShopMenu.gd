@@ -1,9 +1,6 @@
 extends Control
 
 
-# Me mola, pero no tiene nada que hacer en este proyecto
-#@onready var item_show : Sprite2D = $TabContainer/ForgeTab/SelectRect/ItemShow
-
 @onready var tab_container : TabContainer = $TabContainer
 @onready var upgrade_name_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeName
 @onready var upgrade_stat_label : Label = $TabContainer/ForgeTab/InfoRect/UpgradeStat
@@ -72,11 +69,6 @@ func _on_ShieldButton_pressed() -> void:
 
 func get_item_to_show(equipment : Equipment, new_item_name : String) -> void:
 	item_name = new_item_name
-	
-	#var sprite_info : Dictionary = equipment.get_sprite_info()
-	#item_show.texture = sprite_info.texture
-	#item_show.hframes = sprite_info.hframes
-	#item_show.frame = sprite_info.frame
 	
 	var def_or_atk : String = "attack" if item_name == "sword" else "deff" # Solucion de vagos
 	
