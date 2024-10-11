@@ -16,4 +16,3 @@ func _on_NewGameButton_pressed() -> void:
 
 func _on_ReturnButton_pressed() -> void:
 	emit_signal("return_pressed")
-

@@ -47,4 +47,3 @@ func _on_speed_button_pressed(number : int = Globals.config_data.time_speed) -> 
 		
 		_:
 			push_warning("Error at changing speed label text")
-

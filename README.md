@@ -1,5 +1,5 @@
 - download the project
-- import it in godot 4.2.x (latest recomended)
+- import in godot 4.3.x (latest recomended)
 - run the project
 
 if you played this game while developing in godot3, 

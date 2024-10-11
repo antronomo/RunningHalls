@@ -23,4 +23,3 @@ func _on_value_changed(new_value : int, sec : float = 0.75) -> void:
 		tween.tween_property(damage_indicator, "value", new_value, sec)
 	else:
 		damage_indicator.value = new_value
-

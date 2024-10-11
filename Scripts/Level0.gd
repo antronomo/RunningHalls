@@ -240,4 +240,3 @@ func _on_return_button_pressed() -> void:
 	else:
 		game_over_ui.position = Vector2.ZERO
 #endregion
-

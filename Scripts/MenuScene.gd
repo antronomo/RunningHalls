@@ -71,4 +71,3 @@ func _on_OptionsMenu_return_pressed() -> void:
 func _on_CreditsMenu_return_pressed() -> void:
 	button_fx.play()
 	move_camera(main_cam_pos)
-

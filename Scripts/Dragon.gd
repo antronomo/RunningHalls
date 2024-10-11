@@ -18,4 +18,3 @@ func hecking_die() -> void:
 	
 	emit_signal("hand_deleted")
 	super()
-

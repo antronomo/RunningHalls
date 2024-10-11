@@ -54,4 +54,3 @@ secs : float = rich_text_label.size.y / 10 \
 			#rich_text_label.position.y += -0.30
 		#else:
 			#rich_text_label.position.y = win_size_y + 10
-

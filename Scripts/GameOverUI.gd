@@ -51,4 +51,3 @@ func _on_options_menu_pressed() -> void:
 func appear_animation() -> void:
 	game_over_label.text = frases[randi() % frases.size()]
 	$AnimationPlayer.play("appear")
-

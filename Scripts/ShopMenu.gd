@@ -172,4 +172,3 @@ func _on_ExitButton_pressed() -> void:
 	upgrade_button.release_focus()
 	emit_signal("exiting")
 	emit_signal("anything_pressed")
-

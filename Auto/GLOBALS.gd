@@ -186,4 +186,3 @@ func set_config_data(what : String, with) -> void:
 		_: # Default
 			push_error(what + " not found") 
 #endregion
-

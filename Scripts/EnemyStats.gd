@@ -52,4 +52,3 @@ func boss_buff() -> void:
 func _on_CoreComponent_area_entered(area : CoreComponent) -> void:
 	body.knock_back()
 	super(area)
-

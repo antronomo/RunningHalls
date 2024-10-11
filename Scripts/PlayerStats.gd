@@ -59,4 +59,3 @@ func _on_CoreComponent_area_entered(area : CoreComponent) -> void:
 	super(area)
 	emit_signal("player_got_hit")
 	
-

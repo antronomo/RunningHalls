@@ -62,4 +62,3 @@ func set_transicion(next_bg : String) -> void:
 
 func transition_time() -> void:
 	get_child(0).queue_free()
-

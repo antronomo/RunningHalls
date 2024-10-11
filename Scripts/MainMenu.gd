@@ -23,4 +23,3 @@ func _on_OptionButton_pressed() -> void:
 
 func _on_CreditsButton_pressed() -> void:
 	emit_signal("credit_pressed")
-

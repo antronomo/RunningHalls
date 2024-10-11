@@ -153,4 +153,3 @@ func _on_left_extra_button_pressed() -> void:
 func _on_right_extra_button_pressed() -> void:
 	emit_signal("button_pressed")
 	extra_tab_container.current_tab = clamp(extra_tab_container.current_tab +1 , 0, max_extra_tabs)
-

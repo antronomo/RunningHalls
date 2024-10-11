@@ -81,4 +81,3 @@ func _on_EnemySpawner_enemy_list_ended() -> void:
 
 func _on_hand_died() -> void:
 	emit_signal("hand_defeated")
-

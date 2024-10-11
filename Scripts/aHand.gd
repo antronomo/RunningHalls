@@ -41,4 +41,3 @@ func toggle_area(boleano : bool) -> void:
 	core_component.set_deferred("monitoring", boleano)   
 	core_component.set_deferred("monitorable", boleano)  
 	
-

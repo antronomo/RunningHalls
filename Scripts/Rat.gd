@@ -18,4 +18,3 @@ func boss_mode() -> void:
 		im_boss = true
 	
 		set_up_health_bar()
-
