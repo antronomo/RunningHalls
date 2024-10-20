@@ -10,12 +10,10 @@ Inspirado de:
 
 
 Sprites (o arte gráfico):
-    ·"Tiny Dungeon" por Kenney -> https://kenney.nl/assets/tiny-dungeon
-		·editado por: antronomo
-	
-	·Adventure Pack - Grassland by anokolisa -> https://anokolisa.itch.io/basic-140-tiles-grassland-and-mines
-	
-	·el resto por: antronomo
+	·Tiny Dungeon by Kenney -> https://kenney.nl/assets/tiny-dungeon
+	·game icons by Kenney -> https://kenney.nl/assets/game-icons
+	·basic 140 tiles grassland and mines by anokolisa -> https://anokolisa.itch.io/basic-140-tiles-grassland-and-mines
+	·anything else by me
 
 Music:
 	·Main menu: JRPG_battle_loop by Yubatake (CC3) -> https://opengameart.org/content/jrpg-collection or https://opengameart.org/users/yubatake
@@ -27,7 +25,7 @@ Fuente:
 
 
 Motor de videojuego:
-    ·GodotEngine 4.2.1
+    ·GodotEngine 4.3
 
 
 Otro software utilizado:
