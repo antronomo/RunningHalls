@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjctdar6ju3tx"]
 
-[ext_resource type="Script" path="res://Scripts/Boots.gd" id="1"]
+[ext_resource type="Script" uid="uid://ccw50x0xtrpab" path="res://Scripts/Boots.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://btm7roske8toj" path="res://Assets/img/PlayerEquipment/boots.png" id="2"]
 
 [node name="Boots" type="Node2D"]

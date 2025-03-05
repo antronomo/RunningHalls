@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cpw6y17s2yxc3"]
 
 [ext_resource type="Texture2D" uid="uid://dyec5f8rgnmya" path="res://Assets/img/tilemap_packed_Modified.png" id="1_hvndg"]
-[ext_resource type="Script" path="res://Scripts/FollowingEyes.gd" id="2_tlsut"]
+[ext_resource type="Script" uid="uid://ctxfmsaw2uv5f" path="res://Scripts/FollowingEyes.gd" id="2_tlsut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sybad"]
 atlas = ExtResource("1_hvndg")

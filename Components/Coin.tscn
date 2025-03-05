@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5arj8pdvms2e"]
 
 [ext_resource type="Texture2D" uid="uid://rmn12ygu7w0t" path="res://Assets/img/GoldCoin.png" id="1_8r111"]
-[ext_resource type="Script" path="res://Scripts/Coin.gd" id="2"]
+[ext_resource type="Script" uid="uid://co8j8o7tfg0rc" path="res://Scripts/Coin.gd" id="2"]
 
 [sub_resource type="Curve" id="1"]
 resource_local_to_scene = true

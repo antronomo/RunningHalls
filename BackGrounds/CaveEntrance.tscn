@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://buqcp413j6t3y"]
 
-[ext_resource type="Script" path="res://Scripts/CaveEntrance.gd" id="1_3y8k6"]
+[ext_resource type="Script" uid="uid://s565xoi8hk7s" path="res://Scripts/CaveEntrance.gd" id="1_3y8k6"]
 [ext_resource type="Texture2D" uid="uid://bkkrj0jkrvr4x" path="res://Assets/img/AdventurePack-Grassland-Assets.png" id="2_v16tt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yp7yp"]

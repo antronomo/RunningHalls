@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://w81qn7x12iwi"]
 
-[ext_resource type="Script" path="res://Scripts/inSewerParallaxBackground.gd" id="1"]
+[ext_resource type="Script" uid="uid://cber7anpbr4b0" path="res://Scripts/inSewerParallaxBackground.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cormjnawo5jby" path="res://Assets/img/Backgrounds/sewer/Sewers_Tiles.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://gfs1u3311bke" path="res://Assets/img/Backgrounds/sewer/SewerBackground2.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://hsqypvq3rmbs" path="res://BackGrounds/SewesAnimation1.tscn" id="4"]

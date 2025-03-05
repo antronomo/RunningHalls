@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://b0d5k3cuk5e00"]
 
-[ext_resource type="Script" path="res://Scripts/ForestParallaxBackground.gd" id="1_0q2rs"]
+[ext_resource type="Script" uid="uid://caet58j1cb3ss" path="res://Scripts/ForestParallaxBackground.gd" id="1_0q2rs"]
 [ext_resource type="Texture2D" uid="uid://bkkrj0jkrvr4x" path="res://Assets/img/AdventurePack-Grassland-Assets.png" id="2_vigxl"]
 [ext_resource type="Texture2D" uid="uid://crkoq1y2f4k8" path="res://Assets/img/AdventurePack-Grassland-Background_2.png" id="3_lim6h"]
 [ext_resource type="Texture2D" uid="uid://dtnbvxwwrk28e" path="res://Assets/img/AdventurePack-Grassland-Background_1.png" id="4_vfsgh"]

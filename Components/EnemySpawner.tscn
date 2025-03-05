@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq5cjouwd1omc"]
 
-[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="1"]
-[ext_resource type="Script" path="res://Scripts/WaveGenerator.gd" id="2"]
+[ext_resource type="Script" uid="uid://c5v66o1sf8f7a" path="res://Scripts/EnemySpawner.gd" id="1"]
+[ext_resource type="Script" uid="uid://dlaetlbgd43nr" path="res://Scripts/WaveGenerator.gd" id="2"]
 
 [node name="EnemySpawner" type="Marker2D"]
 process_mode = 1

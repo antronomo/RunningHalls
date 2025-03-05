@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://md23rqrj4w7p"]
 
-[ext_resource type="Script" path="res://Scripts/GameFinished.gd" id="1_eq0vm"]
+[ext_resource type="Script" uid="uid://dqsrga58po26w" path="res://Scripts/GameFinished.gd" id="1_eq0vm"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="2_fxrhy"]
 
 [node name="GameFinished" type="Control"]

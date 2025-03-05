@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0vqq1dpd78op"]
 
-[ext_resource type="Script" path="res://Scripts/StartMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://c1q3ewydsksnt" path="res://Scripts/StartMenu.gd" id="1"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="3_6olxa"]
 
 [node name="StartMenu" type="Control"]

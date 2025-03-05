@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://by7ea8qrovwnd"]
 
-[ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://d0akpatqxnkhe" path="res://Scripts/OptionsMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bp31w7no4qwgd" path="res://Assets/img/UIassets/RunningHallsButtons.png" id="2_1medo"]
 [ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="3_nqxxr"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="4_2r7kk"]

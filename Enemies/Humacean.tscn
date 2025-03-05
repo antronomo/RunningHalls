@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c34rljok12d1k"]
 
-[ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="1"]
-[ext_resource type="Script" path="res://Scripts/Humacean.gd" id="2"]
+[ext_resource type="Script" uid="uid://b3vk8gapf7p7g" path="res://Scripts/EnemyStats.gd" id="1"]
+[ext_resource type="Script" uid="uid://c6hw3e15okao4" path="res://Scripts/Humacean.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://clghjhlmn47hr" path="res://Assets/img/Crab.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="4"]
 

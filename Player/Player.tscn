@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=3 uid="uid://cy38ehjihtgys"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
+[ext_resource type="Script" uid="uid://b4mjtmbonbg62" path="res://Scripts/Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ckic3jwkm6c2d" path="res://Components/CoreComponent.tscn" id="2"]
-[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="3"]
+[ext_resource type="Script" uid="uid://caoinnd20xbpb" path="res://Scripts/PlayerStats.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://bmkiqu576mawq" path="res://Assets/img/Player.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://cjctdar6ju3tx" path="res://Player/Boots.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://Player/Greaves.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://Player/Helmet.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://dsb6s82gk5qqm" path="res://Player/Greaves.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://m2sw45w5yhr0" path="res://Player/Helmet.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Player/Sword.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://Player/ChestPlate.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bg1mi8cikx21s" path="res://Player/ChestPlate.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Player/Shield.tscn" id="10"]
 [ext_resource type="AudioStream" uid="uid://b6g2vxt1yhy4p" path="res://Assets/Audio/hurt_461656581.ogg" id="11_tom5s"]
 
@@ -558,10 +558,10 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bo0de"]
 _data = {
-"RESET": SubResource("1"),
-"dying": SubResource("4"),
-"vanishing": SubResource("Animation_6lfe4"),
-"walking": SubResource("2")
+&"RESET": SubResource("1"),
+&"dying": SubResource("4"),
+&"vanishing": SubResource("Animation_6lfe4"),
+&"walking": SubResource("2")
 }
 
 [sub_resource type="RectangleShape2D" id="3"]

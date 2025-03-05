@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jggev"]
 _data = {
-"Animation": SubResource("1")
+&"Animation": SubResource("1")
 }
 
 [node name="SewesAnimation1" type="Sprite2D"]

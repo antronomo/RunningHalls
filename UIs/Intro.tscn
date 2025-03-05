@@ -1,139 +1,143 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://cjoea3h2vji0k"]
 
 [ext_resource type="FontFile" uid="uid://ce7r73x7ee1yt" path="res://Assets/Fonts/kenpixel_mini.ttf" id="1"]
 [ext_resource type="Texture2D" uid="uid://bpy8faexejobk" path="res://Assets/img/Godot_icon.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://fgevo8ci2sux" path="res://Assets/img/antronomo.png" id="3"]
-[ext_resource type="Script" path="res://Scripts/Intro.gd" id="4"]
+[ext_resource type="Script" uid="uid://cw4tkv6u5n1s2" path="res://Scripts/Intro.gd" id="4"]
 
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="FontFile" id=1]
-outline_size = 1
-extra_spacing_char = 1
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="4"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="FontFile" id=4]
-size = 25
-outline_size = 1
-extra_spacing_char = 1
-font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "Intro"
 length = 4.3
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Antronomo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0.3, 1.3, 2.3 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0.3, 1.3, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Antronomo/AntronomoPng:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0.3, 2.3 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0.3, 2.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, 360.0 ]
+"values": [0.0, 360.0]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Godot:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 2.3, 3.3, 4.3 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(2.3, 3.3, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Antronomo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Antronomo/AntronomoPng:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.0 ]
+"values": [0.0]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Godot:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("RunningHalls:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [node name="Intro" type="Node2D"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="Antronomo" type="Control" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="AntronomoPng" type="Sprite2D" parent="Antronomo"]
-position = Vector2( 120, 72 )
-scale = Vector2( 0.105, 0.105 )
-texture = ExtResource( 3 )
+position = Vector2(120, 72)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("3")
 
 [node name="AntronomoText" type="Label" parent="Antronomo"]
 offset_left = 56.0
 offset_top = 16.0
 offset_right = 184.0
 offset_bottom = 32.0
-theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
-theme_override_fonts/font = SubResource( 1 )
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
 text = "ANTRONOMO"
 align = 1
 valign = 1
 
 [node name="Godot" type="Control" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -146,20 +150,20 @@ offset_left = 56.0
 offset_top = 16.0
 offset_right = 184.0
 offset_bottom = 32.0
-theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
-theme_override_fonts/font = SubResource( 1 )
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
 text = "GodotEngine"
 align = 1
 valign = 1
 
 [node name="GodotIconPng" type="Sprite2D" parent="Godot"]
-position = Vector2( 120, 72 )
-scale = Vector2( 0.0351563, 0.0351563 )
-texture = ExtResource( 2 )
+position = Vector2(120, 72)
+scale = Vector2(0.0351563, 0.0351563)
+texture = ExtResource("2")
 
 [node name="RunningHalls" type="Control" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -173,15 +177,15 @@ offset_top = 0.0349994
 offset_right = -0.0800171
 offset_bottom = -0.0200005
 size_flags_vertical = 1
-theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
-theme_override_fonts/font = SubResource( 4 )
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("4")
 text = "Running Halls"
 align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Intro = SubResource( 2 )
-anims/RESET = SubResource( 3 )
+anims/Intro = SubResource("2")
+anims/RESET = SubResource("3")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

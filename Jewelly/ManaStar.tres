@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="JewelResource" load_steps=3 format=3 uid="uid://dpki682jtfuvg"]
 
-[ext_resource type="Script" path="res://Scripts/JewelResource.gd" id="1_1jkux"]
+[ext_resource type="Script" uid="uid://crmys5s7kjqqm" path="res://Scripts/JewelResource.gd" id="1_1jkux"]
 [ext_resource type="Texture2D" uid="uid://dps3iqdm5057q" path="res://Assets/img/ManaStar.png" id="2_cv0d6"]
 
 [resource]

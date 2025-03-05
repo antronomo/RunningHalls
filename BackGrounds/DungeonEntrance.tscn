@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b272s8e3s54j5"]
 
-[ext_resource type="Script" path="res://Scripts/DungeonEntrance.gd" id="1_n2rna"]
+[ext_resource type="Script" uid="uid://cda5pctoyikyn" path="res://Scripts/DungeonEntrance.gd" id="1_n2rna"]
 [ext_resource type="Texture2D" uid="uid://dyec5f8rgnmya" path="res://Assets/img/tilemap_packed_Modified.png" id="2_73m3g"]
 [ext_resource type="PackedScene" uid="uid://cpw6y17s2yxc3" path="res://BackGrounds/FollowingEyes.tscn" id="3_dnnyi"]
 

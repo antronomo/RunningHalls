@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnrwf0mymnuu5"]
 
-[ext_resource type="Script" path="res://Scripts/Ghost.gd" id="1"]
-[ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="2"]
+[ext_resource type="Script" uid="uid://yd6ndiqfhx3g" path="res://Scripts/Ghost.gd" id="1"]
+[ext_resource type="Script" uid="uid://b3vk8gapf7p7g" path="res://Scripts/EnemyStats.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bmmpdjjtupi2" path="res://Assets/img/Ghost.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="4"]
 

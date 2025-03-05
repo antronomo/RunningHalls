@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d1dnbm6mq2pwc" path="res://UIs/MainMenu.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://by7ea8qrovwnd" path="res://UIs/OptionsMenu.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b0vqq1dpd78op" path="res://UIs/StartMenu.tscn" id="3"]
-[ext_resource type="Script" path="res://Scripts/MenuScene.gd" id="4"]
+[ext_resource type="Script" uid="uid://cciuwtd5wl32i" path="res://Scripts/MenuScene.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://igstc1pa4m15" path="res://UIs/CreditsMenu.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://731e15d1cmmf" path="res://BackGrounds/setter_parallax_background.tscn" id="6_ye2kw"]
 [ext_resource type="AudioStream" uid="uid://b256di8syku5r" path="res://Assets/Audio/JRPG_fields_loop.ogg" id="7_626vu"]

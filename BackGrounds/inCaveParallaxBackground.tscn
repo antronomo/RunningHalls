@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://bjbchvh8qefn7"]
 
-[ext_resource type="Script" path="res://Scripts/inCaveParallaxBackground.gd" id="1"]
+[ext_resource type="Script" uid="uid://cayrxkw3luugt" path="res://Scripts/inCaveParallaxBackground.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://sfsfwjpfsa36" path="res://Assets/img/Backgrounds/inCave/BackGround-inCave4.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dumq6myo58i36" path="res://Assets/img/Backgrounds/inCave/BackGround-inCave3.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://gomt6y3myau0" path="res://Assets/img/Backgrounds/inCave/BackGround-inCave6.png" id="4"]

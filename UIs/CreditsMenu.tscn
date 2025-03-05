@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://igstc1pa4m15"]
 
-[ext_resource type="Script" path="res://Scripts/CreditMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://cilbvxqydytc1" path="res://Scripts/CreditMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bp31w7no4qwgd" path="res://Assets/img/UIassets/RunningHallsButtons.png" id="2_quk08"]
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="2_wnkwj"]
 

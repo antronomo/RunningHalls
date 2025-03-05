@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckic3jwkm6c2d"]
 
-[ext_resource type="Script" path="res://Scripts/CoreComponent.gd" id="1"]
+[ext_resource type="Script" uid="uid://c8yy01r0u51bo" path="res://Scripts/CoreComponent.gd" id="1"]
 
 [node name="CoreComponent" type="Area2D"]
 collision_layer = 0

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://fgipj4t01uji" path="res://Components/HealthBar.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d1xwmjki0ul88" path="res://Assets/img/Spider.png" id="2"]
-[ext_resource type="Script" path="res://Scripts/Spider.gd" id="3"]
-[ext_resource type="Script" path="res://Scripts/EnemyStats.gd" id="4"]
+[ext_resource type="Script" uid="uid://bcqwhgth1g070" path="res://Scripts/Spider.gd" id="3"]
+[ext_resource type="Script" uid="uid://b3vk8gapf7p7g" path="res://Scripts/EnemyStats.gd" id="4"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")

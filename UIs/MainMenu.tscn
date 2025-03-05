@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1dnbm6mq2pwc"]
 
 [ext_resource type="FontVariation" uid="uid://ds2df6k5s8j30" path="res://Assets/DynamicFonts/ShopMenu_8px_FontVariation.tres" id="2_j503r"]
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="3"]
+[ext_resource type="Script" uid="uid://btx8y5d23ym41" path="res://Scripts/MainMenu.gd" id="3"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
